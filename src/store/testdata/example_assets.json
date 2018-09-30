@@ -1,0 +1,184 @@
+{
+  "exportDate": "2018-09-28T13:05:38.472Z",
+  "taxYears": {
+    "taxYears": []
+  },
+  "assets": {
+    "assets": [
+      {
+        "id": "GBP",
+        "label": "GBP",
+        "symbol": "GBP",
+        "fiat": true,
+        "caseSensitiveAddress": false
+      },
+      {
+        "id": "USD",
+        "label": "USD",
+        "symbol": "USD",
+        "fiat": false,
+        "caseSensitiveAddress": false
+      },
+      {
+        "id": "EUR",
+        "label": "EUR",
+        "symbol": "EUR",
+        "fiat": false,
+        "caseSensitiveAddress": false
+      },
+      {
+        "id": "USDT",
+        "label": "Tether",
+        "symbol": "USDT",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "BTC",
+        "label": "Bitcoin",
+        "symbol": "BTC",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "BCH",
+        "label": "Bitcoin Cash",
+        "symbol": "BCH",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "BTG",
+        "label": "Bitcoin Gold",
+        "symbol": "BTG",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "ETH",
+        "label": "Ethereum",
+        "symbol": "ETH",
+        "fiat": false,
+        "caseSensitiveAddress": false
+      },
+      {
+        "id": "LTC",
+        "label": "Litecoin",
+        "symbol": "LTC",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "XRP",
+        "label": "Ripple",
+        "symbol": "XRP",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "XMR",
+        "label": "Monero",
+        "symbol": "XMR",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "ZEC",
+        "label": "Zcash",
+        "symbol": "ZEC",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "VTC",
+        "label": "Vertcoin",
+        "symbol": "VTC",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "XVG",
+        "label": "Verge",
+        "symbol": "XVG",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "NEO",
+        "label": "NEO",
+        "symbol": "NEO",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "GAS",
+        "label": "GAS",
+        "symbol": "GAS",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "OMG",
+        "label": "OmiseGo",
+        "symbol": "OMG",
+        "fiat": false,
+        "caseSensitiveAddress": false
+      },
+      {
+        "id": "IOTA",
+        "label": "IOTA",
+        "symbol": "IOTA",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "NANO",
+        "label": "NANO",
+        "symbol": "NANO",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "LSK",
+        "label": "Lisk",
+        "symbol": "LSK",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "BAT",
+        "label": "BAT",
+        "symbol": "BAT",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      }
+    ],
+    "assetLedgerEntries": []
+  },
+  "cgt": {
+    "assetLedgerEntryWorkingsById": {}
+  },
+  "locations": {
+    "locations": [],
+    "locationGroups": [],
+    "locationLedgerEntries": []
+  },
+  "miningPools": {
+    "miningPools": []
+  },
+  "miningEvents": {
+    "miningEvents": []
+  },
+  "transferEvents": {
+    "transferEvents": []
+  },
+  "airdropEvents": {
+    "airdropEvents": []
+  },
+  "depositEvents": {
+    "depositEvents": []
+  },
+  "tradeEvents": {
+    "tradeEvents": []
+  }
+}

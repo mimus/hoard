@@ -1,0 +1,147 @@
+{
+  "exportDate": "2018-09-28T12:03:04.309Z",
+  "taxYears": {
+    "taxYears": [
+      {
+        "id": 1,
+        "label": "2013/14",
+        "startDate": "2013-04-05T23:00:00.000Z",
+        "endDate": "2014-04-05T22:59:00.000Z"
+      }
+    ]
+  },
+  "assets": {
+    "assets": [
+      {
+        "id": "MP",
+        "label": "Mesopotamia plc",
+        "symbol": "MP",
+        "fiat": false,
+        "caseSensitiveAddress": false
+      },
+      {
+        "id": "GBP",
+        "label": "GBP",
+        "symbol": "GBP",
+        "fiat": true,
+        "caseSensitiveAddress": false
+      }
+    ],
+    "assetLedgerEntries": [
+      {
+        "id": 1,
+        "date": "2013-04-30T11:00:00.000Z",
+        "type": "acquisition",
+        "asset": "GBP",
+        "assetValueGBP": "10000",
+        "amount": "10000",
+        "label": "Funds",
+        "comments": "",
+        "linked": [
+          {
+            "type": "depositEvent",
+            "id": 1
+          }
+        ]
+      }
+    ]
+  },
+  "cgt": {
+    "assetLedgerEntryWorkingsById": {
+      "1": {
+        "id": 1,
+        "totalPoolAmount": "10000",
+        "totalPoolCost": "10000",
+        "poolAmount": "10000",
+        "poolValueGBP": "10000"
+      }
+    }
+  },
+  "locations": {
+    "locations": [
+      {
+        "id": 1,
+        "group": 2,
+        "label": "MP shares",
+        "asset": "MP",
+        "address": ""
+      },
+      {
+        "id": 2,
+        "group": 1,
+        "label": "GBP account",
+        "asset": "GBP",
+        "address": ""
+      }
+    ],
+    "locationGroups": [
+      {
+        "id": 1,
+        "label": "Bank account",
+        "locations": [
+          2
+        ]
+      },
+      {
+        "id": 2,
+        "label": "Shares Account",
+        "locations": [
+          1
+        ]
+      }
+    ],
+    "locationLedgerEntries": [
+      {
+        "id": 1,
+        "date": "2013-04-30T11:00:00.000Z",
+        "location": 2,
+        "amount": "10000",
+        "label": "Funds",
+        "comments": "",
+        "linked": [
+          {
+            "type": "depositEvent",
+            "id": 1
+          }
+        ]
+      }
+    ]
+  },
+  "miningPools": {
+    "miningPools": []
+  },
+  "miningEvents": {
+    "miningEvents": []
+  },
+  "transferEvents": {
+    "transferEvents": []
+  },
+  "airdropEvents": {
+    "airdropEvents": []
+  },
+  "depositEvents": {
+    "depositEvents": [
+      {
+        "id": 1,
+        "date": "2013-04-30T11:00:00.000Z",
+        "label": "Funds",
+        "asset": "GBP",
+        "amount": "10000",
+        "comments": "",
+        "linked": [
+          {
+            "type": "assetLedgerEntry",
+            "id": 1
+          },
+          {
+            "type": "locationLedgerEntry",
+            "id": 1
+          }
+        ]
+      }
+    ]
+  },
+  "tradeEvents": {
+    "tradeEvents": []
+  }
+}

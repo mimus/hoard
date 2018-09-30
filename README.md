@@ -1,5 +1,7 @@
 # hoard2
 
+Run with node v10
+
 ## Project setup
 ```
 npm install
@@ -34,3 +36,4 @@ npm run test:e2e
 ```
 npm run test:unit
 ```
+Project created with [Vue CLI 3](https://cli.vuejs.org/)

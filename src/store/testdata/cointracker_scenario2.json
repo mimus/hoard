@@ -1,0 +1,1024 @@
+{
+  "exportDate": "2018-09-28T12:51:41.797Z",
+  "taxYears": {
+    "taxYears": [
+      {
+        "id": 1,
+        "label": "2017/18",
+        "startDate": "2017-04-05T23:00:00.000Z",
+        "endDate": "2018-04-05T22:59:00.000Z"
+      }
+    ]
+  },
+  "assets": {
+    "assets": [
+      {
+        "id": "GBP",
+        "label": "GBP",
+        "symbol": "GBP",
+        "fiat": true,
+        "caseSensitiveAddress": false
+      },
+      {
+        "id": "BTC",
+        "label": "BTC",
+        "symbol": "BTC",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      }
+    ],
+    "assetLedgerEntries": [
+      {
+        "id": 1,
+        "date": "2017-04-10T11:00:00.000Z",
+        "type": "acquisition",
+        "asset": "GBP",
+        "assetValueGBP": "5000",
+        "amount": "5000",
+        "label": "Initial float",
+        "comments": "",
+        "linked": [
+          {
+            "type": "depositEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "date": "2017-05-01T11:00:00.000Z",
+        "type": "disposal",
+        "asset": "GBP",
+        "assetValueGBP": "250",
+        "amount": "-250",
+        "label": "Buy 0.25 BTC @ £1,000/BTC",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "date": "2017-05-01T11:00:00.000Z",
+        "type": "acquisition",
+        "asset": "BTC",
+        "assetValueGBP": "250",
+        "amount": "0.25",
+        "label": "Buy 0.25 BTC @ £1,000/BTC",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "date": "2017-06-02T11:00:00.000Z",
+        "type": "disposal",
+        "asset": "GBP",
+        "assetValueGBP": "500",
+        "amount": "-500",
+        "label": "Buy 0.25 BTC @ £2,000/BTC",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 2
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "date": "2017-06-02T11:00:00.000Z",
+        "type": "acquisition",
+        "asset": "BTC",
+        "assetValueGBP": "500",
+        "amount": "0.25",
+        "label": "Buy 0.25 BTC @ £2,000/BTC",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 2
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "date": "2017-07-03T11:00:00.000Z",
+        "type": "disposal",
+        "asset": "GBP",
+        "assetValueGBP": "750",
+        "amount": "-750",
+        "label": "Buy 0.25 BTC @ £3,000/BTC",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 3
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "date": "2017-07-03T11:00:00.000Z",
+        "type": "acquisition",
+        "asset": "BTC",
+        "assetValueGBP": "750",
+        "amount": "0.25",
+        "label": "Buy 0.25 BTC @ £3,000/BTC",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 3
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "date": "2017-08-04T11:00:00.000Z",
+        "type": "disposal",
+        "asset": "GBP",
+        "assetValueGBP": "1000",
+        "amount": "-1000",
+        "label": "Buy 0.25 BTC @ £4,000/BTC",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 4
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "date": "2017-08-04T11:00:00.000Z",
+        "type": "acquisition",
+        "asset": "BTC",
+        "assetValueGBP": "1000",
+        "amount": "0.25",
+        "label": "Buy 0.25 BTC @ £4,000/BTC",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 4
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "date": "2017-12-31T12:00:00.000Z",
+        "type": "disposal",
+        "asset": "GBP",
+        "assetValueGBP": "1250",
+        "amount": "-1250",
+        "label": "Buy 0.25 BTC @ £5,000/BTC",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 5
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "date": "2017-12-31T12:00:00.000Z",
+        "type": "acquisition",
+        "asset": "BTC",
+        "assetValueGBP": "1250",
+        "amount": "0.25",
+        "label": "Buy 0.25 BTC @ £5,000/BTC",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 5
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "date": "2017-12-31T18:30:00.000Z",
+        "type": "disposal",
+        "asset": "BTC",
+        "assetValueGBP": "2500",
+        "amount": "-0.5",
+        "label": "Sell 0.5 BTC at £5,000/BTC",
+        "comments": "£5,000/BTC",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 6
+          }
+        ]
+      },
+      {
+        "id": 13,
+        "date": "2017-12-31T18:30:00.000Z",
+        "type": "acquisition",
+        "asset": "GBP",
+        "assetValueGBP": "2500",
+        "amount": "2500",
+        "label": "Sell 0.5 BTC at £5,000/BTC",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 6
+          }
+        ]
+      },
+      {
+        "id": 14,
+        "date": "2018-01-14T12:00:00.000Z",
+        "type": "disposal",
+        "asset": "GBP",
+        "assetValueGBP": "1000",
+        "amount": "-1000",
+        "label": "Buy 0.1 BTC @ £10,000/BTC",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 7
+          }
+        ]
+      },
+      {
+        "id": 15,
+        "date": "2018-01-14T12:00:00.000Z",
+        "type": "acquisition",
+        "asset": "BTC",
+        "assetValueGBP": "1000",
+        "amount": "0.1",
+        "label": "Buy 0.1 BTC @ £10,000/BTC",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 7
+          }
+        ]
+      }
+    ]
+  },
+  "cgt": {
+    "assetLedgerEntryWorkingsById": {
+      "1": {
+        "id": 1,
+        "totalPoolAmount": "5000",
+        "totalPoolCost": "5000",
+        "poolAmount": "5000",
+        "poolValueGBP": "5000"
+      },
+      "2": {
+        "id": 2,
+        "totalPoolAmount": "4750",
+        "totalPoolCost": "4750",
+        "disposalPlan": [
+          {
+            "type": "POOL",
+            "amount": "250",
+            "cost": "250"
+          }
+        ],
+        "costBasis": "250",
+        "gain": "0"
+      },
+      "3": {
+        "id": 3,
+        "totalPoolAmount": "0.25",
+        "totalPoolCost": "250",
+        "poolAmount": "0.25",
+        "poolValueGBP": "250"
+      },
+      "4": {
+        "id": 4,
+        "totalPoolAmount": "4250",
+        "totalPoolCost": "4250",
+        "disposalPlan": [
+          {
+            "type": "POOL",
+            "amount": "500",
+            "cost": "500"
+          }
+        ],
+        "costBasis": "500",
+        "gain": "0"
+      },
+      "5": {
+        "id": 5,
+        "totalPoolAmount": "0.5",
+        "totalPoolCost": "750",
+        "poolAmount": "0.25",
+        "poolValueGBP": "500"
+      },
+      "6": {
+        "id": 6,
+        "totalPoolAmount": "3500",
+        "totalPoolCost": "3500",
+        "disposalPlan": [
+          {
+            "type": "POOL",
+            "amount": "750",
+            "cost": "750"
+          }
+        ],
+        "costBasis": "750",
+        "gain": "0"
+      },
+      "7": {
+        "id": 7,
+        "totalPoolAmount": "0.75",
+        "totalPoolCost": "1500",
+        "poolAmount": "0.25",
+        "poolValueGBP": "750"
+      },
+      "8": {
+        "id": 8,
+        "totalPoolAmount": "2500",
+        "totalPoolCost": "2500",
+        "disposalPlan": [
+          {
+            "type": "POOL",
+            "amount": "1000",
+            "cost": "1000"
+          }
+        ],
+        "costBasis": "1000",
+        "gain": "0"
+      },
+      "9": {
+        "id": 9,
+        "totalPoolAmount": "1",
+        "totalPoolCost": "2500",
+        "poolAmount": "0.25",
+        "poolValueGBP": "1000"
+      },
+      "10": {
+        "id": 10,
+        "totalPoolAmount": "2500",
+        "totalPoolCost": "2500",
+        "disposalPlan": [
+          {
+            "type": "SAME_DAY",
+            "entry": {
+              "id": 13,
+              "date": "2017-12-31T18:30:00.000Z"
+            },
+            "amount": "1250",
+            "cost": "1250"
+          }
+        ],
+        "costBasis": "1250",
+        "gain": "0"
+      },
+      "11": {
+        "id": 11,
+        "totalPoolAmount": "1",
+        "totalPoolCost": "2500",
+        "poolAmount": "0",
+        "poolValueGBP": "0"
+      },
+      "12": {
+        "id": 12,
+        "totalPoolAmount": "0.85",
+        "totalPoolCost": "2125",
+        "disposalPlan": [
+          {
+            "type": "SAME_DAY",
+            "entry": {
+              "id": 11,
+              "date": "2017-12-31T12:00:00.000Z"
+            },
+            "amount": "0.25",
+            "cost": "1250"
+          },
+          {
+            "type": "30_DAYS",
+            "entry": {
+              "id": 15,
+              "date": "2018-01-14T12:00:00.000Z"
+            },
+            "amount": "0.1",
+            "cost": "1000"
+          },
+          {
+            "type": "POOL",
+            "amount": "0.15",
+            "cost": "375"
+          }
+        ],
+        "costBasis": "2625",
+        "gain": "-125"
+      },
+      "13": {
+        "id": 13,
+        "totalPoolAmount": "3750",
+        "totalPoolCost": "3750",
+        "poolAmount": "1250",
+        "poolValueGBP": "1250"
+      },
+      "14": {
+        "id": 14,
+        "totalPoolAmount": "2750",
+        "totalPoolCost": "2750",
+        "disposalPlan": [
+          {
+            "type": "POOL",
+            "amount": "1000",
+            "cost": "1000"
+          }
+        ],
+        "costBasis": "1000",
+        "gain": "0"
+      },
+      "15": {
+        "id": 15,
+        "totalPoolAmount": "0.85",
+        "totalPoolCost": "2125",
+        "poolAmount": "0",
+        "poolValueGBP": "0"
+      }
+    }
+  },
+  "locations": {
+    "locations": [
+      {
+        "label": "GBP Balance",
+        "asset": "GBP",
+        "address": "",
+        "url": "",
+        "comments": "",
+        "group": 1,
+        "id": 1
+      },
+      {
+        "label": "Bitcoin balance",
+        "asset": "BTC",
+        "address": "",
+        "url": "",
+        "comments": "",
+        "group": 1,
+        "id": 2
+      }
+    ],
+    "locationGroups": [
+      {
+        "label": "Exchange",
+        "locations": [
+          1,
+          2
+        ],
+        "url": "",
+        "comments": "",
+        "id": 1
+      }
+    ],
+    "locationLedgerEntries": [
+      {
+        "id": 1,
+        "date": "2017-04-10T11:00:00.000Z",
+        "location": 1,
+        "amount": "5000",
+        "label": "Initial float",
+        "comments": "",
+        "linked": [
+          {
+            "type": "depositEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "date": "2017-05-01T11:00:00.000Z",
+        "location": 1,
+        "amount": "-250",
+        "label": "Buy 0.25 BTC @ £1,000/BTC",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "date": "2017-05-01T11:00:00.000Z",
+        "location": 2,
+        "amount": "0.25",
+        "label": "Buy 0.25 BTC @ £1,000/BTC",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "date": "2017-06-02T11:00:00.000Z",
+        "location": 1,
+        "amount": "-500",
+        "label": "Buy 0.25 BTC @ £2,000/BTC",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 2
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "date": "2017-06-02T11:00:00.000Z",
+        "location": 2,
+        "amount": "0.25",
+        "label": "Buy 0.25 BTC @ £2,000/BTC",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 2
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "date": "2017-07-03T11:00:00.000Z",
+        "location": 1,
+        "amount": "-750",
+        "label": "Buy 0.25 BTC @ £3,000/BTC",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 3
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "date": "2017-07-03T11:00:00.000Z",
+        "location": 2,
+        "amount": "0.25",
+        "label": "Buy 0.25 BTC @ £3,000/BTC",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 3
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "date": "2017-08-04T11:00:00.000Z",
+        "location": 1,
+        "amount": "-1000",
+        "label": "Buy 0.25 BTC @ £4,000/BTC",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 4
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "date": "2017-08-04T11:00:00.000Z",
+        "location": 2,
+        "amount": "0.25",
+        "label": "Buy 0.25 BTC @ £4,000/BTC",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 4
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "date": "2017-12-31T12:00:00.000Z",
+        "location": 1,
+        "amount": "-1250",
+        "label": "Buy 0.25 BTC @ £5,000/BTC",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 5
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "date": "2017-12-31T12:00:00.000Z",
+        "location": 2,
+        "amount": "0.25",
+        "label": "Buy 0.25 BTC @ £5,000/BTC",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 5
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "date": "2017-12-31T18:30:00.000Z",
+        "location": 2,
+        "amount": "-0.5",
+        "label": "Sell 0.5 BTC at £5,000/BTC",
+        "comments": "£5,000/BTC",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 6
+          }
+        ]
+      },
+      {
+        "id": 13,
+        "date": "2017-12-31T18:30:00.000Z",
+        "location": 1,
+        "amount": "2500",
+        "label": "Sell 0.5 BTC at £5,000/BTC",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 6
+          }
+        ]
+      },
+      {
+        "id": 14,
+        "date": "2018-01-14T12:00:00.000Z",
+        "location": 1,
+        "amount": "-1000",
+        "label": "Buy 0.1 BTC @ £10,000/BTC",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 7
+          }
+        ]
+      },
+      {
+        "id": 15,
+        "date": "2018-01-14T12:00:00.000Z",
+        "location": 2,
+        "amount": "0.1",
+        "label": "Buy 0.1 BTC @ £10,000/BTC",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 7
+          }
+        ]
+      }
+    ]
+  },
+  "miningPools": {
+    "miningPools": []
+  },
+  "miningEvents": {
+    "miningEvents": []
+  },
+  "transferEvents": {
+    "transferEvents": []
+  },
+  "airdropEvents": {
+    "airdropEvents": []
+  },
+  "depositEvents": {
+    "depositEvents": [
+      {
+        "id": 1,
+        "date": "2017-04-10T11:00:00.000Z",
+        "label": "Initial float",
+        "asset": "GBP",
+        "amount": "5000",
+        "comments": "",
+        "linked": [
+          {
+            "type": "assetLedgerEntry",
+            "id": 1
+          },
+          {
+            "type": "locationLedgerEntry",
+            "id": 1
+          }
+        ]
+      }
+    ]
+  },
+  "tradeEvents": {
+    "tradeEvents": [
+      {
+        "id": 1,
+        "date": "2017-05-01T11:00:00.000Z",
+        "label": "Buy 0.25 BTC @ £1,000/BTC",
+        "comments": "",
+        "fees": [],
+        "disposed": [
+          {
+            "asset": "GBP",
+            "amount": "250",
+            "comments": "",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 2
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 2
+              }
+            ]
+          }
+        ],
+        "acquired": [
+          {
+            "asset": "BTC",
+            "amount": "0.25",
+            "comments": "",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 3
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "date": "2017-06-02T11:00:00.000Z",
+        "label": "Buy 0.25 BTC @ £2,000/BTC",
+        "comments": "",
+        "fees": [],
+        "disposed": [
+          {
+            "asset": "GBP",
+            "amount": "500",
+            "comments": "",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 4
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 4
+              }
+            ]
+          }
+        ],
+        "acquired": [
+          {
+            "asset": "BTC",
+            "amount": "0.25",
+            "comments": "",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 5
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "date": "2017-07-03T11:00:00.000Z",
+        "label": "Buy 0.25 BTC @ £3,000/BTC",
+        "comments": "",
+        "fees": [],
+        "disposed": [
+          {
+            "asset": "GBP",
+            "amount": "750",
+            "comments": "",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 6
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 6
+              }
+            ]
+          }
+        ],
+        "acquired": [
+          {
+            "asset": "BTC",
+            "amount": "0.25",
+            "comments": "",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 7
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 7
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "date": "2017-08-04T11:00:00.000Z",
+        "label": "Buy 0.25 BTC @ £4,000/BTC",
+        "comments": "",
+        "fees": [],
+        "disposed": [
+          {
+            "asset": "GBP",
+            "amount": "1000",
+            "comments": "",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 8
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 8
+              }
+            ]
+          }
+        ],
+        "acquired": [
+          {
+            "asset": "BTC",
+            "amount": "0.25",
+            "comments": "",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 9
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 9
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "date": "2017-12-31T12:00:00.000Z",
+        "label": "Buy 0.25 BTC @ £5,000/BTC",
+        "comments": "",
+        "fees": [],
+        "disposed": [
+          {
+            "asset": "GBP",
+            "amount": "1250",
+            "comments": "",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 10
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 10
+              }
+            ]
+          }
+        ],
+        "acquired": [
+          {
+            "asset": "BTC",
+            "amount": "0.25",
+            "comments": "",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 11
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 11
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "date": "2017-12-31T18:30:00.000Z",
+        "label": "Sell 0.5 BTC at £5,000/BTC",
+        "comments": "",
+        "fees": [],
+        "disposed": [
+          {
+            "asset": "BTC",
+            "amount": "0.5",
+            "comments": "£5,000/BTC",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 12
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 12
+              }
+            ]
+          }
+        ],
+        "acquired": [
+          {
+            "asset": "GBP",
+            "amount": "2500",
+            "comments": "",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 13
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 13
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "date": "2018-01-14T12:00:00.000Z",
+        "label": "Buy 0.1 BTC @ £10,000/BTC",
+        "comments": "",
+        "fees": [],
+        "disposed": [
+          {
+            "asset": "GBP",
+            "amount": "1000",
+            "comments": "",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 14
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 14
+              }
+            ]
+          }
+        ],
+        "acquired": [
+          {
+            "asset": "BTC",
+            "amount": "0.1",
+            "comments": "",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 15
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 15
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

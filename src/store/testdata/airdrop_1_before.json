@@ -1,0 +1,201 @@
+{
+  "exportDate": "2018-09-28T13:49:01.215Z",
+  "taxYears": {
+    "taxYears": []
+  },
+  "assets": {
+    "assets": [
+      {
+        "id": "BTC",
+        "label": "BTC",
+        "symbol": "BTC",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "BCH",
+        "label": "Bitcoin Cash",
+        "symbol": "BCH",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      }
+    ],
+    "assetLedgerEntries": [
+      {
+        "id": 1,
+        "date": "2017-04-01T11:00:00.000Z",
+        "type": "disposal",
+        "asset": "BTC",
+        "assetValueGBP": "871.43",
+        "amount": "-0",
+        "label": "Donation",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "date": "2017-04-01T11:00:00.000Z",
+        "type": "acquisition",
+        "asset": "BTC",
+        "assetValueGBP": "871.43",
+        "amount": "1",
+        "label": "Donation",
+        "comments": " (Using day rate: 1 BTC = 871.43 GBP)",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 1
+          }
+        ]
+      }
+    ]
+  },
+  "cgt": {
+    "assetLedgerEntryWorkingsById": {
+      "1": {
+        "id": 1,
+        "totalPoolAmount": "1",
+        "totalPoolCost": "871.43",
+        "disposalPlan": [],
+        "costBasis": "0",
+        "gain": "871.43"
+      },
+      "2": {
+        "id": 2,
+        "totalPoolAmount": "1",
+        "totalPoolCost": "871.43",
+        "poolAmount": "1",
+        "poolValueGBP": "871.43"
+      }
+    }
+  },
+  "locations": {
+    "locations": [
+      {
+        "label": "Internet Archive donations 1Archi",
+        "asset": "BTC",
+        "address": "1Archive1n2C579dMsAu3iC6tWzuQJz8dN",
+        "url": "",
+        "comments": "",
+        "group": 1,
+        "id": 1
+      },
+      {
+        "label": "Internet Archive donations 1Archi",
+        "asset": "BCH",
+        "address": "1Archive1n2C579dMsAu3iC6tWzuQJz8dN",
+        "url": "",
+        "comments": "",
+        "group": 1,
+        "id": 2
+      }
+    ],
+    "locationGroups": [
+      {
+        "label": "Internet Archive donations",
+        "locations": [
+          1,
+          2
+        ],
+        "url": "",
+        "comments": "",
+        "id": 1
+      }
+    ],
+    "locationLedgerEntries": [
+      {
+        "id": 1,
+        "date": "2017-04-01T11:00:00.000Z",
+        "location": 1,
+        "amount": "-0",
+        "label": "Donation",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "date": "2017-04-01T11:00:00.000Z",
+        "location": 1,
+        "amount": "1",
+        "label": "Donation",
+        "comments": " (Using day rate: 1 BTC = 871.43 GBP)",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 1
+          }
+        ]
+      }
+    ]
+  },
+  "miningPools": {
+    "miningPools": []
+  },
+  "miningEvents": {
+    "miningEvents": []
+  },
+  "transferEvents": {
+    "transferEvents": []
+  },
+  "airdropEvents": {
+    "airdropEvents": []
+  },
+  "depositEvents": {
+    "depositEvents": []
+  },
+  "tradeEvents": {
+    "tradeEvents": [
+      {
+        "id": 1,
+        "date": "2017-04-01T11:00:00.000Z",
+        "label": "Donation",
+        "comments": "",
+        "fees": [],
+        "disposed": [
+          {
+            "asset": "BTC",
+            "amount": "0",
+            "comments": "",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 1
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 1
+              }
+            ]
+          }
+        ],
+        "acquired": [
+          {
+            "asset": "BTC",
+            "amount": "1",
+            "comments": " (Using day rate: 1 BTC = 871.43 GBP)",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 2
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 2
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

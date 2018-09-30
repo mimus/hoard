@@ -1,0 +1,400 @@
+{
+  "exportDate": "2018-09-28T12:18:09.221Z",
+  "taxYears": {
+    "taxYears": [
+      {
+        "id": 1,
+        "label": "2013/14",
+        "startDate": "2013-04-05T23:00:00.000Z",
+        "endDate": "2014-04-05T22:59:00.000Z"
+      }
+    ]
+  },
+  "assets": {
+    "assets": [
+      {
+        "id": "MP",
+        "label": "Mesopotamia plc",
+        "symbol": "MP",
+        "fiat": false,
+        "caseSensitiveAddress": false
+      },
+      {
+        "id": "GBP",
+        "label": "GBP",
+        "symbol": "GBP",
+        "fiat": true,
+        "caseSensitiveAddress": false
+      }
+    ],
+    "assetLedgerEntries": [
+      {
+        "id": 1,
+        "date": "2013-04-30T11:00:00.000Z",
+        "type": "acquisition",
+        "asset": "GBP",
+        "assetValueGBP": "10000",
+        "amount": "10000",
+        "label": "Funds",
+        "comments": "",
+        "linked": [
+          {
+            "type": "depositEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "date": "2013-05-05T11:00:00.000Z",
+        "type": "disposal",
+        "asset": "GBP",
+        "assetValueGBP": "4750",
+        "amount": "-4750",
+        "label": "Section 104 holding",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "date": "2013-05-05T11:00:00.000Z",
+        "type": "acquisition",
+        "asset": "MP",
+        "assetValueGBP": "4750",
+        "amount": "9500",
+        "label": "Section 104 holding",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "date": "2013-08-30T11:00:00.000Z",
+        "type": "disposal",
+        "asset": "MP",
+        "assetValueGBP": "6000",
+        "amount": "-4000",
+        "label": "Sold shares",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 2
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "date": "2013-08-30T11:00:00.000Z",
+        "type": "acquisition",
+        "asset": "GBP",
+        "assetValueGBP": "6000",
+        "amount": "6000",
+        "label": "Sold shares",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 2
+          }
+        ]
+      }
+    ]
+  },
+  "cgt": {
+    "assetLedgerEntryWorkingsById": {
+      "1": {
+        "id": 1,
+        "totalPoolAmount": "10000",
+        "totalPoolCost": "10000",
+        "poolAmount": "10000",
+        "poolValueGBP": "10000"
+      },
+      "2": {
+        "id": 2,
+        "totalPoolAmount": "5250",
+        "totalPoolCost": "5250",
+        "disposalPlan": [
+          {
+            "type": "POOL",
+            "amount": "4750",
+            "cost": "4750"
+          }
+        ],
+        "costBasis": "4750",
+        "gain": "0"
+      },
+      "3": {
+        "id": 3,
+        "totalPoolAmount": "9500",
+        "totalPoolCost": "4750",
+        "poolAmount": "9500",
+        "poolValueGBP": "4750"
+      },
+      "4": {
+        "id": 4,
+        "totalPoolAmount": "5500",
+        "totalPoolCost": "2750",
+        "disposalPlan": [
+          {
+            "type": "POOL",
+            "amount": "4000",
+            "cost": "2000"
+          }
+        ],
+        "costBasis": "2000",
+        "gain": "4000"
+      },
+      "5": {
+        "id": 5,
+        "totalPoolAmount": "11250",
+        "totalPoolCost": "11250",
+        "poolAmount": "6000",
+        "poolValueGBP": "6000"
+      }
+    }
+  },
+  "locations": {
+    "locations": [
+      {
+        "label": "MP shares",
+        "asset": "MP",
+        "address": "",
+        "url": "",
+        "comments": "",
+        "group": 2,
+        "id": 1
+      },
+      {
+        "label": "GBP account",
+        "asset": "GBP",
+        "address": "",
+        "url": "",
+        "comments": "",
+        "group": 1,
+        "id": 2
+      }
+    ],
+    "locationGroups": [
+      {
+        "label": "Bank account",
+        "locations": [
+          2
+        ],
+        "url": "",
+        "comments": "",
+        "id": 1
+      },
+      {
+        "label": "Shares Account",
+        "locations": [
+          1
+        ],
+        "url": "",
+        "comments": "",
+        "id": 2
+      }
+    ],
+    "locationLedgerEntries": [
+      {
+        "id": 1,
+        "date": "2013-04-30T11:00:00.000Z",
+        "location": 2,
+        "amount": "10000",
+        "label": "Funds",
+        "comments": "",
+        "linked": [
+          {
+            "type": "depositEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "date": "2013-05-05T11:00:00.000Z",
+        "location": 2,
+        "amount": "-4750",
+        "label": "Section 104 holding",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "date": "2013-05-05T11:00:00.000Z",
+        "location": 1,
+        "amount": "9500",
+        "label": "Section 104 holding",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "date": "2013-08-30T11:00:00.000Z",
+        "location": 1,
+        "amount": "-4000",
+        "label": "Sold shares",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 2
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "date": "2013-08-30T11:00:00.000Z",
+        "location": 2,
+        "amount": "6000",
+        "label": "Sold shares",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 2
+          }
+        ]
+      }
+    ]
+  },
+  "miningPools": {
+    "miningPools": []
+  },
+  "miningEvents": {
+    "miningEvents": []
+  },
+  "transferEvents": {
+    "transferEvents": []
+  },
+  "airdropEvents": {
+    "airdropEvents": []
+  },
+  "depositEvents": {
+    "depositEvents": [
+      {
+        "id": 1,
+        "date": "2013-04-30T11:00:00.000Z",
+        "label": "Funds",
+        "asset": "GBP",
+        "amount": "10000",
+        "comments": "",
+        "linked": [
+          {
+            "type": "assetLedgerEntry",
+            "id": 1
+          },
+          {
+            "type": "locationLedgerEntry",
+            "id": 1
+          }
+        ]
+      }
+    ]
+  },
+  "tradeEvents": {
+    "tradeEvents": [
+      {
+        "id": 1,
+        "date": "2013-05-05T11:00:00.000Z",
+        "label": "Section 104 holding",
+        "comments": "bought at £0.50/share",
+        "fees": [],
+        "disposed": [
+          {
+            "asset": "GBP",
+            "amount": "4750",
+            "comments": "",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 2
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 2
+              }
+            ]
+          }
+        ],
+        "acquired": [
+          {
+            "asset": "MP",
+            "amount": "9500",
+            "comments": "",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 3
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "date": "2013-08-30T11:00:00.000Z",
+        "label": "Sold shares",
+        "comments": "",
+        "fees": [],
+        "disposed": [
+          {
+            "asset": "MP",
+            "amount": "4000",
+            "comments": "",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 4
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 4
+              }
+            ]
+          }
+        ],
+        "acquired": [
+          {
+            "asset": "GBP",
+            "amount": "6000",
+            "comments": "",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 5
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 5
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

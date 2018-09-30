@@ -1,0 +1,392 @@
+{
+  "exportDate": "2018-09-28T12:42:36.078Z",
+  "taxYears": {
+    "taxYears": [
+      {
+        "id": 1,
+        "label": "2013/14",
+        "startDate": "2013-04-05T23:00:00.000Z",
+        "endDate": "2014-04-05T22:59:00.000Z"
+      },
+      {
+        "id": 2,
+        "label": "2017/18",
+        "startDate": "2017-04-05T23:00:00.000Z",
+        "endDate": "2018-04-05T22:59:00.000Z"
+      }
+    ]
+  },
+  "assets": {
+    "assets": [
+      {
+        "id": "GBP",
+        "label": "GBP",
+        "symbol": "GBP",
+        "fiat": true,
+        "caseSensitiveAddress": false
+      },
+      {
+        "id": "BTC",
+        "label": "BTC",
+        "symbol": "BTC",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      }
+    ],
+    "assetLedgerEntries": [
+      {
+        "id": 1,
+        "date": "2013-05-01T11:00:00.000Z",
+        "type": "acquisition",
+        "asset": "GBP",
+        "assetValueGBP": "100",
+        "amount": "100",
+        "label": "Initial float",
+        "comments": "",
+        "linked": [
+          {
+            "type": "depositEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "date": "2013-08-30T11:00:00.000Z",
+        "type": "disposal",
+        "asset": "GBP",
+        "assetValueGBP": "100",
+        "amount": "-100",
+        "label": "Bought 1 BTC for £100",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "date": "2013-08-30T11:00:00.000Z",
+        "type": "acquisition",
+        "asset": "BTC",
+        "assetValueGBP": "100",
+        "amount": "1",
+        "label": "Bought 1 BTC for £100",
+        "comments": "Bought at £100 per BTC",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "date": "2017-12-20T12:00:00.000Z",
+        "type": "disposal",
+        "asset": "BTC",
+        "assetValueGBP": "10000",
+        "amount": "-1",
+        "label": "Sold 1 BTC for £10k",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 2
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "date": "2017-12-20T12:00:00.000Z",
+        "type": "acquisition",
+        "asset": "GBP",
+        "assetValueGBP": "10000",
+        "amount": "10000",
+        "label": "Sold 1 BTC for £10k",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 2
+          }
+        ]
+      }
+    ]
+  },
+  "cgt": {
+    "assetLedgerEntryWorkingsById": {
+      "1": {
+        "id": 1,
+        "totalPoolAmount": "100",
+        "totalPoolCost": "100",
+        "poolAmount": "100",
+        "poolValueGBP": "100"
+      },
+      "2": {
+        "id": 2,
+        "totalPoolAmount": "0",
+        "totalPoolCost": "0",
+        "disposalPlan": [
+          {
+            "type": "POOL",
+            "amount": "100",
+            "cost": "100"
+          }
+        ],
+        "costBasis": "100",
+        "gain": "0"
+      },
+      "3": {
+        "id": 3,
+        "totalPoolAmount": "1",
+        "totalPoolCost": "100",
+        "poolAmount": "1",
+        "poolValueGBP": "100"
+      },
+      "4": {
+        "id": 4,
+        "totalPoolAmount": "0",
+        "totalPoolCost": "0",
+        "disposalPlan": [
+          {
+            "type": "POOL",
+            "amount": "1",
+            "cost": "100"
+          }
+        ],
+        "costBasis": "100",
+        "gain": "9900"
+      },
+      "5": {
+        "id": 5,
+        "totalPoolAmount": "10000",
+        "totalPoolCost": "10000",
+        "poolAmount": "10000",
+        "poolValueGBP": "10000"
+      }
+    }
+  },
+  "locations": {
+    "locations": [
+      {
+        "id": 1,
+        "group": 1,
+        "label": "GBP Balance",
+        "asset": "GBP",
+        "address": ""
+      },
+      {
+        "id": 2,
+        "group": 1,
+        "label": "Bitcoin balance",
+        "asset": "BTC",
+        "address": ""
+      }
+    ],
+    "locationGroups": [
+      {
+        "id": 1,
+        "label": "Exchange",
+        "locations": [
+          1,
+          2
+        ]
+      }
+    ],
+    "locationLedgerEntries": [
+      {
+        "id": 1,
+        "date": "2013-05-01T11:00:00.000Z",
+        "location": 1,
+        "amount": "100",
+        "label": "Initial float",
+        "comments": "",
+        "linked": [
+          {
+            "type": "depositEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "date": "2013-08-30T11:00:00.000Z",
+        "location": 1,
+        "amount": "-100",
+        "label": "Bought 1 BTC for £100",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "date": "2013-08-30T11:00:00.000Z",
+        "location": 2,
+        "amount": "1",
+        "label": "Bought 1 BTC for £100",
+        "comments": "Bought at £100 per BTC",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "date": "2017-12-20T12:00:00.000Z",
+        "location": 2,
+        "amount": "-1",
+        "label": "Sold 1 BTC for £10k",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 2
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "date": "2017-12-20T12:00:00.000Z",
+        "location": 1,
+        "amount": "10000",
+        "label": "Sold 1 BTC for £10k",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 2
+          }
+        ]
+      }
+    ]
+  },
+  "miningPools": {
+    "miningPools": []
+  },
+  "miningEvents": {
+    "miningEvents": []
+  },
+  "transferEvents": {
+    "transferEvents": []
+  },
+  "airdropEvents": {
+    "airdropEvents": []
+  },
+  "depositEvents": {
+    "depositEvents": [
+      {
+        "id": 1,
+        "date": "2013-05-01T11:00:00.000Z",
+        "label": "Initial float",
+        "asset": "GBP",
+        "amount": "100",
+        "comments": "",
+        "linked": [
+          {
+            "type": "assetLedgerEntry",
+            "id": 1
+          },
+          {
+            "type": "locationLedgerEntry",
+            "id": 1
+          }
+        ]
+      }
+    ]
+  },
+  "tradeEvents": {
+    "tradeEvents": [
+      {
+        "id": 1,
+        "date": "2013-08-30T11:00:00.000Z",
+        "label": "Bought 1 BTC for £100",
+        "comments": "",
+        "fees": [],
+        "disposed": [
+          {
+            "asset": "GBP",
+            "amount": "100",
+            "comments": "",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 2
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 2
+              }
+            ]
+          }
+        ],
+        "acquired": [
+          {
+            "asset": "BTC",
+            "amount": "1",
+            "comments": "Bought at £100 per BTC",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 3
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "date": "2017-12-20T12:00:00.000Z",
+        "label": "Sold 1 BTC for £10k",
+        "comments": "",
+        "fees": [],
+        "disposed": [
+          {
+            "asset": "BTC",
+            "amount": "1",
+            "comments": "",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 4
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 4
+              }
+            ]
+          }
+        ],
+        "acquired": [
+          {
+            "asset": "GBP",
+            "amount": "10000",
+            "comments": "",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 5
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 5
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

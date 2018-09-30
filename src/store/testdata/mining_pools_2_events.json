@@ -1,0 +1,3966 @@
+{
+  "exportDate": "2018-09-28T13:43:13.692Z",
+  "taxYears": {
+    "taxYears": [
+      {
+        "id": 1,
+        "label": "2017/18",
+        "startDate": "2017-04-05T23:00:00.000Z",
+        "endDate": "2018-04-05T22:59:00.000Z"
+      },
+      {
+        "id": 2,
+        "label": "2018/19",
+        "startDate": "2018-04-05T23:00:00.000Z",
+        "endDate": "2019-04-05T22:59:00.000Z"
+      }
+    ]
+  },
+  "assets": {
+    "assets": [
+      {
+        "id": "GBP",
+        "label": "GBP",
+        "symbol": "GBP",
+        "fiat": true,
+        "caseSensitiveAddress": false
+      },
+      {
+        "id": "USD",
+        "label": "USD",
+        "symbol": "USD",
+        "fiat": false,
+        "caseSensitiveAddress": false
+      },
+      {
+        "id": "EUR",
+        "label": "EUR",
+        "symbol": "EUR",
+        "fiat": false,
+        "caseSensitiveAddress": false
+      },
+      {
+        "id": "USDT",
+        "label": "Tether",
+        "symbol": "USDT",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "BTC",
+        "label": "Bitcoin",
+        "symbol": "BTC",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "BCH",
+        "label": "Bitcoin Cash",
+        "symbol": "BCH",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "BTG",
+        "label": "Bitcoin Gold",
+        "symbol": "BTG",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "ETH",
+        "label": "Ethereum",
+        "symbol": "ETH",
+        "fiat": false,
+        "caseSensitiveAddress": false
+      },
+      {
+        "id": "LTC",
+        "label": "Litecoin",
+        "symbol": "LTC",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "XRP",
+        "label": "Ripple",
+        "symbol": "XRP",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "XMR",
+        "label": "Monero",
+        "symbol": "XMR",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "ZEC",
+        "label": "Zcash",
+        "symbol": "ZEC",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "VTC",
+        "label": "Vertcoin",
+        "symbol": "VTC",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "XVG",
+        "label": "Verge",
+        "symbol": "XVG",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "NEO",
+        "label": "NEO",
+        "symbol": "NEO",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "GAS",
+        "label": "GAS",
+        "symbol": "GAS",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "OMG",
+        "label": "OmiseGo",
+        "symbol": "OMG",
+        "fiat": false,
+        "caseSensitiveAddress": false
+      },
+      {
+        "id": "IOTA",
+        "label": "IOTA",
+        "symbol": "IOTA",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "NANO",
+        "label": "NANO",
+        "symbol": "NANO",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "LSK",
+        "label": "Lisk",
+        "symbol": "LSK",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "BAT",
+        "label": "BAT",
+        "symbol": "BAT",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      }
+    ],
+    "assetLedgerEntries": [
+      {
+        "id": 1,
+        "date": "2018-09-27T00:04:26.000Z",
+        "type": "acquisition",
+        "asset": "VTC",
+        "assetValueGBP": "0.02",
+        "amount": "0.04420348",
+        "label": "Mined 0.04420348 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.512 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "date": "2018-09-26T23:56:44.000Z",
+        "type": "acquisition",
+        "asset": "VTC",
+        "assetValueGBP": "0.02",
+        "amount": "0.04423616",
+        "label": "Mined 0.04423616 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 2
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "date": "2018-09-26T23:50:48.000Z",
+        "type": "acquisition",
+        "asset": "VTC",
+        "assetValueGBP": "0.02",
+        "amount": "0.04419918",
+        "label": "Mined 0.04419918 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 3
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "date": "2018-09-26T23:28:23.000Z",
+        "type": "acquisition",
+        "asset": "VTC",
+        "assetValueGBP": "0.02",
+        "amount": "0.04422424",
+        "label": "Mined 0.04422424 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 4
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "date": "2018-09-26T23:13:36.000Z",
+        "type": "acquisition",
+        "asset": "VTC",
+        "assetValueGBP": "0.02",
+        "amount": "0.04431117",
+        "label": "Mined 0.04431117 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 5
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "date": "2018-09-26T22:26:21.000Z",
+        "type": "acquisition",
+        "asset": "VTC",
+        "assetValueGBP": "0.02",
+        "amount": "0.04420071",
+        "label": "Mined 0.04420071 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 6
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "date": "2018-09-26T22:15:45.000Z",
+        "type": "acquisition",
+        "asset": "VTC",
+        "assetValueGBP": "0.02",
+        "amount": "0.04424285",
+        "label": "Mined 0.04424285 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 7
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "date": "2018-09-26T21:38:11.000Z",
+        "type": "acquisition",
+        "asset": "VTC",
+        "assetValueGBP": "0.02",
+        "amount": "0.0442181",
+        "label": "Mined 0.04421810 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 8
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "date": "2018-09-26T21:07:39.000Z",
+        "type": "acquisition",
+        "asset": "VTC",
+        "assetValueGBP": "0.02",
+        "amount": "0.04418082",
+        "label": "Mined 0.04418082 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 9
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "date": "2018-09-26T20:58:14.000Z",
+        "type": "acquisition",
+        "asset": "VTC",
+        "assetValueGBP": "0.02",
+        "amount": "0.04414515",
+        "label": "Mined 0.04414515 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 10
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "date": "2018-09-26T20:07:17.000Z",
+        "type": "acquisition",
+        "asset": "VTC",
+        "assetValueGBP": "0.02",
+        "amount": "0.04211878",
+        "label": "Mined 0.04211878 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 11
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "date": "2018-09-26T19:14:58.000Z",
+        "type": "acquisition",
+        "asset": "VTC",
+        "assetValueGBP": "0.02",
+        "amount": "0.03170752",
+        "label": "Mined 0.03170752 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 12
+          }
+        ]
+      },
+      {
+        "id": 13,
+        "date": "2018-09-26T18:55:07.000Z",
+        "type": "acquisition",
+        "asset": "VTC",
+        "assetValueGBP": "0.02",
+        "amount": "0.03143521",
+        "label": "Mined 0.03143521 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 13
+          }
+        ]
+      },
+      {
+        "id": 14,
+        "date": "2018-09-26T16:53:55.000Z",
+        "type": "acquisition",
+        "asset": "VTC",
+        "assetValueGBP": "0.02",
+        "amount": "0.0297538",
+        "label": "Mined 0.02975380 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 14
+          }
+        ]
+      },
+      {
+        "id": 15,
+        "date": "2018-09-26T16:43:36.000Z",
+        "type": "acquisition",
+        "asset": "VTC",
+        "assetValueGBP": "0.02",
+        "amount": "0.02955499",
+        "label": "Mined 0.02955499 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 15
+          }
+        ]
+      },
+      {
+        "id": 16,
+        "date": "2018-09-26T01:31:51.000Z",
+        "type": "acquisition",
+        "asset": "VTC",
+        "assetValueGBP": "0",
+        "amount": "0.00632208",
+        "label": "Mined 0.00632208 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 16
+          }
+        ]
+      },
+      {
+        "id": 17,
+        "date": "2018-09-26T01:23:07.000Z",
+        "type": "acquisition",
+        "asset": "VTC",
+        "assetValueGBP": "0",
+        "amount": "0.0063183",
+        "label": "Mined 0.00631830 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 17
+          }
+        ]
+      },
+      {
+        "id": 18,
+        "date": "2018-09-26T00:12:12.000Z",
+        "type": "acquisition",
+        "asset": "VTC",
+        "assetValueGBP": "0",
+        "amount": "0.00599587",
+        "label": "Mined 0.00599587 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 18
+          }
+        ]
+      },
+      {
+        "id": 19,
+        "date": "2018-09-25T23:56:06.000Z",
+        "type": "acquisition",
+        "asset": "VTC",
+        "assetValueGBP": "0",
+        "amount": "0.00599078",
+        "label": "Mined 0.00599078 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.4979 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 19
+          }
+        ]
+      },
+      {
+        "id": 20,
+        "date": "2018-09-25T23:51:44.000Z",
+        "type": "acquisition",
+        "asset": "VTC",
+        "assetValueGBP": "0",
+        "amount": "0.00599603",
+        "label": "Mined 0.00599603 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.4979 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 20
+          }
+        ]
+      },
+      {
+        "id": 21,
+        "date": "2018-09-25T22:08:52.000Z",
+        "type": "acquisition",
+        "asset": "VTC",
+        "assetValueGBP": "0",
+        "amount": "0.00632258",
+        "label": "Mined 0.00632258 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.4979 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 21
+          }
+        ]
+      },
+      {
+        "id": 22,
+        "date": "2018-09-25T21:54:46.000Z",
+        "type": "acquisition",
+        "asset": "VTC",
+        "assetValueGBP": "0",
+        "amount": "0.00631674",
+        "label": "Mined 0.00631674 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.4979 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 22
+          }
+        ]
+      },
+      {
+        "id": 23,
+        "date": "2018-09-25T21:35:23.000Z",
+        "type": "acquisition",
+        "asset": "VTC",
+        "assetValueGBP": "0",
+        "amount": "0.00631468",
+        "label": "Mined 0.00631468 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.4979 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 23
+          }
+        ]
+      },
+      {
+        "id": 24,
+        "date": "2018-09-25T21:29:36.000Z",
+        "type": "acquisition",
+        "asset": "VTC",
+        "assetValueGBP": "0",
+        "amount": "0.00631663",
+        "label": "Mined 0.00631663 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.4979 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 24
+          }
+        ]
+      },
+      {
+        "id": 25,
+        "date": "2018-09-22T02:14:26.000Z",
+        "type": "acquisition",
+        "asset": "VTC",
+        "assetValueGBP": "0",
+        "amount": "0.0078",
+        "label": "Mined 0.00780000 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5232 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 25
+          }
+        ]
+      },
+      {
+        "id": 26,
+        "date": "2018-09-17T19:22:51.000Z",
+        "type": "acquisition",
+        "asset": "VTC",
+        "assetValueGBP": "0",
+        "amount": "0.00748441",
+        "label": "Mined 0.00748441 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.4998 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 26
+          }
+        ]
+      },
+      {
+        "id": 27,
+        "date": "2018-09-17T19:01:53.000Z",
+        "type": "acquisition",
+        "asset": "VTC",
+        "assetValueGBP": "0",
+        "amount": "0.00749269",
+        "label": "Mined 0.00749269 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.4998 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 27
+          }
+        ]
+      },
+      {
+        "id": 28,
+        "date": "2018-09-17T18:59:50.000Z",
+        "type": "acquisition",
+        "asset": "VTC",
+        "assetValueGBP": "0",
+        "amount": "0.00748747",
+        "label": "Mined 0.00748747 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.4998 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 28
+          }
+        ]
+      },
+      {
+        "id": 29,
+        "date": "2018-09-17T18:50:35.000Z",
+        "type": "acquisition",
+        "asset": "VTC",
+        "assetValueGBP": "0",
+        "amount": "0.00727373",
+        "label": "Mined 0.00727373 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.4998 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 29
+          }
+        ]
+      },
+      {
+        "id": 30,
+        "date": "2018-09-17T18:41:41.000Z",
+        "type": "acquisition",
+        "asset": "VTC",
+        "assetValueGBP": "0",
+        "amount": "0.00748409",
+        "label": "Mined 0.00748409 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.4998 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 30
+          }
+        ]
+      },
+      {
+        "id": 31,
+        "date": "2018-09-24T21:39:35.000Z",
+        "type": "acquisition",
+        "asset": "ETH",
+        "assetValueGBP": "17.89",
+        "amount": "0.1",
+        "label": "Mined 0.100000000000000000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 178.86 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 31
+          }
+        ]
+      },
+      {
+        "id": 32,
+        "date": "2018-09-23T04:07:50.000Z",
+        "type": "acquisition",
+        "asset": "ETH",
+        "assetValueGBP": "5.46",
+        "amount": "0.02931201",
+        "label": "Mined 0.029312010000000000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 186.35 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 32
+          }
+        ]
+      },
+      {
+        "id": 33,
+        "date": "2018-09-22T00:47:04.000Z",
+        "type": "acquisition",
+        "asset": "ETH",
+        "assetValueGBP": "18.58",
+        "amount": "0.1",
+        "label": "Mined 0.100000000000000000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 185.81 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 33
+          }
+        ]
+      },
+      {
+        "id": 34,
+        "date": "2018-09-20T14:23:28.000Z",
+        "type": "acquisition",
+        "asset": "ETH",
+        "assetValueGBP": "1.23",
+        "amount": "0.007517",
+        "label": "Mined 0.007517000000000000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 163.24 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 34
+          }
+        ]
+      },
+      {
+        "id": 35,
+        "date": "2018-08-08T03:27:19.000Z",
+        "type": "acquisition",
+        "asset": "ETH",
+        "assetValueGBP": "2816.6",
+        "amount": "10",
+        "label": "Mined 10.000000000000000000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 281.66 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 35
+          }
+        ]
+      },
+      {
+        "id": 36,
+        "date": "2018-07-21T07:52:46.000Z",
+        "type": "acquisition",
+        "asset": "ETH",
+        "assetValueGBP": "1.75",
+        "amount": "0.005",
+        "label": "Mined 0.005000000000000000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 349.09 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 36
+          }
+        ]
+      },
+      {
+        "id": 37,
+        "date": "2018-07-19T23:19:01.000Z",
+        "type": "acquisition",
+        "asset": "ETH",
+        "assetValueGBP": "7.87",
+        "amount": "0.02183418",
+        "label": "Mined 0.021834180000000000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 360.28 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 37
+          }
+        ]
+      },
+      {
+        "id": 38,
+        "date": "2018-07-08T00:54:56.000Z",
+        "type": "acquisition",
+        "asset": "ETH",
+        "assetValueGBP": "95.99",
+        "amount": "0.266",
+        "label": "Mined 0.266000000000000000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 360.86 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 38
+          }
+        ]
+      },
+      {
+        "id": 39,
+        "date": "2018-06-26T00:13:01.000Z",
+        "type": "acquisition",
+        "asset": "ETH",
+        "assetValueGBP": "21.78",
+        "amount": "0.06114204",
+        "label": "Mined 0.061142040000000000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 356.28 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 39
+          }
+        ]
+      },
+      {
+        "id": 40,
+        "date": "2018-06-16T09:07:11.000Z",
+        "type": "acquisition",
+        "asset": "ETH",
+        "assetValueGBP": "1.48",
+        "amount": "0.004",
+        "label": "Mined 0.004000000000000000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 370.36 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 40
+          }
+        ]
+      },
+      {
+        "id": 41,
+        "date": "2018-05-29T18:54:13.000Z",
+        "type": "acquisition",
+        "asset": "ETH",
+        "assetValueGBP": "16014.83",
+        "amount": "39.0205833577212",
+        "label": "Mined 39.020583357721200000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 410.42 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 41
+          }
+        ]
+      },
+      {
+        "id": 42,
+        "date": "2018-05-29T18:40:07.000Z",
+        "type": "acquisition",
+        "asset": "ETH",
+        "assetValueGBP": "4003.71",
+        "amount": "9.755145839430299",
+        "label": "Mined 9.755145839430299000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 410.42 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 42
+          }
+        ]
+      },
+      {
+        "id": 43,
+        "date": "2018-07-26T19:32:43.000Z",
+        "type": "acquisition",
+        "asset": "ZEC",
+        "assetValueGBP": "0.02",
+        "amount": "0.0001",
+        "label": "Mined 0.00010000 ZEC on Nanopool",
+        "comments": " (Using day rate: 1 ZEC = 169.44 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 43
+          }
+        ]
+      },
+      {
+        "id": 44,
+        "date": "2018-07-16T18:37:59.000Z",
+        "type": "acquisition",
+        "asset": "ZEC",
+        "assetValueGBP": "149.53",
+        "amount": "1.1",
+        "label": "Mined 1.10000000 ZEC on Nanopool",
+        "comments": " (Using day rate: 1 ZEC = 135.94 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 44
+          }
+        ]
+      },
+      {
+        "id": 45,
+        "date": "2018-09-21T01:38:12.000Z",
+        "type": "acquisition",
+        "asset": "BTC",
+        "assetValueGBP": "5.73",
+        "amount": "0.00113078",
+        "label": "Mined 0.00113078 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 5069.35 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 45
+          }
+        ]
+      },
+      {
+        "id": 46,
+        "date": "2018-09-19T23:12:28.000Z",
+        "type": "acquisition",
+        "asset": "BTC",
+        "assetValueGBP": "0.05",
+        "amount": "0.00001",
+        "label": "Mined 0.00001000 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 4829.62 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 46
+          }
+        ]
+      },
+      {
+        "id": 47,
+        "date": "2018-09-19T19:58:42.000Z",
+        "type": "acquisition",
+        "asset": "BTC",
+        "assetValueGBP": "0.1",
+        "amount": "0.00002",
+        "label": "Mined 0.00002000 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 4829.62 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 47
+          }
+        ]
+      },
+      {
+        "id": 48,
+        "date": "2018-09-13T18:01:36.000Z",
+        "type": "acquisition",
+        "asset": "BTC",
+        "assetValueGBP": "24.66",
+        "amount": "0.005",
+        "label": "Mined 0.00500000 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 4931.86 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 48
+          }
+        ]
+      },
+      {
+        "id": 49,
+        "date": "2018-09-13T11:49:45.000Z",
+        "type": "acquisition",
+        "asset": "BTC",
+        "assetValueGBP": "18.29",
+        "amount": "0.00370823",
+        "label": "Mined 0.00370823 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 4931.86 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 49
+          }
+        ]
+      },
+      {
+        "id": 50,
+        "date": "2018-09-11T19:53:27.000Z",
+        "type": "acquisition",
+        "asset": "BTC",
+        "assetValueGBP": "1.13",
+        "amount": "0.0002315",
+        "label": "Mined 0.00023150 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 4869.45 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 50
+          }
+        ]
+      },
+      {
+        "id": 51,
+        "date": "2018-09-01T12:40:03.000Z",
+        "type": "acquisition",
+        "asset": "BTC",
+        "assetValueGBP": "0.79",
+        "amount": "0.0001421",
+        "label": "Mined 0.00014210 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 5548.34 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 51
+          }
+        ]
+      },
+      {
+        "id": 52,
+        "date": "2018-08-25T03:19:47.000Z",
+        "type": "acquisition",
+        "asset": "BTC",
+        "assetValueGBP": "10.51",
+        "amount": "0.002",
+        "label": "Mined 0.00200000 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 5255.76 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 52
+          }
+        ]
+      },
+      {
+        "id": 53,
+        "date": "2018-08-24T18:41:15.000Z",
+        "type": "acquisition",
+        "asset": "BTC",
+        "assetValueGBP": "19.46",
+        "amount": "0.00379332",
+        "label": "Mined 0.00379332 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 5128.78 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 53
+          }
+        ]
+      },
+      {
+        "id": 54,
+        "date": "2018-08-23T12:38:54.000Z",
+        "type": "acquisition",
+        "asset": "BTC",
+        "assetValueGBP": "7.82",
+        "amount": "0.00155337",
+        "label": "Mined 0.00155337 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 5031.2 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 54
+          }
+        ]
+      },
+      {
+        "id": 55,
+        "date": "2018-08-21T18:36:21.000Z",
+        "type": "acquisition",
+        "asset": "BTC",
+        "assetValueGBP": "552.08",
+        "amount": "0.11013615",
+        "label": "Mined 0.11013615 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 5012.7 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 55
+          }
+        ]
+      },
+      {
+        "id": 56,
+        "date": "2018-08-21T16:49:08.000Z",
+        "type": "acquisition",
+        "asset": "BTC",
+        "assetValueGBP": "7.1",
+        "amount": "0.00141587",
+        "label": "Mined 0.00141587 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 5012.7 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 56
+          }
+        ]
+      },
+      {
+        "id": 57,
+        "date": "2018-09-20T06:34:14.000Z",
+        "type": "acquisition",
+        "asset": "XVG",
+        "assetValueGBP": "0",
+        "amount": "0.131518",
+        "label": "Mined 0.13151800 XVG on Yiimp.eu",
+        "comments": " (Using day rate: 1 XVG = 0.01067 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 57
+          }
+        ]
+      },
+      {
+        "id": 58,
+        "date": "2018-08-26T12:38:33.000Z",
+        "type": "acquisition",
+        "asset": "XVG",
+        "assetValueGBP": "0.01",
+        "amount": "1",
+        "label": "Mined 1.00000000 XVG on Yiimp.eu",
+        "comments": " (Using day rate: 1 XVG = 0.01063 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 58
+          }
+        ]
+      },
+      {
+        "id": 59,
+        "date": "2018-07-28T14:53:15.000Z",
+        "type": "acquisition",
+        "asset": "XVG",
+        "assetValueGBP": "0.14",
+        "amount": "7.77",
+        "label": "Mined 7.77000000 XVG on Yiimp.eu",
+        "comments": " (Using day rate: 1 XVG = 0.01797 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 59
+          }
+        ]
+      }
+    ]
+  },
+  "cgt": {
+    "assetLedgerEntryWorkingsById": {
+      "1": {
+        "id": 1,
+        "totalPoolAmount": "0.70764824",
+        "totalPoolCost": "0.3",
+        "poolAmount": "0.04420348",
+        "poolValueGBP": "0.02"
+      },
+      "2": {
+        "id": 2,
+        "totalPoolAmount": "0.66344476",
+        "totalPoolCost": "0.28",
+        "poolAmount": "0.04423616",
+        "poolValueGBP": "0.02"
+      },
+      "3": {
+        "id": 3,
+        "totalPoolAmount": "0.6192086",
+        "totalPoolCost": "0.26",
+        "poolAmount": "0.04419918",
+        "poolValueGBP": "0.02"
+      },
+      "4": {
+        "id": 4,
+        "totalPoolAmount": "0.57500942",
+        "totalPoolCost": "0.24",
+        "poolAmount": "0.04422424",
+        "poolValueGBP": "0.02"
+      },
+      "5": {
+        "id": 5,
+        "totalPoolAmount": "0.53078518",
+        "totalPoolCost": "0.22",
+        "poolAmount": "0.04431117",
+        "poolValueGBP": "0.02"
+      },
+      "6": {
+        "id": 6,
+        "totalPoolAmount": "0.48647401",
+        "totalPoolCost": "0.2",
+        "poolAmount": "0.04420071",
+        "poolValueGBP": "0.02"
+      },
+      "7": {
+        "id": 7,
+        "totalPoolAmount": "0.4422733",
+        "totalPoolCost": "0.18",
+        "poolAmount": "0.04424285",
+        "poolValueGBP": "0.02"
+      },
+      "8": {
+        "id": 8,
+        "totalPoolAmount": "0.39803045",
+        "totalPoolCost": "0.16",
+        "poolAmount": "0.0442181",
+        "poolValueGBP": "0.02"
+      },
+      "9": {
+        "id": 9,
+        "totalPoolAmount": "0.35381235",
+        "totalPoolCost": "0.14",
+        "poolAmount": "0.04418082",
+        "poolValueGBP": "0.02"
+      },
+      "10": {
+        "id": 10,
+        "totalPoolAmount": "0.30963153",
+        "totalPoolCost": "0.12",
+        "poolAmount": "0.04414515",
+        "poolValueGBP": "0.02"
+      },
+      "11": {
+        "id": 11,
+        "totalPoolAmount": "0.26548638",
+        "totalPoolCost": "0.1",
+        "poolAmount": "0.04211878",
+        "poolValueGBP": "0.02"
+      },
+      "12": {
+        "id": 12,
+        "totalPoolAmount": "0.2233676",
+        "totalPoolCost": "0.08",
+        "poolAmount": "0.03170752",
+        "poolValueGBP": "0.02"
+      },
+      "13": {
+        "id": 13,
+        "totalPoolAmount": "0.19166008",
+        "totalPoolCost": "0.06",
+        "poolAmount": "0.03143521",
+        "poolValueGBP": "0.02"
+      },
+      "14": {
+        "id": 14,
+        "totalPoolAmount": "0.16022487",
+        "totalPoolCost": "0.04",
+        "poolAmount": "0.0297538",
+        "poolValueGBP": "0.02"
+      },
+      "15": {
+        "id": 15,
+        "totalPoolAmount": "0.13047107",
+        "totalPoolCost": "0.02",
+        "poolAmount": "0.02955499",
+        "poolValueGBP": "0.02"
+      },
+      "16": {
+        "id": 16,
+        "totalPoolAmount": "0.10091608",
+        "totalPoolCost": "0",
+        "poolAmount": "0.00632208",
+        "poolValueGBP": "0"
+      },
+      "17": {
+        "id": 17,
+        "totalPoolAmount": "0.094594",
+        "totalPoolCost": "0",
+        "poolAmount": "0.0063183",
+        "poolValueGBP": "0"
+      },
+      "18": {
+        "id": 18,
+        "totalPoolAmount": "0.0882757",
+        "totalPoolCost": "0",
+        "poolAmount": "0.00599587",
+        "poolValueGBP": "0"
+      },
+      "19": {
+        "id": 19,
+        "totalPoolAmount": "0.08227983",
+        "totalPoolCost": "0",
+        "poolAmount": "0.00599078",
+        "poolValueGBP": "0"
+      },
+      "20": {
+        "id": 20,
+        "totalPoolAmount": "0.07628905",
+        "totalPoolCost": "0",
+        "poolAmount": "0.00599603",
+        "poolValueGBP": "0"
+      },
+      "21": {
+        "id": 21,
+        "totalPoolAmount": "0.07029302",
+        "totalPoolCost": "0",
+        "poolAmount": "0.00632258",
+        "poolValueGBP": "0"
+      },
+      "22": {
+        "id": 22,
+        "totalPoolAmount": "0.06397044",
+        "totalPoolCost": "0",
+        "poolAmount": "0.00631674",
+        "poolValueGBP": "0"
+      },
+      "23": {
+        "id": 23,
+        "totalPoolAmount": "0.0576537",
+        "totalPoolCost": "0",
+        "poolAmount": "0.00631468",
+        "poolValueGBP": "0"
+      },
+      "24": {
+        "id": 24,
+        "totalPoolAmount": "0.05133902",
+        "totalPoolCost": "0",
+        "poolAmount": "0.00631663",
+        "poolValueGBP": "0"
+      },
+      "25": {
+        "id": 25,
+        "totalPoolAmount": "0.04502239",
+        "totalPoolCost": "0",
+        "poolAmount": "0.0078",
+        "poolValueGBP": "0"
+      },
+      "26": {
+        "id": 26,
+        "totalPoolAmount": "0.03722239",
+        "totalPoolCost": "0",
+        "poolAmount": "0.00748441",
+        "poolValueGBP": "0"
+      },
+      "27": {
+        "id": 27,
+        "totalPoolAmount": "0.02973798",
+        "totalPoolCost": "0",
+        "poolAmount": "0.00749269",
+        "poolValueGBP": "0"
+      },
+      "28": {
+        "id": 28,
+        "totalPoolAmount": "0.02224529",
+        "totalPoolCost": "0",
+        "poolAmount": "0.00748747",
+        "poolValueGBP": "0"
+      },
+      "29": {
+        "id": 29,
+        "totalPoolAmount": "0.01475782",
+        "totalPoolCost": "0",
+        "poolAmount": "0.00727373",
+        "poolValueGBP": "0"
+      },
+      "30": {
+        "id": 30,
+        "totalPoolAmount": "0.00748409",
+        "totalPoolCost": "0",
+        "poolAmount": "0.00748409",
+        "poolValueGBP": "0"
+      },
+      "31": {
+        "id": 31,
+        "totalPoolAmount": "59.370534427151499",
+        "totalPoolCost": "23007.17",
+        "poolAmount": "0.1",
+        "poolValueGBP": "17.89"
+      },
+      "32": {
+        "id": 32,
+        "totalPoolAmount": "59.270534427151499",
+        "totalPoolCost": "22989.28",
+        "poolAmount": "0.02931201",
+        "poolValueGBP": "5.46"
+      },
+      "33": {
+        "id": 33,
+        "totalPoolAmount": "59.241222417151499",
+        "totalPoolCost": "22983.82",
+        "poolAmount": "0.1",
+        "poolValueGBP": "18.58"
+      },
+      "34": {
+        "id": 34,
+        "totalPoolAmount": "59.141222417151499",
+        "totalPoolCost": "22965.24",
+        "poolAmount": "0.007517",
+        "poolValueGBP": "1.23"
+      },
+      "35": {
+        "id": 35,
+        "totalPoolAmount": "59.133705417151499",
+        "totalPoolCost": "22964.01",
+        "poolAmount": "10",
+        "poolValueGBP": "2816.6"
+      },
+      "36": {
+        "id": 36,
+        "totalPoolAmount": "49.133705417151499",
+        "totalPoolCost": "20147.41",
+        "poolAmount": "0.005",
+        "poolValueGBP": "1.75"
+      },
+      "37": {
+        "id": 37,
+        "totalPoolAmount": "49.128705417151499",
+        "totalPoolCost": "20145.66",
+        "poolAmount": "0.02183418",
+        "poolValueGBP": "7.87"
+      },
+      "38": {
+        "id": 38,
+        "totalPoolAmount": "49.106871237151499",
+        "totalPoolCost": "20137.79",
+        "poolAmount": "0.266",
+        "poolValueGBP": "95.99"
+      },
+      "39": {
+        "id": 39,
+        "totalPoolAmount": "48.840871237151499",
+        "totalPoolCost": "20041.8",
+        "poolAmount": "0.06114204",
+        "poolValueGBP": "21.78"
+      },
+      "40": {
+        "id": 40,
+        "totalPoolAmount": "48.779729197151499",
+        "totalPoolCost": "20020.02",
+        "poolAmount": "0.004",
+        "poolValueGBP": "1.48"
+      },
+      "41": {
+        "id": 41,
+        "totalPoolAmount": "48.775729197151499",
+        "totalPoolCost": "20018.54",
+        "poolAmount": "39.0205833577212",
+        "poolValueGBP": "16014.83"
+      },
+      "42": {
+        "id": 42,
+        "totalPoolAmount": "9.755145839430299",
+        "totalPoolCost": "4003.71",
+        "poolAmount": "9.755145839430299",
+        "poolValueGBP": "4003.71"
+      },
+      "43": {
+        "id": 43,
+        "totalPoolAmount": "1.1001",
+        "totalPoolCost": "149.55",
+        "poolAmount": "0.0001",
+        "poolValueGBP": "0.02"
+      },
+      "44": {
+        "id": 44,
+        "totalPoolAmount": "1.1",
+        "totalPoolCost": "149.53",
+        "poolAmount": "1.1",
+        "poolValueGBP": "149.53"
+      },
+      "45": {
+        "id": 45,
+        "totalPoolAmount": "0.12914132",
+        "totalPoolCost": "647.72",
+        "poolAmount": "0.00113078",
+        "poolValueGBP": "5.73"
+      },
+      "46": {
+        "id": 46,
+        "totalPoolAmount": "0.12801054",
+        "totalPoolCost": "641.99",
+        "poolAmount": "0.00001",
+        "poolValueGBP": "0.05"
+      },
+      "47": {
+        "id": 47,
+        "totalPoolAmount": "0.12800054",
+        "totalPoolCost": "641.94",
+        "poolAmount": "0.00002",
+        "poolValueGBP": "0.1"
+      },
+      "48": {
+        "id": 48,
+        "totalPoolAmount": "0.12798054",
+        "totalPoolCost": "641.84",
+        "poolAmount": "0.005",
+        "poolValueGBP": "24.66"
+      },
+      "49": {
+        "id": 49,
+        "totalPoolAmount": "0.12298054",
+        "totalPoolCost": "617.18",
+        "poolAmount": "0.00370823",
+        "poolValueGBP": "18.29"
+      },
+      "50": {
+        "id": 50,
+        "totalPoolAmount": "0.11927231",
+        "totalPoolCost": "598.89",
+        "poolAmount": "0.0002315",
+        "poolValueGBP": "1.13"
+      },
+      "51": {
+        "id": 51,
+        "totalPoolAmount": "0.11904081",
+        "totalPoolCost": "597.76",
+        "poolAmount": "0.0001421",
+        "poolValueGBP": "0.79"
+      },
+      "52": {
+        "id": 52,
+        "totalPoolAmount": "0.11889871",
+        "totalPoolCost": "596.97",
+        "poolAmount": "0.002",
+        "poolValueGBP": "10.51"
+      },
+      "53": {
+        "id": 53,
+        "totalPoolAmount": "0.11689871",
+        "totalPoolCost": "586.46",
+        "poolAmount": "0.00379332",
+        "poolValueGBP": "19.46"
+      },
+      "54": {
+        "id": 54,
+        "totalPoolAmount": "0.11310539",
+        "totalPoolCost": "567",
+        "poolAmount": "0.00155337",
+        "poolValueGBP": "7.82"
+      },
+      "55": {
+        "id": 55,
+        "totalPoolAmount": "0.11155202",
+        "totalPoolCost": "559.18",
+        "poolAmount": "0.11013615",
+        "poolValueGBP": "552.08"
+      },
+      "56": {
+        "id": 56,
+        "totalPoolAmount": "0.00141587",
+        "totalPoolCost": "7.1",
+        "poolAmount": "0.00141587",
+        "poolValueGBP": "7.1"
+      },
+      "57": {
+        "id": 57,
+        "totalPoolAmount": "8.901518",
+        "totalPoolCost": "0.15",
+        "poolAmount": "0.131518",
+        "poolValueGBP": "0"
+      },
+      "58": {
+        "id": 58,
+        "totalPoolAmount": "8.77",
+        "totalPoolCost": "0.15",
+        "poolAmount": "1",
+        "poolValueGBP": "0.01"
+      },
+      "59": {
+        "id": 59,
+        "totalPoolAmount": "7.77",
+        "totalPoolCost": "0.14",
+        "poolAmount": "7.77",
+        "poolValueGBP": "0.14"
+      }
+    }
+  },
+  "locations": {
+    "locations": [
+      {
+        "label": "Internet Archive donations 1Archi",
+        "asset": "BTC",
+        "address": "1Archive1n2C579dMsAu3iC6tWzuQJz8dN",
+        "url": "",
+        "comments": "",
+        "group": 1,
+        "id": 1
+      },
+      {
+        "label": "Internet Archive donations 0xFA8E",
+        "asset": "ETH",
+        "address": "0xFA8E3920daF271daB92Be9B87d9998DDd94FEF08",
+        "url": "",
+        "comments": "",
+        "group": 1,
+        "id": 2
+      },
+      {
+        "label": "Internet Archive donations t1ZmpK",
+        "asset": "ZEC",
+        "address": "t1ZmpK4QFcvyQZ3ghTgSboBW8b4HgiZHQF9",
+        "url": "",
+        "comments": "",
+        "group": 1,
+        "id": 3
+      },
+      {
+        "label": "Vertcoin donations VpBsRn",
+        "asset": "VTC",
+        "address": "VpBsRnN749jYHE9hT8dZreznHfmFMdE1yG",
+        "url": "",
+        "comments": "",
+        "group": 2,
+        "id": 4
+      },
+      {
+        "label": "Verge donations DHe3mT",
+        "asset": "XVG",
+        "address": "DHe3mTNQztY1wWokdtMprdeCKNoMxyThoV",
+        "url": "",
+        "comments": "",
+        "group": 3,
+        "id": 5
+      }
+    ],
+    "locationGroups": [
+      {
+        "label": "Internet Archive donations",
+        "locations": [
+          1,
+          2,
+          3
+        ],
+        "url": "",
+        "comments": "",
+        "id": 1
+      },
+      {
+        "label": "Vertcoin donations",
+        "locations": [
+          4
+        ],
+        "url": "",
+        "comments": "",
+        "id": 2
+      },
+      {
+        "label": "Verge donations",
+        "locations": [
+          5
+        ],
+        "url": "",
+        "comments": "",
+        "id": 3
+      }
+    ],
+    "locationLedgerEntries": [
+      {
+        "id": 1,
+        "date": "2018-09-27T00:04:26.000Z",
+        "location": 4,
+        "amount": "0.04420348",
+        "label": "Mined 0.04420348 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.512 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "date": "2018-09-26T23:56:44.000Z",
+        "location": 4,
+        "amount": "0.04423616",
+        "label": "Mined 0.04423616 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 2
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "date": "2018-09-26T23:50:48.000Z",
+        "location": 4,
+        "amount": "0.04419918",
+        "label": "Mined 0.04419918 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 3
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "date": "2018-09-26T23:28:23.000Z",
+        "location": 4,
+        "amount": "0.04422424",
+        "label": "Mined 0.04422424 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 4
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "date": "2018-09-26T23:13:36.000Z",
+        "location": 4,
+        "amount": "0.04431117",
+        "label": "Mined 0.04431117 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 5
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "date": "2018-09-26T22:26:21.000Z",
+        "location": 4,
+        "amount": "0.04420071",
+        "label": "Mined 0.04420071 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 6
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "date": "2018-09-26T22:15:45.000Z",
+        "location": 4,
+        "amount": "0.04424285",
+        "label": "Mined 0.04424285 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 7
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "date": "2018-09-26T21:38:11.000Z",
+        "location": 4,
+        "amount": "0.0442181",
+        "label": "Mined 0.04421810 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 8
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "date": "2018-09-26T21:07:39.000Z",
+        "location": 4,
+        "amount": "0.04418082",
+        "label": "Mined 0.04418082 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 9
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "date": "2018-09-26T20:58:14.000Z",
+        "location": 4,
+        "amount": "0.04414515",
+        "label": "Mined 0.04414515 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 10
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "date": "2018-09-26T20:07:17.000Z",
+        "location": 4,
+        "amount": "0.04211878",
+        "label": "Mined 0.04211878 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 11
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "date": "2018-09-26T19:14:58.000Z",
+        "location": 4,
+        "amount": "0.03170752",
+        "label": "Mined 0.03170752 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 12
+          }
+        ]
+      },
+      {
+        "id": 13,
+        "date": "2018-09-26T18:55:07.000Z",
+        "location": 4,
+        "amount": "0.03143521",
+        "label": "Mined 0.03143521 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 13
+          }
+        ]
+      },
+      {
+        "id": 14,
+        "date": "2018-09-26T16:53:55.000Z",
+        "location": 4,
+        "amount": "0.0297538",
+        "label": "Mined 0.02975380 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 14
+          }
+        ]
+      },
+      {
+        "id": 15,
+        "date": "2018-09-26T16:43:36.000Z",
+        "location": 4,
+        "amount": "0.02955499",
+        "label": "Mined 0.02955499 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 15
+          }
+        ]
+      },
+      {
+        "id": 16,
+        "date": "2018-09-26T01:31:51.000Z",
+        "location": 4,
+        "amount": "0.00632208",
+        "label": "Mined 0.00632208 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 16
+          }
+        ]
+      },
+      {
+        "id": 17,
+        "date": "2018-09-26T01:23:07.000Z",
+        "location": 4,
+        "amount": "0.0063183",
+        "label": "Mined 0.00631830 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 17
+          }
+        ]
+      },
+      {
+        "id": 18,
+        "date": "2018-09-26T00:12:12.000Z",
+        "location": 4,
+        "amount": "0.00599587",
+        "label": "Mined 0.00599587 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 18
+          }
+        ]
+      },
+      {
+        "id": 19,
+        "date": "2018-09-25T23:56:06.000Z",
+        "location": 4,
+        "amount": "0.00599078",
+        "label": "Mined 0.00599078 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.4979 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 19
+          }
+        ]
+      },
+      {
+        "id": 20,
+        "date": "2018-09-25T23:51:44.000Z",
+        "location": 4,
+        "amount": "0.00599603",
+        "label": "Mined 0.00599603 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.4979 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 20
+          }
+        ]
+      },
+      {
+        "id": 21,
+        "date": "2018-09-25T22:08:52.000Z",
+        "location": 4,
+        "amount": "0.00632258",
+        "label": "Mined 0.00632258 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.4979 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 21
+          }
+        ]
+      },
+      {
+        "id": 22,
+        "date": "2018-09-25T21:54:46.000Z",
+        "location": 4,
+        "amount": "0.00631674",
+        "label": "Mined 0.00631674 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.4979 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 22
+          }
+        ]
+      },
+      {
+        "id": 23,
+        "date": "2018-09-25T21:35:23.000Z",
+        "location": 4,
+        "amount": "0.00631468",
+        "label": "Mined 0.00631468 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.4979 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 23
+          }
+        ]
+      },
+      {
+        "id": 24,
+        "date": "2018-09-25T21:29:36.000Z",
+        "location": 4,
+        "amount": "0.00631663",
+        "label": "Mined 0.00631663 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.4979 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 24
+          }
+        ]
+      },
+      {
+        "id": 25,
+        "date": "2018-09-22T02:14:26.000Z",
+        "location": 4,
+        "amount": "0.0078",
+        "label": "Mined 0.00780000 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5232 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 25
+          }
+        ]
+      },
+      {
+        "id": 26,
+        "date": "2018-09-17T19:22:51.000Z",
+        "location": 4,
+        "amount": "0.00748441",
+        "label": "Mined 0.00748441 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.4998 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 26
+          }
+        ]
+      },
+      {
+        "id": 27,
+        "date": "2018-09-17T19:01:53.000Z",
+        "location": 4,
+        "amount": "0.00749269",
+        "label": "Mined 0.00749269 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.4998 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 27
+          }
+        ]
+      },
+      {
+        "id": 28,
+        "date": "2018-09-17T18:59:50.000Z",
+        "location": 4,
+        "amount": "0.00748747",
+        "label": "Mined 0.00748747 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.4998 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 28
+          }
+        ]
+      },
+      {
+        "id": 29,
+        "date": "2018-09-17T18:50:35.000Z",
+        "location": 4,
+        "amount": "0.00727373",
+        "label": "Mined 0.00727373 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.4998 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 29
+          }
+        ]
+      },
+      {
+        "id": 30,
+        "date": "2018-09-17T18:41:41.000Z",
+        "location": 4,
+        "amount": "0.00748409",
+        "label": "Mined 0.00748409 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.4998 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 30
+          }
+        ]
+      },
+      {
+        "id": 31,
+        "date": "2018-09-24T21:39:35.000Z",
+        "location": 2,
+        "amount": "0.1",
+        "label": "Mined 0.100000000000000000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 178.86 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 31
+          }
+        ]
+      },
+      {
+        "id": 32,
+        "date": "2018-09-23T04:07:50.000Z",
+        "location": 2,
+        "amount": "0.02931201",
+        "label": "Mined 0.029312010000000000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 186.35 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 32
+          }
+        ]
+      },
+      {
+        "id": 33,
+        "date": "2018-09-22T00:47:04.000Z",
+        "location": 2,
+        "amount": "0.1",
+        "label": "Mined 0.100000000000000000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 185.81 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 33
+          }
+        ]
+      },
+      {
+        "id": 34,
+        "date": "2018-09-20T14:23:28.000Z",
+        "location": 2,
+        "amount": "0.007517",
+        "label": "Mined 0.007517000000000000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 163.24 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 34
+          }
+        ]
+      },
+      {
+        "id": 35,
+        "date": "2018-08-08T03:27:19.000Z",
+        "location": 2,
+        "amount": "10",
+        "label": "Mined 10.000000000000000000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 281.66 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 35
+          }
+        ]
+      },
+      {
+        "id": 36,
+        "date": "2018-07-21T07:52:46.000Z",
+        "location": 2,
+        "amount": "0.005",
+        "label": "Mined 0.005000000000000000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 349.09 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 36
+          }
+        ]
+      },
+      {
+        "id": 37,
+        "date": "2018-07-19T23:19:01.000Z",
+        "location": 2,
+        "amount": "0.02183418",
+        "label": "Mined 0.021834180000000000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 360.28 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 37
+          }
+        ]
+      },
+      {
+        "id": 38,
+        "date": "2018-07-08T00:54:56.000Z",
+        "location": 2,
+        "amount": "0.266",
+        "label": "Mined 0.266000000000000000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 360.86 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 38
+          }
+        ]
+      },
+      {
+        "id": 39,
+        "date": "2018-06-26T00:13:01.000Z",
+        "location": 2,
+        "amount": "0.06114204",
+        "label": "Mined 0.061142040000000000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 356.28 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 39
+          }
+        ]
+      },
+      {
+        "id": 40,
+        "date": "2018-06-16T09:07:11.000Z",
+        "location": 2,
+        "amount": "0.004",
+        "label": "Mined 0.004000000000000000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 370.36 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 40
+          }
+        ]
+      },
+      {
+        "id": 41,
+        "date": "2018-05-29T18:54:13.000Z",
+        "location": 2,
+        "amount": "39.0205833577212",
+        "label": "Mined 39.020583357721200000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 410.42 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 41
+          }
+        ]
+      },
+      {
+        "id": 42,
+        "date": "2018-05-29T18:40:07.000Z",
+        "location": 2,
+        "amount": "9.755145839430299",
+        "label": "Mined 9.755145839430299000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 410.42 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 42
+          }
+        ]
+      },
+      {
+        "id": 43,
+        "date": "2018-07-26T19:32:43.000Z",
+        "location": 3,
+        "amount": "0.0001",
+        "label": "Mined 0.00010000 ZEC on Nanopool",
+        "comments": " (Using day rate: 1 ZEC = 169.44 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 43
+          }
+        ]
+      },
+      {
+        "id": 44,
+        "date": "2018-07-16T18:37:59.000Z",
+        "location": 3,
+        "amount": "1.1",
+        "label": "Mined 1.10000000 ZEC on Nanopool",
+        "comments": " (Using day rate: 1 ZEC = 135.94 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 44
+          }
+        ]
+      },
+      {
+        "id": 45,
+        "date": "2018-09-21T01:38:12.000Z",
+        "location": 1,
+        "amount": "0.00113078",
+        "label": "Mined 0.00113078 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 5069.35 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 45
+          }
+        ]
+      },
+      {
+        "id": 46,
+        "date": "2018-09-19T23:12:28.000Z",
+        "location": 1,
+        "amount": "0.00001",
+        "label": "Mined 0.00001000 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 4829.62 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 46
+          }
+        ]
+      },
+      {
+        "id": 47,
+        "date": "2018-09-19T19:58:42.000Z",
+        "location": 1,
+        "amount": "0.00002",
+        "label": "Mined 0.00002000 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 4829.62 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 47
+          }
+        ]
+      },
+      {
+        "id": 48,
+        "date": "2018-09-13T18:01:36.000Z",
+        "location": 1,
+        "amount": "0.005",
+        "label": "Mined 0.00500000 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 4931.86 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 48
+          }
+        ]
+      },
+      {
+        "id": 49,
+        "date": "2018-09-13T11:49:45.000Z",
+        "location": 1,
+        "amount": "0.00370823",
+        "label": "Mined 0.00370823 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 4931.86 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 49
+          }
+        ]
+      },
+      {
+        "id": 50,
+        "date": "2018-09-11T19:53:27.000Z",
+        "location": 1,
+        "amount": "0.0002315",
+        "label": "Mined 0.00023150 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 4869.45 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 50
+          }
+        ]
+      },
+      {
+        "id": 51,
+        "date": "2018-09-01T12:40:03.000Z",
+        "location": 1,
+        "amount": "0.0001421",
+        "label": "Mined 0.00014210 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 5548.34 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 51
+          }
+        ]
+      },
+      {
+        "id": 52,
+        "date": "2018-08-25T03:19:47.000Z",
+        "location": 1,
+        "amount": "0.002",
+        "label": "Mined 0.00200000 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 5255.76 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 52
+          }
+        ]
+      },
+      {
+        "id": 53,
+        "date": "2018-08-24T18:41:15.000Z",
+        "location": 1,
+        "amount": "0.00379332",
+        "label": "Mined 0.00379332 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 5128.78 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 53
+          }
+        ]
+      },
+      {
+        "id": 54,
+        "date": "2018-08-23T12:38:54.000Z",
+        "location": 1,
+        "amount": "0.00155337",
+        "label": "Mined 0.00155337 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 5031.2 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 54
+          }
+        ]
+      },
+      {
+        "id": 55,
+        "date": "2018-08-21T18:36:21.000Z",
+        "location": 1,
+        "amount": "0.11013615",
+        "label": "Mined 0.11013615 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 5012.7 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 55
+          }
+        ]
+      },
+      {
+        "id": 56,
+        "date": "2018-08-21T16:49:08.000Z",
+        "location": 1,
+        "amount": "0.00141587",
+        "label": "Mined 0.00141587 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 5012.7 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 56
+          }
+        ]
+      },
+      {
+        "id": 57,
+        "date": "2018-09-20T06:34:14.000Z",
+        "location": 5,
+        "amount": "0.131518",
+        "label": "Mined 0.13151800 XVG on Yiimp.eu",
+        "comments": " (Using day rate: 1 XVG = 0.01067 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 57
+          }
+        ]
+      },
+      {
+        "id": 58,
+        "date": "2018-08-26T12:38:33.000Z",
+        "location": 5,
+        "amount": "1",
+        "label": "Mined 1.00000000 XVG on Yiimp.eu",
+        "comments": " (Using day rate: 1 XVG = 0.01063 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 58
+          }
+        ]
+      },
+      {
+        "id": 59,
+        "date": "2018-07-28T14:53:15.000Z",
+        "location": 5,
+        "amount": "7.77",
+        "label": "Mined 7.77000000 XVG on Yiimp.eu",
+        "comments": " (Using day rate: 1 XVG = 0.01797 GBP)",
+        "linked": [
+          {
+            "type": "miningEvent",
+            "id": 59
+          }
+        ]
+      }
+    ]
+  },
+  "miningPools": {
+    "miningPools": [
+      {
+        "id": 5,
+        "label": "Coinotron",
+        "asset": "VTC",
+        "comments": ""
+      },
+      {
+        "id": 1,
+        "label": "Nanopool",
+        "asset": "ETH",
+        "comments": ""
+      },
+      {
+        "id": 2,
+        "label": "Nanopool",
+        "asset": "ZEC",
+        "comments": ""
+      },
+      {
+        "id": 3,
+        "label": "Nicehash",
+        "asset": "BTC",
+        "comments": ""
+      },
+      {
+        "id": 4,
+        "label": "Yiimp.eu",
+        "asset": "XVG",
+        "comments": ""
+      }
+    ]
+  },
+  "miningEvents": {
+    "miningEvents": [
+      {
+        "id": 1,
+        "pool": 5,
+        "date": "2018-09-27T00:04:26.000Z",
+        "amount": "0.04420348",
+        "label": "Mined 0.04420348 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.512 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 1
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 1
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "VTC",
+            "type": "transaction",
+            "item": "d1f5718aad6701989515978669565cec9638aee684f8b513dabe88754e15167b"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "pool": 5,
+        "date": "2018-09-26T23:56:44.000Z",
+        "amount": "0.04423616",
+        "label": "Mined 0.04423616 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 2
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 2
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "VTC",
+            "type": "transaction",
+            "item": "7deb990ea7fb4217579b1fdfc36c5b11cd3e0433c9b1de23fcdaa58241c8b99c"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "pool": 5,
+        "date": "2018-09-26T23:50:48.000Z",
+        "amount": "0.04419918",
+        "label": "Mined 0.04419918 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 3
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 3
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "VTC",
+            "type": "transaction",
+            "item": "bdc7f160b0241a84213c19f9591b85557b51827061549270c515ddadd0982e18"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "pool": 5,
+        "date": "2018-09-26T23:28:23.000Z",
+        "amount": "0.04422424",
+        "label": "Mined 0.04422424 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 4
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 4
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "VTC",
+            "type": "transaction",
+            "item": "32dac5d0cab30d5d615b108143a58ddacc929cce0230d2017b685a6c85622c00"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "pool": 5,
+        "date": "2018-09-26T23:13:36.000Z",
+        "amount": "0.04431117",
+        "label": "Mined 0.04431117 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 5
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 5
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "VTC",
+            "type": "transaction",
+            "item": "27bc1cb538f5847f62d47eccf63285273852caaf0824a917b248620b2e56c0bf"
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "pool": 5,
+        "date": "2018-09-26T22:26:21.000Z",
+        "amount": "0.04420071",
+        "label": "Mined 0.04420071 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 6
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 6
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "VTC",
+            "type": "transaction",
+            "item": "cda67a11e3a8083f2fb93331e491209eafa284c6877381add517097fdbc76562"
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "pool": 5,
+        "date": "2018-09-26T22:15:45.000Z",
+        "amount": "0.04424285",
+        "label": "Mined 0.04424285 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 7
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 7
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "VTC",
+            "type": "transaction",
+            "item": "80fa6ffd75a2e4bd5e1cbe01305575bc5716c94a9fb54bf48bae0a19d4437d7a"
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "pool": 5,
+        "date": "2018-09-26T21:38:11.000Z",
+        "amount": "0.0442181",
+        "label": "Mined 0.04421810 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 8
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 8
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "VTC",
+            "type": "transaction",
+            "item": "5b56208752490c0d79e447b50985ee82bb37de1e8e4a49525969b24c57f0289a"
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "pool": 5,
+        "date": "2018-09-26T21:07:39.000Z",
+        "amount": "0.04418082",
+        "label": "Mined 0.04418082 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 9
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 9
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "VTC",
+            "type": "transaction",
+            "item": "83037b27a764ff289d2013538f0cf2e6c0d81e07199d73085cde5802e72b2ef1"
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "pool": 5,
+        "date": "2018-09-26T20:58:14.000Z",
+        "amount": "0.04414515",
+        "label": "Mined 0.04414515 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 10
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 10
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "VTC",
+            "type": "transaction",
+            "item": "ff5ba85d9e2b77a1856b1bd721cfa50e5b027286491b6dbcca5e0a3218405503"
+          }
+        ]
+      },
+      {
+        "id": 11,
+        "pool": 5,
+        "date": "2018-09-26T20:07:17.000Z",
+        "amount": "0.04211878",
+        "label": "Mined 0.04211878 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 11
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 11
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "VTC",
+            "type": "transaction",
+            "item": "776005f647d21a86f6b24f2e94234656d5ef1e08264fccc0f58d0f9763d14987"
+          }
+        ]
+      },
+      {
+        "id": 12,
+        "pool": 5,
+        "date": "2018-09-26T19:14:58.000Z",
+        "amount": "0.03170752",
+        "label": "Mined 0.03170752 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 12
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 12
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "VTC",
+            "type": "transaction",
+            "item": "69c0fac896ffdff2e38dbe6675c0e49274a4c61e4b614edd95e022af59dbe345"
+          }
+        ]
+      },
+      {
+        "id": 13,
+        "pool": 5,
+        "date": "2018-09-26T18:55:07.000Z",
+        "amount": "0.03143521",
+        "label": "Mined 0.03143521 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 13
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 13
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "VTC",
+            "type": "transaction",
+            "item": "8de6963ecc726262cb7760fd0b835eca86554117258f674b8f258028f43a9b70"
+          }
+        ]
+      },
+      {
+        "id": 14,
+        "pool": 5,
+        "date": "2018-09-26T16:53:55.000Z",
+        "amount": "0.0297538",
+        "label": "Mined 0.02975380 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 14
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 14
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "VTC",
+            "type": "transaction",
+            "item": "293db17c27c59b5ec822b84d57f884e48ba27b78fe692ff1167ba7ae7e273a8c"
+          }
+        ]
+      },
+      {
+        "id": 15,
+        "pool": 5,
+        "date": "2018-09-26T16:43:36.000Z",
+        "amount": "0.02955499",
+        "label": "Mined 0.02955499 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 15
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 15
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "VTC",
+            "type": "transaction",
+            "item": "ade1f070f653cccc606d5be0e5736cc5678581b7491867125d36ccaabaa7aa2f"
+          }
+        ]
+      },
+      {
+        "id": 16,
+        "pool": 5,
+        "date": "2018-09-26T01:31:51.000Z",
+        "amount": "0.00632208",
+        "label": "Mined 0.00632208 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 16
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 16
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "VTC",
+            "type": "transaction",
+            "item": "42d95db7f743bbd2d07b82f0ae3d7ca62ee26bcad5e356d5fc248c52b9bea71b"
+          }
+        ]
+      },
+      {
+        "id": 17,
+        "pool": 5,
+        "date": "2018-09-26T01:23:07.000Z",
+        "amount": "0.0063183",
+        "label": "Mined 0.00631830 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 17
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 17
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "VTC",
+            "type": "transaction",
+            "item": "6b1cfad3acf4bdb65f133cd7387f935e76687d286529ca342015f684345f8a66"
+          }
+        ]
+      },
+      {
+        "id": 18,
+        "pool": 5,
+        "date": "2018-09-26T00:12:12.000Z",
+        "amount": "0.00599587",
+        "label": "Mined 0.00599587 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5096 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 18
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 18
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "VTC",
+            "type": "transaction",
+            "item": "f2e42171e98790c937d41a0c08f439e41e97fc615d641882ba96d6550321b94f"
+          }
+        ]
+      },
+      {
+        "id": 19,
+        "pool": 5,
+        "date": "2018-09-25T23:56:06.000Z",
+        "amount": "0.00599078",
+        "label": "Mined 0.00599078 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.4979 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 19
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 19
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "VTC",
+            "type": "transaction",
+            "item": "9cebc7a90382e9d4ad0d9f2f0de0f3d53c002ba451db060f8081c135fbc3bd22"
+          }
+        ]
+      },
+      {
+        "id": 20,
+        "pool": 5,
+        "date": "2018-09-25T23:51:44.000Z",
+        "amount": "0.00599603",
+        "label": "Mined 0.00599603 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.4979 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 20
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 20
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "VTC",
+            "type": "transaction",
+            "item": "cce670fa22f9d32421c48e3819d46b6ea980bd70d431fa4f21138064315cc9b5"
+          }
+        ]
+      },
+      {
+        "id": 21,
+        "pool": 5,
+        "date": "2018-09-25T22:08:52.000Z",
+        "amount": "0.00632258",
+        "label": "Mined 0.00632258 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.4979 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 21
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 21
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "VTC",
+            "type": "transaction",
+            "item": "ed530fae394914cdcc8dd444cfeb6b4838a468e48f51e93d41306ef8d3ad94a8"
+          }
+        ]
+      },
+      {
+        "id": 22,
+        "pool": 5,
+        "date": "2018-09-25T21:54:46.000Z",
+        "amount": "0.00631674",
+        "label": "Mined 0.00631674 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.4979 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 22
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 22
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "VTC",
+            "type": "transaction",
+            "item": "96b4b529a66bbeaf44858b72ebc320a298b71c54018e8d4bcd54aa278b4bb44c"
+          }
+        ]
+      },
+      {
+        "id": 23,
+        "pool": 5,
+        "date": "2018-09-25T21:35:23.000Z",
+        "amount": "0.00631468",
+        "label": "Mined 0.00631468 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.4979 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 23
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 23
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "VTC",
+            "type": "transaction",
+            "item": "4e19f7aee30fa4f5b6bf7df05c2c75b56612327106a9f3221914e436a9914691"
+          }
+        ]
+      },
+      {
+        "id": 24,
+        "pool": 5,
+        "date": "2018-09-25T21:29:36.000Z",
+        "amount": "0.00631663",
+        "label": "Mined 0.00631663 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.4979 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 24
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 24
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "VTC",
+            "type": "transaction",
+            "item": "cd1f42cda4b9b159b4e1207d48e442b3cf0b819cf3cbc459f0563f6efc860bd7"
+          }
+        ]
+      },
+      {
+        "id": 25,
+        "pool": 5,
+        "date": "2018-09-22T02:14:26.000Z",
+        "amount": "0.0078",
+        "label": "Mined 0.00780000 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.5232 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 25
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 25
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "VTC",
+            "type": "transaction",
+            "item": "c5536297ccea46438a22219b2e193147d3e49a419ec2778c6a5324ad8b3ab6f7"
+          }
+        ]
+      },
+      {
+        "id": 26,
+        "pool": 5,
+        "date": "2018-09-17T19:22:51.000Z",
+        "amount": "0.00748441",
+        "label": "Mined 0.00748441 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.4998 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 26
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 26
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "VTC",
+            "type": "transaction",
+            "item": "af467d36da3b605623cf1c804dee32fc189cb9912e3612bf6e7c97161ba0905e"
+          }
+        ]
+      },
+      {
+        "id": 27,
+        "pool": 5,
+        "date": "2018-09-17T19:01:53.000Z",
+        "amount": "0.00749269",
+        "label": "Mined 0.00749269 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.4998 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 27
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 27
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "VTC",
+            "type": "transaction",
+            "item": "3cc59f662d0310f99c668cdf0cf32e3c79afa38dbaa0d5a766a0224c87cffb0f"
+          }
+        ]
+      },
+      {
+        "id": 28,
+        "pool": 5,
+        "date": "2018-09-17T18:59:50.000Z",
+        "amount": "0.00748747",
+        "label": "Mined 0.00748747 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.4998 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 28
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 28
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "VTC",
+            "type": "transaction",
+            "item": "95dfe20b8f75e91ed7ef9983c753456b93683fac540827c2cc6f8b5f308d0e3d"
+          }
+        ]
+      },
+      {
+        "id": 29,
+        "pool": 5,
+        "date": "2018-09-17T18:50:35.000Z",
+        "amount": "0.00727373",
+        "label": "Mined 0.00727373 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.4998 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 29
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 29
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "VTC",
+            "type": "transaction",
+            "item": "e029dd6159b06ceb93d45bf676cd06f99c6ff760a00e295d974257f698b52d7c"
+          }
+        ]
+      },
+      {
+        "id": 30,
+        "pool": 5,
+        "date": "2018-09-17T18:41:41.000Z",
+        "amount": "0.00748409",
+        "label": "Mined 0.00748409 VTC on Coinotron",
+        "comments": " (Using day rate: 1 VTC = 0.4998 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 30
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 30
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "VTC",
+            "type": "transaction",
+            "item": "f4aad31923748aac31e0b30e49a1c25613554c37666cd658ba2aa8f6ddef3118"
+          }
+        ]
+      },
+      {
+        "id": 31,
+        "pool": 1,
+        "date": "2018-09-24T21:39:35.000Z",
+        "amount": "0.1",
+        "label": "Mined 0.100000000000000000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 178.86 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 31
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 31
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "ETH",
+            "type": "transaction",
+            "item": "0x3b1c06429c5729dc7f3a61424420ee0c72b80d8da1804d0b013c51e447706111"
+          }
+        ]
+      },
+      {
+        "id": 32,
+        "pool": 1,
+        "date": "2018-09-23T04:07:50.000Z",
+        "amount": "0.02931201",
+        "label": "Mined 0.029312010000000000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 186.35 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 32
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 32
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "ETH",
+            "type": "transaction",
+            "item": "0x322e57c5870167b85984e740f12be7d862c6588d7e816248207bc706e8de3394"
+          }
+        ]
+      },
+      {
+        "id": 33,
+        "pool": 1,
+        "date": "2018-09-22T00:47:04.000Z",
+        "amount": "0.1",
+        "label": "Mined 0.100000000000000000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 185.81 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 33
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 33
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "ETH",
+            "type": "transaction",
+            "item": "0xe4829a9c85924a096782252a242ede4f8e5d0fe3fbc488f079f692dc5940b070"
+          }
+        ]
+      },
+      {
+        "id": 34,
+        "pool": 1,
+        "date": "2018-09-20T14:23:28.000Z",
+        "amount": "0.007517",
+        "label": "Mined 0.007517000000000000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 163.24 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 34
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 34
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "ETH",
+            "type": "transaction",
+            "item": "0x4428cca4360fdf6aa1e9cdf328fc69e660a673c24d4c81b91fa25a6d21482c52"
+          }
+        ]
+      },
+      {
+        "id": 35,
+        "pool": 1,
+        "date": "2018-08-08T03:27:19.000Z",
+        "amount": "10",
+        "label": "Mined 10.000000000000000000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 281.66 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 35
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 35
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "ETH",
+            "type": "transaction",
+            "item": "0xee39f04027b8c120ea2a8b8dda9b5951f2301286f7d2877d2932bf1f2f721234"
+          }
+        ]
+      },
+      {
+        "id": 36,
+        "pool": 1,
+        "date": "2018-07-21T07:52:46.000Z",
+        "amount": "0.005",
+        "label": "Mined 0.005000000000000000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 349.09 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 36
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 36
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "ETH",
+            "type": "transaction",
+            "item": "0xdbafd1818a0c4602330d87d895f76207c1dae96da8eb6f262b9dd35b942ab4ea"
+          }
+        ]
+      },
+      {
+        "id": 37,
+        "pool": 1,
+        "date": "2018-07-19T23:19:01.000Z",
+        "amount": "0.02183418",
+        "label": "Mined 0.021834180000000000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 360.28 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 37
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 37
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "ETH",
+            "type": "transaction",
+            "item": "0x23526fecdab4c536fc20534b11e3e96ed1843d6362045cca2153cf0a1e3e392d"
+          }
+        ]
+      },
+      {
+        "id": 38,
+        "pool": 1,
+        "date": "2018-07-08T00:54:56.000Z",
+        "amount": "0.266",
+        "label": "Mined 0.266000000000000000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 360.86 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 38
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 38
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "ETH",
+            "type": "transaction",
+            "item": "0x6dfda0dec3fa4697ee066876d924e7253f8d82c9b2d992225645bfcb77220233"
+          }
+        ]
+      },
+      {
+        "id": 39,
+        "pool": 1,
+        "date": "2018-06-26T00:13:01.000Z",
+        "amount": "0.06114204",
+        "label": "Mined 0.061142040000000000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 356.28 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 39
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 39
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "ETH",
+            "type": "transaction",
+            "item": "0xa1b942a42646054cdb2691aadd158dd41af5a11f18b3d6642c9eb1ac24a8d67c"
+          }
+        ]
+      },
+      {
+        "id": 40,
+        "pool": 1,
+        "date": "2018-06-16T09:07:11.000Z",
+        "amount": "0.004",
+        "label": "Mined 0.004000000000000000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 370.36 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 40
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 40
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "ETH",
+            "type": "transaction",
+            "item": "0xe71502b91520612fa3cd19d1e74eecb7da1defbcbd1fa7d73ba779886367866c"
+          }
+        ]
+      },
+      {
+        "id": 41,
+        "pool": 1,
+        "date": "2018-05-29T18:54:13.000Z",
+        "amount": "39.0205833577212",
+        "label": "Mined 39.020583357721200000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 410.42 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 41
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 41
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "ETH",
+            "type": "transaction",
+            "item": "0x0131d4628a4d06489b86d2c4ffffbfd49e1563b186fe3ff73fd31a2be8987cdd"
+          }
+        ]
+      },
+      {
+        "id": 42,
+        "pool": 1,
+        "date": "2018-05-29T18:40:07.000Z",
+        "amount": "9.755145839430299",
+        "label": "Mined 9.755145839430299000 ETH on Nanopool",
+        "comments": " (Using day rate: 1 ETH = 410.42 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 42
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 42
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "ETH",
+            "type": "transaction",
+            "item": "0x3aff08af2e3830b845cc32c2278775a1fae87b77469a442af4c5795a13847e89"
+          }
+        ]
+      },
+      {
+        "id": 43,
+        "pool": 2,
+        "date": "2018-07-26T19:32:43.000Z",
+        "amount": "0.0001",
+        "label": "Mined 0.00010000 ZEC on Nanopool",
+        "comments": " (Using day rate: 1 ZEC = 169.44 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 43
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 43
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "ZEC",
+            "type": "transaction",
+            "item": "4f2298593aa43201ba9e76e0e2010ed1f0530d3c3289ce3313bccb24515ee9b3"
+          }
+        ]
+      },
+      {
+        "id": 44,
+        "pool": 2,
+        "date": "2018-07-16T18:37:59.000Z",
+        "amount": "1.1",
+        "label": "Mined 1.10000000 ZEC on Nanopool",
+        "comments": " (Using day rate: 1 ZEC = 135.94 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 44
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 44
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "ZEC",
+            "type": "transaction",
+            "item": "96594b5c32d94973927ab20a3aa9975af43269a56bdc128886798af1002520a2"
+          }
+        ]
+      },
+      {
+        "id": 45,
+        "pool": 3,
+        "date": "2018-09-21T01:38:12.000Z",
+        "amount": "0.00113078",
+        "label": "Mined 0.00113078 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 5069.35 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 45
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 45
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "BTC",
+            "type": "transaction",
+            "item": "320ddb5c8d5864609862ca1c67dfe0b0f8faea5088cdff956af59b370f6c3337"
+          }
+        ]
+      },
+      {
+        "id": 46,
+        "pool": 3,
+        "date": "2018-09-19T23:12:28.000Z",
+        "amount": "0.00001",
+        "label": "Mined 0.00001000 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 4829.62 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 46
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 46
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "BTC",
+            "type": "transaction",
+            "item": "dbceacd28e885c90a6fe97d3a4df45b89f35c0e705c28c84dacf8225d43298c0"
+          }
+        ]
+      },
+      {
+        "id": 47,
+        "pool": 3,
+        "date": "2018-09-19T19:58:42.000Z",
+        "amount": "0.00002",
+        "label": "Mined 0.00002000 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 4829.62 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 47
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 47
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "BTC",
+            "type": "transaction",
+            "item": "a7dd03feb852d0a5916d5a9b3216ea25a1649de6cdb9f218205b69252c8d7226"
+          }
+        ]
+      },
+      {
+        "id": 48,
+        "pool": 3,
+        "date": "2018-09-13T18:01:36.000Z",
+        "amount": "0.005",
+        "label": "Mined 0.00500000 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 4931.86 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 48
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 48
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "BTC",
+            "type": "transaction",
+            "item": "ea28e48eb8e94857830da84ef0df0e12f16ecfbca6574603ef0c3178c7e6b561"
+          }
+        ]
+      },
+      {
+        "id": 49,
+        "pool": 3,
+        "date": "2018-09-13T11:49:45.000Z",
+        "amount": "0.00370823",
+        "label": "Mined 0.00370823 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 4931.86 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 49
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 49
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "BTC",
+            "type": "transaction",
+            "item": "b1154dddaf075b536d72bee782a5f0afab748bf87428812f353d5c7c6ed30a2b"
+          }
+        ]
+      },
+      {
+        "id": 50,
+        "pool": 3,
+        "date": "2018-09-11T19:53:27.000Z",
+        "amount": "0.0002315",
+        "label": "Mined 0.00023150 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 4869.45 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 50
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 50
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "BTC",
+            "type": "transaction",
+            "item": "25c0f64425ee626d0dc36414d66d86899b91c2349a966a778a2b647762f6a77e"
+          }
+        ]
+      },
+      {
+        "id": 51,
+        "pool": 3,
+        "date": "2018-09-01T12:40:03.000Z",
+        "amount": "0.0001421",
+        "label": "Mined 0.00014210 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 5548.34 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 51
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 51
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "BTC",
+            "type": "transaction",
+            "item": "57032f63ad251d28a2c183e9aa5f868535fcc42f3cf4d91ab6903f532d05ee71"
+          }
+        ]
+      },
+      {
+        "id": 52,
+        "pool": 3,
+        "date": "2018-08-25T03:19:47.000Z",
+        "amount": "0.002",
+        "label": "Mined 0.00200000 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 5255.76 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 52
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 52
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "BTC",
+            "type": "transaction",
+            "item": "997126cddf170e3d174d2877c6ba41a7e52c0133b89d5abd334a9ef29a9b8f21"
+          }
+        ]
+      },
+      {
+        "id": 53,
+        "pool": 3,
+        "date": "2018-08-24T18:41:15.000Z",
+        "amount": "0.00379332",
+        "label": "Mined 0.00379332 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 5128.78 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 53
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 53
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "BTC",
+            "type": "transaction",
+            "item": "49ae4506cc7bebc1aea9c412cc5f8ced93e6159bcd4cb3d20c75163a2fe28d6f"
+          }
+        ]
+      },
+      {
+        "id": 54,
+        "pool": 3,
+        "date": "2018-08-23T12:38:54.000Z",
+        "amount": "0.00155337",
+        "label": "Mined 0.00155337 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 5031.2 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 54
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 54
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "BTC",
+            "type": "transaction",
+            "item": "148c80adde53b279b17785997f8739e6904a37c07b9221cde4d7b398165b0c87"
+          }
+        ]
+      },
+      {
+        "id": 55,
+        "pool": 3,
+        "date": "2018-08-21T18:36:21.000Z",
+        "amount": "0.11013615",
+        "label": "Mined 0.11013615 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 5012.7 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 55
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 55
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "BTC",
+            "type": "transaction",
+            "item": "a1e1115b3c1baf0453c770948866ea4e9a7d06ea83038d68b65ffaee807e9c38"
+          }
+        ]
+      },
+      {
+        "id": 56,
+        "pool": 3,
+        "date": "2018-08-21T16:49:08.000Z",
+        "amount": "0.00141587",
+        "label": "Mined 0.00141587 BTC on Nicehash",
+        "comments": " (Using day rate: 1 BTC = 5012.7 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 56
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 56
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "BTC",
+            "type": "transaction",
+            "item": "20ab6342dcc4c3431e80c0c3c3c14c692f13c2cf813b720db08bad18e9716f80"
+          }
+        ]
+      },
+      {
+        "id": 57,
+        "pool": 4,
+        "date": "2018-09-20T06:34:14.000Z",
+        "amount": "0.131518",
+        "label": "Mined 0.13151800 XVG on Yiimp.eu",
+        "comments": " (Using day rate: 1 XVG = 0.01067 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 57
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 57
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "XVG",
+            "type": "transaction",
+            "item": "fd59abcce3161eef5a16aa7a8990f01d58fa7c7febb37caba947d109e3017fe7"
+          }
+        ]
+      },
+      {
+        "id": 58,
+        "pool": 4,
+        "date": "2018-08-26T12:38:33.000Z",
+        "amount": "1",
+        "label": "Mined 1.00000000 XVG on Yiimp.eu",
+        "comments": " (Using day rate: 1 XVG = 0.01063 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 58
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 58
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "XVG",
+            "type": "transaction",
+            "item": "d38b44f0cff9a3d177a91ef49a45669c148ba84ddb5c6233c62d1a76fd0f2c35"
+          }
+        ]
+      },
+      {
+        "id": 59,
+        "pool": 4,
+        "date": "2018-07-28T14:53:15.000Z",
+        "amount": "7.77",
+        "label": "Mined 7.77000000 XVG on Yiimp.eu",
+        "comments": " (Using day rate: 1 XVG = 0.01797 GBP)",
+        "linked": [
+          {
+            "type": "locationLedgerEntry",
+            "id": 59
+          },
+          {
+            "type": "assetLedgerEntry",
+            "id": 59
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "XVG",
+            "type": "transaction",
+            "item": "b5a77aca77a59ed80aa36d88fd91e6e1b6893b61c8c84e8653a1c9a4852b85e6"
+          }
+        ]
+      }
+    ]
+  },
+  "transferEvents": {
+    "transferEvents": []
+  },
+  "airdropEvents": {
+    "airdropEvents": []
+  },
+  "depositEvents": {
+    "depositEvents": []
+  },
+  "tradeEvents": {
+    "tradeEvents": []
+  }
+}

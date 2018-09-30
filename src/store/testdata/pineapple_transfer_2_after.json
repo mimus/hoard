@@ -1,0 +1,523 @@
+{
+  "exportDate": "2018-09-28T14:14:52.815Z",
+  "taxYears": {
+    "taxYears": []
+  },
+  "assets": {
+    "assets": [
+      {
+        "id": "BTC",
+        "label": "BTC",
+        "symbol": "BTC",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      }
+    ],
+    "assetLedgerEntries": [
+      {
+        "id": 1,
+        "date": "2017-12-12T15:20:00.000Z",
+        "type": "disposal",
+        "asset": "BTC",
+        "assetValueGBP": "1.93",
+        "amount": "-0.00015",
+        "label": "Transfer Fee: Transfer to BitGive",
+        "comments": " (Using day rate: 1 BTC = 12864.05 GBP)",
+        "linked": [
+          {
+            "type": "transferEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "date": "2018-01-03T15:09:00.000Z",
+        "type": "disposal",
+        "asset": "BTC",
+        "assetValueGBP": "10.85",
+        "amount": "-0.00097064",
+        "label": "Transfer Fee: Transfer to BitGive",
+        "comments": " (Using day rate: 1 BTC = 11180.46 GBP)",
+        "linked": [
+          {
+            "type": "transferEvent",
+            "id": 2
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "date": "2017-12-08T15:20:00.000Z",
+        "type": "disposal",
+        "asset": "BTC",
+        "assetValueGBP": "8.25",
+        "amount": "-0.0007",
+        "label": "Transfer Fee: Transfer to The Water Project",
+        "comments": " (Using day rate: 1 BTC = 11780.68 GBP)",
+        "linked": [
+          {
+            "type": "transferEvent",
+            "id": 3
+          }
+        ]
+      }
+    ]
+  },
+  "cgt": {
+    "assetLedgerEntryWorkingsById": {
+      "1": {
+        "id": 1,
+        "totalPoolAmount": "-0.00085",
+        "totalPoolCost": "NaN",
+        "disposalPlan": [
+          {
+            "type": "POOL",
+            "amount": "0.00015",
+            "cost": "NaN"
+          }
+        ],
+        "costBasis": "NaN",
+        "gain": "NaN"
+      },
+      "2": {
+        "id": 2,
+        "totalPoolAmount": "-0.00182064",
+        "totalPoolCost": "NaN",
+        "disposalPlan": [
+          {
+            "type": "POOL",
+            "amount": "0.00097064",
+            "cost": "NaN"
+          }
+        ],
+        "costBasis": "NaN",
+        "gain": "NaN"
+      },
+      "3": {
+        "id": 3,
+        "totalPoolAmount": "-0.0007",
+        "totalPoolCost": "NaN",
+        "disposalPlan": [
+          {
+            "type": "POOL",
+            "amount": "0.0007",
+            "cost": "NaN"
+          }
+        ],
+        "costBasis": "NaN",
+        "gain": "NaN"
+      }
+    }
+  },
+  "locations": {
+    "locations": [
+      {
+        "label": "Pineapple Fund 3P3QsM",
+        "asset": "BTC",
+        "address": "3P3QsMVK89JBNqZQv5zMAKG8FK3kJM4rjt",
+        "url": "",
+        "comments": "",
+        "group": 1,
+        "id": 1
+      },
+      {
+        "label": "The Water Project 14xEPW",
+        "asset": "BTC",
+        "address": "14xEPWuHC3ybPMfv8iTZZ29UCLTUSoJ8HL",
+        "url": "",
+        "comments": "",
+        "group": 2,
+        "id": 2
+      },
+      {
+        "label": "BitGive 19VRuf",
+        "asset": "BTC",
+        "address": "19VRufYycv7bYmFcmHbZfJqWwdrbecQbfE",
+        "url": "",
+        "comments": "",
+        "group": 3,
+        "id": 3
+      },
+      {
+        "label": "Pineapple Fund 1GrqTL",
+        "asset": "BTC",
+        "address": "1GrqTLjd5afMuLiSmFHEEnwcwnXDdvi7et",
+        "url": "",
+        "comments": "",
+        "group": 1,
+        "id": 4
+      },
+      {
+        "label": "BitGive 14k4NM",
+        "asset": "BTC",
+        "address": "14k4NMyqHzVhrmqwgbb1oyeKs7RoFsRyr7",
+        "url": "",
+        "comments": "",
+        "group": 3,
+        "id": 5
+      }
+    ],
+    "locationGroups": [
+      {
+        "label": "Pineapple Fund",
+        "locations": [
+          1,
+          4
+        ],
+        "url": "",
+        "comments": "",
+        "id": 1
+      },
+      {
+        "label": "The Water Project",
+        "locations": [
+          2
+        ],
+        "url": "",
+        "comments": "",
+        "id": 2
+      },
+      {
+        "label": "BitGive",
+        "locations": [
+          3,
+          5
+        ],
+        "url": "",
+        "comments": "",
+        "id": 3
+      }
+    ],
+    "locationLedgerEntries": [
+      {
+        "id": 1,
+        "date": "2017-12-12T15:20:00.000Z",
+        "location": 1,
+        "amount": "-4927.5101",
+        "label": "Transfer to BitGive",
+        "comments": " (Using day rate: 1 BTC = 12864.05 GBP)",
+        "linked": [
+          {
+            "type": "transferEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "date": "2017-12-12T15:20:00.000Z",
+        "location": 3,
+        "amount": "29.645012",
+        "label": "Transfer to BitGive",
+        "comments": " (Using day rate: 1 BTC = 12864.05 GBP)",
+        "linked": [
+          {
+            "type": "transferEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "date": "2017-12-12T15:20:00.000Z",
+        "location": 1,
+        "amount": "4897.864938",
+        "label": "Transfer to BitGive",
+        "comments": " (Using day rate: 1 BTC = 12864.05 GBP)",
+        "linked": [
+          {
+            "type": "transferEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "date": "2018-01-03T15:09:00.000Z",
+        "location": 4,
+        "amount": "-200",
+        "label": "Transfer to BitGive",
+        "comments": " (Using day rate: 1 BTC = 11180.46 GBP)",
+        "linked": [
+          {
+            "type": "transferEvent",
+            "id": 2
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "date": "2018-01-03T15:09:00.000Z",
+        "location": 5,
+        "amount": "33.462925",
+        "label": "Transfer to BitGive",
+        "comments": " (Using day rate: 1 BTC = 11180.46 GBP)",
+        "linked": [
+          {
+            "type": "transferEvent",
+            "id": 2
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "date": "2018-01-03T15:09:00.000Z",
+        "location": 4,
+        "amount": "166.53610436",
+        "label": "Transfer to BitGive",
+        "comments": " (Using day rate: 1 BTC = 11180.46 GBP)",
+        "linked": [
+          {
+            "type": "transferEvent",
+            "id": 2
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "date": "2017-12-08T15:20:00.000Z",
+        "location": 1,
+        "amount": "-4992.7108",
+        "label": "Transfer to The Water Project",
+        "comments": " (Using day rate: 1 BTC = 11780.68 GBP)",
+        "linked": [
+          {
+            "type": "transferEvent",
+            "id": 3
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "date": "2017-12-08T15:20:00.000Z",
+        "location": 2,
+        "amount": "65.2",
+        "label": "Transfer to The Water Project",
+        "comments": " (Using day rate: 1 BTC = 11780.68 GBP)",
+        "linked": [
+          {
+            "type": "transferEvent",
+            "id": 3
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "date": "2017-12-08T15:20:00.000Z",
+        "location": 1,
+        "amount": "4927.5101",
+        "label": "Transfer to The Water Project",
+        "comments": " (Using day rate: 1 BTC = 11780.68 GBP)",
+        "linked": [
+          {
+            "type": "transferEvent",
+            "id": 3
+          }
+        ]
+      }
+    ]
+  },
+  "miningPools": {
+    "miningPools": []
+  },
+  "miningEvents": {
+    "miningEvents": []
+  },
+  "transferEvents": {
+    "transferEvents": [
+      {
+        "id": 1,
+        "date": "2017-12-12T15:20:00.000Z",
+        "label": "Transfer to BitGive",
+        "asset": "BTC",
+        "amount": "4927.5101",
+        "comments": " (Using day rate: 1 BTC = 12864.05 GBP)",
+        "from": [
+          {
+            "asset": "BTC",
+            "amount": "-4927.5101",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 1
+              }
+            ]
+          }
+        ],
+        "to": [
+          {
+            "asset": "BTC",
+            "amount": "29.645012",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 2
+              }
+            ]
+          },
+          {
+            "asset": "BTC",
+            "amount": "4897.864938",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 3
+              }
+            ]
+          }
+        ],
+        "fees": [
+          {
+            "asset": "BTC",
+            "amount": "0.00015",
+            "linked": [
+              {
+                "type": "assetLedgerEntry",
+                "id": 1
+              }
+            ]
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "BTC",
+            "type": "transaction",
+            "item": "8ddfe1401f80b796f555d03d7efd0c202c3c33ab2f5f04c85961cd4751ab456c"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "date": "2018-01-03T15:09:00.000Z",
+        "label": "Transfer to BitGive",
+        "asset": "BTC",
+        "amount": "200",
+        "comments": " (Using day rate: 1 BTC = 11180.46 GBP)",
+        "from": [
+          {
+            "asset": "BTC",
+            "amount": "-200",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 4
+              }
+            ]
+          }
+        ],
+        "to": [
+          {
+            "asset": "BTC",
+            "amount": "33.462925",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 5
+              }
+            ]
+          },
+          {
+            "asset": "BTC",
+            "amount": "166.53610436",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 6
+              }
+            ]
+          }
+        ],
+        "fees": [
+          {
+            "asset": "BTC",
+            "amount": "0.00097064",
+            "linked": [
+              {
+                "type": "assetLedgerEntry",
+                "id": 2
+              }
+            ]
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "BTC",
+            "type": "transaction",
+            "item": "c5de1db38b994797d8fb9d35c05ea461b8e23f74f9c6b7fb62cdf6cef49dc631"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "date": "2017-12-08T15:20:00.000Z",
+        "label": "Transfer to The Water Project",
+        "asset": "BTC",
+        "amount": "4992.7108",
+        "comments": " (Using day rate: 1 BTC = 11780.68 GBP)",
+        "from": [
+          {
+            "asset": "BTC",
+            "amount": "-4992.7108",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 7
+              }
+            ]
+          }
+        ],
+        "to": [
+          {
+            "asset": "BTC",
+            "amount": "65.2",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 8
+              }
+            ]
+          },
+          {
+            "asset": "BTC",
+            "amount": "4927.5101",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 9
+              }
+            ]
+          }
+        ],
+        "fees": [
+          {
+            "asset": "BTC",
+            "amount": "0.0007",
+            "linked": [
+              {
+                "type": "assetLedgerEntry",
+                "id": 3
+              }
+            ]
+          }
+        ],
+        "externalAssetLinks": [
+          {
+            "asset": "BTC",
+            "type": "transaction",
+            "item": "da2b84e3f3c0c2adec21105e7f5630d6e74c4c3408ddd7324edaa9f7de0e11da"
+          }
+        ]
+      }
+    ]
+  },
+  "airdropEvents": {
+    "airdropEvents": []
+  },
+  "depositEvents": {
+    "depositEvents": []
+  },
+  "tradeEvents": {
+    "tradeEvents": []
+  }
+}

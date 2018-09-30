@@ -1,0 +1,112 @@
+{
+  "exportDate": "2018-09-28T14:01:07.898Z",
+  "taxYears": {
+    "taxYears": []
+  },
+  "assets": {
+    "assets": [
+      {
+        "id": "BTC",
+        "label": "BTC",
+        "symbol": "BTC",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      }
+    ],
+    "assetLedgerEntries": []
+  },
+  "cgt": {
+    "assetLedgerEntryWorkingsById": {}
+  },
+  "locations": {
+    "locations": [
+      {
+        "label": "Pineapple Fund 3P3QsM",
+        "asset": "BTC",
+        "address": "3P3QsMVK89JBNqZQv5zMAKG8FK3kJM4rjt",
+        "url": "",
+        "comments": "",
+        "group": 1,
+        "id": 1
+      },
+      {
+        "label": "The Water Project 14xEPW",
+        "asset": "BTC",
+        "address": "14xEPWuHC3ybPMfv8iTZZ29UCLTUSoJ8HL",
+        "url": "",
+        "comments": "",
+        "group": 2,
+        "id": 2
+      },
+      {
+        "id": 3,
+        "group": 3,
+        "label": "BitGive 19VRuf",
+        "asset": "BTC",
+        "address": "19VRufYycv7bYmFcmHbZfJqWwdrbecQbfE"
+      },
+      {
+        "id": 4,
+        "group": 1,
+        "label": "Pineapple Fund 1GrqTL",
+        "asset": "BTC",
+        "address": "1GrqTLjd5afMuLiSmFHEEnwcwnXDdvi7et"
+      },
+      {
+        "id": 5,
+        "group": 3,
+        "label": "BitGive 14k4NM",
+        "asset": "BTC",
+        "address": "14k4NMyqHzVhrmqwgbb1oyeKs7RoFsRyr7"
+      }
+    ],
+    "locationGroups": [
+      {
+        "label": "Pineapple Fund",
+        "locations": [
+          1,
+          4
+        ],
+        "url": "",
+        "comments": "",
+        "id": 1
+      },
+      {
+        "label": "The Water Project",
+        "locations": [
+          2
+        ],
+        "url": "",
+        "comments": "",
+        "id": 2
+      },
+      {
+        "id": 3,
+        "label": "BitGive",
+        "locations": [
+          3,
+          5
+        ]
+      }
+    ],
+    "locationLedgerEntries": []
+  },
+  "miningPools": {
+    "miningPools": []
+  },
+  "miningEvents": {
+    "miningEvents": []
+  },
+  "transferEvents": {
+    "transferEvents": []
+  },
+  "airdropEvents": {
+    "airdropEvents": []
+  },
+  "depositEvents": {
+    "depositEvents": []
+  },
+  "tradeEvents": {
+    "tradeEvents": []
+  }
+}

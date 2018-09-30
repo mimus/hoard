@@ -1,0 +1,304 @@
+{
+  "exportDate": "2018-09-28T13:39:56.016Z",
+  "taxYears": {
+    "taxYears": [
+      {
+        "id": 1,
+        "label": "2017/18",
+        "startDate": "2017-04-05T23:00:00.000Z",
+        "endDate": "2018-04-05T22:59:00.000Z"
+      },
+      {
+        "id": 2,
+        "label": "2018/19",
+        "startDate": "2018-04-05T23:00:00.000Z",
+        "endDate": "2019-04-05T22:59:00.000Z"
+      }
+    ]
+  },
+  "assets": {
+    "assets": [
+      {
+        "id": "GBP",
+        "label": "GBP",
+        "symbol": "GBP",
+        "fiat": true,
+        "caseSensitiveAddress": false
+      },
+      {
+        "id": "USD",
+        "label": "USD",
+        "symbol": "USD",
+        "fiat": false,
+        "caseSensitiveAddress": false
+      },
+      {
+        "id": "EUR",
+        "label": "EUR",
+        "symbol": "EUR",
+        "fiat": false,
+        "caseSensitiveAddress": false
+      },
+      {
+        "id": "USDT",
+        "label": "Tether",
+        "symbol": "USDT",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "BTC",
+        "label": "Bitcoin",
+        "symbol": "BTC",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "BCH",
+        "label": "Bitcoin Cash",
+        "symbol": "BCH",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "BTG",
+        "label": "Bitcoin Gold",
+        "symbol": "BTG",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "ETH",
+        "label": "Ethereum",
+        "symbol": "ETH",
+        "fiat": false,
+        "caseSensitiveAddress": false
+      },
+      {
+        "id": "LTC",
+        "label": "Litecoin",
+        "symbol": "LTC",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "XRP",
+        "label": "Ripple",
+        "symbol": "XRP",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "XMR",
+        "label": "Monero",
+        "symbol": "XMR",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "ZEC",
+        "label": "Zcash",
+        "symbol": "ZEC",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "VTC",
+        "label": "Vertcoin",
+        "symbol": "VTC",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "XVG",
+        "label": "Verge",
+        "symbol": "XVG",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "NEO",
+        "label": "NEO",
+        "symbol": "NEO",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "GAS",
+        "label": "GAS",
+        "symbol": "GAS",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "OMG",
+        "label": "OmiseGo",
+        "symbol": "OMG",
+        "fiat": false,
+        "caseSensitiveAddress": false
+      },
+      {
+        "id": "IOTA",
+        "label": "IOTA",
+        "symbol": "IOTA",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "NANO",
+        "label": "NANO",
+        "symbol": "NANO",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "LSK",
+        "label": "Lisk",
+        "symbol": "LSK",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      },
+      {
+        "id": "BAT",
+        "label": "BAT",
+        "symbol": "BAT",
+        "fiat": false,
+        "caseSensitiveAddress": true
+      }
+    ],
+    "assetLedgerEntries": []
+  },
+  "cgt": {
+    "assetLedgerEntryWorkingsById": {}
+  },
+  "locations": {
+    "locations": [
+      {
+        "label": "Internet Archive donations 1Archi",
+        "asset": "BTC",
+        "address": "1Archive1n2C579dMsAu3iC6tWzuQJz8dN",
+        "url": "",
+        "comments": "",
+        "group": 1,
+        "id": 1
+      },
+      {
+        "label": "Internet Archive donations 0xFA8E",
+        "asset": "ETH",
+        "address": "0xFA8E3920daF271daB92Be9B87d9998DDd94FEF08",
+        "url": "",
+        "comments": "",
+        "group": 1,
+        "id": 2
+      },
+      {
+        "label": "Internet Archive donations t1ZmpK",
+        "asset": "ZEC",
+        "address": "t1ZmpK4QFcvyQZ3ghTgSboBW8b4HgiZHQF9",
+        "url": "",
+        "comments": "",
+        "group": 1,
+        "id": 3
+      },
+      {
+        "label": "Vertcoin donations VpBsRn",
+        "asset": "VTC",
+        "address": "VpBsRnN749jYHE9hT8dZreznHfmFMdE1yG",
+        "url": "",
+        "comments": "",
+        "group": 2,
+        "id": 4
+      },
+      {
+        "label": "Verge donations DHe3mT",
+        "asset": "XVG",
+        "address": "DHe3mTNQztY1wWokdtMprdeCKNoMxyThoV",
+        "url": "",
+        "comments": "",
+        "group": 3,
+        "id": 5
+      }
+    ],
+    "locationGroups": [
+      {
+        "label": "Internet Archive donations",
+        "locations": [
+          1,
+          2,
+          3
+        ],
+        "url": "",
+        "comments": "",
+        "id": 1
+      },
+      {
+        "label": "Vertcoin donations",
+        "locations": [
+          4
+        ],
+        "url": "",
+        "comments": "",
+        "id": 2
+      },
+      {
+        "label": "Verge donations",
+        "locations": [
+          5
+        ],
+        "url": "",
+        "comments": "",
+        "id": 3
+      }
+    ],
+    "locationLedgerEntries": []
+  },
+  "miningPools": {
+    "miningPools": [
+      {
+        "id": 5,
+        "label": "Coinotron",
+        "asset": "VTC",
+        "comments": ""
+      },
+      {
+        "id": 1,
+        "label": "Nanopool",
+        "asset": "ETH",
+        "comments": ""
+      },
+      {
+        "id": 2,
+        "label": "Nanopool",
+        "asset": "ZEC",
+        "comments": ""
+      },
+      {
+        "id": 3,
+        "label": "Nicehash",
+        "asset": "BTC",
+        "comments": ""
+      },
+      {
+        "id": 4,
+        "label": "Yiimp.eu",
+        "asset": "XVG",
+        "comments": ""
+      }
+    ]
+  },
+  "miningEvents": {
+    "miningEvents": []
+  },
+  "transferEvents": {
+    "transferEvents": []
+  },
+  "airdropEvents": {
+    "airdropEvents": []
+  },
+  "depositEvents": {
+    "depositEvents": []
+  },
+  "tradeEvents": {
+    "tradeEvents": []
+  }
+}
