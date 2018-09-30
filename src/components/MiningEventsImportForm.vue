@@ -29,7 +29,10 @@
       {{ pricesFetchStatus.error }}
     </v-alert>
 
-    <v-expansion-panel :expand="true">
+    <v-expansion-panel
+      :expand="true"
+      :value="expandedTransactions"
+    >
       <v-expansion-panel-content
         v-for="transaction in transactions"
         :key="transaction.id"
@@ -257,6 +260,9 @@ export default {
     },
     address () {
       return this.location && this.location.address
+    },
+    expandedTransactions () {
+      return this.transactions.map(t => t.selected)
     },
     pricesFetchStatus () {
       var transactionWithError = this.transactions.find(t => t.fetchingPriceError)

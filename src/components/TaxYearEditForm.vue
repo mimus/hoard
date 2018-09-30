@@ -6,7 +6,6 @@
       placeholder="e.g. 2010/11"
       persistent-hint
       :rules="[required]"
-      required
     ></v-text-field>
 
     <v-menu
@@ -19,8 +18,8 @@
         slot="activator"
         v-model="model.startDate"
         label="Start Date"
-        readonly :rules="[required]"
-        required
+        readonly
+        :rules="[required]"
       ></v-text-field>
       <v-date-picker
         v-model="model.startDate"
@@ -38,8 +37,8 @@
         slot="activator"
         v-model="model.endDate"
         label="End Date"
-        readonly :rules="[required]"
-        required
+        readonly
+        :rules="[required]"
       ></v-text-field>
       <v-date-picker
         v-model="model.endDate"
@@ -65,7 +64,7 @@ export default {
     })
   ],
   data: () => ({
-    required: (value) => !!value
+    required: (value) => !!value || 'Required'
   }),
   watch: {
     'model.label' (value) {

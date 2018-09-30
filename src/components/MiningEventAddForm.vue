@@ -53,7 +53,6 @@
         hint="Market rate at time of payout"
         persistent-hint
         :rules="[required]"
-        required
         class="mr-5"
       ></v-text-field>
     </v-layout>
@@ -114,7 +113,6 @@
                       hint="Actual amount received, after any fees"
                       persistent-hint
                       :rules="[required]"
-                      required
                       class="input-amount mx-4"
                     ></v-text-field>
                   </v-layout>
@@ -146,7 +144,6 @@
                     hint="Market value of the acquired asset"
                     persistent-hint
                     :rules="[required]"
-                    required
                   ></v-text-field>
                 </v-flex>
               </v-layout>
@@ -160,16 +157,15 @@
       v-model="model.label"
       label="Label"
       :rules="[required]"
-      required
     ></v-text-field>
 
-    <v-text-field
+    <v-textarea
       v-model="model.comments"
       color="green lighten-1"
       class="input-comment"
       label="Comments"
-      multi-line rows="2"
-    ></v-text-field>
+      rows="2"
+    ></v-textarea>
 
   </base-form>
 </template>

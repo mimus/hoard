@@ -23,7 +23,11 @@
         </v-btn>
       </div>
     </v-layout>
-    <v-expansion-panel expand focusable>
+    <v-expansion-panel
+      expand
+      focusable
+      :value="expandedAssets"
+    >
       <v-expansion-panel-content
         v-for="(asset, assetId) in assets"
         :key="assetId"
@@ -93,6 +97,9 @@ export default {
         }
       })
       return assets
+    },
+    expandedAssets () {
+      return Object.keys(this.assets).map(k => true)
     }
   }
 }

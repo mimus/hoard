@@ -4,7 +4,6 @@
       v-model="model.label"
       label="Label"
       :rules="[required]"
-      required
     ></v-text-field>
 
     <asset-select
@@ -13,11 +12,10 @@
       :required="true"
     />
 
-    <v-text-field
+    <v-textarea
       v-model="model.comments"
       label="Comments"
-      multi-line
-    ></v-text-field>
+    ></v-textarea>
   </base-form>
 </template>
 
@@ -35,7 +33,7 @@ export default {
     })
   ],
   data: () => ({
-    required: (value) => !!value
+    required: (value) => !!value || 'Required'
   }),
   methods: {
     submit () {

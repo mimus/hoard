@@ -7,9 +7,10 @@
             {{ location && location.label }}
           </b>
           <external-location-link :id="location.id" />
-          <router-link :to="{name: 'Asset', params: {id: location.asset}}">
-            ({{ location.asset}})
-          </router-link>
+          <router-link :to="{name: 'Asset', params: {id: location.asset}}"
+          >({{
+            location.asset
+          }})</router-link>
         </v-card-text>
       </v-flex>
       <div>

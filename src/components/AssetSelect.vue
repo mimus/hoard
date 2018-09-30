@@ -4,7 +4,6 @@
     :items="items"
     :value="value"
     :label="label"
-    :required="required"
     :clearable="clearable"
     single-line
     @input="onChange"

@@ -95,7 +95,6 @@
           v-model="model.amount"
           label="Amount"
           :rules="[required]"
-          required
         ></v-text-field>
       </v-flex>
       <v-flex xs4 class="pr-5">
@@ -103,7 +102,6 @@
           v-model="model.assetValueGBP"
           label="Total GBP Cost/Value (0 if given for free)"
           :rules="[required]"
-          required
         ></v-text-field>
       </v-flex>
     </v-layout>
@@ -112,14 +110,13 @@
       v-model="model.label"
       label="Label"
       :rules="[required]"
-      required
     ></v-text-field>
 
-    <v-text-field
+    <v-textarea
       v-model="model.comments"
       label="Comments"
-      multi-line rows="2"
-    ></v-text-field>
+      rows="2"
+    ></v-textarea>
   </base-form>
 </template>
 

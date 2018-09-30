@@ -4,7 +4,6 @@
       v-model="model.label"
       label="Label"
       :rules="[required]"
-      required
     ></v-text-field>
   </base-form>
 </template>
@@ -21,7 +20,7 @@ export default {
     })
   ],
   data: () => ({
-    required: (value) => !!value
+    required: (value) => !!value || 'Required'
   }),
   methods: {
     submit () {

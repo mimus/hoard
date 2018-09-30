@@ -3,7 +3,6 @@
     :value="selectedValue"
     :items="items"
     :label="label"
-    :required="required"
     single-line
     @input="onChange"
   ></v-select>

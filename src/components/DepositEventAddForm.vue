@@ -16,7 +16,6 @@
         v-model="model.amount"
         label="Amount"
         :rules="[required]"
-        required
       ></v-text-field>
     </v-layout>
 
@@ -32,14 +31,12 @@
       v-model="model.label"
       label="Label"
       :rules="[required]"
-      required
     ></v-text-field>
 
-    <v-text-field
+    <v-textarea
       v-model="model.comments"
       label="Comments"
-      multi-line
-    ></v-text-field>
+    ></v-textarea>
 
   </base-form>
 </template>

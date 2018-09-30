@@ -46,7 +46,6 @@
       v-model="model.amount"
       :label="`Amount Transferred ${assetSymbol}`"
       :rules="[required]"
-      required
     ></v-text-field>
 
     <v-card class="mb-4">
@@ -99,8 +98,8 @@
               v-model="item.amount"
               label="Amount"
               :rules="[required]"
-              required
               solo
+              hide-details
               class="input-amount mx-4"
               :append-icon="fromBalances[index] && fromBalances[index].lt(item.amount) ? 'warning': ''"
             ></v-text-field>
@@ -166,7 +165,6 @@
               v-model="model.fee.amount"
               label="Fee Amount"
               :rules="[required]"
-              required
               class="mr-5"
             ></v-text-field>
           </v-flex>
@@ -200,7 +198,6 @@
               v-model="model.fee.valueGBP"
               label="Fee Cost in GBP"
               :rules="[required]"
-              required
             ></v-text-field>
           </v-flex>
         </v-layout>
@@ -281,8 +278,8 @@
               v-model="item.amount"
               label="Amount"
               :rules="[required]"
-              required
               solo
+              hide-details
               class="input-amount mx-4"
             ></v-text-field>
 
@@ -302,14 +299,13 @@
       v-model="model.label"
       label="Label"
       :rules="[required]"
-      required
     ></v-text-field>
 
-    <v-text-field
+    <v-textarea
       v-model="model.comments"
       label="Comments"
-      multi-line rows="2"
-    ></v-text-field>
+      rows="2"
+    ></v-textarea>
 
   </base-form>
 </template>

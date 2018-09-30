@@ -72,7 +72,6 @@
                       hint="Full amount, before any fees deducted"
                       persistent-hint
                       :rules="[required]"
-                      required
                       class="input-amount mx-4"
                       >
                     </v-text-field>
@@ -105,7 +104,6 @@
                         hint="Market rate"
                         persistent-hint
                         :rules="[required]"
-                        required
                         class="mr-5"
                       ></v-text-field>
                     </v-flex>
@@ -128,7 +126,6 @@
                     hint="Market value of the acquired asset"
                     persistent-hint
                     :rules="[required]"
-                    required
                   ></v-text-field>
                 </v-flex>
               </v-layout>
@@ -229,7 +226,6 @@
                       hint="Amount traded, not including any fees"
                       persistent-hint
                       :rules="[required]"
-                      required
                       :append-icon="disposedBalances[index] && disposedBalances[index].lt(item.amount) ? 'warning': ''"
                       class="input-amount mx-4"
                     ></v-text-field>
@@ -255,7 +251,6 @@
                     hint="Use value of the asset(s) acquired in the trade, before fees"
                     persistent-hint
                     :rules="[required]"
-                    required
                   ></v-text-field>
                 </v-flex>
               </v-layout>
@@ -318,7 +313,6 @@
                 v-model="item.amount"
                 label="Fee Amount"
                 :rules="[required]"
-                required
               ></v-text-field>
             </v-flex>
             <v-flex>
@@ -338,16 +332,14 @@
       v-model="model.label"
       label="Label"
       :rules="[required]"
-      required
     ></v-text-field>
 
-    <v-text-field
+    <v-textarea
       v-model="model.comments"
       label="Comments"
-      multi-line
       color="green lighten-1"
       class="input-comment"
-    ></v-text-field>
+    ></v-textarea>
 
   </base-form>
 </template>

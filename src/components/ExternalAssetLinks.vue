@@ -1,6 +1,6 @@
 <template>
   <div v-if="linksProps.length">
-    <ul>
+    <ul class="external-asset-links">
       <li
         v-for="link in linksProps"
         :key="`${link.asset}_${link.type}_${link.item}`"
@@ -40,4 +40,7 @@ export default Vue.component('external-asset-links', {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .external-asset-links {
+    padding: 0;
+  }
 </style>

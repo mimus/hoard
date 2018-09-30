@@ -5,21 +5,18 @@
       v-model="model.id"
       label="ID"
       :rules="[required]"
-      required
     ></v-text-field>
 
     <v-text-field
       v-model="model.label"
       label="Label"
       :rules="[required]"
-      required
     ></v-text-field>
 
     <v-text-field
       v-model="model.symbol"
       label="Symbol"
       :rules="[required]"
-      required
     ></v-text-field>
 
     <v-checkbox
@@ -52,7 +49,7 @@ export default {
   ],
   data () {
     return {
-      required: (value) => !!value
+      required: (value) => !!value || 'Required'
     }
   },
   methods: {
