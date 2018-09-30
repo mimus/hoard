@@ -26,7 +26,7 @@ var storeModule = {
   },
 
   actions: {
-    addDepositEvent ({commit, getters}, model) {
+    addDepositEvent ({ commit, getters }, model) {
       var id = model.id
       if (id && getters.depositEvent(id)) {
         console.error('Deposit event already exists with this id', id)
@@ -44,7 +44,7 @@ var storeModule = {
       commit('addDepositEvent', model)
     },
 
-    loadDepositEvents ({commit}, events) {
+    loadDepositEvents ({ commit }, events) {
       events = [].concat(events)
       events = loadDate(events)
       events.forEach(x => {
@@ -54,11 +54,11 @@ var storeModule = {
       commit('loadDepositEvents', events)
     },
 
-    importDepositEvents ({dispatch}, data) {
+    importDepositEvents ({ dispatch }, data) {
       dispatch('loadDepositEvents', data.depositEvents)
     },
 
-    addDeposit ({state, commit, getters, dispatch}, {asset, amount, date, location, label, comments}) {
+    addDeposit ({ state, commit, getters, dispatch }, { asset, amount, date, location, label, comments }) {
       return new Promise((resolve, reject) => {
         if (!asset || !amount || !(date instanceof Date) || !location || !label) {
           return reject(new Error('Not enough info provided'))

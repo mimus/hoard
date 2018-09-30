@@ -415,7 +415,7 @@ export default {
       }
       return balances
     },
-    addLocation (type, {asset, location}) {
+    addLocation (type, { asset, location }) {
       var valueGBP = '0'
       // if this is the first sold asset, auto-fill the valueGBP with the total acquired value
       if (type === 'disposed' && !this.model.disposed.length && this.model.acquired.length) {

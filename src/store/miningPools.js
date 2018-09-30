@@ -29,7 +29,7 @@ var storeModule = {
   },
 
   actions: {
-    addMiningPool ({commit, getters}, pool) {
+    addMiningPool ({ commit, getters }, pool) {
       pool = {
         id: getters.nextMiningPoolId(),
         label: pool.label,
@@ -38,15 +38,15 @@ var storeModule = {
       }
       commit('addMiningPool', pool)
     },
-    updateMiningPool ({commit}, pool) {
+    updateMiningPool ({ commit }, pool) {
       commit('updateMiningPool', pool)
     },
-    loadMiningPools ({commit}, pools) {
+    loadMiningPools ({ commit }, pools) {
       pools = [].concat(pools)
       pools.sort((a, b) => a.label.toLowerCase().localeCompare(b.label.toLowerCase()))
       commit('loadMiningPools', pools)
     },
-    importMiningPools ({dispatch}, data) {
+    importMiningPools ({ dispatch }, data) {
       dispatch('loadMiningPools', data.miningPools)
     }
   },

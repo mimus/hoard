@@ -29,7 +29,7 @@ var storeModule = {
   },
 
   actions: {
-    addTaxYear ({commit, getters}, taxYear) {
+    addTaxYear ({ commit, getters }, taxYear) {
       var id = getters.nextTaxYearId()
       taxYear = Object.assign(
         {},
@@ -42,7 +42,7 @@ var storeModule = {
       )
       commit('addTaxYear', taxYear)
     },
-    updateTaxYear ({commit}, taxYear) {
+    updateTaxYear ({ commit }, taxYear) {
       taxYear = Object.assign(
         {},
         taxYear,
@@ -53,7 +53,7 @@ var storeModule = {
       )
       commit('updateTaxYear', taxYear)
     },
-    loadTaxYears ({commit}, taxYears) {
+    loadTaxYears ({ commit }, taxYears) {
       taxYears = taxYears.map(x => {
         return Object.assign(
           x,
@@ -65,7 +65,7 @@ var storeModule = {
       })
       commit('loadTaxYears', taxYears)
     },
-    importTaxYears ({dispatch}, data) {
+    importTaxYears ({ dispatch }, data) {
       dispatch('loadTaxYears', data.taxYears)
     }
   },

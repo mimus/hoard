@@ -52,7 +52,7 @@ var storeModule = {
   },
 
   actions: {
-    addMiningEvent ({commit, getters}, model) {
+    addMiningEvent ({ commit, getters }, model) {
       var id = model.id
       if (id && getters.miningEvent(id)) {
         console.error('Mining event already exists with this id', id)
@@ -61,7 +61,7 @@ var storeModule = {
       commit('addMiningEvent', model)
     },
 
-    loadMiningEvents ({state, getters, commit}, events) {
+    loadMiningEvents ({ state, getters, commit }, events) {
       events.forEach(x => {
         var pool = getters.miningPool(x.pool)
         x.amount = utils.newBigNumberForAsset(x.amount, pool && pool.asset)
@@ -71,11 +71,11 @@ var storeModule = {
       commit('loadMiningEvents', events)
     },
 
-    importMiningEvents ({dispatch}, data) {
+    importMiningEvents ({ dispatch }, data) {
       dispatch('loadMiningEvents', data.miningEvents)
     },
 
-    addNewMiningEvent ({state, getters, commit, dispatch}, {pool, date, label, comments, locations, externalAssetLinks}) {
+    addNewMiningEvent ({ state, getters, commit, dispatch }, { pool, date, label, comments, locations, externalAssetLinks }) {
       return new Promise((resolve, reject) => {
         if (!pool || !label || !locations || !(date instanceof Date)) {
           return reject(new Error('Not enough info provided'))
@@ -85,7 +85,7 @@ var storeModule = {
           return reject(new Error('Pool not found'))
         }
         var asset = getters.miningPool(pool).asset
-        locations = locations.map(x => Object.assign({}, {location: x.id, amount: x.amount, valueGBP: x.valueGBP}))
+        locations = locations.map(x => Object.assign({}, { location: x.id, amount: x.amount, valueGBP: x.valueGBP }))
         if (!locations.every(x => getters.location(x.location))) {
           return reject(new Error('Location not found'))
         }
@@ -150,7 +150,7 @@ var storeModule = {
         resolve()
       })
     },
-    addNewMiningEvents ({state, dispatch}, miningEvents) {
+    addNewMiningEvents ({ state, dispatch }, miningEvents) {
       var promises = miningEvents.map(miningEvent => dispatch('addNewMiningEvent', miningEvent))
       return Promise.all(promises)
     }
@@ -169,7 +169,7 @@ var storeModule = {
     miningPoolTotal: (state, getters) => (poolId) => {
       var events = getters.miningEventsForPool(poolId) || []
       var pool = getters.miningPool(poolId)
-      return events.reduce((total, {amount}) => total.plus(amount), utils.newBigNumberForAsset(0, pool && pool.asset))
+      return events.reduce((total, { amount }) => total.plus(amount), utils.newBigNumberForAsset(0, pool && pool.asset))
     },
     miningPoolsSummary: (state, getters) => {
       var pools = getters.miningPools.map(p => {

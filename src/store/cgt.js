@@ -29,7 +29,7 @@ var storeModule = {
         { immediate: true }
       )
     },
-    importCgt ({commit}, data) {
+    importCgt ({ commit }, data) {
       commit('setNewAssetsLedgerWorkings', data.assetLedgerEntryWorkingsById)
     }
   },

@@ -70,7 +70,7 @@ export default Vue.component('external-transactions-fetcher', {
       this.$emit('error', false)
 
       this.importer.fetchTransactions(address, this.fetchState).then(
-        ({transactions, fetchedAll, hasMore, fetchState}) => {
+        ({ transactions, fetchedAll, hasMore, fetchState }) => {
           if (this.address !== address) { return }
           this.fetchedAll = fetchedAll
           this.hasMore = hasMore

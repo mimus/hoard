@@ -26,11 +26,11 @@ var storeModule = {
   },
 
   actions: {
-    addAirdropEvent ({commit}, model) {
+    addAirdropEvent ({ commit }, model) {
       commit('addAirdropEvent', model)
     },
 
-    loadAirdropEvents ({commit}, events) {
+    loadAirdropEvents ({ commit }, events) {
       events = [].concat(events)
       events = loadDate(events)
       events.forEach(x => {
@@ -41,11 +41,11 @@ var storeModule = {
       commit('loadAirdropEvents', events)
     },
 
-    importAirdropEvents ({dispatch}, data) {
+    importAirdropEvents ({ dispatch }, data) {
       dispatch('loadAirdropEvents', data.airdropEvents)
     },
 
-    addAirdrop ({state, commit, getters, dispatch}, {asset, amount, assetValueGBP, date, location, label, comments, originalAsset, originalLocation, externalAssetLinks}) {
+    addAirdrop ({ state, commit, getters, dispatch }, { asset, amount, assetValueGBP, date, location, label, comments, originalAsset, originalLocation, externalAssetLinks }) {
       return new Promise((resolve, reject) => {
         if (!asset || !amount || !(date instanceof Date) || !location || !label) {
           return reject(new Error('Not enough info provided'))

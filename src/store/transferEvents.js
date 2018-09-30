@@ -26,7 +26,7 @@ var storeModule = {
   },
 
   actions: {
-    addTransferEvent ({getters, commit}, model) {
+    addTransferEvent ({ getters, commit }, model) {
       var id = model.id
       if (id && getters.transferEvent(id)) {
         console.error('Transfer event already exists with this id', id)
@@ -48,7 +48,7 @@ var storeModule = {
       commit('addTransferEvent', model)
     },
 
-    loadTransferEvents ({commit}, events) {
+    loadTransferEvents ({ commit }, events) {
       events = [].concat(events)
       events = loadDate(events)
       events.forEach(x => {
@@ -60,11 +60,11 @@ var storeModule = {
       commit('loadTransferEvents', events)
     },
 
-    importTransferEvents ({dispatch}, data) {
+    importTransferEvents ({ dispatch }, data) {
       dispatch('loadTransferEvents', data.transferEvents)
     },
 
-    addTransfer ({state, getters, commit, dispatch}, {asset, amount, date, label, comments, from, to, fee, externalAssetLinks}) {
+    addTransfer ({ state, getters, commit, dispatch }, { asset, amount, date, label, comments, from, to, fee, externalAssetLinks }) {
       return new Promise((resolve, reject) => {
         if (!asset || !amount || !(date instanceof Date) || !label || !from || !to || !fee) {
           return reject(new Error('Not enough info provided'))
@@ -78,8 +78,8 @@ var storeModule = {
           return reject(new Error('Amount is not a number'))
         }
 
-        from = from.map(x => Object.assign({}, {location: x.id, amount: utils.newBigNumberForAsset(x.amount, asset).negated(), type: 'from'}))
-        to = to.map(x => Object.assign({}, {location: x.id, amount: utils.newBigNumberForAsset(x.amount, asset), type: 'to'}))
+        from = from.map(x => Object.assign({}, { location: x.id, amount: utils.newBigNumberForAsset(x.amount, asset).negated(), type: 'from' }))
+        to = to.map(x => Object.assign({}, { location: x.id, amount: utils.newBigNumberForAsset(x.amount, asset), type: 'to' }))
         var locations = from.concat(to)
         if (!locations.every(x => getters.location(x.location))) {
           return reject(new Error('From/To Location not found'))

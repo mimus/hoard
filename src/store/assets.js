@@ -59,7 +59,7 @@ var storeModule = {
   },
 
   actions: {
-    addAsset ({commit, getters}, model) {
+    addAsset ({ commit, getters }, model) {
       if (!model.id) {
         console.error('Must provide a new asset ID')
         return
@@ -78,15 +78,15 @@ var storeModule = {
       commit('addAsset', model)
     },
 
-    updateAsset ({commit}, model) {
+    updateAsset ({ commit }, model) {
       commit('updateAsset', model)
     },
 
-    loadAssets ({commit}, assets) {
+    loadAssets ({ commit }, assets) {
       commit('loadAssets', assets)
     },
 
-    addAssetLedgerEntry ({commit, getters}, model) {
+    addAssetLedgerEntry ({ commit, getters }, model) {
       var id = model.id
       if (id && getters.assetLedgerEntry(id)) {
         console.error('Asset ledger entry already exists with this id', id)
@@ -109,7 +109,7 @@ var storeModule = {
       commit('addAssetLedgerEntry', model)
     },
 
-    loadAssetLedgerEntries ({commit}, ledgerEntries) {
+    loadAssetLedgerEntries ({ commit }, ledgerEntries) {
       ledgerEntries = [].concat(ledgerEntries)
       ledgerEntries = loadDate(ledgerEntries)
       ledgerEntries.forEach(x => {
@@ -119,7 +119,7 @@ var storeModule = {
       ledgerEntries.sort(utils.dateComparatorEarliestFirst)
       commit('loadAssetLedgerEntries', ledgerEntries)
     },
-    importAssets ({dispatch}, data) {
+    importAssets ({ dispatch }, data) {
       dispatch('loadAssets', data.assets)
       dispatch('loadAssetLedgerEntries', data.assetLedgerEntries)
     }

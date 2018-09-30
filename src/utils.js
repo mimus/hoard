@@ -1,10 +1,10 @@
 import moment from 'moment'
-import {BigNumber} from 'bignumber.js'
+import { BigNumber } from 'bignumber.js'
 // Don't use exponential notation
 BigNumber.config({ EXPONENTIAL_AT: [-30, 30] })
 
 var pick = function (o, ...props) {
-  return Object.assign({}, ...props.map(prop => ({[prop]: o[prop]})))
+  return Object.assign({}, ...props.map(prop => ({ [prop]: o[prop] })))
 }
 
 var ASSET_DECIMALS = {
@@ -104,7 +104,7 @@ var formatFiat = function (value) {
 
 var textFile = null
 var makeJsonFileUrl = function (obj) {
-  var data = new Blob([JSON.stringify(obj, null, 2)], {type: 'text/json'})
+  var data = new Blob([JSON.stringify(obj, null, 2)], { type: 'text/json' })
 
   // If we are replacing a previously generated file we need to
   // manually revoke the object URL to avoid memory leaks.

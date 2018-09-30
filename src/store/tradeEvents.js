@@ -26,7 +26,7 @@ var storeModule = {
   },
 
   actions: {
-    addTradeEvent ({commit, getters}, model) {
+    addTradeEvent ({ commit, getters }, model) {
       var id = model.id
       if (id && getters.tradeEvent(id)) {
         console.error('Trade event already exists with this id', id)
@@ -44,7 +44,7 @@ var storeModule = {
       commit('addTradeEvent', model)
     },
 
-    loadTradeEvents ({commit}, events) {
+    loadTradeEvents ({ commit }, events) {
       events = [].concat(events)
       events = loadDate(events)
       events.forEach(x => {
@@ -56,11 +56,11 @@ var storeModule = {
       commit('loadTradeEvents', events)
     },
 
-    importTradeEvents ({dispatch}, data) {
+    importTradeEvents ({ dispatch }, data) {
       dispatch('loadTradeEvents', data.tradeEvents)
     },
 
-    addTrade ({state, getters, commit, dispatch}, {date, label, comments, disposed, acquired, fees}) {
+    addTrade ({ state, getters, commit, dispatch }, { date, label, comments, disposed, acquired, fees }) {
       return new Promise((resolve, reject) => {
         if (!(date instanceof Date) || !label || !disposed || !acquired || !fees) {
           return reject(new Error('Not enough info provided'))
@@ -148,9 +148,9 @@ var storeModule = {
           date,
           label,
           comments,
-          fees: fees.map(x => ({asset: x.asset, amount: x.amount.negated(), comments: x.comments, linked: x.linked})),
-          disposed: disposed.map(x => ({asset: x.asset, amount: x.amount.negated(), comments: x.comments, linked: x.linked})),
-          acquired: acquired.map(x => ({asset: x.asset, amount: x.amount, comments: x.comments, linked: x.linked}))
+          fees: fees.map(x => ({ asset: x.asset, amount: x.amount.negated(), comments: x.comments, linked: x.linked })),
+          disposed: disposed.map(x => ({ asset: x.asset, amount: x.amount.negated(), comments: x.comments, linked: x.linked })),
+          acquired: acquired.map(x => ({ asset: x.asset, amount: x.amount, comments: x.comments, linked: x.linked }))
         }
         dispatch('addTradeEvent', event)
 

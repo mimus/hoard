@@ -115,7 +115,7 @@ var storeModule = {
   },
 
   actions: {
-    addLocationGroup ({commit, getters}, group) {
+    addLocationGroup ({ commit, getters }, group) {
       group = {
         id: getters.nextLocationGroupId(),
         label: group.label,
@@ -123,10 +123,10 @@ var storeModule = {
       }
       commit('addLocationGroup', group)
     },
-    updateLocationGroup ({commit}, group) {
+    updateLocationGroup ({ commit }, group) {
       commit('updateLocationGroup', group)
     },
-    addLocation ({commit, getters}, model) {
+    addLocation ({ commit, getters }, model) {
       model = {
         id: getters.nextLocationId(),
         group: +(model.group),
@@ -136,10 +136,10 @@ var storeModule = {
       }
       commit('addLocation', model)
     },
-    updateLocation ({commit}, model) {
+    updateLocation ({ commit }, model) {
       commit('updateLocation', model)
     },
-    addLocationLedgerEntry ({commit, getters}, model) {
+    addLocationLedgerEntry ({ commit, getters }, model) {
       var id = model.id
       if (id && getters.locationLedgerEntry(id)) {
         console.error('Location ledger entry already exists with this id', id)
@@ -159,25 +159,25 @@ var storeModule = {
       }
       commit('addLocationLedgerEntry', model)
     },
-    loadLocations ({commit}, locations) {
+    loadLocations ({ commit }, locations) {
       locations = locations.map(location => {
         return Object.assign(
-          {label: '', asset: '', address: '', url: '', comments: '', group: ''},
+          { label: '', asset: '', address: '', url: '', comments: '', group: '' },
           location
         )
       })
       commit('loadLocations', locations)
     },
-    loadLocationGroups ({commit}, locationGroups) {
+    loadLocationGroups ({ commit }, locationGroups) {
       locationGroups = locationGroups.map(group => {
         return Object.assign(
-          {label: '', locations: [], url: '', comments: ''},
+          { label: '', locations: [], url: '', comments: '' },
           group
         )
       })
       commit('loadLocationGroups', locationGroups)
     },
-    loadLocationLedgerEntries ({commit, getters}, ledgerEntries) {
+    loadLocationLedgerEntries ({ commit, getters }, ledgerEntries) {
       ledgerEntries = [].concat(ledgerEntries)
       ledgerEntries = loadDate(ledgerEntries)
       ledgerEntries.forEach(x => {
@@ -187,7 +187,7 @@ var storeModule = {
       ledgerEntries.sort(utils.dateComparatorEarliestFirst)
       commit('loadLocationLedgerEntries', ledgerEntries)
     },
-    importLocations ({dispatch}, data) {
+    importLocations ({ dispatch }, data) {
       dispatch('loadLocationGroups', data.locationGroups)
       dispatch('loadLocations', data.locations)
       dispatch('loadLocationLedgerEntries', data.locationLedgerEntries)
@@ -218,7 +218,7 @@ var storeModule = {
       entries.sort(utils.dateComparatorEarliestFirst)
       return entries.map((entry, index) => {
         total = total.plus(entry.amount)
-        return Object.assign({}, entry, {total: total, sortIndex: index})
+        return Object.assign({}, entry, { total: total, sortIndex: index })
       })
     },
     ledgerBalanceForLocation: (state, getters) => (locationId, atDate) => {

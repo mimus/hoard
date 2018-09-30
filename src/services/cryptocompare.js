@@ -11,7 +11,7 @@ var throttleDayPriceFetch = throttledQueue(5, 1000)
 //   to: symbol to get price in e.g. GBP
 //   date: date object
 // It extracts the price from the response and returns it in the promise
-var fetchDayPrice = function ({from, to, date}) {
+var fetchDayPrice = function ({ from, to, date }) {
   return new Promise((resolve, reject) => {
     if (from === to) {
       resolve(1)

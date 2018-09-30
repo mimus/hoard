@@ -84,7 +84,7 @@ export default {
       var locsByAsset = this.$store.getters.locationsInGroupByAsset(this.id)
       Object.entries(locsByAsset).forEach(([asset, locs]) => {
         var locations = locs.map(loc => {
-          return Object.assign({}, loc, {total: this.$store.getters.ledgerBalanceForLocation(loc.id)})
+          return Object.assign({}, loc, { total: this.$store.getters.ledgerBalanceForLocation(loc.id) })
         })
         var total = locations.reduce((sum, loc) => sum.plus(loc.total), u.newBigNumberForAsset(0, asset))
         assets[asset] = {
