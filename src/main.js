@@ -13,6 +13,9 @@ import './store/initial_data'
 import utils from './utils'
 import services from './services'
 
+// Enable Vue DevTools browser extension even in production
+Vue.config.devtools = true
+
 // Set up instance properties available to all Vue instances
 Vue.prototype.$services = services
 
