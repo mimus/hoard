@@ -1,3 +1,6 @@
 module.exports = {
-  runtimeCompiler: true
+  runtimeCompiler: true,
+  baseUrl: process.env.NODE_ENV === 'production'
+    ? '/hoard_website/'
+    : '/'
 }
