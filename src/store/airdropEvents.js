@@ -19,6 +19,7 @@ var storeModule = {
 
     loadAirdropEvents (state, events) {
       state.airdropEvents = events
+      state.airdropEventsById = {}
       events.forEach(x => {
         Vue.set(state.airdropEventsById, x.id, x)
       })

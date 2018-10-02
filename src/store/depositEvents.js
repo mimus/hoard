@@ -19,6 +19,7 @@ var storeModule = {
 
     loadDepositEvents (state, events) {
       state.depositEvents = events
+      state.depositEventsById = {}
       events.forEach(x => {
         Vue.set(state.depositEventsById, x.id, x)
       })

@@ -22,6 +22,7 @@ var storeModule = {
 
     loadTaxYears (state, taxYears) {
       state.taxYears = taxYears
+      state.taxYearsById = {}
       taxYears.forEach(x => {
         Vue.set(state.taxYearsById, x.id, x)
       })

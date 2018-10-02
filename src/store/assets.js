@@ -31,6 +31,8 @@ var storeModule = {
 
     loadAssets (state, assets) {
       state.assets = assets
+      state.assetsById = {}
+      state.assetLedgerEntriesByAsset = {}
       assets.forEach(x => {
         Vue.set(state.assetsById, x.id, x)
         // initialize storage for ledger entries
@@ -48,6 +50,7 @@ var storeModule = {
 
     loadAssetLedgerEntries (state, ledgerEntries) {
       state.assetLedgerEntries = ledgerEntries
+      state.assetLedgerEntriesById = {}
       ledgerEntries.forEach(entry => {
         Vue.set(state.assetLedgerEntriesById, entry.id, entry)
         if (!state.assetLedgerEntriesByAsset[entry.asset]) {

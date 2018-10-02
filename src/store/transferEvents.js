@@ -19,6 +19,7 @@ var storeModule = {
 
     loadTransferEvents (state, events) {
       state.transferEvents = events
+      state.transferEventsById = {}
       events.forEach(x => {
         Vue.set(state.transferEventsById, x.id, x)
       })

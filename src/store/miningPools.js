@@ -22,6 +22,7 @@ var storeModule = {
 
     loadMiningPools (state, pools) {
       state.miningPools = pools
+      state.miningPoolsById = {}
       pools.forEach(x => {
         Vue.set(state.miningPoolsById, x.id, x)
       })

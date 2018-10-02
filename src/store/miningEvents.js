@@ -22,6 +22,7 @@ var storeModule = {
 
     loadMiningEvents (state, events) {
       state.miningEvents = events
+      state.miningEventsById = {}
       events.forEach(x => {
         Vue.set(state.miningEventsById, x.id, x)
         if (!x.pool) {
@@ -42,6 +43,7 @@ var storeModule = {
     },
 
     loadMiningPools (state, miningPools) {
+      state.miningEventsByPool = {}
       miningPools.forEach(x => {
         // initialize storage for mining events
         if (!state.miningEventsByPool[x.id]) {

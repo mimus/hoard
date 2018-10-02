@@ -61,6 +61,8 @@ var storeModule = {
 
     loadLocations (state, locations) {
       state.locations = locations
+      state.locationsById = {}
+      state.locationLedgerEntriesByLocation = {}
       locations.forEach(x => {
         Vue.set(state.locationsById, x.id, x)
         // also add to index of locations by asset
@@ -74,6 +76,7 @@ var storeModule = {
 
     loadLocationGroups (state, locationGroups) {
       state.locationGroups = locationGroups
+      state.locationGroupsById = {}
       state.locationGroups.forEach(x => {
         Vue.set(state.locationGroupsById, x.id, x)
       })
@@ -88,6 +91,7 @@ var storeModule = {
 
     loadLocationLedgerEntries (state, ledgerEntries) {
       state.locationLedgerEntries = ledgerEntries
+      state.locationLedgerEntriesById = {}
       ledgerEntries.forEach(entry => {
         Vue.set(state.locationLedgerEntriesById, entry.id, entry)
         if (!state.locationLedgerEntriesByLocation[entry.location]) {
@@ -105,6 +109,7 @@ var storeModule = {
     },
 
     loadAssets (state, assets) {
+      state.locationsByAsset = {}
       assets.forEach(x => {
         // initialize storage for locations
         if (!state.locationsByAsset[x.id]) {

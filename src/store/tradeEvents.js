@@ -19,6 +19,7 @@ var storeModule = {
 
     loadTradeEvents (state, events) {
       state.tradeEvents = events
+      state.tradeEventsById = {}
       events.forEach(x => {
         Vue.set(state.tradeEventsById, x.id, x)
       })
