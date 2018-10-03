@@ -1,5 +1,7 @@
 {
   "exportDate": "2018-09-28T12:03:04.309Z",
+  "title": "HMRC Example 1 (start)",
+  "description": "<a href='https://www.gov.uk/government/publications/shares-and-capital-gains-tax-hs284-self-assessment-helpsheet/hs-shares-and-capital-gains-tax-2015' target='_blank'>HMRC Guidance on share pooling</a> has an example for shares in 'Mesopotamia plc.'. <p>This is set up with the initial GBP funds for buying shares (but none yet bought), and assets and locations.</p>",
   "taxYears": {
     "taxYears": [
       {

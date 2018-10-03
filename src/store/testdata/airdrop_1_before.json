@@ -1,5 +1,7 @@
 {
   "exportDate": "2018-09-28T13:49:01.215Z",
+  "title": "Airdrop #1 (before)",
+  "description": "A location with an existing asset (BTC) balance exists, and the new BCH location has been added but it's empty. <p><ul><li>Test adding a new airdrop to this address: the BCH fork on 2017-08-01.</li> </ul></p>",
   "taxYears": {
     "taxYears": []
   },

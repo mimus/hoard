@@ -1,5 +1,7 @@
 {
   "exportDate": "2018-09-28T12:18:09.221Z",
+  "title": "HMRC Example 2 (buy, sell)",
+  "description": "<a href='https://www.gov.uk/government/publications/shares-and-capital-gains-tax-hs284-self-assessment-helpsheet/hs-shares-and-capital-gains-tax-2015' target='_blank'>HMRC Guidance on share pooling</a> has an example for shares in 'Mesopotamia plc.'. <p>This continues the example with the purchase of 9500 shares (at &pound;0.50/share), and a sale of 4000 shares in Aug 2013.</p> <p>The cost-basis of the sale is calculated fully against the pool.</p>",
   "taxYears": {
     "taxYears": [
       {

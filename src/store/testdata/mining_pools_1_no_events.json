@@ -1,5 +1,7 @@
 {
   "exportDate": "2018-09-28T13:39:56.016Z",
+  "title": "Mining Pools examples 1: before import",
+  "description": "Test importing mining events for an address, using some public donation addresses as examples. <p>These aren't really mining events, but we can still test the import code with any transactions that transfer coins to an address.</p> <p>Test batch imports by selecting one of the existing locations.</p> <p>Alternatively test importing single transactions: <ul><li>VTC: 7deb990ea7fb4217579b1fdfc36c5b11cd3e0433c9b1de23fcdaa58241c8b99c</li><li>ETH: 0x3b1c06429c5729dc7f3a61424420ee0c72b80d8da1804d0b013c51e447706111</li><li>ZEC: 96594b5c32d94973927ab20a3aa9975af43269a56bdc128886798af1002520a2</li><li>BTC: a22a16901fb30ca38c2ccb81e988d5f1592a3408dad3744f51b9c00d6c46ff64</li><li>XVG: fd59abcce3161eef5a16aa7a8990f01d58fa7c7febb37caba947d109e3017fe7</li></ul>",
   "taxYears": {
     "taxYears": [
       {

@@ -1,9 +1,25 @@
 <template>
   <v-app>
-    <v-navigation-drawer app fixed width="220" v-model="drawer">
-      <the-main-menu></the-main-menu>
+    <v-navigation-drawer
+      app
+      v-model="drawer"
+      fixed width="220"
+    >
+      <v-layout
+        column
+        fill-height
+        justify-space-between
+      >
+        <the-main-menu></the-main-menu>
+        <test-data-loader></test-data-loader>
+      </v-layout>
     </v-navigation-drawer>
-    <v-toolbar app fixed dense extended>
+    <v-toolbar
+      app
+      fixed
+      dense
+      extended
+    >
       <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
       <v-toolbar-title>Hoard</v-toolbar-title>
       <v-spacer />
@@ -23,6 +39,7 @@
 
 <script>
 import '@/components/TheMainMenu'
+import '@/components/TestDataLoader'
 import '@/components/AppPersistence'
 import '@/components/TheMainBreadcrumbs'
 import '@/components/AssociatedLink'

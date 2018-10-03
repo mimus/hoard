@@ -1,5 +1,7 @@
 {
-  "exportDate": "2018-09-28T14:01:07.898Z",
+  "exportDate": "2018-10-03T15:04:29.064Z",
+  "title": "Pineapple Fund Transfers 1: before",
+  "description": "Test entering transfers using some that were actually <a href='https://pineapplefund.org/#charities' target='_blank'>public donations to charity</a>. <p>Both the source addresses and target donation addresses have been entered as locations, so they will be recognised and balances tracked.</p> <p>Test with transactions: <ul><li>8ddfe1401f80b796f555d03d7efd0c202c3c33ab2f5f04c85961cd4751ab456c</li><li>da2b84e3f3c0c2adec21105e7f5630d6e74c4c3408ddd7324edaa9f7de0e11da</li><li>c5de1db38b994797d8fb9d35c05ea461b8e23f74f9c6b7fb62cdf6cef49dc631</li></ul>",
   "taxYears": {
     "taxYears": []
   },
@@ -13,10 +15,58 @@
         "caseSensitiveAddress": true
       }
     ],
-    "assetLedgerEntries": []
+    "assetLedgerEntries": [
+      {
+        "id": 1,
+        "date": "2015-01-01T12:00:00.000Z",
+        "type": "acquisition",
+        "asset": "BTC",
+        "assetValueGBP": "0",
+        "amount": "5000",
+        "label": "Initial funding",
+        "comments": "",
+        "linked": [
+          {
+            "type": "airdropEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "date": "2015-01-02T12:00:00.000Z",
+        "type": "acquisition",
+        "asset": "BTC",
+        "assetValueGBP": "0",
+        "amount": "200",
+        "label": "Initial funding",
+        "comments": "",
+        "linked": [
+          {
+            "type": "airdropEvent",
+            "id": 2
+          }
+        ]
+      }
+    ]
   },
   "cgt": {
-    "assetLedgerEntryWorkingsById": {}
+    "assetLedgerEntryWorkingsById": {
+      "1": {
+        "id": 1,
+        "totalPoolAmount": "5000",
+        "totalPoolCost": "0",
+        "poolAmount": "5000",
+        "poolValueGBP": "0"
+      },
+      "2": {
+        "id": 2,
+        "totalPoolAmount": "5200",
+        "totalPoolCost": "0",
+        "poolAmount": "200",
+        "poolValueGBP": "0"
+      }
+    }
   },
   "locations": {
     "locations": [
@@ -39,25 +89,31 @@
         "id": 2
       },
       {
-        "id": 3,
-        "group": 3,
         "label": "BitGive 19VRuf",
         "asset": "BTC",
-        "address": "19VRufYycv7bYmFcmHbZfJqWwdrbecQbfE"
+        "address": "19VRufYycv7bYmFcmHbZfJqWwdrbecQbfE",
+        "url": "",
+        "comments": "",
+        "group": 3,
+        "id": 3
       },
       {
-        "id": 4,
-        "group": 1,
         "label": "Pineapple Fund 1GrqTL",
         "asset": "BTC",
-        "address": "1GrqTLjd5afMuLiSmFHEEnwcwnXDdvi7et"
+        "address": "1GrqTLjd5afMuLiSmFHEEnwcwnXDdvi7et",
+        "url": "",
+        "comments": "",
+        "group": 1,
+        "id": 4
       },
       {
-        "id": 5,
-        "group": 3,
         "label": "BitGive 14k4NM",
         "asset": "BTC",
-        "address": "14k4NMyqHzVhrmqwgbb1oyeKs7RoFsRyr7"
+        "address": "14k4NMyqHzVhrmqwgbb1oyeKs7RoFsRyr7",
+        "url": "",
+        "comments": "",
+        "group": 3,
+        "id": 5
       }
     ],
     "locationGroups": [
@@ -81,15 +137,46 @@
         "id": 2
       },
       {
-        "id": 3,
         "label": "BitGive",
         "locations": [
           3,
           5
-        ]
+        ],
+        "url": "",
+        "comments": "",
+        "id": 3
       }
     ],
-    "locationLedgerEntries": []
+    "locationLedgerEntries": [
+      {
+        "id": 1,
+        "date": "2015-01-01T12:00:00.000Z",
+        "location": 1,
+        "amount": "5000",
+        "label": "Initial funding",
+        "comments": "",
+        "linked": [
+          {
+            "type": "airdropEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "date": "2015-01-02T12:00:00.000Z",
+        "location": 4,
+        "amount": "200",
+        "label": "Initial funding",
+        "comments": "",
+        "linked": [
+          {
+            "type": "airdropEvent",
+            "id": 2
+          }
+        ]
+      }
+    ]
   },
   "miningPools": {
     "miningPools": []
@@ -101,7 +188,50 @@
     "transferEvents": []
   },
   "airdropEvents": {
-    "airdropEvents": []
+    "airdropEvents": [
+      {
+        "id": 1,
+        "date": "2015-01-01T12:00:00.000Z",
+        "label": "Initial funding",
+        "asset": "BTC",
+        "assetValueGBP": "0",
+        "amount": "5000",
+        "comments": "",
+        "originalLinked": [],
+        "linked": [
+          {
+            "type": "assetLedgerEntry",
+            "id": 1
+          },
+          {
+            "type": "locationLedgerEntry",
+            "id": 1
+          }
+        ],
+        "externalAssetLinks": []
+      },
+      {
+        "id": 2,
+        "date": "2015-01-02T12:00:00.000Z",
+        "label": "Initial funding",
+        "asset": "BTC",
+        "assetValueGBP": "0",
+        "amount": "200",
+        "comments": "",
+        "originalLinked": [],
+        "linked": [
+          {
+            "type": "assetLedgerEntry",
+            "id": 2
+          },
+          {
+            "type": "locationLedgerEntry",
+            "id": 2
+          }
+        ],
+        "externalAssetLinks": []
+      }
+    ]
   },
   "depositEvents": {
     "depositEvents": []

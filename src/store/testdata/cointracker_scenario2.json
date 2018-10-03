@@ -1,5 +1,7 @@
 {
   "exportDate": "2018-09-28T12:51:41.797Z",
+  "title": "CoinTracker.io Scenario 2",
+  "description": "From <a href='https://help.cointracker.io/taxes/international-taxes/how-does-cryptocurrency-taxation-work-in-the-united-kingdom' target='_blank'>CoinTracker help page on UK tax</a>. <p>Complex example ('Share Matching') with multiple BTC buys at different prices, then a sale, followed by another buy.</p> <p>CGT cost-basis is split across recent/near-future purchases and the average pool cost, for a net loss of &pound;125.",
   "taxYears": {
     "taxYears": [
       {
