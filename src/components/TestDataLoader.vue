@@ -61,23 +61,22 @@
 
 <script>
 import Vue from 'vue'
-import u from '../utils'
 
-import airdrop_1_before from '@/store/testdata/airdrop_1_before.json'
-import airdrop_2_after from '@/store/testdata/airdrop_2_after.json'
-import cointracker_scenario1 from '@/store/testdata/cointracker_scenario1.json'
-import cointracker_scenario2 from '@/store/testdata/cointracker_scenario2.json'
-import hmrc_cgt_1 from '@/store/testdata/hmrc_cgt_1_start.json'
-import hmrc_cgt_2 from '@/store/testdata/hmrc_cgt_2_buy_sell.json'
-import hmrc_cgt_3 from '@/store/testdata/hmrc_cgt_3_buy_sell_buy.json'
-import mining_pools_1 from '@/store/testdata/mining_pools_1_no_events.json'
-import mining_pools_2 from '@/store/testdata/mining_pools_2_events.json'
-import pineapple_transfer_1 from '@/store/testdata/pineapple_transfer_1_before.json'
-import pineapple_transfer_2 from '@/store/testdata/pineapple_transfer_2_after.json'
-import example_assets from '@/store/testdata/example_assets.json'
+import airdrop1 from '@/store/testdata/airdrop_1_before.json'
+import airdrop2 from '@/store/testdata/airdrop_2_after.json'
+import cointracker1 from '@/store/testdata/cointracker_scenario1.json'
+import cointracker2 from '@/store/testdata/cointracker_scenario2.json'
+import hmrc1 from '@/store/testdata/hmrc_cgt_1_start.json'
+import hmrc2 from '@/store/testdata/hmrc_cgt_2_buy_sell.json'
+import hmrc3 from '@/store/testdata/hmrc_cgt_3_buy_sell_buy.json'
+import mining1 from '@/store/testdata/mining_pools_1_no_events.json'
+import mining2 from '@/store/testdata/mining_pools_2_events.json'
+import pineapple1 from '@/store/testdata/pineapple_transfer_1_before.json'
+import pineapple2 from '@/store/testdata/pineapple_transfer_2_after.json'
+import assets1 from '@/store/testdata/example_assets.json'
 
 var testData = [
-  airdrop_1_before, airdrop_2_after, cointracker_scenario1, cointracker_scenario2, hmrc_cgt_1, hmrc_cgt_2, hmrc_cgt_3, mining_pools_1, mining_pools_2, pineapple_transfer_1, pineapple_transfer_2, example_assets
+  airdrop1, airdrop2, cointracker1, cointracker2, hmrc1, hmrc2, hmrc3, mining1, mining2, pineapple1, pineapple2, assets1
 ]
 
 export default Vue.component('test-data-loader', {
