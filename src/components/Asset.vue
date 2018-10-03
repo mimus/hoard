@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card v-if="asset">
     <v-layout row nowrap align-baseline>
       <v-flex>
         <v-card-text>

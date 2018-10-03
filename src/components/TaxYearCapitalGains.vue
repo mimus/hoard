@@ -27,7 +27,7 @@
           >
             <div slot="header">
               {{ item.asset }}:
-              <span :class="item.gain && item.gain.gte(0) ? 'gain' : 'loss'">
+              <span :class="item.gain && item.gain.gte && item.gain.gte(0) ? 'gain' : 'loss'">
                 {{ item.gain | formatFiat }} GBP
               </span>
             </div>
@@ -40,7 +40,7 @@
                 <v-flex xs3>
                   {{ entry.date | formatDateTime }}
                 </v-flex>
-                <v-flex xs3 :class="entry.workings.gain && entry.workings.gain.gte(0) ? 'gain' : 'loss'">
+                <v-flex xs3 :class="entry.workings.gain && entry.workings.gain.gte && entry.workings.gain.gte(0) ? 'gain' : 'loss'">
                   {{ entry.workings.gain | formatFiat }} GBP
                 </v-flex>
                 <v-flex xs3>

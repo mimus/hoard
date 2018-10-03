@@ -14,10 +14,12 @@ var storeModule = {
   mutations: {
     addTransferEvent (state, model) {
       state.transferEvents.push(model)
+      state.transferEvents.sort(utils.dateComparatorEarliestFirst)
       Vue.set(state.transferEventsById, model.id, model)
     },
 
     loadTransferEvents (state, events) {
+      events.sort(utils.dateComparatorEarliestFirst)
       state.transferEvents = events
       state.transferEventsById = {}
       events.forEach(x => {
@@ -57,7 +59,6 @@ var storeModule = {
           item.amount = utils.newBigNumberForAsset(item.amount, item.asset)
         })
       })
-      events.sort(utils.dateComparatorEarliestFirst)
       commit('loadTransferEvents', events)
     },
 

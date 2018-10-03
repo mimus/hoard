@@ -45,10 +45,13 @@ var storeModule = {
     addAssetLedgerEntry (state, model) {
       state.assetLedgerEntries.push(model)
       Vue.set(state.assetLedgerEntriesById, model.id, model)
-      state.assetLedgerEntriesByAsset[model.asset].push(model)
+      var entriesForAsset = state.assetLedgerEntriesByAsset[model.asset]
+      entriesForAsset.push(model)
+      entriesForAsset.sort(utils.dateComparatorEarliestFirst)
     },
 
     loadAssetLedgerEntries (state, ledgerEntries) {
+      ledgerEntries.sort(utils.dateComparatorEarliestFirst)
       state.assetLedgerEntries = ledgerEntries
       state.assetLedgerEntriesById = {}
       ledgerEntries.forEach(entry => {
@@ -119,7 +122,6 @@ var storeModule = {
         x.amount = utils.newBigNumberForAsset(x.amount, x.asset)
         x.assetValueGBP = utils.newBigNumberForFiat(x.assetValueGBP)
       })
-      ledgerEntries.sort(utils.dateComparatorEarliestFirst)
       commit('loadAssetLedgerEntries', ledgerEntries)
     },
     importAssets ({ dispatch }, data) {

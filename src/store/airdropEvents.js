@@ -14,10 +14,12 @@ var storeModule = {
   mutations: {
     addAirdropEvent (state, model) {
       state.airdropEvents.push(model)
+      state.airdropEvents.sort(utils.dateComparatorEarliestFirst)
       Vue.set(state.airdropEventsById, model.id, model)
     },
 
     loadAirdropEvents (state, events) {
+      events.sort(utils.dateComparatorEarliestFirst)
       state.airdropEvents = events
       state.airdropEventsById = {}
       events.forEach(x => {
@@ -38,7 +40,6 @@ var storeModule = {
         x.amount = utils.newBigNumberForAsset(x.amount, x.asset)
         x.assetValueGBP = utils.newBigNumberForFiat(x.assetValueGBP)
       })
-      events.sort(utils.dateComparatorEarliestFirst)
       commit('loadAirdropEvents', events)
     },
 

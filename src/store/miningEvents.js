@@ -16,11 +16,15 @@ var storeModule = {
   mutations: {
     addMiningEvent (state, model) {
       state.miningEvents.push(model)
+      state.miningEvents.sort(utils.dateComparatorEarliestFirst)
       Vue.set(state.miningEventsById, model.id, model)
-      state.miningEventsByPool[model.pool].push(model)
+      var eventsForPool = state.miningEventsByPool[model.pool]
+      eventsForPool.push(model)
+      eventsForPool.sort(utils.dateComparatorEarliestFirst)
     },
 
     loadMiningEvents (state, events) {
+      events.sort(utils.dateComparatorEarliestFirst)
       state.miningEvents = events
       state.miningEventsById = {}
       events.forEach(x => {
@@ -69,7 +73,6 @@ var storeModule = {
         x.amount = utils.newBigNumberForAsset(x.amount, pool && pool.asset)
       })
       events = loadDate(events)
-      events.sort(utils.dateComparatorEarliestFirst)
       commit('loadMiningEvents', events)
     },
 

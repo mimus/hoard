@@ -14,10 +14,12 @@ var storeModule = {
   mutations: {
     addDepositEvent (state, model) {
       state.depositEvents.push(model)
+      state.depositEvents.sort(utils.dateComparatorEarliestFirst)
       Vue.set(state.depositEventsById, model.id, model)
     },
 
     loadDepositEvents (state, events) {
+      events.sort(utils.dateComparatorEarliestFirst)
       state.depositEvents = events
       state.depositEventsById = {}
       events.forEach(x => {
@@ -51,7 +53,6 @@ var storeModule = {
       events.forEach(x => {
         x.amount = utils.newBigNumberForAsset(x.amount, x.asset)
       })
-      events.sort(utils.dateComparatorEarliestFirst)
       commit('loadDepositEvents', events)
     },
 

@@ -55,8 +55,11 @@ var storeModule = {
 
     addLocationLedgerEntry (state, model) {
       state.locationLedgerEntries.push(model)
+      state.locationLedgerEntries.sort(utils.dateComparatorEarliestFirst)
       Vue.set(state.locationLedgerEntriesById, model.id, model)
-      state.locationLedgerEntriesByLocation[model.location].push(model)
+      var entriesForLocation = state.locationLedgerEntriesByLocation[model.location]
+      entriesForLocation.push(model)
+      entriesForLocation.sort(utils.dateComparatorEarliestFirst)
     },
 
     loadLocations (state, locations) {
@@ -90,6 +93,7 @@ var storeModule = {
     },
 
     loadLocationLedgerEntries (state, ledgerEntries) {
+      ledgerEntries.sort(utils.dateComparatorEarliestFirst)
       state.locationLedgerEntries = ledgerEntries
       state.locationLedgerEntriesById = {}
       ledgerEntries.forEach(entry => {
@@ -189,7 +193,6 @@ var storeModule = {
         var location = getters.location(x.location)
         x.amount = utils.newBigNumberForAsset(x.amount, location && location.asset)
       })
-      ledgerEntries.sort(utils.dateComparatorEarliestFirst)
       commit('loadLocationLedgerEntries', ledgerEntries)
     },
     importLocations ({ dispatch }, data) {
@@ -220,7 +223,6 @@ var storeModule = {
       var entries = getters.ledgerEntriesForLocation(locationId)
       var total = utils.newBigNumberForAsset(0, location.asset)
       if (!entries) { return [] }
-      entries.sort(utils.dateComparatorEarliestFirst)
       return entries.map((entry, index) => {
         total = total.plus(entry.amount)
         return Object.assign({}, entry, { total: total, sortIndex: index })
