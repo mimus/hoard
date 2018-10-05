@@ -1,6 +1,6 @@
 <template>
   <v-card class="pb-2x">
-    <v-list>
+    <v-list v-if="locationGroups && locationGroups.length">
       <v-list-tile
         v-for="group in locationGroups"
         :key="group.id"
@@ -13,6 +13,9 @@
         </v-list-tile-content>
       </v-list-tile>
     </v-list>
+    <v-card-text v-else>
+      No location groups.
+    </v-card-text>
     <v-btn
       absolute bottom right
       fab color="blue" dark small

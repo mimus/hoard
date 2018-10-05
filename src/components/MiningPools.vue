@@ -1,6 +1,6 @@
 <template>
   <v-card class="pb-2x">
-    <v-list>
+    <v-list v-if="miningPoolsSummary && miningPoolsSummary.length">
       <v-list-tile
         v-for="pool in miningPoolsSummary"
         :key="pool.id"
@@ -16,6 +16,9 @@
         </v-list-tile-content>
       </v-list-tile>
     </v-list>
+    <v-card-text v-else>
+      No mining pools.
+    </v-card-text>
     <v-btn
       absolute bottom right
       fab color="blue" dark small

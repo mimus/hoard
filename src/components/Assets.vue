@@ -1,6 +1,6 @@
 <template>
   <v-card class="pb-2x">
-    <v-list>
+    <v-list v-if="assets && assets.length">
       <v-list-tile
         v-for="asset in assets"
         :key="asset.id"
@@ -15,6 +15,9 @@
         </v-list-tile-content>
       </v-list-tile>
     </v-list>
+    <v-card-text v-else>
+      No assets.
+    </v-card-text>
     <v-btn
       absolute bottom right
       fab color="blue" dark small

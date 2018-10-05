@@ -1,6 +1,10 @@
 <template>
   <v-card class="pb-2x">
-    <v-list one-line subheader>
+    <v-list
+      v-if="taxYears && taxYears.length"
+      one-line
+      subheader
+    >
       <v-list-tile
         v-for="year in taxYears"
         :key="year.label"
@@ -16,6 +20,9 @@
         </v-list-tile-content>
       </v-list-tile>
     </v-list>
+    <v-card-text v-else>
+      No tax years.
+    </v-card-text>
     <v-btn
       absolute bottom right
       fab color="blue" dark small
