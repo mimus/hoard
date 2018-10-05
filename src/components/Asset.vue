@@ -122,7 +122,7 @@ export default {
   },
   data: () => ({
     headers: [
-      { text: 'Date', sortable: true, value: 'date' },
+      { text: 'Date', sortable: true, value: 'sortIndex' },
       { text: 'Amount', sortable: false },
       { text: 'Value', sortable: false },
       { text: 'Pool Amount', sortable: false },
@@ -134,7 +134,7 @@ export default {
       { text: 'Related', sortable: false }
     ],
     pagination: {
-      sortBy: 'date',
+      sortBy: 'sortIndex',
       descending: true,
       rowsPerPage: -1
     }

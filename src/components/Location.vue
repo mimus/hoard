@@ -84,7 +84,7 @@ export default {
   },
   data: () => ({
     headers: [
-      { text: 'Date', sortable: true, value: 'date' },
+      { text: 'Date', sortable: true, value: 'sortIndex' },
       { text: 'Amount', sortable: false },
       { text: 'Balance', sortable: false },
       { text: 'Label', sortable: false },

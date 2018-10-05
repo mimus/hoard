@@ -152,9 +152,10 @@ var storeModule = {
     nextAssetLedgerEntryId: (state) => commonFindNextId(state.assetLedgerEntriesById),
     ledgerEntriesForAsset: (state, getters) => (assetId) => {
       var entries = state.assetLedgerEntriesByAsset[assetId]
-      return entries.map(entry =>
+      return entries.map((entry, index) =>
         ({
           workings: getters.assetLedgerEntryWorkings(entry.id) || {},
+          sortIndex: index,
           ...entry
         })
       )
