@@ -3,6 +3,8 @@ import storeUtils from './storeUtils'
 
 var { timezoneString, commonFindNextId, commonUpdateModel } = storeUtils
 
+var startDateComparatorEarliestFirst = (a, b) => a.startDate - b.startDate
+
 var storeModule = {
 
   state: {
@@ -13,14 +15,17 @@ var storeModule = {
   mutations: {
     addTaxYear (state, taxYear) {
       state.taxYears.push(taxYear)
+      state.taxYears.sort(startDateComparatorEarliestFirst)
       Vue.set(state.taxYearsById, taxYear.id, taxYear)
     },
 
     updateTaxYear (state, taxYear) {
       commonUpdateModel(taxYear, state.taxYearsById)
+      state.taxYears.sort(startDateComparatorEarliestFirst)
     },
 
     loadTaxYears (state, taxYears) {
+      taxYears.sort(startDateComparatorEarliestFirst)
       state.taxYears = taxYears
       state.taxYearsById = {}
       taxYears.forEach(x => {
