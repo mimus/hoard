@@ -84,6 +84,28 @@ var storeModule = {
       return results
     },
 
+    assetsAirdropIncomeForTaxYear: (state, getters) => (taxYearId) => {
+      var year = getters.taxYear(taxYearId)
+      if (!year) { return {} }
+      var startDate = year.startDate
+      var endDate = year.endDate
+      var results = getters.assets.map(asset => {
+        var events = getters.airdropEventsForAsset(asset.id)
+        events = events.filter(x => x.date >= startDate && x.date <= endDate)
+        events.sort(utils.dateComparatorEarliestFirst)
+        var totalAmount = events.reduce((sum, event) => sum.plus(event.amount), utils.newBigNumberForAsset(0, asset.id))
+        var totalValueGBP = events.reduce((sum, event) => sum.plus(event.assetValueGBP), utils.newBigNumberForFiat(0))
+        return {
+          id: asset.id,
+          asset: asset,
+          events,
+          totalAmount,
+          totalValueGBP
+        }
+      })
+      return results
+    },
+
     cgtDataForExport: (state) => ({
       assetLedgerEntryWorkingsById: state.assetLedgerEntryWorkingsById
     })

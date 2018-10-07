@@ -141,6 +141,9 @@ var storeModule = {
 
   getters: {
     airdropEvents: (state) => state.airdropEvents,
+    airdropEventsForAsset: (state) => (assetId) => {
+      return state.airdropEvents.filter(event => event.asset === assetId)
+    },
     airdropEvent: (state, getters) => (eventId) => {
       eventId = +eventId
       return state.airdropEventsById[eventId]

@@ -22,6 +22,8 @@
 
       <TaxYearMiningIncome :id="id" />
 
+      <TaxYearAirdropIncome :id="id" />
+
       <TaxYearCapitalGains :id="id" />
 
     </div>
@@ -34,10 +36,11 @@
 <script>
 
 import TaxYearMiningIncome from './TaxYearMiningIncome'
+import TaxYearAirdropIncome from './TaxYearAirdropIncome'
 import TaxYearCapitalGains from './TaxYearCapitalGains'
 
 export default {
-  components: { TaxYearMiningIncome, TaxYearCapitalGains },
+  components: { TaxYearMiningIncome, TaxYearAirdropIncome, TaxYearCapitalGains },
   props: {
     id: [Number, String]
   },
