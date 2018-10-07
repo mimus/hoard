@@ -40,7 +40,7 @@
 
     <date-time-picker v-model="model.date" />
 
-    <v-layout align-start>
+    <v-layout align-center>
       <v-flex xs4 class="pr-5">
         <asset-select
           v-model="model.originalAsset"
@@ -61,16 +61,16 @@
             :id="model.originalLocation"
           />
         </v-layout>
-        <div v-if="originalAssetAmount">
-          Value at date: {{ originalAssetAmount | formatAssetValue(model.originalAsset) }}
-          <v-btn
-            small
-            @click="model.amount = originalAssetAmount.toString()"
-          >
-            Copy <v-icon class="ml-1">arrow_downward</v-icon>
-          </v-btn>
-        </div>
       </v-flex>
+      <div v-if="originalAssetAmount">
+        Amount at date: {{ originalAssetAmount | formatAssetValue(model.originalAsset) }} {{ originalAssetSymbol }}
+        <v-btn
+          small
+          @click="model.amount = originalAssetAmount.toString()"
+        >
+          Copy <v-icon class="ml-1">arrow_downward</v-icon>
+        </v-btn>
+      </div>
     </v-layout>
 
     <v-layout>
@@ -97,7 +97,35 @@
           :rules="[required]"
         ></v-text-field>
       </v-flex>
-      <v-flex xs4 class="pr-5">
+    </v-layout>
+
+    <v-layout row align-center>
+      <div class="pr-0">
+        <price-lookup
+          v-model="form.assetPriceGBP"
+          :asset="asset"
+          :date="model.date"
+          :textToAnnotate="model.comments"
+          @annotatedText="model.comments = $event"
+        ></price-lookup>
+      </div>
+      <v-flex xs4 class="pr-0">
+        <v-text-field
+          v-model="form.assetPriceGBP"
+          :label="`Asset Price (GBP for 1 ${assetSymbol})`"
+          class="mr-5"
+        ></v-text-field>
+      </v-flex>
+      <div xs3 class="pr-0">
+        <v-btn
+          flat
+          @click="model.assetValueGBP = calculatedValue"
+        >
+          £{{ calculatedValue | formatFiat }}
+          <v-icon>chevron_right</v-icon>
+        </v-btn>
+      </div>
+      <v-flex xs4>
         <v-text-field
           v-model="model.assetValueGBP"
           label="Total GBP Cost/Value (0 if given for free)"
@@ -122,12 +150,15 @@
 
 <script>
 
+import u from '../utils'
+
 export default {
   data: () => ({
     required: (value) => !!value || 'Required',
     form: {
       transactionId: '',
-      fetchedTransactionError: ''
+      fetchedTransactionError: '',
+      assetPriceGBP: ''
     },
     model: {
       date: null,
@@ -148,6 +179,23 @@ export default {
         return this.$store.getters.ledgerBalanceForLocation(model.originalLocation, model.date)
       }
       return false
+    },
+    originalAssetSymbol () {
+      var asset = this.$store.getters.asset(this.model.originalAsset)
+      return (asset && asset.symbol) || ''
+    },
+    asset () {
+      return this.$store.getters.asset(this.model.asset)
+    },
+    assetSymbol () {
+      return (this.asset && this.asset.symbol) || ''
+    },
+    calculatedValue () {
+      var value = 0
+      if (this.form.assetPriceGBP && this.model.amount && this.model.asset) {
+        value = u.newBigNumberForAsset(this.model.amount, this.model.asset).times(this.form.assetPriceGBP)
+      }
+      return u.formatFiat(value)
     },
     modelToSave () {
       var copy = {
@@ -172,6 +220,17 @@ export default {
       }
       if (transaction.date) {
         this.model.date = transaction.date
+      }
+      if (transaction.airdropOriginal) {
+        var original = transaction.airdropOriginal
+        this.model.originalAsset = original.asset
+        var location = this.$store.getters.locationForAddress(original.asset, original.address)
+        if (location) {
+          this.model.originalLocation = location.id
+        }
+      }
+      if (transaction.airdropLabel && !this.model.label) {
+        this.model.label = transaction.airdropLabel
       }
       if (transaction.outputs) {
         transaction.outputs.forEach(output => {

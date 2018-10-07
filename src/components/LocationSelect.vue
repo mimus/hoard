@@ -40,10 +40,14 @@ export default Vue.component('location-select', {
   },
   watch: {
     asset: function (val, oldVal) {
+      // make sure we recognise changed select options
       if (val !== oldVal) {
-        // make sure we recognise changed select options
-        this.selectedValue = ''
-        this.onChange(this.selectedValue)
+        // But if asset + value (loc) have been changed simultaneously, don't wipe it now
+        // (this watcher runs before the 'value' watcher)
+        if (this.value === this.selectedValue) {
+          this.selectedValue = ''
+          this.onChange(this.selectedValue)
+        }
       }
     },
     value: {
