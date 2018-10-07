@@ -30,7 +30,10 @@
       </template>
     </v-toolbar>
     <v-content>
-      <v-container fluid>
+      <v-container
+        fluid
+        style="position: relative; z-index: 0;"
+      >
         <router-view></router-view>
       </v-container>
     </v-content>
