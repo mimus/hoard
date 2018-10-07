@@ -72,13 +72,11 @@ var fetchTransaction = function (transactionId) {
                 reject(error && error.message)
               })
             })
-
           }, (error) => {
             console.error(error)
             reject(error && error.message)
           })
         })
-
       }, (error) => {
         console.error(error)
         reject(error && error.message)

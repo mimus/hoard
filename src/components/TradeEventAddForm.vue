@@ -245,6 +245,36 @@
             <v-flex xs6>
               <v-layout column class="mx-5">
                 <v-flex>
+                  <v-layout align-center>
+                    <price-lookup
+                      v-model="item.assetPriceGBP"
+                      :asset="item.assetObj"
+                      :date="model.date"
+                      :textToAnnotate="item.comments"
+                      @annotatedText="item.comments = $event"
+                    ></price-lookup>
+                    <v-flex>
+                      <v-text-field
+                        v-model="item.assetPriceGBP"
+                        :label="`Price (GBP for 1 ${assetSymbol(item.asset)})`"
+                        hint="Market rate"
+                        persistent-hint
+                        class="mr-5"
+                      ></v-text-field>
+                    </v-flex>
+                  </v-layout>
+                </v-flex>
+                <v-flex class="text-xs-center">
+                  <v-btn
+                    flat
+                    color="blue"
+                    @click="item.valueGBP = calculatedValue(item)"
+                  >
+                    £{{ calculatedValue(item) }}
+                    <v-icon>expand_more</v-icon>
+                  </v-btn>
+                </v-flex>
+                <v-flex>
                   <v-text-field
                     v-model="item.valueGBP"
                     label="Value in GBP"
