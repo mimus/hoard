@@ -79,7 +79,7 @@ var fetchTransactions = function (address, fetchState) {
   return new Promise((resolve, reject) => {
     var pageSize = (fetchState && fetchState.pageSize) || 20
     var offset = (fetchState && fetchState.offset) || 0
-    var url = `https://api.zcha.in/v2/mainnet/accounts/${address}/recv?limit=${pageSize}&offset=${offset}`
+    var url = `https://api.zcha.in/v2/mainnet/accounts/${address}/recv?limit=${pageSize}&offset=${offset}&sort=blockHeight&direction=descending`
     axios.get(url).then((response) => {
       var fetchedAll = false
       var hasMore = false
