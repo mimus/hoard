@@ -10,11 +10,11 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
-    "axios": "0.18.0",
+    "axios": "0.19.0",
     "babel-polyfill": "6.26.0",
-    "bignumber.js": "7.2.1",
+    "bignumber.js": "9.0.0",
     "core-js": "2.6.9",
-    "moment": "2.22.2",
+    "moment": "2.24.0",
     "vue": "2.5.17",
     "vue-router": "3.0.1",
     "vuetify": "1.2.5",
