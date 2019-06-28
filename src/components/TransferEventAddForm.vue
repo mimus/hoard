@@ -65,54 +65,53 @@
         @add="addLocation('from', $event.location)"
         @remove="removeLocation('from', $event)"
       >
-        <v-card-text
-          slot-scope="{ item, index }"
-          class="mb-2"
-        >
-          <v-layout align-center class="mb-2">
-            <div class="subheading mr-5">
-              {{ item.label }}
-            </div>
-            <div class="grey--text">
-              {{ item.subtitle }}
-            </div>
-            <external-location-link
-              :id="item.id"
-              color="grey"
-            />
-          </v-layout>
-          <v-layout align-center>
-            <div v-if="fromBalances[index]">
-              Balance:
-              <v-btn
-                flat
-                @click="item.amount = fromBalances[index].toString()"
+        <template v-slot="{ item, index }">
+          <v-card-text class="mb-2">
+            <v-layout align-center class="mb-2">
+              <div class="subheading mr-5">
+                {{ item.label }}
+              </div>
+              <div class="grey--text">
+                {{ item.subtitle }}
+              </div>
+              <external-location-link
+                :id="item.id"
+                color="grey"
+              />
+            </v-layout>
+            <v-layout align-center>
+              <div v-if="fromBalances[index]">
+                Balance:
+                <v-btn
+                  flat
+                  @click="item.amount = fromBalances[index].toString()"
+                >
+                  {{ fromBalances[index] | formatAssetValue(model.asset) }}
+                  <v-icon>chevron_right</v-icon>
+                </v-btn>
+              </div>
+
+              Withdraw:
+              <v-text-field
+                v-model="item.amount"
+                label="Amount"
+                :rules="[required]"
+                solo
+                hide-details
+                class="input-amount mx-4"
+                :append-icon="fromBalances[index] && fromBalances[index].lt(item.amount) ? 'warning': ''"
+              ></v-text-field>
+
+              <div
+                v-if="fromBalances[index]"
+                class="mr-5"
               >
-                {{ fromBalances[index] | formatAssetValue(model.asset) }}
-                <v-icon>chevron_right</v-icon>
-              </v-btn>
-            </div>
-
-            Withdraw:
-            <v-text-field
-              v-model="item.amount"
-              label="Amount"
-              :rules="[required]"
-              solo
-              hide-details
-              class="input-amount mx-4"
-              :append-icon="fromBalances[index] && fromBalances[index].lt(item.amount) ? 'warning': ''"
-            ></v-text-field>
-
-            <div
-              v-if="fromBalances[index]"
-              class="mr-5"
-            >
-              Balance After:
-              {{ fromBalances[index].minus(item.amount) | formatAssetValue(model.asset) }}
-            </div>
-          </v-layout>
-        </v-card-text>
+                Balance After:
+                {{ fromBalances[index].minus(item.amount) | formatAssetValue(model.asset) }}
+              </div>
+            </v-layout>
+          </v-card-text>
+        </template>
       </location-items-list>
     </v-card>
 
@@ -247,51 +246,50 @@
         @add="addLocation('to', $event.location)"
         @remove="removeLocation('to', $event)"
       >
-        <v-card-text
-          slot-scope="{ item, index }"
-          class="mb-2"
-        >
-          <v-layout align-center class="mb-2">
-            <div class="subheading mr-5">
-              {{ item.label }}
-            </div>
-            <div class="grey--text">
-              {{ item.subtitle }}
-            </div>
-            <external-location-link
-              :id="item.id"
-              color="grey"
-            />
-          </v-layout>
+        <template v-slot="{ item, index }">
+          <v-card-text class="mb-2">
+            <v-layout align-center class="mb-2">
+              <div class="subheading mr-5">
+                {{ item.label }}
+              </div>
+              <div class="grey--text">
+                {{ item.subtitle }}
+              </div>
+              <external-location-link
+                :id="item.id"
+                color="grey"
+              />
+            </v-layout>
 
-          <v-layout align-center>
-            <span
-              v-if="toBalances[index]"
-              class="mr-5"
-            >
-              Balance:
-              {{ toBalances[index] | formatAssetValue(model.asset) }}
-            </span>
+            <v-layout align-center>
+              <span
+                v-if="toBalances[index]"
+                class="mr-5"
+              >
+                Balance:
+                {{ toBalances[index] | formatAssetValue(model.asset) }}
+              </span>
 
-            Add:
-            <v-text-field
-              v-model="item.amount"
-              label="Amount"
-              :rules="[required]"
-              solo
-              hide-details
-              class="input-amount mx-4"
-            ></v-text-field>
+              Add:
+              <v-text-field
+                v-model="item.amount"
+                label="Amount"
+                :rules="[required]"
+                solo
+                hide-details
+                class="input-amount mx-4"
+              ></v-text-field>
 
-            <div
-              v-if="toBalances[index]"
-              class="mr-5"
-            >
-              Balance After:
-              {{ toBalances[index].plus(item.amount) | formatAssetValue(model.asset) }}
-            </div>
-          </v-layout>
-        </v-card-text>
+              <div
+                v-if="toBalances[index]"
+                class="mr-5"
+              >
+                Balance After:
+                {{ toBalances[index].plus(item.amount) | formatAssetValue(model.asset) }}
+              </div>
+            </v-layout>
+          </v-card-text>
+        </template>
       </location-items-list>
     </v-card>
 

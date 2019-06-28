@@ -16,14 +16,16 @@
             v-for="pool in miningPoolsIncome"
             :key="pool.id"
           >
-            <div slot="header">
-              {{ pool.label }} ({{ pool.asset.label }}):
-              {{ pool.totalAmount | formatAssetValue(pool.asset.id) }} {{ pool.asset.symbol }}
-              =
-              <span class="gain">
-                {{ pool.totalValueGBP | formatFiat }} GBP
-              </span>
-            </div>
+            <template v-slot:header>
+              <div>
+                {{ pool.label }} ({{ pool.asset.label }}):
+                {{ pool.totalAmount | formatAssetValue(pool.asset.id) }} {{ pool.asset.symbol }}
+                =
+                <span class="gain">
+                  {{ pool.totalValueGBP | formatFiat }} GBP
+                </span>
+              </div>
+            </template>
             <v-card-text class="grey lighten-4">
               <v-layout
                 v-for="event in pool.events"

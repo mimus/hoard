@@ -37,40 +37,42 @@
         v-for="transaction in transactions"
         :key="transaction.id"
       >
-        <v-layout slot="header" align-center>
-          {{ transaction.date | formatDateTime }}
-          <span
-            v-if="transaction.amount"
-            class="mx-3"
-          >
-            {{ transaction.amount | formatAssetValue(asset.id) }}
-            {{ asset.symbol}}
-          </span>
-          <v-flex v-if="transaction.isImportable">
-            <v-checkbox
-              v-model="transaction.selected"
-              label="Import this"
-              hide-details
-            ></v-checkbox>
-          </v-flex>
-          <span
-            v-else
-            class="ml-2"
-          >
-            <v-icon
-              v-if="transaction.existingEvent"
-              title="Already imported event"
+        <template v-slot:header>
+          <v-layout align-center>
+            {{ transaction.date | formatDateTime }}
+            <span
+              v-if="transaction.amount"
+              class="mx-3"
             >
-              check_circle_outline
-            </v-icon>
-            <v-icon
+              {{ transaction.amount | formatAssetValue(asset.id) }}
+              {{ asset.symbol}}
+            </span>
+            <v-flex v-if="transaction.isImportable">
+              <v-checkbox
+                v-model="transaction.selected"
+                label="Import this"
+                hide-details
+              ></v-checkbox>
+            </v-flex>
+            <span
               v-else
-              title="Cannot import"
+              class="ml-2"
             >
-              block
-            </v-icon>
-          </span>
-        </v-layout>
+              <v-icon
+                v-if="transaction.existingEvent"
+                title="Already imported event"
+              >
+                check_circle_outline
+              </v-icon>
+              <v-icon
+                v-else
+                title="Cannot import"
+              >
+                block
+              </v-icon>
+            </span>
+          </v-layout>
+        </template>
         <v-card>
           <v-card-text>
             <div

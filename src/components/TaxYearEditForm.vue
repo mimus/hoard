@@ -8,43 +8,51 @@
       :rules="[required]"
     ></v-text-field>
 
-    <v-menu
-      ref="startDateMenu"
-      :close-on-content-click="false"
-      transition="scale-transition"
-      min-width="290px"
-    >
-      <v-text-field
-        slot="activator"
-        v-model="model.startDate"
-        label="Start Date"
-        readonly
-        :rules="[required]"
-      ></v-text-field>
-      <v-date-picker
-        v-model="model.startDate"
-        @input="$refs.startDateMenu.save(model.startDate)"
-      ></v-date-picker>
-    </v-menu>
+    <v-layout row align-content-start>
+      <v-menu
+        ref="startDateMenu"
+        :close-on-content-click="false"
+        transition="scale-transition"
+        min-width="290px"
+      >
+        <template v-slot:activator="{ on }">
+          <v-text-field
+            v-model="model.startDate"
+            label="Start Date"
+            readonly
+            :rules="[required]"
+            class="date-field mr-3"
+            v-on="on"
+          ></v-text-field>
+        </template>
+        <v-date-picker
+          v-model="model.startDate"
+          @input="$refs.startDateMenu.save(model.startDate)"
+        ></v-date-picker>
+      </v-menu>
 
-    <v-menu
-      ref="endDateMenu"
-      :close-on-content-click="false"
-      transition="scale-transition"
-      min-width="290px"
-    >
-      <v-text-field
-        slot="activator"
-        v-model="model.endDate"
-        label="End Date"
-        readonly
-        :rules="[required]"
-      ></v-text-field>
-      <v-date-picker
-        v-model="model.endDate"
-        @input="$refs.endDateMenu.save(model.endDate)"
-      ></v-date-picker>
-    </v-menu>
+      <v-menu
+        ref="endDateMenu"
+        :close-on-content-click="false"
+        transition="scale-transition"
+        min-width="290px"
+      >
+        <template v-slot:activator="{ on }">
+          <v-text-field
+            v-model="model.endDate"
+            label="End Date"
+            readonly
+            :rules="[required]"
+            class="date-field"
+            v-on="on"
+          ></v-text-field>
+        </template>
+        <v-date-picker
+          v-model="model.endDate"
+          @input="$refs.endDateMenu.save(model.endDate)"
+        ></v-date-picker>
+      </v-menu>
+    </v-layout>
   </base-form>
 </template>
 
@@ -96,4 +104,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.date-field {
+  max-width: 150px;
+}
 </style>

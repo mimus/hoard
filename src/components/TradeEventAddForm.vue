@@ -37,114 +37,113 @@
         @add="addLocation('acquired', $event)"
         @remove="removeLocation('acquired', $event)"
       >
-        <v-card-text
-          slot-scope="{ item, index }"
-          class="pb-0 my-2"
-        >
-          <v-layout align-center class="mb-2">
-            <div class="subheading mr-5">
-              {{ item.label }}
-            </div>
-            <div class="grey--text">
-              {{ item.subtitle }}
-            </div>
-            <external-location-link
-              :id="item.id"
-              color="grey"
-            />
-          </v-layout>
+        <template v-slot="{ item, index }">
+          <v-card-text class="pb-0 my-2">
+            <v-layout align-center class="mb-2">
+              <div class="subheading mr-5">
+                {{ item.label }}
+              </div>
+              <div class="grey--text">
+                {{ item.subtitle }}
+              </div>
+              <external-location-link
+                :id="item.id"
+                color="grey"
+              />
+            </v-layout>
 
-          <v-layout align-center>
-            <v-flex xs6>
-              <v-layout column class="mx-5">
-                <v-flex
-                  v-if="acquiredBalances[index]"
-                  class="blue--text"
-                >
-                  Balance before:
-                  {{ acquiredBalances[index] | formatAssetValue(item.asset) }}
-                </v-flex>
-                <v-flex class="mt-2 mb-4">
-                  <v-layout align-center>
-                    <span>Bought:</span>
-                    <v-text-field
-                      v-model="item.amount"
-                      hint="Full amount, before any fees deducted"
-                      persistent-hint
-                      :rules="[required]"
-                      class="input-amount mx-4"
-                      >
-                    </v-text-field>
-                  </v-layout>
-                </v-flex>
-                <v-flex
-                  v-if="acquiredBalances[index]"
-                  class="blue--text"
-                >
-                  Balance after:
-                  {{ acquiredBalances[index].plus(item.amount) | formatAssetValue(item.asset) }}
-                </v-flex>
-              </v-layout>
-            </v-flex>
-            <v-flex xs6>
-              <v-layout column class="mx-5">
-                <v-flex>
-                  <v-layout align-center>
-                    <price-lookup
-                      v-model="item.assetPriceGBP"
-                      :asset="item.assetObj"
-                      :date="model.date"
-                      :textToAnnotate="item.comments"
-                      @annotatedText="item.comments = $event"
-                    ></price-lookup>
-                    <v-flex>
+            <v-layout align-center>
+              <v-flex xs6>
+                <v-layout column class="mx-5">
+                  <v-flex
+                    v-if="acquiredBalances[index]"
+                    class="blue--text"
+                  >
+                    Balance before:
+                    {{ acquiredBalances[index] | formatAssetValue(item.asset) }}
+                  </v-flex>
+                  <v-flex class="mt-2 mb-4">
+                    <v-layout align-center>
+                      <span>Bought:</span>
                       <v-text-field
-                        v-model="item.assetPriceGBP"
-                        :label="`Price (GBP for 1 ${assetSymbol(item.asset)})`"
-                        hint="Market rate"
+                        v-model="item.amount"
+                        hint="Full amount, before any fees deducted"
                         persistent-hint
                         :rules="[required]"
-                        class="mr-5"
-                      ></v-text-field>
-                    </v-flex>
-                  </v-layout>
-                </v-flex>
-                <v-flex class="text-xs-center">
-                  <v-btn
-                    flat
-                    color="blue"
-                    @click="item.valueGBP = calculatedValue(item)"
+                        class="input-amount mx-4"
+                        >
+                      </v-text-field>
+                    </v-layout>
+                  </v-flex>
+                  <v-flex
+                    v-if="acquiredBalances[index]"
+                    class="blue--text"
                   >
-                    £{{ calculatedValue(item) }}
-                    <v-icon>expand_more</v-icon>
-                  </v-btn>
-                </v-flex>
-                <v-flex>
-                  <v-text-field
-                    v-model="item.valueGBP"
-                    label="Value in GBP"
-                    hint="Market value of the acquired asset"
-                    persistent-hint
-                    :rules="[required]"
-                  ></v-text-field>
-                </v-flex>
-              </v-layout>
-            </v-flex>
-          </v-layout>
+                    Balance after:
+                    {{ acquiredBalances[index].plus(item.amount) | formatAssetValue(item.asset) }}
+                  </v-flex>
+                </v-layout>
+              </v-flex>
+              <v-flex xs6>
+                <v-layout column class="mx-5">
+                  <v-flex>
+                    <v-layout align-center>
+                      <price-lookup
+                        v-model="item.assetPriceGBP"
+                        :asset="item.assetObj"
+                        :date="model.date"
+                        :textToAnnotate="item.comments"
+                        @annotatedText="item.comments = $event"
+                      ></price-lookup>
+                      <v-flex>
+                        <v-text-field
+                          v-model="item.assetPriceGBP"
+                          :label="`Price (GBP for 1 ${assetSymbol(item.asset)})`"
+                          hint="Market rate"
+                          persistent-hint
+                          :rules="[required]"
+                          class="mr-5"
+                        ></v-text-field>
+                      </v-flex>
+                    </v-layout>
+                  </v-flex>
+                  <v-flex class="text-xs-center">
+                    <v-btn
+                      flat
+                      color="blue"
+                      @click="item.valueGBP = calculatedValue(item)"
+                    >
+                      £{{ calculatedValue(item) }}
+                      <v-icon>expand_more</v-icon>
+                    </v-btn>
+                  </v-flex>
+                  <v-flex>
+                    <v-text-field
+                      v-model="item.valueGBP"
+                      label="Value in GBP"
+                      hint="Market value of the acquired asset"
+                      persistent-hint
+                      :rules="[required]"
+                    ></v-text-field>
+                  </v-flex>
+                </v-layout>
+              </v-flex>
+            </v-layout>
 
-          <v-layout>
-            <v-flex>
-              <v-text-field
-                v-model="item.comments"
-                hint="Comments"
-                persistent-hint
-                color="green lighten-1"
-                class="input-comment"
-              ></v-text-field>
-            </v-flex>
-          </v-layout>
+            <v-layout>
+              <v-flex>
+                <v-text-field
+                  v-model="item.comments"
+                  hint="Comments"
+                  persistent-hint
+                  color="green lighten-1"
+                  class="input-comment"
+                ></v-text-field>
+              </v-flex>
+            </v-layout>
 
-        </v-card-text>
+          </v-card-text>
+        </template>
       </location-items-list>
     </v-card>
 
@@ -183,123 +182,122 @@
         @add="addLocation('disposed', $event)"
         @remove="removeLocation('disposed', $event)"
       >
-        <v-card-text
-          slot-scope="{ item, index }"
-          class="pb-0"
-        >
-          <v-layout align-center class="mb-2">
-            <div class="subheading mr-5">
-              {{ item.label }}
-            </div>
-            <div class="grey--text">
-              {{ item.subtitle }}
-            </div>
-            <external-location-link
-              :id="item.id"
-              color="grey"
-            />
-          </v-layout>
+        <template v-slot="{ item, index }">
+          <v-card-text class="pb-0">
+            <v-layout align-center class="mb-2">
+              <div class="subheading mr-5">
+                {{ item.label }}
+              </div>
+              <div class="grey--text">
+                {{ item.subtitle }}
+              </div>
+              <external-location-link
+                :id="item.id"
+                color="grey"
+              />
+            </v-layout>
 
-          <v-layout align-center>
-            <v-flex xs6>
-              <v-layout column class="mx-5">
-                <v-flex
-                  v-if="disposedBalances[index]"
-                  class="blue--text"
-                >
-                  Balance before:
-                  <v-btn
-                    flat
-                    color="blue"
-                    @click="item.amount = disposedBalances[index].toString()"
+            <v-layout align-center>
+              <v-flex xs6>
+                <v-layout column class="mx-5">
+                  <v-flex
+                    v-if="disposedBalances[index]"
+                    class="blue--text"
                   >
-                    {{ disposedBalances[index] | formatAssetValue(item.asset) }}
-                    <v-icon>expand_more</v-icon>
-                  </v-btn>
-                </v-flex>
+                    Balance before:
+                    <v-btn
+                      flat
+                      color="blue"
+                      @click="item.amount = disposedBalances[index].toString()"
+                    >
+                      {{ disposedBalances[index] | formatAssetValue(item.asset) }}
+                      <v-icon>expand_more</v-icon>
+                    </v-btn>
+                  </v-flex>
 
-                <v-flex class="mt-2 mb-4">
-                  <v-layout align-center>
-                    <span>Sold:</span>
+                  <v-flex class="mt-2 mb-4">
+                    <v-layout align-center>
+                      <span>Sold:</span>
+                      <v-text-field
+                        v-model="item.amount"
+                        hint="Amount traded, not including any fees"
+                        persistent-hint
+                        :rules="[required]"
+                        :append-icon="disposedBalances[index] && disposedBalances[index].lt(item.amount) ? 'warning': ''"
+                        class="input-amount mx-4"
+                      ></v-text-field>
+                    </v-layout>
+                  </v-flex>
+
+                  <v-flex
+                    v-if="disposedBalances[index]"
+                    class="blue--text"
+                  >
+                    Balance after:
+                    {{ disposedBalances[index].minus(item.amount) | formatAssetValue(item.asset) }}
+                  </v-flex>
+                </v-layout>
+              </v-flex>
+
+              <v-flex xs6>
+                <v-layout column class="mx-5">
+                  <v-flex>
+                    <v-layout align-center>
+                      <price-lookup
+                        v-model="item.assetPriceGBP"
+                        :asset="item.assetObj"
+                        :date="model.date"
+                        :textToAnnotate="item.comments"
+                        @annotatedText="item.comments = $event"
+                      ></price-lookup>
+                      <v-flex>
+                        <v-text-field
+                          v-model="item.assetPriceGBP"
+                          :label="`Price (GBP for 1 ${assetSymbol(item.asset)})`"
+                          hint="Market rate"
+                          persistent-hint
+                          class="mr-5"
+                        ></v-text-field>
+                      </v-flex>
+                    </v-layout>
+                  </v-flex>
+                  <v-flex class="text-xs-center">
+                    <v-btn
+                      flat
+                      color="blue"
+                      @click="item.valueGBP = calculatedValue(item)"
+                    >
+                      £{{ calculatedValue(item) }}
+                      <v-icon>expand_more</v-icon>
+                    </v-btn>
+                  </v-flex>
+                  <v-flex>
                     <v-text-field
-                      v-model="item.amount"
-                      hint="Amount traded, not including any fees"
+                      v-model="item.valueGBP"
+                      label="Value in GBP"
+                      hint="Use value of the asset(s) acquired in the trade, before fees"
                       persistent-hint
                       :rules="[required]"
-                      :append-icon="disposedBalances[index] && disposedBalances[index].lt(item.amount) ? 'warning': ''"
-                      class="input-amount mx-4"
                     ></v-text-field>
-                  </v-layout>
-                </v-flex>
+                  </v-flex>
+                </v-layout>
+              </v-flex>
+            </v-layout>
 
-                <v-flex
-                  v-if="disposedBalances[index]"
-                  class="blue--text"
-                >
-                  Balance after:
-                  {{ disposedBalances[index].minus(item.amount) | formatAssetValue(item.asset) }}
-                </v-flex>
-              </v-layout>
-            </v-flex>
+            <v-layout>
+              <v-flex>
+                <v-text-field
+                  v-model="item.comments"
+                  hint="Comments"
+                  persistent-hint
+                  color="green lighten-1"
+                  class="input-comment"
+                ></v-text-field>
+              </v-flex>
+            </v-layout>
 
-            <v-flex xs6>
-              <v-layout column class="mx-5">
-                <v-flex>
-                  <v-layout align-center>
-                    <price-lookup
-                      v-model="item.assetPriceGBP"
-                      :asset="item.assetObj"
-                      :date="model.date"
-                      :textToAnnotate="item.comments"
-                      @annotatedText="item.comments = $event"
-                    ></price-lookup>
-                    <v-flex>
-                      <v-text-field
-                        v-model="item.assetPriceGBP"
-                        :label="`Price (GBP for 1 ${assetSymbol(item.asset)})`"
-                        hint="Market rate"
-                        persistent-hint
-                        class="mr-5"
-                      ></v-text-field>
-                    </v-flex>
-                  </v-layout>
-                </v-flex>
-                <v-flex class="text-xs-center">
-                  <v-btn
-                    flat
-                    color="blue"
-                    @click="item.valueGBP = calculatedValue(item)"
-                  >
-                    £{{ calculatedValue(item) }}
-                    <v-icon>expand_more</v-icon>
-                  </v-btn>
-                </v-flex>
-                <v-flex>
-                  <v-text-field
-                    v-model="item.valueGBP"
-                    label="Value in GBP"
-                    hint="Use value of the asset(s) acquired in the trade, before fees"
-                    persistent-hint
-                    :rules="[required]"
-                  ></v-text-field>
-                </v-flex>
-              </v-layout>
-            </v-flex>
-          </v-layout>
-
-          <v-layout>
-            <v-flex>
-              <v-text-field
-                v-model="item.comments"
-                hint="Comments"
-                persistent-hint
-                color="green lighten-1"
-                class="input-comment"
-              ></v-text-field>
-            </v-flex>
-          </v-layout>
-
-        </v-card-text>
+          </v-card-text>
+        </template>
       </location-items-list>
     </v-card>
 
@@ -320,41 +318,40 @@
         @add="addLocation('fees', $event)"
         @remove="removeLocation('fees', $event)"
       >
-        <v-card-text
-          slot-scope="{ item }"
-          class="pb-0"
-        >
-          <v-layout align-center class="mb-2">
-            <div class="subheading mr-5">
-              {{ item.label }}
-            </div>
-            <div class="grey--text">
-              {{ item.subtitle }}
-            </div>
-            <external-location-link
-              :id="item.id"
-              color="grey"
-            />
-          </v-layout>
+        <template v-slot="{ item, index }">
+          <v-card-text class="pb-0">
+            <v-layout align-center class="mb-2">
+              <div class="subheading mr-5">
+                {{ item.label }}
+              </div>
+              <div class="grey--text">
+                {{ item.subtitle }}
+              </div>
+              <external-location-link
+                :id="item.id"
+                color="grey"
+              />
+            </v-layout>
 
-          <v-layout>
-            <v-flex xs3 class="mr-4">
-              <v-text-field
-                v-model="item.amount"
-                label="Fee Amount"
-                :rules="[required]"
-              ></v-text-field>
-            </v-flex>
-            <v-flex>
-              <v-text-field
-                v-model="item.comments"
-                label="Comments"
-                color="green lighten-1"
-                class="input-comment"
-              ></v-text-field>
-            </v-flex>
-          </v-layout>
-        </v-card-text>
+            <v-layout>
+              <v-flex xs3 class="mr-4">
+                <v-text-field
+                  v-model="item.amount"
+                  label="Fee Amount"
+                  :rules="[required]"
+                ></v-text-field>
+              </v-flex>
+              <v-flex>
+                <v-text-field
+                  v-model="item.comments"
+                  label="Comments"
+                  color="green lighten-1"
+                  class="input-comment"
+                ></v-text-field>
+              </v-flex>
+            </v-layout>
+          </v-card-text>
+        </template>
       </location-items-list>
     </v-card>
 

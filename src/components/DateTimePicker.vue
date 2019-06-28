@@ -16,7 +16,6 @@
         ></v-text-field>
       </template>
       <v-date-picker
-        class="mt-5"
         v-model="dateString"
         @input="$refs.dateMenu.save(dateString)"
       ></v-date-picker>
@@ -38,7 +37,6 @@
         ></v-text-field>
       </template>
       <v-time-picker
-        class="mt-5"
         v-model="timeString"
         format="24hr"
         @change="$refs.timeMenu.save(timeString)"

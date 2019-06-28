@@ -38,7 +38,7 @@
         hide-actions
         must-sort
       >
-        <template slot="items" slot-scope="props">
+        <template v-slot:items="props">
           <td>
               <span class="no-wrap">
                 {{ props.item.date | formatDateTime }}

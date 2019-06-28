@@ -18,7 +18,7 @@
         :pagination.sync="pagination"
         hide-actions
       >
-        <template slot="items" slot-scope="props">
+        <template v-slot:items="props">
           <td>
             <div class="no-wrap">
               {{ props.item.date | formatDate }}
@@ -40,7 +40,7 @@
             {{ props.item.comments }}
           </td>
         </template>
-        <template slot="no-data">
+        <template v-slot:no-data>
           No trade events.
         </template>
       </v-data-table>

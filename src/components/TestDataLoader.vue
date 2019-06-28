@@ -1,18 +1,18 @@
 <template>
   <v-bottom-sheet v-model="sheet">
-    <div
-      slot="activator"
-      class="text-xs-center"
-    >
-      <v-btn
-        color="green"
-        dark
-        class="mb-4"
+    <template v-slot:activator>
+      <div
+        class="text-xs-center"
       >
-        Test Data
-      </v-btn>
-    </div>
-
+        <v-btn
+          color="green"
+          dark
+          class="mb-4"
+        >
+          Test Data
+        </v-btn>
+      </div>
+    </template>
     <v-card>
       <v-card-text class="pt-0">
         <v-layout row>

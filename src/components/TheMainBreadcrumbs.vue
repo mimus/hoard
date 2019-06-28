@@ -1,19 +1,18 @@
 <template>
   <v-breadcrumbs :items="breadcrumbs">
-    <v-breadcrumbs-item
-      slot="item"
-      slot-scope="{ item }"
-    >
-      <router-link
-        v-if="item.path"
-        :to="item.path"
-      >
-        {{ item.text }}
-      </router-link>
-      <span v-else>
-        {{ item.text }}
-      </span>
-    </v-breadcrumbs-item>
+    <template v-slot:item="{ item }">
+      <v-breadcrumbs-item>
+        <router-link
+          v-if="item.path"
+          :to="item.path"
+        >
+          {{ item.text }}
+        </router-link>
+        <span v-else>
+          {{ item.text }}
+        </span>
+      </v-breadcrumbs-item>
+    </template>
   </v-breadcrumbs>
 </template>
 

@@ -16,14 +16,16 @@
             v-for="details in assetsAirdropIncome"
             :key="details.id"
           >
-            <div slot="header">
-              {{ details.asset.label }}:
-              {{ details.totalAmount | formatAssetValue(details.asset.id) }} {{ details.asset.symbol }}
-              =
-              <span class="gain">
-                {{ details.totalValueGBP | formatFiat }} GBP
-              </span>
-            </div>
+            <template v-slot:header>
+              <div>
+                {{ details.asset.label }}:
+                {{ details.totalAmount | formatAssetValue(details.asset.id) }} {{ details.asset.symbol }}
+                =
+                <span class="gain">
+                  {{ details.totalValueGBP | formatFiat }} GBP
+                </span>
+              </div>
+            </template>
             <v-card-text class="grey lighten-4">
               <v-layout
                 v-for="event in details.events"

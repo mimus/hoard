@@ -32,12 +32,14 @@
         v-for="(asset, assetId) in assets"
         :key="assetId"
       >
-        <div slot="header">
-          {{ assetId }}
-          <div class="right mr-2">
-            Total: {{ (asset.total || 0) | formatAssetValue(assetId) }}
+        <template v-slot:header>
+          <div>
+            {{ assetId }}
+            <div class="right mr-2">
+              Total: {{ (asset.total || 0) | formatAssetValue(assetId) }}
+            </div>
           </div>
-        </div>
+        </template>
 
         <v-data-table
           :items="asset.locations"
@@ -45,7 +47,7 @@
           hide-actions
           disable-initial-sort
         >
-          <template slot="items" slot-scope="props">
+          <template v-slot:items="props">
             <td>
               <router-link
                 :to="{name: 'Location', params: {id: id, locid: props.item.id}}"

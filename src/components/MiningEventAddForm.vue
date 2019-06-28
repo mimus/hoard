@@ -79,77 +79,76 @@
         @add="addLocation('locations', $event.location)"
         @remove="removeLocation('locations', $event)"
       >
-        <v-card-text
-          slot-scope="{ item, index }"
-          class="pb-0 my-2"
-        >
-          <v-layout align-center class="mb-2">
-            <div class="subheading mr-5">
-              {{ item.label }}
-            </div>
-            <div class="grey--text">
-              {{ item.subtitle }}
-            </div>
-            <external-location-link
-              :id="item.id"
-              color="grey"
-            />
-          </v-layout>
+        <template v-slot:default="{ item, index }">
+          <v-card-text class="pb-0 my-2">
+            <v-layout align-center class="mb-2">
+              <div class="subheading mr-5">
+                {{ item.label }}
+              </div>
+              <div class="grey--text">
+                {{ item.subtitle }}
+              </div>
+              <external-location-link
+                :id="item.id"
+                color="grey"
+              />
+            </v-layout>
 
-          <v-layout align-center>
-            <v-flex xs6>
-              <v-layout column class="mx-5">
-                <v-flex class="blue--text">
-                  Balance before:
-                  {{ locationBalances[index] | formatAssetValue(item.asset) }}
-                </v-flex>
-                <v-flex class="mt-2 mb-4">
-                  <v-layout align-center>
-                    <span>
-                      Received:
-                    </span>
+            <v-layout align-center>
+              <v-flex xs6>
+                <v-layout column class="mx-5">
+                  <v-flex class="blue--text">
+                    Balance before:
+                    {{ locationBalances[index] | formatAssetValue(item.asset) }}
+                  </v-flex>
+                  <v-flex class="mt-2 mb-4">
+                    <v-layout align-center>
+                      <span>
+                        Received:
+                      </span>
+                      <v-text-field
+                        v-model="item.amount"
+                        hint="Actual amount received, after any fees"
+                        persistent-hint
+                        :rules="[required]"
+                        class="input-amount mx-4"
+                      ></v-text-field>
+                    </v-layout>
+                  </v-flex>
+                  <v-flex class="blue--text">
+                    Balance after:
+                    {{ locationBalances[index] && locationBalances[index].plus(item.amount) | formatAssetValue(item.asset) }}
+                  </v-flex>
+                </v-layout>
+              </v-flex>
+              <v-flex xs6>
+                <v-layout column class="mx-5">
+                  <v-flex>
+
+                  </v-flex>
+                  <v-flex class="text-xs-center">
+                    <v-btn
+                      flat color="blue"
+                      @click="item.valueGBP = calculatedValue(item)"
+                    >
+                      &pound;{{ calculatedValue(item) | formatFiat }}
+                      <v-icon>expand_more</v-icon>
+                    </v-btn>
+                  </v-flex>
+                  <v-flex>
                     <v-text-field
-                      v-model="item.amount"
-                      hint="Actual amount received, after any fees"
+                      v-model="item.valueGBP"
+                      label="Value in GBP"
+                      hint="Market value of the acquired asset"
                       persistent-hint
                       :rules="[required]"
-                      class="input-amount mx-4"
                     ></v-text-field>
-                  </v-layout>
-                </v-flex>
-                <v-flex class="blue--text">
-                  Balance after:
-                  {{ locationBalances[index] && locationBalances[index].plus(item.amount) | formatAssetValue(item.asset) }}
-                </v-flex>
-              </v-layout>
-            </v-flex>
-            <v-flex xs6>
-              <v-layout column class="mx-5">
-                <v-flex>
-
-                </v-flex>
-                <v-flex class="text-xs-center">
-                  <v-btn
-                    flat color="blue"
-                    @click="item.valueGBP = calculatedValue(item)"
-                  >
-                    &pound;{{ calculatedValue(item) | formatFiat }}
-                    <v-icon>expand_more</v-icon>
-                  </v-btn>
-                </v-flex>
-                <v-flex>
-                  <v-text-field
-                    v-model="item.valueGBP"
-                    label="Value in GBP"
-                    hint="Market value of the acquired asset"
-                    persistent-hint
-                    :rules="[required]"
-                  ></v-text-field>
-                </v-flex>
-              </v-layout>
-            </v-flex>
-          </v-layout>
-        </v-card-text>
+                  </v-flex>
+                </v-layout>
+              </v-flex>
+            </v-layout>
+          </v-card-text>
+        </template>
       </location-items-list>
     </v-card>
 

@@ -25,12 +25,14 @@
             v-for="item in assetGains"
             :key="item.asset"
           >
-            <div slot="header">
-              {{ item.asset }}:
-              <span :class="item.gain && item.gain.gte && item.gain.gte(0) ? 'gain' : 'loss'">
-                {{ item.gain | formatFiat }} GBP
-              </span>
-            </div>
+            <template v-slot:header>
+              <div>
+                {{ item.asset }}:
+                <span :class="item.gain && item.gain.gte && item.gain.gte(0) ? 'gain' : 'loss'">
+                  {{ item.gain | formatFiat }} GBP
+                </span>
+              </div>
+            </template>
             <v-card-text class="grey lighten-4">
               <v-layout
                 v-for="entry in item.disposals"
