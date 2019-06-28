@@ -3,7 +3,6 @@
     <v-list
       v-if="taxYears && taxYears.length"
       one-line
-      subheader
     >
       <v-list-tile
         v-for="year in taxYears"

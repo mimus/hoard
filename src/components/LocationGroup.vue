@@ -31,7 +31,6 @@
       <v-expansion-panel-content
         v-for="(asset, assetId) in assets"
         :key="assetId"
-        :value="true"
       >
         <div slot="header">
           {{ assetId }}

@@ -36,7 +36,6 @@
       <v-expansion-panel-content
         v-for="transaction in transactions"
         :key="transaction.id"
-        v-model="transaction.selected"
       >
         <v-layout slot="header" align-center>
           {{ transaction.date | formatDateTime }}

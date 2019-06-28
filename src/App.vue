@@ -25,7 +25,7 @@
       <v-spacer />
       <app-persistence></app-persistence>
 
-      <template slot="extension">
+      <template v-slot:extension>
         <the-main-breadcrumbs></the-main-breadcrumbs>
       </template>
     </v-toolbar>

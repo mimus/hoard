@@ -15,9 +15,9 @@
     "bignumber.js": "9.0.0",
     "core-js": "2.6.9",
     "moment": "2.24.0",
-    "vue": "2.5.17",
-    "vue-router": "3.0.1",
-    "vuetify": "1.2.5",
+    "vue": "2.6.10",
+    "vue-router": "3.0.3",
+    "vuetify": "1.5.14",
     "vuex": "3.0.1"
   },
   "devDependencies": {
@@ -34,6 +34,6 @@
     "eslint": "5.16.0",
     "eslint-plugin-node": "9.1.0",
     "eslint-plugin-vue": "5.0.0",
-    "vue-template-compiler": "2.5.17"
+    "vue-template-compiler": "2.6.10"
   }
 }

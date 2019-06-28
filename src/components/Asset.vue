@@ -36,7 +36,7 @@
         hide-actions
         must-sort
       >
-        <template slot="items" slot-scope="props">
+        <template v-slot:items="props">
           <td>
             <div class="no-wrap">
               {{ props.item.date | formatDate }}
@@ -103,7 +103,7 @@
             <associated-links :links="props.item.linked" />
           </td>
         </template>
-        <template slot="no-data">
+        <template v-slot:no-data>
           No ledger entries.
         </template>
       </v-data-table>

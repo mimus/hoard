@@ -1,17 +1,17 @@
 <template>
-  <v-breadcrumbs>
+  <v-breadcrumbs :items="breadcrumbs">
     <v-breadcrumbs-item
-      v-for="breadcrumb in breadcrumbs"
-      :key="breadcrumb.path"
+      slot="item"
+      slot-scope="{ item }"
     >
       <router-link
-        v-if="breadcrumb.path"
-        :to="breadcrumb.path"
+        v-if="item.path"
+        :to="item.path"
       >
-        {{ breadcrumb.label }}
+        {{ item.text }}
       </router-link>
       <span v-else>
-        {{ breadcrumb.label }}
+        {{ item.text }}
       </span>
     </v-breadcrumbs-item>
   </v-breadcrumbs>

@@ -32,20 +32,20 @@ router.afterEach((to, from) => {
   var breadcrumbs = []
   to.matched.forEach(route => {
     var params = to.params
-    var label
+    var text
     var path = route.path
     Object.keys(params).forEach(e => {
       path = path.replace(':' + e, params[e])
     }, this)
 
     if (route.meta.bcLabel) {
-      label = route.meta.bcLabel
+      text = route.meta.bcLabel
     } else if (route.meta.bcGetter) {
       var id = params[route.meta.bcIdParam]
-      label = store.getters[route.meta.bcGetter](id)
+      text = store.getters[route.meta.bcGetter](id)
     }
-    if (label) { // nested '' routes shouldn't be included
-      breadcrumbs.push({ label, path })
+    if (text) { // nested '' routes shouldn't be included
+      breadcrumbs.push({ text, path })
     }
   })
 

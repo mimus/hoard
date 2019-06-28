@@ -1,17 +1,20 @@
 <template>
-  <div>
+  <v-layout row align-content-start>
     <v-menu
       ref="dateMenu"
       :close-on-content-click="false"
       transition="scale-transition"
       min-width="290px"
     >
-      <v-text-field
-        slot="activator"
-        v-model="dateString"
-        label="Date"
-        readonly
-      ></v-text-field>
+      <template v-slot:activator="{ on }">
+        <v-text-field
+          v-model="dateString"
+          label="Date"
+          readonly
+          class="date-field mr-3"
+          v-on="on"
+        ></v-text-field>
+      </template>
       <v-date-picker
         class="mt-5"
         v-model="dateString"
@@ -25,12 +28,15 @@
       transition="scale-transition"
       min-width="290px"
     >
-      <v-text-field
-        slot="activator"
-        v-model="timeString"
-        label="Time"
-        readonly
-      ></v-text-field>
+      <template v-slot:activator="{ on }">
+        <v-text-field
+          v-model="timeString"
+          label="Time"
+          readonly
+          class="time-field"
+          v-on="on"
+        ></v-text-field>
+      </template>
       <v-time-picker
         class="mt-5"
         v-model="timeString"
@@ -38,7 +44,7 @@
         @change="$refs.timeMenu.save(timeString)"
       ></v-time-picker>
     </v-menu>
-  </div>
+  </v-layout>
 </template>
 
 <script>
@@ -84,5 +90,8 @@ export default Vue.component('date-time-picker', {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style>
+<style scoped>
+.date-field, .time-field {
+  max-width: 150px;
+}
 </style>
