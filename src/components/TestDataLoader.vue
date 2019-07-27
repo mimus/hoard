@@ -1,13 +1,14 @@
 <template>
   <v-bottom-sheet v-model="sheet">
-    <template v-slot:activator>
+    <template v-slot:activator="{ on }">
       <div
-        class="text-xs-center"
+        class="text-center"
       >
         <v-btn
           color="green"
           dark
-          class="mb-4"
+          class="mb-6"
+          v-on="on"
         >
           Test Data
         </v-btn>
@@ -15,7 +16,7 @@
     </template>
     <v-card>
       <v-card-text class="pt-0">
-        <v-layout row>
+        <v-layout>
           <div>
             <v-select
               v-model="selectedFile"
@@ -31,6 +32,7 @@
                 :disabled="!selectedFile"
                 color="blue"
                 dark
+                class="mr-3"
                 @click="importFile"
               >
                 Load Test Data
@@ -38,14 +40,14 @@
               (replaces current data)
             </div>
             <v-alert
-              :value="importFileError"
+              :value="!!importFileError"
               type="error"
             >
               {{ importFileError }}
             </v-alert>
           </div>
 
-          <v-flex class="ml-5 mt-3">
+          <v-flex class="ml-12 mt-4">
             <div v-if="loadedFile">
               <p><i>Loaded:</i> &nbsp; <b>{{ loadedFile.title }}</b></p>
               <div v-html="loadedFile.description"></div>

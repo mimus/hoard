@@ -1,7 +1,7 @@
 <template>
   <base-form @submit="submit">
     <v-layout align-center>
-      <v-flex xs4 class="pr-5">
+      <v-flex xs4 class="pr-12">
         <asset-select
           v-model="model.asset"
           label="Asset"
@@ -10,12 +10,12 @@
       </v-flex>
     </v-layout>
 
-    <v-layout row align-center>
+    <v-layout align-center>
       <v-text-field
         v-model="transactionId"
         label="Transaction ID (optional)"
         persistent-hint
-        class="mr-5"
+        class="mr-12"
       ></v-text-field>
       <external-asset-link
         v-if="transactionId"
@@ -48,16 +48,15 @@
       :rules="[required]"
     ></v-text-field>
 
-    <v-card class="mb-4">
-      <v-toolbar card dense>
-        <v-toolbar-title class="body-2">
+    <v-card class="mb-6">
+      <v-layout class="pa-4 grey lighten-4">
+        <v-flex class="body-2">
           From Location(s)
-        </v-toolbar-title>
-        <v-spacer></v-spacer>
+        </v-flex>
         <div v-if="model.asset">
           {{ fromTotal | formatAssetValue(model.asset) }} {{ assetSymbol}}
         </div>
-      </v-toolbar>
+      </v-layout>
 
       <location-items-list
         :items="model.from"
@@ -68,7 +67,7 @@
         <template v-slot="{ item, index }">
           <v-card-text class="mb-2">
             <v-layout align-center class="mb-2">
-              <div class="subheading mr-5">
+              <div class="subheading mr-12">
                 {{ item.label }}
               </div>
               <div class="grey--text">
@@ -83,7 +82,7 @@
               <div v-if="fromBalances[index]">
                 Balance:
                 <v-btn
-                  flat
+                  text
                   @click="item.amount = fromBalances[index].toString()"
                 >
                   {{ fromBalances[index] | formatAssetValue(model.asset) }}
@@ -98,13 +97,13 @@
                 :rules="[required]"
                 solo
                 hide-details
-                class="input-amount mx-4"
+                class="input-amount mx-6"
                 :append-icon="fromBalances[index] && fromBalances[index].lt(item.amount) ? 'warning': ''"
               ></v-text-field>
 
               <div
                 v-if="fromBalances[index]"
-                class="mr-5"
+                class="mr-12"
               >
                 Balance After:
                 {{ fromBalances[index].minus(item.amount) | formatAssetValue(model.asset) }}
@@ -115,16 +114,15 @@
       </location-items-list>
     </v-card>
 
-    <v-card class="mb-4">
-      <v-toolbar card dense>
-        <v-toolbar-title class="body-2">
+    <v-card class="mb-6">
+      <v-layout class="pa-4 grey lighten-4">
+        <v-flex class="body-2">
           Fee
-        </v-toolbar-title>
-        <v-spacer></v-spacer>
+        </v-flex>
         <div v-if="feeAsset">
           {{ model.fee.amount | formatAssetValue(feeAsset) }} {{ feeAssetSymbol}}
         </div>
-      </v-toolbar>
+      </v-layout>
       <v-card-text>
         <v-layout align-center>
           <v-flex>
@@ -138,7 +136,7 @@
         <v-layout>
           <v-flex
             v-if="form.enableFeeLocation"
-            class="pr-5"
+            class="pr-12"
           >
             <asset-select
               v-model="form.customFeeAsset"
@@ -148,7 +146,7 @@
           </v-flex>
           <v-flex
             v-if="form.enableFeeLocation"
-            class="pr-5"
+            class="pr-12"
           >
             <location-select
               v-model="model.fee.locationId"
@@ -158,13 +156,13 @@
             />
           </v-flex>
         </v-layout>
-        <v-layout align-center class="mt-3">
-          <v-flex xs3 class="pr-5">
+        <v-layout align-center class="mt-4">
+          <v-flex class="pr-12">
             <v-text-field
               v-model="model.fee.amount"
               label="Fee Amount"
               :rules="[required]"
-              class="mr-5"
+              class="mr-12"
             ></v-text-field>
           </v-flex>
           <div xs3 class="pr-0">
@@ -176,23 +174,23 @@
               @annotatedText="model.comments = $event"
             ></price-lookup>
           </div>
-          <v-flex class="pr-5">
+          <v-flex class="pr-12">
             <v-text-field
               v-model="assetPriceGBP"
               :label="`Asset Price (GBP for 1 ${feeAssetSymbol})`"
-              class="mr-5"
+              class="mr-12"
             ></v-text-field>
           </v-flex>
           <div xs3 class="pr-0">
             <v-btn
-              flat
+              text
               @click="model.fee.valueGBP = calculatedFeeCost"
             >
               £{{ calculatedFeeCost | formatFiat }}
               <v-icon>chevron_right</v-icon>
             </v-btn>
           </div>
-          <v-flex xs3 class="pr-5">
+          <v-flex class="pr-12">
             <v-text-field
               v-model="model.fee.valueGBP"
               label="Fee Cost in GBP"
@@ -203,15 +201,14 @@
       </v-card-text>
     </v-card>
 
-    <v-card class="mb-4">
-      <v-toolbar card dense>
-        <v-toolbar-title class="body-2">
+    <v-card class="mb-6">
+      <v-layout class="pa-4 grey lighten-4">
+        <v-flex class="body-2">
           To Location(s)
-        </v-toolbar-title>
-        <v-spacer></v-spacer>
+        </v-flex>
         <div
           v-if="model.asset"
-          class="mr-5"
+          class="mr-12"
         >
           <v-icon
             v-if="remainingToAssign.gt(0)"
@@ -239,7 +236,7 @@
         <div v-if="model.asset">
           {{ toTotal | formatAssetValue(model.asset) }} {{ assetSymbol}}
         </div>
-      </v-toolbar>
+      </v-layout>
       <location-items-list
         :items="model.to"
         :asset-id="model.asset"
@@ -249,7 +246,7 @@
         <template v-slot="{ item, index }">
           <v-card-text class="mb-2">
             <v-layout align-center class="mb-2">
-              <div class="subheading mr-5">
+              <div class="subheading mr-12">
                 {{ item.label }}
               </div>
               <div class="grey--text">
@@ -264,7 +261,7 @@
             <v-layout align-center>
               <span
                 v-if="toBalances[index]"
-                class="mr-5"
+                class="mr-12"
               >
                 Balance:
                 {{ toBalances[index] | formatAssetValue(model.asset) }}
@@ -277,12 +274,12 @@
                 :rules="[required]"
                 solo
                 hide-details
-                class="input-amount mx-4"
+                class="input-amount mx-6"
               ></v-text-field>
 
               <div
                 v-if="toBalances[index]"
-                class="mr-5"
+                class="mr-12"
               >
                 Balance After:
                 {{ toBalances[index].plus(item.amount) | formatAssetValue(model.asset) }}

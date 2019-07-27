@@ -12,10 +12,10 @@
           ></slot>
         </v-flex>
 
-        <div class="ml-4">
+        <div class="ml-6">
           <slot name="remove-item">
             <v-btn
-              flat
+              text
               icon
               small
               color="blue-grey"
@@ -32,14 +32,14 @@
       </slot>
     </div>
 
-    <div class="pl-3 blue lighten-5">
+    <div class="pl-4 blue lighten-5">
       <v-layout align-center>
         <asset-select
           v-if="includeAssetSelection"
           v-model="selectedAssetId"
           label="Asset"
           :required="includeAssetSelection"
-          class="mr-4"
+          class="mr-6"
         />
         <location-select
           v-model="selectedLocationId"
@@ -48,7 +48,7 @@
           :requireAsset="requireAsset"
         />
         <v-btn
-          flat
+          text
           icon
           small
           color="blue"

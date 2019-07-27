@@ -2,8 +2,9 @@
   <v-btn
     v-if="canShow"
     :loading="loading"
-    flat
+    text
     :color="color"
+    class="mr-2"
     @click="fetchTransaction"
   >
     <slot>

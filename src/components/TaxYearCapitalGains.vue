@@ -20,59 +20,64 @@
         </span>
       </v-card-text>
       <v-card-text>
-        <v-expansion-panel expand>
-          <v-expansion-panel-content
+        <v-expansion-panels
+          multiple
+          accordion
+        >
+          <v-expansion-panel
             v-for="item in assetGains"
             :key="item.asset"
           >
-            <template v-slot:header>
+            <v-expansion-panel-header>
               <div>
                 {{ item.asset }}:
                 <span :class="item.gain && item.gain.gte && item.gain.gte(0) ? 'gain' : 'loss'">
                   {{ item.gain | formatFiat }} GBP
                 </span>
               </div>
-            </template>
-            <v-card-text class="grey lighten-4">
-              <v-layout
-                v-for="entry in item.disposals"
-                :key="entry.id"
-                class="my-3"
-              >
-                <v-flex xs3>
-                  {{ entry.date | formatDateTime }}
-                </v-flex>
-                <v-flex xs3 :class="entry.workings.gain && entry.workings.gain.gte && entry.workings.gain.gte(0) ? 'gain' : 'loss'">
-                  {{ entry.workings.gain | formatFiat }} GBP
-                </v-flex>
-                <v-flex xs3>
-                  {{ entry.label }}
-                  <div
-                    v-if="entry.comments"
-                    class="caption"
-                  >
-                    {{ entry.comments }}
-                  </div>
-                </v-flex>
-                <v-flex xs3>
-                  <div v-if="entry.workings.disposalPlan">
+            </v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <v-card-text class="grey lighten-4">
+                <v-row
+                  v-for="entry in item.disposals"
+                  :key="entry.id"
+                  class="my-4"
+                >
+                  <v-col cols="3">
+                    {{ entry.date | formatDateTime }}
+                  </v-col>
+                  <v-col cols="3" :class="entry.workings.gain && entry.workings.gain.gte && entry.workings.gain.gte(0) ? 'gain' : 'loss'">
+                    {{ entry.workings.gain | formatFiat }} GBP
+                  </v-col>
+                  <v-col cols="3">
+                    {{ entry.label }}
                     <div
-                      v-for="(part, partIndex) in entry.workings.disposalPlan"
-                      :key="`${entry.id}_${partIndex}`"
+                      v-if="entry.comments"
+                      class="caption"
                     >
-                      {{ part.type }}:
-                      {{ part.amount | formatAssetValue(entry.asset) }}
-                      (cost &pound;{{ part.cost | formatFiat }})
-                      <span v-if="part.entry">
-                        {{ part.entry.date | formatDate }}
-                      </span>
+                      {{ entry.comments }}
                     </div>
-                  </div>
-                </v-flex>
-              </v-layout>
-            </v-card-text>
-          </v-expansion-panel-content>
-        </v-expansion-panel>
+                  </v-col>
+                  <v-col cols="3">
+                    <div v-if="entry.workings.disposalPlan">
+                      <div
+                        v-for="(part, partIndex) in entry.workings.disposalPlan"
+                        :key="`${entry.id}_${partIndex}`"
+                      >
+                        {{ part.type }}:
+                        {{ part.amount | formatAssetValue(entry.asset) }}
+                        (cost &pound;{{ part.cost | formatFiat }})
+                        <span v-if="part.entry">
+                          {{ part.entry.date | formatDate }}
+                        </span>
+                      </div>
+                    </div>
+                  </v-col>
+                </v-row>
+              </v-card-text>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
       </v-card-text>
     </div>
     <v-card-text v-else>

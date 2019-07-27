@@ -9,7 +9,7 @@
         label="Asset"
         :fiat="true"
         :required="true"
-        class="mr-5"
+        class="mr-12"
       />
 
       <v-text-field

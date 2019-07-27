@@ -7,7 +7,7 @@
       :href="link"
       target="_blank"
       :title="linkTitle"
-      flat icon small
+      text icon small
       :color="color"
       class="external-asset-link-btn"
     >

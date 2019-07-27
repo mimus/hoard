@@ -11,12 +11,15 @@
         </span>
       </v-card-text>
       <v-card-text>
-        <v-expansion-panel expand>
-          <v-expansion-panel-content
+        <v-expansion-panels
+          multiple
+          accordion
+        >
+          <v-expansion-panel
             v-for="pool in miningPoolsIncome"
             :key="pool.id"
           >
-            <template v-slot:header>
+            <v-expansion-panel-header>
               <div>
                 {{ pool.label }} ({{ pool.asset.label }}):
                 {{ pool.totalAmount | formatAssetValue(pool.asset.id) }} {{ pool.asset.symbol }}
@@ -25,35 +28,37 @@
                   {{ pool.totalValueGBP | formatFiat }} GBP
                 </span>
               </div>
-            </template>
-            <v-card-text class="grey lighten-4">
-              <v-layout
-                v-for="event in pool.events"
-                :key="event.id"
-                class="my-3"
-              >
-                <v-flex xs3>
-                  {{ event.date | formatDateTime }}
-                </v-flex>
-                <v-flex xs3>
-                  {{ event.amount | formatAssetValue(pool.asset.id) }} {{ pool.asset.symbol }}
-                </v-flex>
-                <v-flex xs3 class="gain">
-                  {{ event.valueGBP | formatFiat }} GBP
-                </v-flex>
-                <v-flex xs3>
-                  {{ event.label }}
-                  <div
-                    v-if="event.comments"
-                    class="caption"
-                  >
-                    {{ event.comments }}
-                  </div>
-                </v-flex>
-              </v-layout>
-            </v-card-text>
-          </v-expansion-panel-content>
-        </v-expansion-panel>
+            </v-expansion-panel-header>
+            <v-expansion-panel-content class="grey lighten-4">
+              <v-card-text>
+                <v-row
+                  v-for="event in pool.events"
+                  :key="event.id"
+                  class="my-4"
+                >
+                  <v-col cols="3">
+                    {{ event.date | formatDateTime }}
+                  </v-col>
+                  <v-col cols="3">
+                    {{ event.amount | formatAssetValue(pool.asset.id) }} {{ pool.asset.symbol }}
+                  </v-col>
+                  <v-col cols="3" class="gain">
+                    {{ event.valueGBP | formatFiat }} GBP
+                  </v-col>
+                  <v-col cols="3">
+                    {{ event.label }}
+                    <div
+                      v-if="event.comments"
+                      class="caption"
+                    >
+                      {{ event.comments }}
+                    </div>
+                  </v-col>
+                </v-row>
+              </v-card-text>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
       </v-card-text>
     </div>
     <v-card-text v-else>

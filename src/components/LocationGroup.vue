@@ -1,74 +1,79 @@
 <template>
   <v-card v-if="group">
-    <v-layout row nowrap align-baseline>
-      <v-flex>
-        <v-card-text>
-          <b class="mr-1">
+    <v-card-text>
+      <v-layout align-baseline>
+        <v-flex>
+          <b class="mr-4">
             {{ group.label }}
           </b>
-        </v-card-text>
-      </v-flex>
-      <div>
-        <v-btn
-          small
-          :to="{name: 'LocationAdd', params: {id: this.id}}"
-        >
-          Add Location
-        </v-btn>
-        <v-btn
-          small
-          :to="{name: 'LocationGroupEdit', params: {id: this.id}}"
-        >
-          Edit Location Group
-        </v-btn>
-      </div>
-    </v-layout>
-    <v-expansion-panel
-      expand
-      focusable
+        </v-flex>
+        <div>
+          <v-btn
+            small
+            class="mr-4"
+            :to="{name: 'LocationAdd', params: {id: this.id}}"
+          >
+            Add Location
+          </v-btn>
+          <v-btn
+            small
+            :to="{name: 'LocationGroupEdit', params: {id: this.id}}"
+          >
+            Edit Location Group
+          </v-btn>
+        </div>
+      </v-layout>
+    </v-card-text>
+    <v-expansion-panels
+      multiple
+      accordion
       :value="expandedAssets"
     >
-      <v-expansion-panel-content
+      <v-expansion-panel
         v-for="(asset, assetId) in assets"
         :key="assetId"
       >
-        <template v-slot:header>
+        <v-expansion-panel-header>
           <div>
             {{ assetId }}
-            <div class="right mr-2">
+            <div class="float-right mr-2">
               Total: {{ (asset.total || 0) | formatAssetValue(assetId) }}
             </div>
           </div>
-        </template>
+        </v-expansion-panel-header>
 
-        <v-data-table
-          :items="asset.locations"
-          hide-headers
-          hide-actions
-          disable-initial-sort
-        >
-          <template v-slot:items="props">
-            <td>
-              <router-link
-                :to="{name: 'Location', params: {id: id, locid: props.item.id}}"
-              >
-                {{ props.item.label }}
-                ({{ props.item.asset }})
-              </router-link>
-            </td>
-            <td>
-              <b v-if="props.item.address">
-                {{ props.item.address }}
-              </b>
-              <external-location-link :id="props.item.id" />
-            </td>
-            <td>
-              {{ props.item.total | formatAssetValue(assetId) }}
-            </td>
-          </template>
-        </v-data-table>
-      </v-expansion-panel-content>
-    </v-expansion-panel>
+        <v-expansion-panel-content>
+          <v-data-table
+            :items="asset.locations"
+            hide-default-header
+            disable-pagination
+            hide-default-footer
+          >
+            <template v-slot:item="props">
+              <tr>
+                <td>
+                  <router-link
+                    :to="{name: 'Location', params: {id: id, locid: props.item.id}}"
+                  >
+                    {{ props.item.label }}
+                    ({{ props.item.asset }})
+                  </router-link>
+                </td>
+                <td>
+                  <b v-if="props.item.address">
+                    {{ props.item.address }}
+                  </b>
+                  <external-location-link :id="props.item.id" />
+                </td>
+                <td>
+                  {{ props.item.total | formatAssetValue(assetId) }}
+                </td>
+              </tr>
+            </template>
+          </v-data-table>
+        </v-expansion-panel-content>
+      </v-expansion-panel>
+    </v-expansion-panels>
   </v-card>
 </template>
 
@@ -100,7 +105,13 @@ export default {
       return assets
     },
     expandedAssets () {
-      return Object.keys(this.assets).map(k => true)
+      // we want to expand all of them: return an array containing all row indices
+      var length = Object.keys(this.assets).length
+      var indices = []
+      for (var i=0; i<length; i++) {
+        indices.push(i)
+      }
+      return indices
     }
   }
 }

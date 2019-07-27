@@ -3,6 +3,7 @@
 import 'babel-polyfill'
 import Vue from 'vue'
 import Vuetify from 'vuetify'
+import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/dist/vuetify.min.css'
 import App from './App'
 import router from './router'
@@ -31,6 +32,11 @@ Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
+  vuetify: new Vuetify({
+    icons: {
+      iconfont: 'mdi'
+    }
+  }),
   store, // child components will have $store
   router,
   render: h => h(App)

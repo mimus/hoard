@@ -3,6 +3,7 @@
     v-if="canShow"
     :disabled="fetchedAll"
     :loading="loading"
+    class="mr-2"
     @click="fetchTransactions"
   >
     <template v-if="fetchedAll">

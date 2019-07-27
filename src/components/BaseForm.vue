@@ -8,8 +8,9 @@
     <v-card-actions>
       <v-btn
         small
-        flat
+        text
         @click="cancel"
+        class="mr-3"
       >
         Cancel
       </v-btn>

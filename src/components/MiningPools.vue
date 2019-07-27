@@ -1,20 +1,20 @@
 <template>
   <v-card class="pb-2x">
     <v-list v-if="miningPoolsSummary && miningPoolsSummary.length">
-      <v-list-tile
+      <v-list-item
         v-for="pool in miningPoolsSummary"
         :key="pool.id"
         :to="{name: 'MiningPool', params: { id: pool.id }}"
       >
-        <v-list-tile-content>
-          <v-list-tile-title>
+        <v-list-item-content>
+          <v-list-item-title>
             {{ pool.label }} ({{ pool.asset }})
-          </v-list-tile-title>
-          <v-list-tile-sub-title>
+          </v-list-item-title>
+          <v-list-item-subtitle>
             {{ pool.total | formatAssetValue(pool.asset) }}
-          </v-list-tile-sub-title>
-        </v-list-tile-content>
-      </v-list-tile>
+          </v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
     </v-list>
     <v-card-text v-else>
       No mining pools.

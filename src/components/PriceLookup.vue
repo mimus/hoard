@@ -2,7 +2,7 @@
   <v-btn
     :loading="loadingPrice"
     :disabled="disabled"
-    flat
+    text
     color="blue"
     class="ma-0 mr-2"
     @click="lookUpPrice"

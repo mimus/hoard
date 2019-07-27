@@ -1,5 +1,5 @@
 <template>
-  <v-layout row align-content-start>
+  <v-layout align-content-start>
     <v-menu
       ref="dateMenu"
       :close-on-content-click="false"
@@ -11,7 +11,7 @@
           v-model="dateString"
           label="Date"
           readonly
-          class="date-field mr-3"
+          class="date-field mr-4"
           v-on="on"
         ></v-text-field>
       </template>

@@ -8,7 +8,7 @@
       :rules="[required]"
     ></v-text-field>
 
-    <v-layout row align-content-start>
+    <v-layout align-content-start>
       <v-menu
         ref="startDateMenu"
         :close-on-content-click="false"
@@ -21,7 +21,7 @@
             label="Start Date"
             readonly
             :rules="[required]"
-            class="date-field mr-3"
+            class="date-field mr-4"
             v-on="on"
           ></v-text-field>
         </template>

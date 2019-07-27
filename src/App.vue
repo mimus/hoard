@@ -14,13 +14,13 @@
         <test-data-loader></test-data-loader>
       </v-layout>
     </v-navigation-drawer>
-    <v-toolbar
+    <v-app-bar
       app
       fixed
       dense
       extended
     >
-      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>Hoard</v-toolbar-title>
       <v-spacer />
       <app-persistence></app-persistence>
@@ -28,10 +28,10 @@
       <template v-slot:extension>
         <the-main-breadcrumbs></the-main-breadcrumbs>
       </template>
-    </v-toolbar>
+    </v-app-bar>
     <v-content>
       <v-container
-        fluid
+        container--fluid
         style="position: relative; z-index: 0;"
       >
         <router-view></router-view>
@@ -72,5 +72,14 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* Override Vuetify styles */
+.theme--light.v-card .v-card__text {
+  color: rgba(0,0,0,.87);
+}
+.v-data-table td {
+    font-weight: 400;
+    font-size: 13px;
 }
 </style>

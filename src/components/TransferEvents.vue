@@ -15,43 +15,47 @@
       <v-data-table
         :headers="headers"
         :items="transferEvents"
-        :pagination.sync="pagination"
-        hide-actions
+        disable-pagination
+        hide-default-footer
+        sort-by="date"
+        :sort-desc="true"
       >
-        <template v-slot:items="props">
-          <td>
-            <div class="no-wrap">
-              {{ props.item.date | formatDate }}
-            </div>
-          </td>
-          <td>
-            <router-link :to="{name: 'Asset', params: {id: props.item.asset}}">
-              {{ props.item.asset }}
-            </router-link>
-          </td>
-          <td>
-            {{ props.item.amount | formatAssetValue(props.item.asset) }}
-          </td>
-          <td>
-            <TransferEventsEventEntries :entries="props.item.fees" />
-          </td>
-          <td>
-            {{ props.item.label }}
-          </td>
-          <td>
-            <TransferEventsEventEntries :entries="props.item.from" />
-          </td>
-          <td>
-            <TransferEventsEventEntries :entries="props.item.to" />
-          </td>
-          <td>
-            {{ props.item.comments }}
-            <external-asset-links
-              :links="props.item.externalAssetLinks"
-              with-short-label
-              with-type-label
-            />
-          </td>
+        <template v-slot:item="props">
+          <tr>
+            <td>
+              <div class="text-no-wrap">
+                {{ props.item.date | formatDate }}
+              </div>
+            </td>
+            <td>
+              <router-link :to="{name: 'Asset', params: {id: props.item.asset}}">
+                {{ props.item.asset }}
+              </router-link>
+            </td>
+            <td>
+              {{ props.item.amount | formatAssetValue(props.item.asset) }}
+            </td>
+            <td>
+              <TransferEventsEventEntries :entries="props.item.fees" />
+            </td>
+            <td>
+              {{ props.item.label }}
+            </td>
+            <td>
+              <TransferEventsEventEntries :entries="props.item.from" />
+            </td>
+            <td>
+              <TransferEventsEventEntries :entries="props.item.to" />
+            </td>
+            <td>
+              {{ props.item.comments }}
+              <external-asset-links
+                :links="props.item.externalAssetLinks"
+                with-short-label
+                with-type-label
+              />
+            </td>
+          </tr>
         </template>
         <template v-slot:no-data>
           No transfer events.
@@ -82,12 +86,7 @@ export default {
       { text: 'Transfer Out', sortable: false },
       { text: 'Transfer In', sortable: false },
       { text: 'Comments', sortable: false }
-    ],
-    pagination: {
-      sortBy: 'date',
-      descending: true,
-      rowsPerPage: -1
-    }
+    ]
   }),
   computed: mapGetters([
     'transferEvents'

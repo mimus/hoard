@@ -2,12 +2,11 @@
   <base-form @submit="submit">
     <date-time-picker v-model="model.date" />
 
-    <v-card class="mb-4">
-      <v-toolbar card dense>
-        <v-toolbar-title class="body-2">
+    <v-card class="mb-6">
+      <v-layout class="pa-4 grey lighten-4">
+        <v-flex class="body-2">
           Bought Assets - Location(s)
-        </v-toolbar-title>
-        <v-spacer></v-spacer>
+        </v-flex>
         <div>
           {{ totalBoughtAssets }}
           <span v-if="valueBoughtAssets.gt(0)">
@@ -29,7 +28,7 @@
             </v-icon>
           </span>
         </div>
-      </v-toolbar>
+      </v-layout>
 
       <location-items-list
         :items="model.acquired"
@@ -40,7 +39,7 @@
         <template v-slot="{ item, index }">
           <v-card-text class="pb-0 my-2">
             <v-layout align-center class="mb-2">
-              <div class="subheading mr-5">
+              <div class="subheading mr-12">
                 {{ item.label }}
               </div>
               <div class="grey--text">
@@ -53,8 +52,8 @@
             </v-layout>
 
             <v-layout align-center>
-              <v-flex xs6>
-                <v-layout column class="mx-5">
+              <v-flex>
+                <v-flex class="mx-12">
                   <v-flex
                     v-if="acquiredBalances[index]"
                     class="blue--text"
@@ -62,7 +61,7 @@
                     Balance before:
                     {{ acquiredBalances[index] | formatAssetValue(item.asset) }}
                   </v-flex>
-                  <v-flex class="mt-2 mb-4">
+                  <v-flex class="mt-2 mb-6">
                     <v-layout align-center>
                       <span>Bought:</span>
                       <v-text-field
@@ -70,7 +69,7 @@
                         hint="Full amount, before any fees deducted"
                         persistent-hint
                         :rules="[required]"
-                        class="input-amount mx-4"
+                        class="input-amount mx-6"
                         >
                       </v-text-field>
                     </v-layout>
@@ -82,10 +81,10 @@
                     Balance after:
                     {{ acquiredBalances[index].plus(item.amount) | formatAssetValue(item.asset) }}
                   </v-flex>
-                </v-layout>
+                </v-flex>
               </v-flex>
-              <v-flex xs6>
-                <v-layout column class="mx-5">
+              <v-flex>
+                <v-flex class="mx-12">
                   <v-flex>
                     <v-layout align-center>
                       <price-lookup
@@ -102,14 +101,14 @@
                           hint="Market rate"
                           persistent-hint
                           :rules="[required]"
-                          class="mr-5"
+                          class="mr-12"
                         ></v-text-field>
                       </v-flex>
                     </v-layout>
                   </v-flex>
-                  <v-flex class="text-xs-center">
+                  <v-flex class="text-center mt-2">
                     <v-btn
-                      flat
+                      text
                       color="blue"
                       @click="item.valueGBP = calculatedValue(item)"
                     >
@@ -126,7 +125,7 @@
                       :rules="[required]"
                     ></v-text-field>
                   </v-flex>
-                </v-layout>
+                </v-flex>
               </v-flex>
             </v-layout>
 
@@ -137,7 +136,7 @@
                   hint="Comments"
                   persistent-hint
                   color="green lighten-1"
-                  class="input-comment"
+                  class="input-comment mb-2"
                 ></v-text-field>
               </v-flex>
             </v-layout>
@@ -147,12 +146,11 @@
       </location-items-list>
     </v-card>
 
-    <v-card class="mb-4">
-      <v-toolbar card dense>
-        <v-toolbar-title class="body-2">
+    <v-card class="mb-6">
+      <v-layout class="pa-4 grey lighten-4">
+        <v-flex class="body-2">
           Sold Assets - Location(s)
-        </v-toolbar-title>
-        <v-spacer></v-spacer>
+        </v-flex>
         <div>
           {{ totalSoldAssets }}
           <span v-if="valueSoldAssets.gt(0)">
@@ -174,7 +172,7 @@
             </v-icon>
           </span>
         </div>
-      </v-toolbar>
+      </v-layout>
 
       <location-items-list
         :items="model.disposed"
@@ -185,7 +183,7 @@
         <template v-slot="{ item, index }">
           <v-card-text class="pb-0">
             <v-layout align-center class="mb-2">
-              <div class="subheading mr-5">
+              <div class="subheading mr-12">
                 {{ item.label }}
               </div>
               <div class="grey--text">
@@ -198,15 +196,15 @@
             </v-layout>
 
             <v-layout align-center>
-              <v-flex xs6>
-                <v-layout column class="mx-5">
+              <v-flex>
+                <v-flex class="mx-12">
                   <v-flex
                     v-if="disposedBalances[index]"
                     class="blue--text"
                   >
                     Balance before:
                     <v-btn
-                      flat
+                      text
                       color="blue"
                       @click="item.amount = disposedBalances[index].toString()"
                     >
@@ -215,7 +213,7 @@
                     </v-btn>
                   </v-flex>
 
-                  <v-flex class="mt-2 mb-4">
+                  <v-flex class="mt-2 mb-6">
                     <v-layout align-center>
                       <span>Sold:</span>
                       <v-text-field
@@ -224,7 +222,7 @@
                         persistent-hint
                         :rules="[required]"
                         :append-icon="disposedBalances[index] && disposedBalances[index].lt(item.amount) ? 'warning': ''"
-                        class="input-amount mx-4"
+                        class="input-amount mx-6"
                       ></v-text-field>
                     </v-layout>
                   </v-flex>
@@ -236,11 +234,11 @@
                     Balance after:
                     {{ disposedBalances[index].minus(item.amount) | formatAssetValue(item.asset) }}
                   </v-flex>
-                </v-layout>
+                </v-flex>
               </v-flex>
 
-              <v-flex xs6>
-                <v-layout column class="mx-5">
+              <v-flex>
+                <v-flex class="mx-12">
                   <v-flex>
                     <v-layout align-center>
                       <price-lookup
@@ -256,14 +254,14 @@
                           :label="`Price (GBP for 1 ${assetSymbol(item.asset)})`"
                           hint="Market rate"
                           persistent-hint
-                          class="mr-5"
+                          class="mr-12"
                         ></v-text-field>
                       </v-flex>
                     </v-layout>
                   </v-flex>
-                  <v-flex class="text-xs-center">
+                  <v-flex class="text-center mt-2">
                     <v-btn
-                      flat
+                      text
                       color="blue"
                       @click="item.valueGBP = calculatedValue(item)"
                     >
@@ -280,7 +278,7 @@
                       :rules="[required]"
                     ></v-text-field>
                   </v-flex>
-                </v-layout>
+                </v-flex>
               </v-flex>
             </v-layout>
 
@@ -291,7 +289,7 @@
                   hint="Comments"
                   persistent-hint
                   color="green lighten-1"
-                  class="input-comment"
+                  class="input-comment mb-2"
                 ></v-text-field>
               </v-flex>
             </v-layout>
@@ -301,16 +299,15 @@
       </location-items-list>
     </v-card>
 
-    <v-card class="mb-4">
-      <v-toolbar card dense>
-        <v-toolbar-title class="body-2">
+    <v-card class="mb-6">
+      <v-layout class="pa-4 grey lighten-4">
+        <v-flex class="body-2">
           Fee(s)
-        </v-toolbar-title>
-        <v-spacer></v-spacer>
+        </v-flex>
         <div>
           {{ totalFees }}
         </div>
-      </v-toolbar>
+      </v-layout>
 
       <location-items-list
         :items="model.fees"
@@ -321,7 +318,7 @@
         <template v-slot="{ item, index }">
           <v-card-text class="pb-0">
             <v-layout align-center class="mb-2">
-              <div class="subheading mr-5">
+              <div class="subheading mr-12">
                 {{ item.label }}
               </div>
               <div class="grey--text">
@@ -334,7 +331,7 @@
             </v-layout>
 
             <v-layout>
-              <v-flex xs3 class="mr-4">
+              <v-flex class="mr-6">
                 <v-text-field
                   v-model="item.amount"
                   label="Fee Amount"

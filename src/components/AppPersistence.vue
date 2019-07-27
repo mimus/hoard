@@ -1,7 +1,7 @@
 <template>
   <v-toolbar-items>
     <v-btn
-      flat
+      text
       @click.stop="importDialog = true"
     >
       Import
@@ -9,7 +9,7 @@
 
     <v-btn
       ref="exportBtn"
-      flat
+      text
       :href="exportUrl"
       target="_blank"
       :download="exportFilename"
@@ -33,7 +33,7 @@
             @formData="formData"
           />
           <v-alert
-            :value="importFileError"
+            :value="!!importFileError"
             type="error"
           >
             {{ importFileError }}
@@ -44,7 +44,7 @@
           <v-spacer />
           <v-btn
             color="primary"
-            flat
+            text
             @click.stop="importDialog = false"
           >
             Close

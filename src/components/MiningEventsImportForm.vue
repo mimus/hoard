@@ -10,7 +10,7 @@
 
     <div
       v-if="transactions.length"
-      class="mb-3"
+      class="mb-4"
     >
       <v-btn
         :loading="pricesFetchStatus.loading"
@@ -24,37 +24,41 @@
     <v-alert
       :value="!!pricesFetchStatus.error"
       type="error"
-      class="mb-3"
+      class="mb-4"
     >
       {{ pricesFetchStatus.error }}
     </v-alert>
 
-    <v-expansion-panel
-      :expand="true"
+    <v-expansion-panels
+      multiple
+      accordion
       :value="expandedTransactions"
     >
-      <v-expansion-panel-content
+      <v-expansion-panel
         v-for="transaction in transactions"
         :key="transaction.id"
       >
-        <template v-slot:header>
+        <v-expansion-panel-header>
           <v-layout align-center>
-            {{ transaction.date | formatDateTime }}
-            <span
+            <div>
+              {{ transaction.date | formatDateTime }}
+            </div>
+            <div
               v-if="transaction.amount"
-              class="mx-3"
+              class="mx-4"
             >
               {{ transaction.amount | formatAssetValue(asset.id) }}
               {{ asset.symbol}}
-            </span>
+            </div>
             <v-flex v-if="transaction.isImportable">
               <v-checkbox
                 v-model="transaction.selected"
                 label="Import this"
                 hide-details
+                class="mt-0"
               ></v-checkbox>
             </v-flex>
-            <span
+            <div
               v-else
               class="ml-2"
             >
@@ -70,118 +74,116 @@
               >
                 block
               </v-icon>
-            </span>
+            </div>
           </v-layout>
-        </template>
-        <v-card>
-          <v-card-text>
-            <div
-              v-if="transaction.isImportable"
-              :key="`${transaction.id}-isImportable`"
-            >
-              <v-layout>
-                <v-flex class="mx-3">
-                    <v-text-field
-                      v-model="transaction.amount"
-                      label="Amount"
-                      readonly
-                    ></v-text-field>
-                </v-flex>
-                <v-flex class="mx-3">
-                  <v-layout row align-center>
-                    <price-lookup
-                      v-model="transaction.assetPriceGBP"
-                      :asset="asset"
-                      :date="transaction.date"
-                      :requestFetch="transaction.requestPriceFetch"
-                      :textToAnnotate="transaction.comments"
-                      @input="onPriceLookedUp(transaction)"
-                      @error="onPriceLookupError(transaction, $event)"
-                      @annotatedText="transaction.comments = $event"
-                    />
-                    <v-text-field
-                      v-model="transaction.assetPriceGBP"
-                      :label="`Price of 1 ${asset.label} in GBP`"
-                    ></v-text-field>
-                  </v-layout>
-                </v-flex>
-                <v-flex class="mx-3">
+        </v-expansion-panel-header>
+        <v-expansion-panel-content>
+          <div
+            v-if="transaction.isImportable"
+            :key="`${transaction.id}-isImportable`"
+          >
+            <v-layout>
+              <v-flex class="mx-4">
                   <v-text-field
-                    v-model="transaction.valueGBP"
-                    label="Received value in GBP"
+                    v-model="transaction.amount"
+                    label="Amount"
+                    readonly
                   ></v-text-field>
-                </v-flex>
-              </v-layout>
-              <v-layout row>
-                <v-flex class="mx-3">
+              </v-flex>
+              <v-flex class="mx-4">
+                <v-layout align-center>
+                  <price-lookup
+                    v-model="transaction.assetPriceGBP"
+                    :asset="asset"
+                    :date="transaction.date"
+                    :requestFetch="transaction.requestPriceFetch"
+                    :textToAnnotate="transaction.comments"
+                    @input="onPriceLookedUp(transaction)"
+                    @error="onPriceLookupError(transaction, $event)"
+                    @annotatedText="transaction.comments = $event"
+                  />
                   <v-text-field
-                    v-model="transaction.label"
-                    label="Label"
+                    v-model="transaction.assetPriceGBP"
+                    :label="`Price of 1 ${asset.label} in GBP`"
                   ></v-text-field>
-                </v-flex>
-                <v-flex class="mx-3">
-                  <v-text-field
-                    v-model="transaction.comments"
-                    label="Comments"
-                  ></v-text-field>
-                </v-flex>
-              </v-layout>
-              <v-layout>
+                </v-layout>
+              </v-flex>
+              <v-flex class="mx-4">
+                <v-text-field
+                  v-model="transaction.valueGBP"
+                  label="Received value in GBP"
+                ></v-text-field>
+              </v-flex>
+            </v-layout>
+            <v-layout >
+              <v-flex class="mx-4">
+                <v-text-field
+                  v-model="transaction.label"
+                  label="Label"
+                ></v-text-field>
+              </v-flex>
+              <v-flex class="mx-4">
+                <v-text-field
+                  v-model="transaction.comments"
+                  label="Comments"
+                ></v-text-field>
+              </v-flex>
+            </v-layout>
+            <v-layout>
+              <div
+                v-if="transaction.externalAssetLinks"
+                class="mx-4"
+              >
                 <div
-                  v-if="transaction.externalAssetLinks"
-                  class="mx-3"
+                  v-for="link in transaction.externalAssetLinks"
+                  :key="`${link.asset}_${link.type}_${link.item}`"
                 >
-                  <div
-                    v-for="link in transaction.externalAssetLinks"
-                    :key="`${link.asset}_${link.type}_${link.item}`"
-                  >
-                    <external-asset-link
-                      v-bind="link"
-                      with-short-label
-                      with-type-label
-                      color="black"
-                    />
-                  </div>
+                  <external-asset-link
+                    v-bind="link"
+                    with-short-label
+                    with-type-label
+                    color="black"
+                  />
                 </div>
-              </v-layout>
+              </div>
+            </v-layout>
+          </div>
+          <div
+            v-else
+            :key="`${transaction.id}-isNotImportable`"
+          >
+            <div v-if="transaction.existingEvent">
+              Existing event:
+              <associated-link
+                :link="{id: transaction.existingEvent.id, type: 'miningEvent'}"
+              />
             </div>
-            <div
-              v-else
-              :key="`${transaction.id}-isNotImportable`"
-            >
-              <div v-if="transaction.existingEvent">
-                Existing event:
-                <associated-link
-                  :link="{id: transaction.existingEvent.id, type: 'miningEvent'}"
-                />
-              </div>
-              <div v-if="transaction.notImportableMessage">
-                {{ transaction.notImportableMessage }}
-              </div>
-              <div v-if="transaction.isFromSelf">
-                Transfer from me:
-                <span
-                  v-for="inputAddress in transaction.inputAddresses"
-                  :key="inputAddress.address"
-                >
-                  <i v-if="inputAddress.location">
-                    <associated-link
-                      :link="{id: inputAddress.location.id, type: 'location'}"
-                    />
-                  </i>
-                  <i v-else>
-                    {{ inputAddress.address }}
-                  </i>
-                </span>
-              </div>
+            <div v-if="transaction.notImportableMessage">
+              {{ transaction.notImportableMessage }}
             </div>
-          </v-card-text>
-        </v-card>
-      </v-expansion-panel-content>
-    </v-expansion-panel>
+            <div v-if="transaction.isFromSelf">
+              Transfer from me:
+              <span
+                v-for="inputAddress in transaction.inputAddresses"
+                :key="inputAddress.address"
+              >
+                <i v-if="inputAddress.location">
+                  <associated-link
+                    :link="{id: inputAddress.location.id, type: 'location'}"
+                  />
+                </i>
+                <i v-else>
+                  {{ inputAddress.address }}
+                </i>
+              </span>
+            </div>
+          </div>
+        </v-expansion-panel-content>
+      </v-expansion-panel>
+    </v-expansion-panels>
 
     <v-alert
-      :value="locationId && !address"
+      :value="!!(locationId && !address)"
       type="warning"
     >
       This location doesn't have an address - can't look it up
@@ -189,7 +191,7 @@
 
     <div
       v-if="address"
-      class="mt-3"
+      class="mt-4"
     >
       <external-transactions-fetcher
         v-model="fetched.transactions"
@@ -218,7 +220,7 @@
      {{ submitError }}
     </v-alert>
 
-    <div class="mb-3"></div>
+    <div class="mb-4"></div>
 
   </base-form>
 </template>
@@ -263,7 +265,14 @@ export default {
       return this.location && this.location.address
     },
     expandedTransactions () {
-      return this.transactions.map(t => t.selected)
+      // we want to expand the selected transactions: return an array containing their row indices
+      var indices = []
+      for (var i=0; i<this.transactions.length; i++) {
+        if (this.transactions[i].selected) {
+          indices.push(i)
+        }
+      }
+      return indices
     },
     pricesFetchStatus () {
       var transactionWithError = this.transactions.find(t => t.fetchingPriceError)

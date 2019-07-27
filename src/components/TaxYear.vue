@@ -1,15 +1,15 @@
 <template>
   <v-card>
-    <div v-if="taxYear">
-      <v-layout row nowrap align-baseline>
-        <v-flex>
+    <template v-if="taxYear">
+      <v-layout align-baseline justify-space-between>
+        <div>
           <v-card-text>
             Tax Year: <b>{{ taxYear.label }}</b>
             <br>Start Date: {{ taxYear.startDate | formatDateTime }}
             <br>End Date: {{ taxYear.endDate | formatDateTime }}
           </v-card-text>
-        </v-flex>
-        <div>
+        </div>
+        <div class="mr-6">
           <v-btn
             small
             :to="{name: 'TaxYearEdit', params: {id: this.id}}"
@@ -26,7 +26,7 @@
 
       <TaxYearCapitalGains :id="id" />
 
-    </div>
+    </template>
     <v-card-text v-else>
       Unknown ID
     </v-card-text>

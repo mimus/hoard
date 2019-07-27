@@ -1,15 +1,15 @@
 <template>
   <base-form @submit="submit">
     <asset-select
-      class="mr-5"
+      class="mr-12"
       v-model="model.asset"
       label="New Asset Gained"
       :required="true"
     />
 
-    <v-layout row align-center>
+    <v-layout align-center>
       <v-text-field
-        class="mr-5"
+        class="mr-12"
         v-model="form.transactionId"
         label="Transaction ID (optional)"
         persistent-hint
@@ -41,14 +41,14 @@
     <date-time-picker v-model="model.date" />
 
     <v-layout align-center>
-      <v-flex xs4 class="pr-5">
+      <v-flex xs4 class="pr-12">
         <asset-select
           v-model="model.originalAsset"
           label="Original Asset (if any)"
           :clearable="true"
         />
       </v-flex>
-      <v-flex xs4 class="pr-5">
+      <v-flex xs4 class="pr-12">
         <v-layout align-center>
           <location-select
             v-model="model.originalLocation"
@@ -66,6 +66,7 @@
         Amount at date: {{ originalAssetAmount | formatAssetValue(model.originalAsset) }} {{ originalAssetSymbol }}
         <v-btn
           small
+          class="ml-2"
           @click="model.amount = originalAssetAmount.toString()"
         >
           Copy <v-icon class="ml-1">arrow_downward</v-icon>
@@ -74,7 +75,7 @@
     </v-layout>
 
     <v-layout>
-      <v-flex xs4 class="pr-5">
+      <v-flex xs4 class="pr-12">
         <v-layout align-center>
           <location-select
             v-model="model.location"
@@ -89,9 +90,9 @@
           />
         </v-layout>
       </v-flex>
-      <v-flex xs4 class="pr-5">
+      <v-flex xs4 class="pr-12">
         <v-text-field
-          class="mr-5"
+          class="mr-12"
           v-model="model.amount"
           label="Amount"
           :rules="[required]"
@@ -99,7 +100,7 @@
       </v-flex>
     </v-layout>
 
-    <v-layout row align-center>
+    <v-layout align-center>
       <div class="pr-0">
         <price-lookup
           v-model="form.assetPriceGBP"
@@ -113,12 +114,13 @@
         <v-text-field
           v-model="form.assetPriceGBP"
           :label="`Asset Price (GBP for 1 ${assetSymbol})`"
-          class="mr-5"
+          class="mr-12"
         ></v-text-field>
       </v-flex>
       <div xs3 class="pr-0">
         <v-btn
-          flat
+          text
+          class="mr-2"
           @click="model.assetValueGBP = calculatedValue"
         >
           £{{ calculatedValue | formatFiat }}

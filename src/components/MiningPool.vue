@@ -5,7 +5,7 @@
         v-if="pool"
         key="found"
       >
-        <v-layout row nowrap align-baseline>
+        <v-layout align-baseline justify-space-between>
           <v-flex>
             <v-card-text>
               <b class="mr-1">
@@ -25,7 +25,7 @@
         </v-layout>
         <v-card-text
           v-if="pool.comments"
-          class="mb-4"
+          class="mb-6"
         >
           <i>Comments:</i>
           <div class="ml-2 pool-comments">
@@ -37,7 +37,7 @@
           v-if="hasImporters"
           absolute right
           fab color="blue" dark small
-          class="mt-2 mr-5"
+          class="mt-2 mr-12"
           title="Import Events"
           :to="{name: 'MiningEventImport'}"
         >
@@ -61,33 +61,37 @@
           <v-data-table
             :headers="headers"
             :items="miningEvents"
-            :pagination.sync="pagination"
-            hide-actions
+            disable-pagination
+            hide-default-footer
             must-sort
+            sort-by="date"
+            :sort-desc="true"
           >
-            <template v-slot:items="props">
-              <td>
-                <div class="no-wrap">
-                  {{ props.item.date | formatDate }}
-                </div>
-              </td>
-              <td>
-                {{ props.item.amount | formatAssetValue(pool.asset) }}
-              </td>
-              <td>
-                {{ props.item.label }}
-              </td>
-              <td>
-                {{ props.item.comments }}
-              </td>
-              <td class="related-links-col">
-                <associated-links :links="props.item.linked" />
-                <external-asset-links
-                  :links="props.item.externalAssetLinks"
-                  with-short-label
-                  with-type-label
-                />
-              </td>
+            <template v-slot:item="{ item }">
+              <tr>
+                <td>
+                  <div class="text-no-wrap">
+                    {{ item.date | formatDate }}
+                  </div>
+                </td>
+                <td>
+                  {{ item.amount | formatAssetValue(pool.asset) }}
+                </td>
+                <td>
+                  {{ item.label }}
+                </td>
+                <td>
+                  {{ item.comments }}
+                </td>
+                <td class="related-links-col">
+                  <associated-links :links="item.linked" />
+                  <external-asset-links
+                    :links="item.externalAssetLinks"
+                    with-short-label
+                    with-type-label
+                  />
+                </td>
+              </tr>
             </template>
             <template v-slot:no-data>
               No mining events.
@@ -121,12 +125,7 @@ export default {
       { text: 'Label', sortable: false },
       { text: 'Comments', sortable: false },
       { text: 'Related', sortable: false }
-    ],
-    pagination: {
-      sortBy: 'date',
-      descending: true,
-      rowsPerPage: -1
-    }
+    ]
   }),
   computed: {
     asset () {

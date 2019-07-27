@@ -15,38 +15,42 @@
       <v-data-table
         :headers="headers"
         :items="airdropEvents"
-        :pagination.sync="pagination"
-        hide-actions
+        disable-pagination
+        hide-default-footer
+        sort-by="date"
+        :sort-desc="true"
       >
-        <template v-slot:items="props">
-          <td>
-            <div class="no-wrap">
-              {{ props.item.date | formatDate }}
-            </div>
-          </td>
-          <td>
-            {{ props.item.asset }}
-          </td>
-          <td>
-            {{ props.item.amount | formatAssetValue(props.item.asset) }}
-          </td>
-          <td>
-            {{ props.item.label }}
-          </td>
-          <td>
-            {{ props.item.comments }}
-            <external-asset-links
-              :links="props.item.externalAssetLinks"
-              with-short-label
-              with-type-label
-            />
-          </td>
-          <td class="related-links-col">
-            <associated-links :links="props.item.originalLinked" />
-          </td>
-          <td class="related-links-col">
-            <associated-links :links="props.item.linked" />
-          </td>
+        <template v-slot:item="props">
+          <tr>
+            <td>
+              <div class="text-no-wrap">
+                {{ props.item.date | formatDate }}
+              </div>
+            </td>
+            <td>
+              {{ props.item.asset }}
+            </td>
+            <td>
+              {{ props.item.amount | formatAssetValue(props.item.asset) }}
+            </td>
+            <td>
+              {{ props.item.label }}
+            </td>
+            <td>
+              {{ props.item.comments }}
+              <external-asset-links
+                :links="props.item.externalAssetLinks"
+                with-short-label
+                with-type-label
+              />
+            </td>
+            <td class="related-links-col">
+              <associated-links :links="props.item.originalLinked" />
+            </td>
+            <td class="related-links-col">
+              <associated-links :links="props.item.linked" />
+            </td>
+          </tr>
         </template>
         <template v-slot:no-data>
           No airdrop events.
@@ -73,12 +77,7 @@ export default {
       { text: 'Comments', sortable: false },
       { text: 'Original', sortable: false },
       { text: 'Airdrop', sortable: false }
-    ],
-    pagination: {
-      sortBy: 'date',
-      descending: true,
-      rowsPerPage: -1
-    }
+    ]
   }),
   computed: mapGetters([
     'airdropEvents'

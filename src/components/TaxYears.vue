@@ -4,20 +4,20 @@
       v-if="taxYears && taxYears.length"
       one-line
     >
-      <v-list-tile
+      <v-list-item
         v-for="year in taxYears"
         :key="year.label"
         :to="{name: 'TaxYear', params: {id: year.id}}"
       >
-        <v-list-tile-content>
-          <v-list-tile-title>
+        <v-list-item-content>
+          <v-list-item-title>
             {{ year.label }}
-          </v-list-tile-title>
-          <v-list-tile-sub-title>
+          </v-list-item-title>
+          <v-list-item-subtitle>
             ({{ year.startDate | formatDate }} - {{ year.endDate | formatDate }})
-          </v-list-tile-sub-title>
-        </v-list-tile-content>
-      </v-list-tile>
+          </v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
     </v-list>
     <v-card-text v-else>
       No tax years.

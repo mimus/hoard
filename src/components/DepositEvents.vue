@@ -17,30 +17,34 @@
       <v-data-table
         :headers="headers"
         :items="depositEvents"
-        :pagination.sync="pagination"
-        hide-actions
+        disable-pagination
+        hide-default-footer
+        sort-by="date"
+        :sort-desc="true"
       >
-        <template v-slot:items="props">
-          <td>
-            <div class="no-wrap">
-              {{ props.item.date | formatDate }}
-            </div>
-          </td>
-          <td>
-            {{ props.item.asset }}
-          </td>
-          <td>
-            {{ props.item.amount | formatAssetValue(props.item.asset) }}
-          </td>
-          <td>
-            {{ props.item.label }}
-          </td>
-          <td>
-            {{ props.item.comments }}
-          </td>
-          <td class="related-links-col">
-            <associated-links :links="props.item.linked" />
-          </td>
+        <template v-slot:item="props">
+          <tr>
+            <td>
+              <div class="text-no-wrap">
+                {{ props.item.date | formatDate }}
+              </div>
+            </td>
+            <td>
+              {{ props.item.asset }}
+            </td>
+            <td>
+              {{ props.item.amount | formatAssetValue(props.item.asset) }}
+            </td>
+            <td>
+              {{ props.item.label }}
+            </td>
+            <td>
+              {{ props.item.comments }}
+            </td>
+            <td class="related-links-col">
+              <associated-links :links="props.item.linked" />
+            </td>
+          </tr>
         </template>
         <template v-slot:no-data>
           No deposit events.
@@ -68,12 +72,7 @@ export default {
       { text: 'Label', sortable: false },
       { text: 'Comments', sortable: false },
       { text: 'Related', sortable: false }
-    ],
-    pagination: {
-      sortBy: 'date',
-      descending: true,
-      rowsPerPage: -1
-    }
+    ]
   }),
   computed: mapGetters([
     'depositEvents'

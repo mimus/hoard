@@ -1,19 +1,19 @@
 <template>
   <v-card class="pb-2x">
     <v-list v-if="assets && assets.length">
-      <v-list-tile
+      <v-list-item
         v-for="asset in assets"
         :key="asset.id"
         :to="{name: 'Asset', params: {id: asset.id}}"
         >
-        <v-list-tile-content>
-          <v-list-tile-title>
+        <v-list-item-content>
+          <v-list-item-title>
             {{ asset.label }}
             ({{ asset.symbol }})
             {{ assetAmounts[asset.id] | formatAssetValue(asset.id) }}
-          </v-list-tile-title>
-        </v-list-tile-content>
-      </v-list-tile>
+          </v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
     </v-list>
     <v-card-text v-else>
       No assets.

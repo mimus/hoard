@@ -1,77 +1,77 @@
 <template>
   <v-list dense>
-    <v-list-tile to="/">
-      <v-list-tile-action>
+    <v-list-item to="/">
+      <v-list-item-action>
         <v-icon>dashboard</v-icon>
-      </v-list-tile-action>
-      <v-list-tile-content>
-        <v-list-tile-title>Home</v-list-tile-title>
-      </v-list-tile-content>
-    </v-list-tile>
-    <v-list-tile to="/tax-years">
-      <v-list-tile-action>
+      </v-list-item-action>
+      <v-list-item-content>
+        <v-list-item-title>Home</v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
+    <v-list-item to="/tax-years">
+      <v-list-item-action>
         <v-icon>account_balance</v-icon>
-      </v-list-tile-action>
-      <v-list-tile-content>
-        <v-list-tile-title>Tax Years</v-list-tile-title>
-      </v-list-tile-content>
-    </v-list-tile>
-    <v-list-tile to="/mining-pools">
-      <v-list-tile-action>
+      </v-list-item-action>
+      <v-list-item-content>
+        <v-list-item-title>Tax Years</v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
+    <v-list-item to="/mining-pools">
+      <v-list-item-action>
         <v-icon>group_work</v-icon>
-      </v-list-tile-action>
-      <v-list-tile-content>
-        <v-list-tile-title>Mining Pools</v-list-tile-title>
-      </v-list-tile-content>
-    </v-list-tile>
-    <v-list-tile to="/assets">
-      <v-list-tile-action>
+      </v-list-item-action>
+      <v-list-item-content>
+        <v-list-item-title>Mining Pools</v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
+    <v-list-item to="/assets">
+      <v-list-item-action>
         <v-icon>euro_symbol</v-icon>
-      </v-list-tile-action>
-      <v-list-tile-content>
-        <v-list-tile-title>Assets</v-list-tile-title>
-      </v-list-tile-content>
-    </v-list-tile>
-    <v-list-tile to="/location-groups">
-      <v-list-tile-action>
+      </v-list-item-action>
+      <v-list-item-content>
+        <v-list-item-title>Assets</v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
+    <v-list-item to="/location-groups">
+      <v-list-item-action>
         <v-icon>place</v-icon>
-      </v-list-tile-action>
-      <v-list-tile-content>
-        <v-list-tile-title>Location Groups</v-list-tile-title>
-      </v-list-tile-content>
-    </v-list-tile>
-    <v-list-tile to="/deposit-events">
-      <v-list-tile-action>
+      </v-list-item-action>
+      <v-list-item-content>
+        <v-list-item-title>Location Groups</v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
+    <v-list-item to="/deposit-events">
+      <v-list-item-action>
         <v-icon>play_for_work</v-icon>
-      </v-list-tile-action>
-      <v-list-tile-content>
-        <v-list-tile-title>Deposits</v-list-tile-title>
-      </v-list-tile-content>
-    </v-list-tile>
-    <v-list-tile to="/airdrop-events">
-      <v-list-tile-action>
+      </v-list-item-action>
+      <v-list-item-content>
+        <v-list-item-title>Deposits</v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
+    <v-list-item to="/airdrop-events">
+      <v-list-item-action>
         <v-icon>flare</v-icon>
-      </v-list-tile-action>
-      <v-list-tile-content>
-        <v-list-tile-title>Airdrops</v-list-tile-title>
-      </v-list-tile-content>
-    </v-list-tile>
-    <v-list-tile to="/transfer-events">
-      <v-list-tile-action>
+      </v-list-item-action>
+      <v-list-item-content>
+        <v-list-item-title>Airdrops</v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
+    <v-list-item to="/transfer-events">
+      <v-list-item-action>
         <v-icon class="rotate-right">call_split</v-icon>
-      </v-list-tile-action>
-      <v-list-tile-content>
-        <v-list-tile-title>Transfers</v-list-tile-title>
-      </v-list-tile-content>
-    </v-list-tile>
-    <v-list-tile to="/trade-events">
-      <v-list-tile-action>
+      </v-list-item-action>
+      <v-list-item-content>
+        <v-list-item-title>Transfers</v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
+    <v-list-item to="/trade-events">
+      <v-list-item-action>
         <v-icon>repeat</v-icon>
-      </v-list-tile-action>
-      <v-list-tile-content>
-        <v-list-tile-title>Trades</v-list-tile-title>
-      </v-list-tile-content>
-    </v-list-tile>
+      </v-list-item-action>
+      <v-list-item-content>
+        <v-list-item-title>Trades</v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
   </v-list>
 </template>
 
