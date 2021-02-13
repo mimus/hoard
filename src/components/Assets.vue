@@ -17,7 +17,7 @@
         v-if="assetGBPValues"
         style="margin: 10px 0 0 15px; font-weight: bold;"
       >
-        Total: £{{ totalAssetGBPValue | formatFiat }}
+        Total: &pound;{{ totalAssetGBPValue | formatFiat }}
       </div>
     </div>
     <v-list v-if="assets && assets.length">
@@ -35,7 +35,7 @@
           <v-list-item-subtitle
             v-if="assetGBPValues"
           >
-            £{{ assetGBPValues[asset.id] }}
+            &pound;{{ assetGBPValues[asset.id] | formatFiat }}
             <i>(1 {{ asset.symbol }} = {{ assetPriceById[asset.id] | formatFiat }} GBP)</i>
           </v-list-item-subtitle>
         </v-list-item-content>

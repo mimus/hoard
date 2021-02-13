@@ -14,6 +14,32 @@
             v-if="!asset.fiat"
             class="orange--text text--darken-3"
           >cloud_queue</v-icon>
+          <span
+            v-if="currentValue"
+            style="margin-left: 10px;"
+          >
+            <b>
+              &pound;{{ currentValue | formatFiat }}
+            </b>
+            <i style="margin-left: 5px">
+              (1 {{ asset.symbol }} = {{ assetPrice | formatFiat }} GBP)
+            </i>
+          </span>
+          <div v-if="currentPoolStatus">
+            Latest pool status:
+            {{ currentPoolStatus.amount | formatAssetValue(asset.id) }} {{ asset.symbol}},
+            cost basis &pound;{{ currentPoolStatus.cost | formatFiat }},
+            averaging &pound;{{ currentPoolStatus.costPerUnit | formatFiat }} per {{ asset.symbol }}.
+            <template v-if="currentPoolStatus.gain !== null">
+              <br>If selling now, total
+              <template v-if="currentPoolStatus.gain >= 0">
+                 GAIN would be &pound;{{ currentPoolStatus.gain | formatFiat }}
+              </template>
+              <template v-else>
+                LOSS would be &pound;{{ -currentPoolStatus.gain | formatFiat }}
+              </template>
+            </template>
+          </div>
         </v-flex>
         <div>
           <v-btn
@@ -143,8 +169,37 @@ export default {
     asset () {
       return this.$store.getters.asset(this.id)
     },
+    assetPrice () {
+      return this.$store.getters.assetPriceById && this.$store.getters.assetPriceById[this.id]
+    },
     ledgerEntries () {
       return this.$store.getters.ledgerEntriesForAsset(this.id)
+    },
+    mostRecentLedgerEntry () {
+      if (!this.ledgerEntries || !this.ledgerEntries.length) { return null }
+      return this.ledgerEntries[this.ledgerEntries.length - 1]
+    },
+    currentPoolStatus () {
+      if (!this.mostRecentLedgerEntry ||
+        !this.mostRecentLedgerEntry.workings ||
+        !this.mostRecentLedgerEntry.workings.totalPoolAmount ||
+        !this.mostRecentLedgerEntry.workings.totalPoolCost) {
+        return null
+      }
+      const amount = this.mostRecentLedgerEntry.workings.totalPoolAmount
+      const cost = this.mostRecentLedgerEntry.workings.totalPoolCost
+      const costPerUnit = cost.dividedBy(amount)
+      const value = this.assetPrice ? amount.times(this.assetPrice) : null
+      const gain = value !== null ? value - cost : null
+      return { amount, cost, costPerUnit, gain }
+    },
+    currentAmount () {
+      if (!this.mostRecentLedgerEntry || !this.mostRecentLedgerEntry.workings) { return null }
+      return this.mostRecentLedgerEntry.workings.totalPoolAmount
+    },
+    currentValue () {
+      if (!this.mostRecentLedgerEntry || !this.assetPrice) { return null }
+      return this.currentAmount.times(this.assetPrice)
     }
   }
 }
