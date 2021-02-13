@@ -4,7 +4,7 @@ import throttledQueue from './throttled_queue'
 var APP_NAME = 'mus_hoard'
 
 // Limit to 5 requests per second
-var throttleDayPriceFetch = throttledQueue(5, 1000)
+var throttlePriceFetch = throttledQueue(5, 1000)
 
 // Fetch day price for a symbol from cryptocompare API
 //   from: symbol to look up e.g. ZEC
@@ -20,7 +20,7 @@ var fetchDayPrice = function ({ from, to, date }) {
     var timestamp = Math.floor(date.getTime() / 1000)
     // console.log(`Look up ${to}/${from} price`, date, timestamp)
     var url = `https://min-api.cryptocompare.com/data/dayAvg?fsym=${from}&tsym=${to}&toTs=${timestamp}&extraParams=${APP_NAME}`
-    throttleDayPriceFetch(() => {
+    throttlePriceFetch(() => {
       axios.get(url).then(
         (response) => {
           // console.log('Got response', response)
@@ -42,7 +42,45 @@ var fetchDayPrice = function ({ from, to, date }) {
   })
 }
 
-export default { fetchDayPrice }
+// Fetch current price for a symbol from cryptocompare API
+//   from: symbols to look up e.g. ["BTC", "ETH"]
+//   to: symbol to get price in e.g. GBP
+// It extracts the prices from the response and returns it in the promise
+// as a map of { fromSymbol: price }
+var fetchMultipleCurrentPrices = function ({ from, to }) {
+  return new Promise((resolve, reject) => {
+    if (!from || !from.length) {
+      resolve({})
+      return
+    }
+    var url = `https://min-api.cryptocompare.com/data/pricemulti?fsyms=${from.join(',')}&tsyms=${to}&extraParams=${APP_NAME}`
+    throttlePriceFetch(() => {
+      axios.get(url).then(
+        (response) => {
+          // console.log('Got response', response)
+          if (response.data && response.data.Response === 'Error' && response.data.MaxLimits) {
+            reject(new Error('Rate Limit exceeded when fetching prices'))
+            return
+          }
+          if (response.data && typeof response.data[from[0]] !== 'undefined' && typeof response.data[from[0]][to] !== 'undefined') {
+            var pricesBySymbol = {}
+            for (var symbol of from) {
+              pricesBySymbol[symbol] = response.data[symbol][to]
+            }
+            resolve(pricesBySymbol)
+          } else {
+            reject(new Error('Unexpected response when fetching prices'))
+          }
+        },
+        (error) => {
+          reject(error)
+        }
+      )
+    })
+  })
+}
+
+export default { fetchDayPrice, fetchMultipleCurrentPrices }
 
 /* Response when exceeded rate limit:
 {
