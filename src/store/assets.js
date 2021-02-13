@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import utils from '../utils'
 import storeUtils from './storeUtils'
+import cryptocompare from '../services/cryptocompare'
 
 var { loadDate, commonFindNextId, commonUpdateModel } = storeUtils
 
@@ -12,7 +13,10 @@ var storeModule = {
 
     assetLedgerEntries: [],
     assetLedgerEntriesById: {},
-    assetLedgerEntriesByAsset: {}
+    assetLedgerEntriesByAsset: {},
+
+    assetPriceById: null,
+    loadingAssetPrices: false
   },
 
   mutations: {
@@ -61,6 +65,14 @@ var storeModule = {
         }
         state.assetLedgerEntriesByAsset[entry.asset].push(entry)
       })
+    },
+
+    loadingAssetPrices (state, loading) {
+      state.loadingAssetPrices = loading
+    },
+
+    assetPrices (state, assetPriceById) {
+      state.assetPriceById = assetPriceById
     }
   },
 
@@ -127,6 +139,36 @@ var storeModule = {
     importAssets ({ dispatch }, data) {
       dispatch('loadAssets', data.assets)
       dispatch('loadAssetLedgerEntries', data.assetLedgerEntries)
+    },
+
+    fetchAssetPrices ({ state, commit }, data) {
+      const assetSymbols = state.assets.map(asset => asset.symbol)
+      commit('loadingAssetPrices', true)
+      const fetchingPromise = cryptocompare.fetchMultipleCurrentPrices({ from: assetSymbols, to: 'GBP' })
+      fetchingPromise.then(
+        // success
+        (pricesBySymbol) => {
+          const assetIdsBySymbol = Object.fromEntries(
+            state.assets.map(asset => [
+              asset.symbol,
+              asset.id
+            ])
+          )
+          const assetPriceById = Object.fromEntries(
+            Object.keys(pricesBySymbol).map(symbol => [
+              assetIdsBySymbol[symbol],
+              pricesBySymbol[symbol]
+            ])
+          )
+          commit('assetPrices', assetPriceById)
+          commit('loadingAssetPrices', false)
+        },
+        // error
+        (error) => {
+          console.error((error && error.message) || 'Unknown Error')
+          commit('loadingAssetPrices', false)
+        }
+      )
     }
   },
 
@@ -175,6 +217,21 @@ var storeModule = {
         amountsByAsset[asset] = amount
       }
       return amountsByAsset
+    },
+    assetPriceById: (state) => state.assetPriceById,
+    loadingAssetPrices: (state) => state.loadingAssetPrices,
+    assetGBPValues: (state, getters) => {
+      if (!state.assetPriceById) { return null }
+      return Object.fromEntries(state.assets.map(asset => [
+        asset.id,
+        getters.assetAmounts[asset.id].times(state.assetPriceById[asset.id])
+      ]))
+    },
+    totalAssetGBPValue: (state, getters) => {
+      if (!getters.assetGBPValues) { return null }
+      const validValues = Object.values(getters.assetGBPValues).filter(value => !value.isNaN())
+      const total = validValues.reduce((sum, value) => sum + (value - 0), 0)
+      return total
     },
     assetsDataForExport: (state) => ({
       assets: state.assets,

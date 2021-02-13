@@ -4,17 +4,20 @@
       v-if="assets && assets.length"
       style="padding: 10px;"
     >
-      <price-lookup-multiple
-        v-model="assetPricesGBP"
-        :assetSymbols="assetSymbols"
+      <v-btn
+        :loading="loadingAssetPrices"
+        text
+        color="blue"
+        class="ma-0 mr-2"
+        @click="fetchAssetPrices"
       >
         Get current valuation
-      </price-lookup-multiple>
+      </v-btn>
       <div
         v-if="assetGBPValues"
         style="margin: 10px 0 0 15px; font-weight: bold;"
       >
-        Total: £{{ totalGBPValue }}
+        Total: £{{ totalAssetGBPValue | formatFiat }}
       </div>
     </div>
     <v-list v-if="assets && assets.length">
@@ -30,10 +33,10 @@
             {{ assetAmounts[asset.id] | formatAssetValue(asset.id) }}
           </v-list-item-title>
           <v-list-item-subtitle
-            v-if="assetPricesGBP && assetPricesGBP[asset.symbol] && assetGBPValues"
+            v-if="assetGBPValues"
           >
             £{{ assetGBPValues[asset.id] }}
-            <i>(1 {{ asset.symbol }} = {{ assetPricesGBP[asset.symbol] }} GBP)</i>
+            <i>(1 {{ asset.symbol }} = {{ assetPriceById[asset.id] | formatFiat }} GBP)</i>
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
@@ -53,35 +56,23 @@
 
 <script>
 
-import { mapGetters } from 'vuex'
-import u from '../utils'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
-  data () {
-    return {
-      assetPricesGBP: null // GBP price for assets by symbol
-    }
-  },
   computed: {
     ...mapGetters([
       'assets',
-      'assetAmounts'
-    ]),
-    assetSymbols () {
-      return this.assets.map(asset => asset.symbol)
-    },
-    assetGBPValues () {
-      if (!this.assetPricesGBP) { return null }
-      return Object.fromEntries(this.assets.map(asset => [
-        asset.id,
-        u.formatFiat(this.assetAmounts[asset.id].times(this.assetPricesGBP[asset.symbol]))
-      ]))
-    },
-    totalGBPValue () {
-      if (!this.assetGBPValues) { return null }
-      const total = Object.values(this.assetGBPValues).reduce((sum, value) => sum + (value - 0), 0)
-      return u.formatFiat(total)
-    }
+      'assetAmounts',
+      'assetPriceById',
+      'loadingAssetPrices',
+      'assetGBPValues',
+      'totalAssetGBPValue'
+    ])
+  },
+  methods: {
+    ...mapActions([
+      'fetchAssetPrices'
+    ])
   }
 }
 </script>
