@@ -60,11 +60,11 @@
           </v-card-text>
           <v-data-table
             :headers="headers"
-            :items="miningEvents"
+            :items="miningEventsForTable"
             disable-pagination
             hide-default-footer
             must-sort
-            sort-by="date"
+            sort-by="sortableDate"
             :sort-desc="true"
           >
             <template v-slot:item="{ item }">
@@ -120,7 +120,7 @@ export default {
   },
   data: () => ({
     headers: [
-      { text: 'Date', sortable: true, value: 'date' },
+      { text: 'Date', sortable: true, value: 'sortableDate' },
       { text: 'Amount', sortable: false },
       { text: 'Label', sortable: false },
       { text: 'Comments', sortable: false },
@@ -139,6 +139,12 @@ export default {
     },
     miningEvents () {
       return this.$store.getters.miningEventsForPool(this.id)
+    },
+    miningEventsForTable () {
+      return this.miningEvents.map(event => ({
+        ...event,
+        sortableDate: event.date - 0 // timestamp
+      }))
     },
     hasImporters () {
       var asset = this.pool && this.pool.asset

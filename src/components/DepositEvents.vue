@@ -16,10 +16,10 @@
 
       <v-data-table
         :headers="headers"
-        :items="depositEvents"
+        :items="depositEventsForTable"
         disable-pagination
         hide-default-footer
-        sort-by="date"
+        sort-by="sortableDate"
         :sort-desc="true"
       >
         <template v-slot:item="props">
@@ -66,7 +66,7 @@ import { mapGetters } from 'vuex'
 export default {
   data: () => ({
     headers: [
-      { text: 'Date', sortable: true, value: 'date' },
+      { text: 'Date', sortable: true, value: 'sortableDate' },
       { text: 'Asset', sortable: false },
       { text: 'Amount', sortable: false },
       { text: 'Label', sortable: false },
@@ -74,9 +74,17 @@ export default {
       { text: 'Related', sortable: false }
     ]
   }),
-  computed: mapGetters([
-    'depositEvents'
-  ])
+  computed: {
+    ...mapGetters([
+      'depositEvents'
+    ]),
+    depositEventsForTable () {
+      return this.depositEvents.map(event => ({
+        ...event,
+        sortableDate: event.date - 0 // timestamp
+      }))
+    }
+  }
 }
 </script>
 

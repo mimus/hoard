@@ -14,10 +14,10 @@
       </v-card-text>
       <v-data-table
         :headers="headers"
-        :items="transferEvents"
+        :items="transferEventsForTable"
         disable-pagination
         hide-default-footer
-        sort-by="date"
+        sort-by="sortableDate"
         :sort-desc="true"
       >
         <template v-slot:item="props">
@@ -78,7 +78,7 @@ export default {
   components: { TransferEventsEventEntries },
   data: () => ({
     headers: [
-      { text: 'Date', sortable: true, value: 'date' },
+      { text: 'Date', sortable: true, value: 'sortableDate' },
       { text: 'Asset', sortable: true, value: 'asset' },
       { text: 'Amount', sortable: false },
       { text: 'Fee', sortable: false },
@@ -88,9 +88,17 @@ export default {
       { text: 'Comments', sortable: false }
     ]
   }),
-  computed: mapGetters([
-    'transferEvents'
-  ])
+  computed: {
+    ...mapGetters([
+      'transferEvents'
+    ]),
+    transferEventsForTable () {
+      return this.transferEvents.map(event => ({
+        ...event,
+        sortableDate: event.date - 0 // timestamp
+      }))
+    }
+  }
 }
 </script>
 

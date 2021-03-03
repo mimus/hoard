@@ -14,10 +14,10 @@
       </v-card-text>
       <v-data-table
         :headers="headers"
-        :items="airdropEvents"
+        :items="airdropEventsForTable"
         disable-pagination
         hide-default-footer
-        sort-by="date"
+        sort-by="sortableDate"
         :sort-desc="true"
       >
         <template v-slot:item="props">
@@ -70,7 +70,7 @@ import { mapGetters } from 'vuex'
 export default {
   data: () => ({
     headers: [
-      { text: 'Date', sortable: true, value: 'date' },
+      { text: 'Date', sortable: true, value: 'sortableDate' },
       { text: 'Asset', sortable: true, value: 'asset' },
       { text: 'Amount', sortable: false },
       { text: 'Label', sortable: false },
@@ -79,9 +79,17 @@ export default {
       { text: 'Airdrop', sortable: false }
     ]
   }),
-  computed: mapGetters([
-    'airdropEvents'
-  ])
+  computed: {
+    ...mapGetters([
+      'airdropEvents'
+    ]),
+    airdropEventsForTable () {
+      return this.airdropEvents.map(event => ({
+        ...event,
+        sortableDate: event.date - 0 // timestamp
+      }))
+    }
+  }
 }
 </script>
 
