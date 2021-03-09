@@ -10,8 +10,9 @@ import XVG from './xvg'
 import LSK from './lsk'
 import NEO from './neo'
 import GAS from './gas'
+import BCD from './bcd'
 
-var index = { BTC, BCH, BTG, ETH, OMG, ZEC, LTC, VTC, XVG, LSK, NEO, GAS }
+var index = { BTC, BCH, BTG, ETH, OMG, ZEC, LTC, VTC, XVG, LSK, NEO, GAS, BCD }
 
 Object.entries(index).forEach(([key, item]) => {
   if (item.services) {
