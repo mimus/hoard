@@ -11,8 +11,10 @@ import LSK from './lsk'
 import NEO from './neo'
 import GAS from './gas'
 import BCD from './bcd'
+import DAI from './dai'
+import WBTC from './wbtc'
 
-var index = { BTC, BCH, BTG, ETH, OMG, ZEC, LTC, VTC, XVG, LSK, NEO, GAS, BCD }
+var index = { BTC, BCH, BTG, ETH, OMG, ZEC, LTC, VTC, XVG, LSK, NEO, GAS, BCD, DAI, WBTC }
 
 Object.entries(index).forEach(([key, item]) => {
   if (item.services) {
