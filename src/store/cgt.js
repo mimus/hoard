@@ -46,7 +46,8 @@ var storeModule = {
         var disposals = entries.filter(x => x.type === 'disposal' && x.date >= startDate && x.date <= endDate)
         var gain = disposals.reduce((sum, entry) => sum.plus(workingsById[entry.id] && workingsById[entry.id].gain), utils.newBigNumberForAsset(0, asset))
         disposals = disposals.map(x => ({ workings: workingsById[x.id] || {}, ...x }))
-        return { asset, gain, disposals }
+        var disposalsTotalValueGBP = disposals.reduce((sum, entry) => sum.plus(entry.assetValueGBP), utils.newBigNumberForAsset(0, asset))
+        return { asset, gain, disposals, disposalsTotalValueGBP }
       })
       return results
     },
