@@ -79,8 +79,6 @@
 
 <script>
 
-import u from '../utils'
-
 export default {
   props: {
     id: [String, Number]
@@ -90,19 +88,7 @@ export default {
       return this.$store.getters.locationGroup(this.id)
     },
     assets () {
-      var assets = {}
-      var locsByAsset = this.$store.getters.locationsInGroupByAsset(this.id)
-      Object.entries(locsByAsset).forEach(([asset, locs]) => {
-        var locations = locs.map(loc => {
-          return Object.assign({}, loc, { total: this.$store.getters.ledgerBalanceForLocation(loc.id) })
-        })
-        var total = locations.reduce((sum, loc) => sum.plus(loc.total), u.newBigNumberForAsset(0, asset))
-        assets[asset] = {
-          locations,
-          total
-        }
-      })
-      return assets
+      return this.$store.getters.locationsInGroupByAssetWithTotal(this.id)
     },
     expandedAssets () {
       // we want to expand all of them: return an array containing all row indices
