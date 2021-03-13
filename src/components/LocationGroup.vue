@@ -123,7 +123,7 @@ export default {
       // we want to expand all of them: return an array containing all row indices
       var length = Object.keys(this.assets).length
       var indices = []
-      for (var i=0; i<length; i++) {
+      for (var i = 0; i < length; i++) {
         indices.push(i)
       }
       return indices
