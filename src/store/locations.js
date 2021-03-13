@@ -278,6 +278,18 @@ var storeModule = {
       })
       return assets
     },
+    totalLocationGroupGBPValue: (state, getters) => (groupId) => {
+      if (!getters.assetPriceById) { return null }
+      const locsByAsset = getters.locationsInGroupByAssetWithTotal(groupId)
+      let totalGBPValue = utils.newBigNumberForFiat(0)
+      Object.entries(locsByAsset).forEach(([assetId, { total }]) => {
+        if (!total.isNaN()) {
+          const assetGBPValue = total.times(getters.assetPriceById[assetId])
+          totalGBPValue = totalGBPValue.plus(assetGBPValue)
+        }
+      })
+      return totalGBPValue
+    },
     locationsForAsset: (state, getters) => (assetId) => {
       return state.locationsByAsset[assetId] || []
     },

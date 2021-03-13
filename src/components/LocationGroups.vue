@@ -12,18 +12,29 @@
         <v-list-item-content>
           <v-list-item-title>
             {{ group.label }}
+
+            <template v-if="group.totalGBPValue !== null">
+              <span
+                :class="{
+                  'text--disabled': group.totalGBPValue.isZero()
+                }"
+                :style="group.totalGBPValue.isZero() ? 'font-size: 0.7em' : ''"
+              >
+                ({{ group.totalGBPValue | formatFiat }})
+              </span>
+            </template>
           </v-list-item-title>
           <v-list-item-subtitle>
             <span
-              v-for="({ total, isZero }, assetId) in group.assets"
+              v-for="(total, assetId) in group.assets"
               :key="assetId"
               class="mr-2"
               :class="{
-                'text--disabled': isZero
+                'text--disabled': total.isZero()
               }"
-              :style="isZero ? 'font-size: 0.7em' : ''"
+              :style="total.isZero() ? 'font-size: 0.7em' : ''"
             >
-              {{ total | formatAssetValue(assetId) }} {{ assetId }}
+              {{ total | formatAssetValue(assetId) }}&nbsp;{{ assetId }}
             </span>
           </v-list-item-subtitle>
         </v-list-item-content>
@@ -54,16 +65,14 @@ export default {
     locationGroupsWithTotals () {
       return this.locationGroups.map(group => ({
         ...group,
+        totalGBPValue: this.$store.getters.totalLocationGroupGBPValue(group.id),
         assets: Object.fromEntries(
           Object.entries(
             this.$store.getters.locationsInGroupByAssetWithTotal(group.id)
           ).map(
             ([assetId, { total }]) => [
               assetId,
-              {
-                total,
-                isZero: total.isZero()
-              }
+              total
             ]
           )
         )

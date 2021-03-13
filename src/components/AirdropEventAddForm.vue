@@ -123,7 +123,7 @@
           class="mr-2"
           @click="model.assetValueGBP = calculatedValue"
         >
-          £{{ calculatedValue | formatFiat }}
+          {{ calculatedValue | formatFiat }}
           <v-icon>chevron_right</v-icon>
         </v-btn>
       </div>
@@ -197,7 +197,7 @@ export default {
       if (this.form.assetPriceGBP && this.model.amount && this.model.asset) {
         value = u.newBigNumberForAsset(this.model.amount, this.model.asset).times(this.form.assetPriceGBP)
       }
-      return u.formatFiat(value)
+      return u.roundFiat(value, true)
     },
     modelToSave () {
       var copy = {

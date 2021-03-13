@@ -12,7 +12,6 @@
           <span v-if="valueBoughtAssets.gt(0)">
             =
             {{ valueBoughtAssets | formatFiat }}
-            GBP
             <v-icon
               v-if="!valueBoughtAssets.eq(valueSoldAssets)"
               color="red"
@@ -112,7 +111,7 @@
                       color="blue"
                       @click="item.valueGBP = calculatedValue(item)"
                     >
-                      £{{ calculatedValue(item) }}
+                      {{ calculatedValue(item) | formatFiat }}
                       <v-icon>expand_more</v-icon>
                     </v-btn>
                   </v-flex>
@@ -156,7 +155,6 @@
           <span v-if="valueSoldAssets.gt(0)">
             =
             {{ valueSoldAssets | formatFiat }}
-            GBP
             <v-icon
               v-if="!valueBoughtAssets.eq(valueSoldAssets)"
               color="red"
@@ -265,7 +263,7 @@
                       color="blue"
                       @click="item.valueGBP = calculatedValue(item)"
                     >
-                      £{{ calculatedValue(item) }}
+                      {{ calculatedValue(item) | formatFiat }}
                       <v-icon>expand_more</v-icon>
                     </v-btn>
                   </v-flex>
@@ -459,7 +457,7 @@ export default {
       if (item.assetPriceGBP && item.amount) {
         cost = u.newBigNumberForFiat(item.assetPriceGBP).times(item.amount)
       }
-      return u.formatFiat(cost)
+      return u.roundFiat(cost, true)
     },
     submit () {
       if (this.model.disposed.length && this.model.acquired.length && this.model.date) {

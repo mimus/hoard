@@ -7,7 +7,7 @@
       <v-card-text v-if="totalAirdropIncomeValueGBP.gt(0)">
         Total Income:
         <span class="gain">
-          {{ totalAirdropIncomeValueGBP | formatFiat }} GBP
+          {{ totalAirdropIncomeValueGBP | formatFiat }}
         </span>
       </v-card-text>
       <v-card-text>
@@ -25,7 +25,7 @@
                 {{ details.totalAmount | formatAssetValue(details.asset.id) }} {{ details.asset.symbol }}
                 =
                 <span class="gain">
-                  {{ details.totalValueGBP | formatFiat }} GBP
+                  {{ details.totalValueGBP | formatFiat }}
                 </span>
               </div>
             </v-expansion-panel-header>
@@ -43,7 +43,7 @@
                     {{ event.amount | formatAssetValue(details.asset.id) }} {{ details.asset.symbol }}
                   </v-col>
                   <v-col cols="3" class="gain">
-                    {{ event.assetValueGBP | formatFiat }} GBP
+                    {{ event.assetValueGBP | formatFiat }}
                   </v-col>
                   <v-col cols="3">
                     {{ event.label }}

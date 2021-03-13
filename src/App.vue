@@ -23,6 +23,8 @@
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>Hoard</v-toolbar-title>
       <v-spacer />
+      <AssetPriceFetcher />
+      <v-spacer />
       <app-persistence></app-persistence>
 
       <template v-slot:extension>
@@ -43,6 +45,7 @@
 <script>
 import '@/components/TheMainMenu'
 import '@/components/TestDataLoader'
+import AssetPriceFetcher from '@/components/AssetPriceFetcher'
 import '@/components/AppPersistence'
 import '@/components/TheMainBreadcrumbs'
 import '@/components/AssociatedLink'
@@ -61,6 +64,7 @@ import '@/components/LocationItemsList'
 
 export default {
   name: 'App',
+  components: { AssetPriceFetcher },
   data: () => ({
     drawer: null
   })

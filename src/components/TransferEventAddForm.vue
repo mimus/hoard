@@ -186,7 +186,7 @@
               text
               @click="model.fee.valueGBP = calculatedFeeCost"
             >
-              £{{ calculatedFeeCost | formatFiat }}
+              {{ calculatedFeeCost | formatFiat }}
               <v-icon>chevron_right</v-icon>
             </v-btn>
           </div>
@@ -366,7 +366,7 @@ export default {
       if (this.assetPriceGBP && this.model.fee.amount && this.feeAsset) {
         cost = u.newBigNumberForAsset(this.model.fee.amount, this.feeAsset.id).times(this.assetPriceGBP)
       }
-      return u.formatFiat(cost)
+      return u.roundFiat(cost, true)
     },
     remainingToAssign () {
       var asset = this.model.asset

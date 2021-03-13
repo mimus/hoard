@@ -7,7 +7,7 @@
       <v-card-text v-if="totalGain.gt(0)">
         Total Gain:
         <span class="gain">
-          {{ totalGain | formatFiat }} GBP
+          {{ totalGain | formatFiat }}
         </span>
       </v-card-text>
       <v-card-text v-else-if="totalGain.isZero()">
@@ -16,13 +16,13 @@
       <v-card-text v-else>
         Total Loss:
         <span class="loss">
-          {{ totalGain.negated() | formatFiat }} GBP
+          {{ totalGain.negated() | formatFiat }}
         </span>
       </v-card-text>
       <v-card-text v-if="totalNonFiatGain.gt(0)">
         Total Non-Fiat Gain:
         <span class="gain">
-          {{ totalNonFiatGain | formatFiat }} GBP
+          {{ totalNonFiatGain | formatFiat }}
         </span>
       </v-card-text>
       <v-card-text v-else-if="totalNonFiatGain.isZero()">
@@ -31,12 +31,12 @@
       <v-card-text v-else>
         Total Non-Fiat Loss:
         <span class="loss">
-          {{ totalNonFiatGain.negated() | formatFiat }} GBP
+          {{ totalNonFiatGain.negated() | formatFiat }}
         </span>
       </v-card-text>
       <v-card-text>
         Total Non-Fiat Disposals:
-        {{ totalNonFiatDisposals | formatFiat }} GBP
+        {{ totalNonFiatDisposals | formatFiat }}
       </v-card-text>
       <v-card-text>
         <v-expansion-panels
@@ -62,10 +62,10 @@
 
                 {{ item.asset }}:
                 <span :class="item.gain && item.gain.gte && item.gain.gte(0) ? 'gain' : 'loss'">
-                  {{ item.gain | formatFiat }} GBP
+                  {{ item.gain | formatFiat }}
                 </span>
                 <span class="ml-3">
-                  Disposals: {{ item.disposalsTotalValueGBP | formatFiat }} GBP
+                  Disposals: {{ item.disposalsTotalValueGBP | formatFiat }}
                 </span>
               </div>
             </v-expansion-panel-header>
@@ -87,7 +87,7 @@
                     {{ entry.date | formatDateTime }}
                   </v-col>
                   <v-col cols="2" :class="entry.workings.gain && entry.workings.gain.gte && entry.workings.gain.gte(0) ? 'gain' : 'loss'">
-                    {{ entry.workings.gain | formatFiat }} GBP
+                    {{ entry.workings.gain | formatFiat }}
                   </v-col>
                   <v-col cols="3">
                     {{ entry.label }}
@@ -106,7 +106,7 @@
                       >
                         {{ part.type }}:
                         {{ part.amount | formatAssetValue(entry.asset) }}
-                        (cost &pound;{{ part.cost | formatFiat }})
+                        (cost {{ part.cost | formatFiat }})
                         <span v-if="part.entry">
                           {{ part.entry.date | formatDate }}
                         </span>

@@ -28,7 +28,7 @@ export default Vue.component('price-lookup', {
     requestFetch: { type: Number, default: 0 },
     // when the price is looked up,
     // this component will trigger a 'annotatedText' event
-    // based on this value + (Using day rate: 1 SYM = XXX GBP)
+    // based on this value + (Using day rate: 1 SYM = £XXX)
     textToAnnotate: { type: String }
   },
   data () {
@@ -45,7 +45,7 @@ export default Vue.component('price-lookup', {
       var text = this.textToAnnotate || ''
       if (this.price && this.asset) {
         text = text.replace(/\s\(Using day rate[^)].*\)/, '')
-        text = `${text} (Using day rate: 1 ${this.asset.symbol} = ${this.price} GBP)`
+        text = `${text} (Using day rate: 1 ${this.asset.symbol} = ${u.formatFiat(this.price)})`
       }
       return text
     }

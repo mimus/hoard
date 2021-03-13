@@ -7,7 +7,7 @@
       <v-card-text v-if="totalMiningIncomeValueGBP.gt(0)">
         Total Income:
         <span class="gain">
-          {{ totalMiningIncomeValueGBP | formatFiat }} GBP
+          {{ totalMiningIncomeValueGBP | formatFiat }}
         </span>
       </v-card-text>
       <v-card-text>
@@ -25,7 +25,7 @@
                 {{ pool.totalAmount | formatAssetValue(pool.asset.id) }} {{ pool.asset.symbol }}
                 =
                 <span class="gain">
-                  {{ pool.totalValueGBP | formatFiat }} GBP
+                  {{ pool.totalValueGBP | formatFiat }}
                 </span>
               </div>
             </v-expansion-panel-header>
@@ -43,7 +43,7 @@
                     {{ event.amount | formatAssetValue(pool.asset.id) }} {{ pool.asset.symbol }}
                   </v-col>
                   <v-col cols="3" class="gain">
-                    {{ event.valueGBP | formatFiat }} GBP
+                    {{ event.valueGBP | formatFiat }}
                   </v-col>
                   <v-col cols="3">
                     {{ event.label }}

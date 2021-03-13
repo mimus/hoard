@@ -67,7 +67,6 @@
           <span v-if="valueLocationAssets && valueLocationAssets.gt(0)">
             =
             {{ valueLocationAssets | formatFiat }}
-            GBP
           </span>
         </div>
       </v-layout>
@@ -126,7 +125,7 @@
                     text color="blue"
                     @click="item.valueGBP = calculatedValue(item)"
                   >
-                    &pound;{{ calculatedValue(item) | formatFiat }}
+                    {{ calculatedValue(item) | formatFiat }}
                     <v-icon>expand_more</v-icon>
                   </v-btn>
                 </v-flex>
@@ -307,7 +306,7 @@ export default {
       if (this.form.assetPriceGBP && item.amount) {
         cost = u.newBigNumberForFiat(this.form.assetPriceGBP).times(item.amount)
       }
-      return u.formatFiat(cost)
+      return u.roundFiat(cost, true)
     },
     submit () {
       if (this.model.locations.length && this.model.date) {

@@ -102,7 +102,7 @@ var roundFiat = function (value, toFixed) {
   return roundAssetValue(value, '_FIAT', toFixed)
 }
 var formatFiat = function (value) {
-  return roundFiat(value, true)
+  return new Intl.NumberFormat('en-GB', { style: 'currency', currency: 'GBP' }).format(roundFiat(value, true))
 }
 
 var textFile = null

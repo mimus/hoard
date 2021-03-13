@@ -1,24 +1,10 @@
 <template>
   <v-card class="pb-2x">
     <div
-      v-if="assets && assets.length"
-      style="padding: 10px;"
+      v-if="assets && assets.length && assetGBPValues"
+      style="padding: 15px 0 0 15px; font-weight: bold;"
     >
-      <v-btn
-        :loading="loadingAssetPrices"
-        text
-        color="blue"
-        class="ma-0 mr-2"
-        @click="fetchAssetPrices"
-      >
-        Get current valuation
-      </v-btn>
-      <div
-        v-if="assetGBPValues"
-        style="margin: 10px 0 0 15px; font-weight: bold;"
-      >
-        Total: &pound;{{ totalAssetGBPValue | formatFiat }}
-      </div>
+      Total: {{ totalAssetGBPValue | formatFiat }}
     </div>
     <v-list v-if="assets && assets.length">
       <v-list-item
@@ -35,8 +21,8 @@
           <v-list-item-subtitle
             v-if="assetGBPValues"
           >
-            &pound;{{ assetGBPValues[asset.id] | formatFiat }}
-            <i>(1 {{ asset.symbol }} = {{ assetPriceById[asset.id] | formatFiat }} GBP)</i>
+            {{ assetGBPValues[asset.id] | formatFiat }}
+            <i>(1 {{ asset.symbol }} = {{ assetPriceById[asset.id] | formatFiat }})</i>
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>

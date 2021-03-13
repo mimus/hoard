@@ -19,24 +19,24 @@
             style="margin-left: 10px;"
           >
             <b>
-              &pound;{{ currentValue | formatFiat }}
+              {{ currentValue | formatFiat }}
             </b>
             <i style="margin-left: 5px">
-              (1 {{ asset.symbol }} = {{ assetPrice | formatFiat }} GBP)
+              (1 {{ asset.symbol }} = {{ assetPrice | formatFiat }})
             </i>
           </span>
           <div v-if="currentPoolStatus">
             Latest pool status:
             {{ currentPoolStatus.amount | formatAssetValue(asset.id) }} {{ asset.symbol}},
-            cost basis &pound;{{ currentPoolStatus.cost | formatFiat }},
-            averaging &pound;{{ currentPoolStatus.costPerUnit | formatFiat }} per {{ asset.symbol }}.
+            cost basis {{ currentPoolStatus.cost | formatFiat }},
+            averaging {{ currentPoolStatus.costPerUnit | formatFiat }} per {{ asset.symbol }}.
             <template v-if="currentPoolStatus.gain !== null">
               <br>If selling now, total
               <template v-if="currentPoolStatus.gain >= 0">
-                 GAIN would be &pound;{{ currentPoolStatus.gain | formatFiat }}
+                 GAIN would be {{ currentPoolStatus.gain | formatFiat }}
               </template>
               <template v-else>
-                LOSS would be &pound;{{ -currentPoolStatus.gain | formatFiat }}
+                LOSS would be {{ -currentPoolStatus.gain | formatFiat }}
               </template>
             </template>
           </div>
@@ -87,26 +87,26 @@
               </span>
             </td>
             <td>
-              <b>&pound;{{ props.item.assetValueGBP | formatFiat }}</b>
+              <b>{{ props.item.assetValueGBP | formatFiat }}</b>
             </td>
             <td>
               <div v-if="props.item.workings.poolAmount > 0">
                 {{ props.item.workings.poolAmount | formatAssetValue(asset.id) }}
-                <br>&pound;{{ props.item.workings.poolValueGBP | formatFiat }}
+                <br>{{ props.item.workings.poolValueGBP | formatFiat }}
               </div>
             </td>
             <td>
               {{ props.item.workings.totalPoolAmount | formatAssetValue(asset.id) }},
-              <br>&pound;{{ props.item.workings.totalPoolCost | formatFiat }}
+              <br>{{ props.item.workings.totalPoolCost | formatFiat }}
             </td>
             <td>
               <span v-if="props.item.workings.hasOwnProperty('costBasis')">
-                &pound;{{ props.item.workings.costBasis | formatFiat }}
+                {{ props.item.workings.costBasis | formatFiat }}
               </span>
             </td>
             <td>
               <span v-if="props.item.workings.hasOwnProperty('gain')">
-                &pound;{{ props.item.workings.gain | formatFiat }}
+                {{ props.item.workings.gain | formatFiat }}
               </span>
             </td>
             <td>
@@ -121,7 +121,7 @@
                 >
                   {{ part.type }}:
                   {{ part.amount | formatAssetValue(asset.id) }}
-                  (cost &pound;{{ part.cost | formatFiat }})
+                  (cost {{ part.cost | formatFiat }})
 
                   <span v-if="part.entry">
                     {{ part.entry.date | formatDate }}
