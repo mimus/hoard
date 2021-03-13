@@ -4,7 +4,21 @@
       v-model="model.label"
       label="Label"
       :rules="[required]"
-    ></v-text-field>
+    />
+    <v-select
+      v-model="model.category"
+      :items="categories"
+      label="Category"
+      clearable
+    />
+    <v-text-field
+      v-model="model.url"
+      label="URL"
+    />
+    <v-textarea
+      v-model="model.comments"
+      label="Comments"
+    />
   </base-form>
 </template>
 
@@ -22,6 +36,14 @@ export default {
   data: () => ({
     required: (value) => !!value || 'Required'
   }),
+  computed: {
+    categories () {
+      return this.$store.getters.locationGroupCategories.map((item) => ({
+        value: item.id,
+        text: item.label
+      }))
+    }
+  },
   methods: {
     submit () {
       this.$emit('save', this.model)

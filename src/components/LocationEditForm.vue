@@ -11,13 +11,18 @@
       v-model="model.address"
       label="Address"
       @change="onAddressChanged"
-    ></v-text-field>
+    />
 
     <v-text-field
       v-model="model.label"
       label="Label"
       :rules="[required]"
-    ></v-text-field>
+    />
+
+    <v-textarea
+      v-model="model.comments"
+      label="Comments"
+    />
   </base-form>
 </template>
 

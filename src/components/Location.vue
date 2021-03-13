@@ -11,6 +11,9 @@
           >({{
             location.asset
           }})</router-link>
+          <div class="body-2">
+            {{ location.comments }}
+          </div>
         </v-flex>
         <div>
           <v-btn

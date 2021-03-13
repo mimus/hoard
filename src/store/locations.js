@@ -7,6 +7,28 @@ var { groupBy, loadDate, commonFindNextId, commonUpdateModel } = storeUtils
 var storeModule = {
 
   state: {
+    locationGroupCategories: [
+      {
+        id: 'BANK',
+        label: 'Bank'
+      },
+      {
+        id: 'EXCHANGE',
+        label: 'Exchange'
+      },
+      {
+        id: 'WALLET',
+        label: 'Personal Wallet'
+      },
+      {
+        id: 'SERVICE',
+        label: 'Service'
+      },
+      {
+        id: 'MISC',
+        label: 'Misc'
+      }
+    ],
     locationGroups: [],
     locationGroupsById: {},
     locations: [],
@@ -128,7 +150,10 @@ var storeModule = {
       group = {
         id: getters.nextLocationGroupId(),
         label: group.label,
-        locations: []
+        locations: [],
+        category: group.category,
+        url: group.url,
+        comments: group.comments
       }
       commit('addLocationGroup', group)
     },
@@ -141,7 +166,8 @@ var storeModule = {
         group: +(model.group),
         label: model.label,
         asset: model.asset,
-        address: model.address
+        address: model.address,
+        comments: model.comments
       }
       commit('addLocation', model)
     },
@@ -169,21 +195,25 @@ var storeModule = {
       commit('addLocationLedgerEntry', model)
     },
     loadLocations ({ commit }, locations) {
-      locations = locations.map(location => {
-        return Object.assign(
-          { label: '', asset: '', address: '', url: '', comments: '', group: '' },
-          location
-        )
-      })
+      locations = locations.map(location => ({
+        group: '',
+        label: '',
+        asset: '',
+        address: '',
+        comments: '',
+        ...location
+      }))
       commit('loadLocations', locations)
     },
     loadLocationGroups ({ commit }, locationGroups) {
-      locationGroups = locationGroups.map(group => {
-        return Object.assign(
-          { label: '', locations: [], url: '', comments: '' },
-          group
-        )
-      })
+      locationGroups = locationGroups.map(group => ({
+        label: '',
+        locations: [],
+        category: null,
+        url: '',
+        comments: '',
+        ...group
+      }))
       commit('loadLocationGroups', locationGroups)
     },
     loadLocationLedgerEntries ({ commit, getters }, ledgerEntries) {
@@ -203,6 +233,10 @@ var storeModule = {
   },
 
   getters: {
+    locationGroupCategories: (state, getters) => state.locationGroupCategories,
+    locationGroupCategoriesById: (state, getters) => {
+      return Object.fromEntries(getters.locationGroupCategories.map(category => [category.id, category]))
+    },
     locationGroupBreadcrumbLabel: (state, getters) => (groupId) => {
       var group = getters.locationGroup(groupId)
       return group && group.label

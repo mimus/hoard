@@ -3,9 +3,30 @@
     <v-card-text>
       <v-layout align-baseline>
         <v-flex>
-          <b class="mr-4">
+          <b>
             {{ group.label }}
           </b>
+          <v-btn
+            v-if="group.url"
+            :href="group.url"
+            target="_blank"
+            color="blue darken-3"
+            text icon x-small
+          >
+            <v-icon small>open_in_new</v-icon>
+          </v-btn>
+          <v-chip
+            v-if="group.categoryLabel"
+            class="ml-4"
+            color="grey darken-1"
+            outlined
+            small
+          >
+            {{ group.categoryLabel }}
+          </v-chip>
+          <div class="body-2">
+            {{ group.comments }}
+          </div>
         </v-flex>
         <div>
           <v-btn
@@ -84,8 +105,16 @@ export default {
     id: [String, Number]
   },
   computed: {
+    categoriesById () {
+      return this.$store.getters.locationGroupCategoriesById
+    },
     group () {
-      return this.$store.getters.locationGroup(this.id)
+      const locationGroup = this.$store.getters.locationGroup(this.id)
+      const category = locationGroup && locationGroup.category ? this.categoriesById[locationGroup.category] : null
+      return {
+        ...locationGroup,
+        categoryLabel: category && category.label
+      }
     },
     assets () {
       return this.$store.getters.locationsInGroupByAssetWithTotal(this.id)
