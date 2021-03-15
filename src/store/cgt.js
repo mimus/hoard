@@ -107,6 +107,31 @@ var storeModule = {
       return results
     },
 
+    assetsForTaxYear: (state, getters) => (taxYearId) => {
+      const year = getters.taxYear(taxYearId)
+      if (!year) { return {} }
+      const startDate = year.startDate
+      const endDate = year.endDate
+      const assets = getters.assets
+      const results = assets.map(asset => {
+        const ledgerEntries = getters.ledgerEntriesForAsset(asset.id)
+        const entriesToEndDate = ledgerEntries.filter(entry => entry.date <= endDate)
+        const entriesToStartDate = ledgerEntries.filter(entry => entry.date <= startDate)
+        const start = entriesToStartDate[entriesToStartDate.length - 1]
+        const end = entriesToEndDate[entriesToEndDate.length - 1]
+        const startIsZero = !start || start.workings.totalPoolAmount.isZero()
+        const endIsZero = !end || end.workings.totalPoolAmount.isZero()
+        return {
+          asset,
+          start,
+          end,
+          startIsZero,
+          endIsZero
+        }
+      })
+      return results
+    },
+
     cgtDataForExport: (state) => ({
       assetLedgerEntryWorkingsById: state.assetLedgerEntryWorkingsById
     })

@@ -26,6 +26,7 @@
 
       <TaxYearCapitalGains :id="id" />
 
+      <TaxYearAssets :id="id" />
     </template>
     <v-card-text v-else>
       Unknown ID
@@ -38,9 +39,15 @@
 import TaxYearMiningIncome from './TaxYearMiningIncome'
 import TaxYearAirdropIncome from './TaxYearAirdropIncome'
 import TaxYearCapitalGains from './TaxYearCapitalGains'
+import TaxYearAssets from './TaxYearAssets'
 
 export default {
-  components: { TaxYearMiningIncome, TaxYearAirdropIncome, TaxYearCapitalGains },
+  components: {
+    TaxYearMiningIncome,
+    TaxYearAirdropIncome,
+    TaxYearCapitalGains,
+    TaxYearAssets
+  },
   props: {
     id: [Number, String]
   },
