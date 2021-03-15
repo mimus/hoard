@@ -1,7 +1,7 @@
 <template>
   <div v-if="id">
     <v-subheader>
-      Airdrop Income
+      Airdrop and Other Income
     </v-subheader>
     <div v-if="assetsAirdropIncome.length">
       <v-card-text v-if="totalAirdropIncomeValueGBP.gt(0)">
@@ -62,7 +62,7 @@
       </v-card-text>
     </div>
     <v-card-text v-else>
-      No airdrop income in this year.
+      No airdrop or other income in this year.
     </v-card-text>
   </div>
 </template>

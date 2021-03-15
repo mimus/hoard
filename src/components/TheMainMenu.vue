@@ -53,7 +53,7 @@
         <v-icon>flare</v-icon>
       </v-list-item-action>
       <v-list-item-content>
-        <v-list-item-title>Airdrops</v-list-item-title>
+        <v-list-item-title>Airdrops / Income</v-list-item-title>
       </v-list-item-content>
     </v-list-item>
     <v-list-item to="/transfer-events">

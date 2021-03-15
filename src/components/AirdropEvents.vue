@@ -10,7 +10,7 @@
     </v-btn>
     <div v-if="airdropEvents && airdropEvents.length">
       <v-card-text>
-        {{ airdropEvents.length }} Airdrop events
+        {{ airdropEvents.length }} Airdrop / Income events
       </v-card-text>
       <v-data-table
         :headers="headers"
@@ -53,12 +53,12 @@
           </tr>
         </template>
         <template v-slot:no-data>
-          No airdrop events.
+          No airdrop / income events.
         </template>
       </v-data-table>
     </div>
     <v-card-text v-else>
-      No airdrop events.
+      No airdrop / income events.
     </v-card-text>
   </v-card>
 </template>

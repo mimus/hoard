@@ -7,7 +7,7 @@ var routes = [
     path: '/airdrop-events',
     component: WrapperLayout,
     meta: {
-      bcLabel: 'Airdrop Events'
+      bcLabel: 'Airdrop / Income Events'
     },
     children: [
       {
@@ -20,7 +20,7 @@ var routes = [
         name: 'AirdropEventAdd',
         component: AirdropEventAdd,
         meta: {
-          bcLabel: 'New Airdrop'
+          bcLabel: 'New Airdrop / Income'
         }
       }
     ]

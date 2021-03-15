@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-title>
-      New Airdrop (non-fiat)
+      New Airdrop or Income (non-fiat)
     </v-card-title>
     <v-card-text>
       <AirdropEventAddForm @save="submit" />
