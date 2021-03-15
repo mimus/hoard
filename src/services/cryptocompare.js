@@ -12,6 +12,11 @@ var throttlePriceFetch = throttledQueue(5, 1000)
 //   date: date object
 // It extracts the price from the response and returns it in the promise
 var fetchDayPrice = function ({ from, to, date }) {
+  // special case for BETH
+  if (from === 'BETH') {
+    return fetchBETHPrice({ from, to, date })
+  }
+
   return new Promise((resolve, reject) => {
     if (from === to) {
       resolve(1)
@@ -32,6 +37,50 @@ var fetchDayPrice = function ({ from, to, date }) {
             resolve(response.data[to])
           } else {
             reject(new Error('Unexpected response when fetching price'))
+          }
+        },
+        (error) => {
+          reject(error)
+        }
+      )
+    })
+  })
+}
+
+// BETH (Binance staked ETH) doesn't get calculated correctly by the normal API.
+// Instead we have to fetch its price in ETH explicitly from Binance, then
+// get the 'to' rate for ETH and apply that.
+var fetchBETHPrice = function ({ from, to, date }) {
+  return new Promise((resolve, reject) => {
+    if (from === to) {
+      resolve(1)
+      return
+    }
+    var timestamp = Math.floor(date.getTime() / 1000)
+    // console.log(`Look up ${to}/${from} price`, date, timestamp)
+    var url = `https://min-api.cryptocompare.com/data/dayAvg?e=binance&fsym=${from}&tsym=ETH&toTs=${timestamp}&extraParams=${APP_NAME}`
+    throttlePriceFetch(() => {
+      axios.get(url).then(
+        (response) => {
+          // console.log('Got response', response)
+          if (response.data && response.data.Response === 'Error' && response.data.MaxLimits) {
+            reject(new Error('Rate Limit exceeded when fetching price'))
+            return
+          }
+          if (response.data && typeof response.data.ETH !== 'undefined') {
+            const priceInEth = response.data.ETH
+            // now fetch ETH price
+            fetchDayPrice({ from: 'ETH', to, date }).then(
+              (priceInTarget) => {
+                // console.log('BETH price in ETH:', priceInEth, 'ETH price in ' + to, priceInTarget, 'BETH price in ' + to, priceInEth * priceInTarget)
+                resolve(priceInEth * priceInTarget)
+              },
+              (error) => {
+                reject(error)
+              }
+            )
+          } else {
+            reject(new Error('Unexpected response when fetching BETH price'))
           }
         },
         (error) => {
