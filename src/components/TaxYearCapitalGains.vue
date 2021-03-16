@@ -45,22 +45,15 @@
         >
           <v-expansion-panel
             v-for="item in assetGains"
-            :key="item.asset"
+            :key="item.asset.id"
           >
             <v-expansion-panel-header>
               <div>
                 <span class="mr-1">
-                  <v-icon
-                    v-if="item.fiat"
-                    class="blue-grey--text text--lighten-1"
-                  >monetization_on</v-icon>
-                  <v-icon
-                    v-else
-                    class="orange--text text--darken-3"
-                  >cloud_queue</v-icon>
+                  <asset-icon :asset="item.asset" />
                 </span>
 
-                {{ item.asset }}:
+                {{ item.asset.label }}:
                 <span :class="item.gain && item.gain.gte && item.gain.gte(0) ? 'gain' : 'loss'">
                   {{ item.gain | formatFiat }}
                 </span>
@@ -138,20 +131,21 @@ export default {
     id: [Number, String]
   },
   computed: {
-    fiatAssets () {
-      return this.$store.getters.fiatAssets
-    },
     assetGains () {
       var assets = this.$store.getters.assetGainsForTaxYear(this.id)
       assets = assets.filter(x => !x.gain.isZero())
-      assets = assets.map(x => ({
-        ...x,
-        fiat: !!this.fiatAssets.find(fiatAsset => fiatAsset.id === x.asset)
-      }))
+      assets = assets.map(x => {
+        // get full asset object instead of just ID
+        const asset = this.$store.getters.asset(x.asset)
+        return {
+          ...x,
+          asset
+        }
+      })
       return assets
     },
     nonFiatAssetGains () {
-      return this.assetGains.filter(x => !x.fiat)
+      return this.assetGains.filter(x => !x.asset.fiat)
     },
     totalGain () {
       return this.assetGains.reduce((sum, x) => sum.plus(x.gain), u.newBigNumberForFiat(0))

@@ -14,6 +14,10 @@
         >
         <v-list-item-content>
           <v-list-item-title>
+            <asset-icon
+              :asset="asset"
+              class="mr-1"
+            />
             {{ asset.label }}
             ({{ asset.symbol }})
             {{ assetAmounts[asset.id] | formatAssetValue(asset.id) }}

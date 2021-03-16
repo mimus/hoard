@@ -91,6 +91,7 @@ var storeModule = {
         label: model.label,
         symbol: model.symbol,
         fiat: !!model.fiat,
+        stablecoin: !!model.stablecoin,
         caseSensitiveAddress: !!model.caseSensitiveAddress
       }
       commit('addAsset', model)

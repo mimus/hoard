@@ -6,14 +6,7 @@
           <b class="mr-1">
             {{ asset.label }} ({{ asset.symbol }})
           </b>
-          <v-icon
-            v-if="asset.fiat"
-            class="blue-grey--text text--lighten-1"
-          >monetization_on</v-icon>
-          <v-icon
-            v-if="!asset.fiat"
-            class="orange--text text--darken-3"
-          >cloud_queue</v-icon>
+          <asset-icon :asset="asset" />
           <span
             v-if="currentValue"
             style="margin-left: 10px;"
@@ -69,7 +62,7 @@
           <tr>
             <td>
               <div class="text-no-wrap">
-                {{ props.item.date | formatDate }}
+                {{ props.item.date | formatDateTime }}
               </div>
             </td>
             <td>
