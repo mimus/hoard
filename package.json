@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.13.8",
     "@mdi/font": "^5.9.55",
     "@vue/cli-plugin-babel": "3.8.0",
     "@vue/cli-plugin-e2e-cypress": "3.8.0",
