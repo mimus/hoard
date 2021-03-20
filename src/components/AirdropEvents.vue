@@ -44,11 +44,27 @@
                 with-type-label
               />
             </td>
-            <td class="related-links-col">
+            <td>
               <associated-links :links="props.item.originalLinked" />
             </td>
-            <td class="related-links-col">
+            <td>
               <associated-links :links="props.item.linked" />
+            </td>
+            <td>
+              <v-tooltip bottom>
+                <template #activator="{ on, attrs }">
+                  <v-btn
+                    v-bind="attrs"
+                    v-on="on"
+                    :to="{ name: 'AirdropEventAddFromBase', params: { baseEventId: props.item.id } }"
+                    small
+                    icon
+                  >
+                    <v-icon>content_copy</v-icon>
+                  </v-btn>
+                </template>
+                Add another based on this event
+              </v-tooltip>
             </td>
           </tr>
         </template>
@@ -76,7 +92,8 @@ export default {
       { text: 'Label', sortable: false },
       { text: 'Comments', sortable: false },
       { text: 'Original', sortable: false },
-      { text: 'Airdrop', sortable: false }
+      { text: 'Airdrop', sortable: false },
+      { text: 'Actions', sortable: false }
     ]
   }),
   computed: {

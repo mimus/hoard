@@ -22,6 +22,15 @@ var routes = [
         meta: {
           bcLabel: 'New Airdrop / Income'
         }
+      },
+      {
+        path: 'addFromBase/:baseEventId',
+        name: 'AirdropEventAddFromBase',
+        component: AirdropEventAdd,
+        props: true,
+        meta: {
+          bcLabel: 'New Airdrop / Income'
+        }
       }
     ]
   }

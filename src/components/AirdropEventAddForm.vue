@@ -155,25 +155,51 @@
 import u from '../utils'
 
 export default {
-  data: () => ({
-    required: (value) => !!value || 'Required',
-    form: {
-      transactionId: '',
-      fetchedTransactionError: '',
-      assetPriceGBP: ''
-    },
-    model: {
-      date: null,
-      originalAsset: '',
-      originalLocation: '',
-      asset: '',
-      amount: '',
-      location: '',
-      assetValueGBP: '',
-      label: '',
-      comments: ''
+  props: {
+    baseEventId: {
+      type: [String, Number],
+      default: null
     }
-  }),
+  },
+  data: function () {
+    let baseEvent = null
+    let originalAsset = null
+    let originalLocation = null
+    let location = null
+    if (this.baseEventId) {
+      baseEvent = this.$store.getters.airdropEvent(this.baseEventId)
+      if (baseEvent) {
+        const locationLedgerEntryId = baseEvent.linked?.find(({ type }) => type === 'locationLedgerEntry')?.id
+        if (locationLedgerEntryId) {
+          const locationLedgerEntry = this.$store.getters.locationLedgerEntry(locationLedgerEntryId)
+          if (locationLedgerEntry) {
+            location = locationLedgerEntry.location
+          }
+        }
+        originalLocation = baseEvent.originalLinked?.find(({ type }) => type === 'location')?.id
+        originalAsset = baseEvent.originalLinked?.find(({ type }) => type === 'asset')?.id
+      }
+    }
+    return {
+      required: (value) => !!value || 'Required',
+      form: {
+        transactionId: '',
+        fetchedTransactionError: '',
+        assetPriceGBP: ''
+      },
+      model: {
+        date: null,
+        originalAsset: originalAsset || '',
+        originalLocation: originalLocation || '',
+        asset: baseEvent?.asset || '',
+        amount: '',
+        location: location || '',
+        assetValueGBP: '',
+        label: baseEvent?.label || '',
+        comments: ''
+      }
+    }
+  },
   computed: {
     originalAssetAmount () {
       var model = this.model

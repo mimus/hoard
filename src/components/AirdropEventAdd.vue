@@ -4,7 +4,10 @@
       New Airdrop or Income (non-fiat)
     </v-card-title>
     <v-card-text>
-      <AirdropEventAddForm @save="submit" />
+      <AirdropEventAddForm
+        :baseEventId="baseEventId"
+        @save="submit"
+      />
       <v-alert :value="!!error" type="error">
         {{ error }}
       </v-alert>
@@ -17,6 +20,12 @@ import AirdropEventAddForm from './AirdropEventAddForm'
 
 export default {
   components: { AirdropEventAddForm },
+  props: {
+    baseEventId: {
+      type: [String, Number],
+      default: null
+    }
+  },
   data: () => ({
     error: null
   }),
