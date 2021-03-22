@@ -34,6 +34,9 @@
               {{ props.item.amount | formatAssetValue(props.item.asset) }}
             </td>
             <td>
+              {{ props.item.assetValueGBP | formatFiat }}
+            </td>
+            <td>
               {{ props.item.label }}
             </td>
             <td>
@@ -89,6 +92,7 @@ export default {
       { text: 'Date', sortable: true, value: 'sortableDate' },
       { text: 'Asset', sortable: true, value: 'asset' },
       { text: 'Amount', sortable: false },
+      { text: 'Value', sortable: false },
       { text: 'Label', sortable: false },
       { text: 'Comments', sortable: false },
       { text: 'Original', sortable: false },
