@@ -24,7 +24,7 @@
           <tr>
             <td>
               <div class="text-no-wrap">
-                {{ props.item.date | formatDate }}
+                {{ props.item.date | formatDateTime }}
               </div>
             </td>
             <td>
