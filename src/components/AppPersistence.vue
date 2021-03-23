@@ -8,15 +8,18 @@
     </v-btn>
 
     <v-btn
-      ref="exportBtn"
       text
-      :href="exportUrl"
-      target="_blank"
-      :download="exportFilename"
-      @mousedown="exportStore"
+      @click="exportStore"
     >
       Export
     </v-btn>
+    <v-btn
+      ref="exportBtn"
+      :href="exportUrl"
+      target="_blank"
+      :download="exportFilename"
+      style="display: none"
+    />
 
     <v-dialog
       v-model="importDialog"
