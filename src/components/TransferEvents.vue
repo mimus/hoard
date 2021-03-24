@@ -24,7 +24,7 @@
           <tr>
             <td>
               <div class="text-no-wrap">
-                {{ props.item.date | formatDate }}
+                {{ props.item.date | formatDateTime }}
               </div>
             </td>
             <td>
@@ -36,24 +36,44 @@
               {{ props.item.amount | formatAssetValue(props.item.asset) }}
             </td>
             <td>
-              <TransferEventsEventEntries :entries="props.item.fees" />
+              <div style="display: grid; grid-template-columns: auto minmax(200px, 1fr); grid-gap: 15px;">
+                <i>From:</i>
+                <TransferEventsEventEntries :entries="props.item.from" />
+                <i>To:</i>
+                <TransferEventsEventEntries :entries="props.item.to" />
+                <i>Fee:</i>
+                <TransferEventsEventEntries :entries="props.item.fees" />
+              </div>
+            </td>
+            <td style="word-break: break-word">
+              <p>
+                {{ props.item.label }}
+                <br>
+                <span class="text--secondary">
+                  {{ props.item.comments }}
+                </span>
+                <external-asset-links
+                  :links="props.item.externalAssetLinks"
+                  with-short-label
+                  with-type-label
+                />
+              </p>
             </td>
             <td>
-              {{ props.item.label }}
-            </td>
-            <td>
-              <TransferEventsEventEntries :entries="props.item.from" />
-            </td>
-            <td>
-              <TransferEventsEventEntries :entries="props.item.to" />
-            </td>
-            <td>
-              {{ props.item.comments }}
-              <external-asset-links
-                :links="props.item.externalAssetLinks"
-                with-short-label
-                with-type-label
-              />
+              <v-tooltip bottom>
+                <template #activator="{ on, attrs }">
+                  <v-btn
+                    v-bind="attrs"
+                    v-on="on"
+                    :to="{ name: 'TransferEventAddFromBase', params: { baseEventId: props.item.id } }"
+                    small
+                    icon
+                  >
+                    <v-icon>content_copy</v-icon>
+                  </v-btn>
+                </template>
+                Add another based on this event
+              </v-tooltip>
             </td>
           </tr>
         </template>
@@ -81,11 +101,9 @@ export default {
       { text: 'Date', sortable: true, value: 'sortableDate' },
       { text: 'Asset', sortable: true, value: 'asset' },
       { text: 'Amount', sortable: false },
-      { text: 'Fee', sortable: false },
-      { text: 'Label', sortable: false },
-      { text: 'Transfer Out', sortable: false },
-      { text: 'Transfer In', sortable: false },
-      { text: 'Comments', sortable: false }
+      { text: 'Transfers', sortable: false },
+      { text: 'Label/Comments', sortable: false },
+      { text: 'Actions', sortable: false }
     ]
   }),
   computed: {

@@ -22,6 +22,15 @@ var routes = [
         meta: {
           bcLabel: 'New Trade'
         }
+      },
+      {
+        path: 'add-from-base/:baseEventId',
+        name: 'TradeEventAddFromBase',
+        component: TradeEventAdd,
+        props: true,
+        meta: {
+          bcLabel: 'New Trade'
+        }
       }
     ]
   }

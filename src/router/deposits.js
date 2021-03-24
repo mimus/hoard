@@ -22,6 +22,15 @@ var routes = [
         meta: {
           bcLabel: 'New Deposit'
         }
+      },
+      {
+        path: 'add-from-base/:baseEventId',
+        name: 'DepositEventAddFromBase',
+        component: DepositEventAdd,
+        props: true,
+        meta: {
+          bcLabel: 'New Deposit'
+        }
       }
     ]
   }

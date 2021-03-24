@@ -24,7 +24,7 @@
           <tr>
             <td>
               <div class="text-no-wrap">
-                {{ props.item.date | formatDate }}
+                {{ props.item.date | formatDateTime }}
               </div>
             </td>
             <td>
@@ -36,11 +36,30 @@
             <td>
               <TradeEventsEventEntries :entries="props.item.fees" />
             </td>
-            <td>
-              {{ props.item.label }}
+            <td style="word-break: break-word;">
+              <p>
+                {{ props.item.label }}
+                <br>
+                <span class="text--secondary">
+                  {{ props.item.comments }}
+                </span>
+              </p>
             </td>
             <td>
-              {{ props.item.comments }}
+              <v-tooltip bottom>
+                <template #activator="{ on, attrs }">
+                  <v-btn
+                    v-bind="attrs"
+                    v-on="on"
+                    :to="{ name: 'TradeEventAddFromBase', params: { baseEventId: props.item.id } }"
+                    small
+                    icon
+                  >
+                    <v-icon>content_copy</v-icon>
+                  </v-btn>
+                </template>
+                Add another based on this event
+              </v-tooltip>
             </td>
           </tr>
         </template>
@@ -68,8 +87,8 @@ export default {
       { text: 'Sold Asset', sortable: false },
       { text: 'Bought Asset', sortable: false },
       { text: 'Fees', sortable: false },
-      { text: 'Label', sortable: false },
-      { text: 'Comments', sortable: false }
+      { text: 'Label/Comments', sortable: false },
+      { text: 'Actions', sortable: false }
     ]
   }),
   computed: {

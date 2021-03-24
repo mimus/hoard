@@ -7,6 +7,9 @@
       {{ entry.amount | formatAssetValue(entry.asset) }}
       <associated-links :links="entry.linked" />
     </div>
+    <template v-if="!entries || !entries.length">
+      &mdash;
+    </template>
   </div>
 </template>
 

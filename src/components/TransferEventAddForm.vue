@@ -310,31 +310,84 @@
 import u from '../utils'
 
 export default {
-  data: () => ({
-    required: (value) => !!value || 'Required',
-    transactionId: '',
-    form: {
-      fetchedTransaction: null,
-      fetchedTransactionError: '',
-      enableFeeLocation: false,
-      customFeeAsset: null
-    },
-    assetPriceGBP: '',
-    model: {
-      date: null,
-      label: '',
-      comments: '',
-      asset: '',
-      amount: '0',
-      from: [],
-      to: [],
-      fee: {
-        amount: '0',
-        valueGBP: '0',
-        locationId: null
+  props: {
+    baseEventId: {
+      type: [String, Number],
+      default: null
+    }
+  },
+  data: function () {
+    let baseEvent = null
+    let fromLocations = null
+    let toLocations = null
+    let enableFeeLocation = false
+    let customFeeAsset = null
+    let feeLocation = null
+    if (this.baseEventId) {
+      const findLocationIdFromLinked = (linked) => {
+        const locationLedgerEntryId = linked?.find(({ type }) => type === 'locationLedgerEntry')?.id
+        if (locationLedgerEntryId) {
+          const locationLedgerEntry = this.$store.getters.locationLedgerEntry(locationLedgerEntryId)
+          if (locationLedgerEntry) {
+            return locationLedgerEntry.location
+          }
+        }
+        return null
+      }
+
+      baseEvent = this.$store.getters.transferEvent(this.baseEventId)
+      if (baseEvent) {
+        [fromLocations, toLocations] = [baseEvent.from, baseEvent.to].map(
+          locations => {
+            return locations?.map(
+              ({ linked }) => findLocationIdFromLinked(linked)
+            ).filter(
+              locationId => !!locationId
+            ).map(
+              locationId => this.newLocationModel({
+                location: this.$store.getters.location(locationId)
+              })
+            )
+          }
+        )
+
+        if (baseEvent.fees?.[0]) {
+          const fee = baseEvent.fees[0]
+          feeLocation = findLocationIdFromLinked(fee.linked)
+          if (feeLocation) {
+            enableFeeLocation = true
+            customFeeAsset = fee.asset
+          }
+        }
       }
     }
-  }),
+
+    return {
+      required: (value) => !!value || 'Required',
+      transactionId: '',
+      form: {
+        fetchedTransaction: null,
+        fetchedTransactionError: '',
+        enableFeeLocation,
+        customFeeAsset: customFeeAsset || null
+      },
+      assetPriceGBP: '',
+      model: {
+        date: null,
+        label: baseEvent?.label || '',
+        comments: '',
+        asset: baseEvent?.asset || '',
+        amount: '0',
+        from: fromLocations || [],
+        to: toLocations || [],
+        fee: {
+          amount: '0',
+          valueGBP: '0',
+          locationId: feeLocation || null
+        }
+      }
+    }
+  },
   computed: {
     asset () {
       return this.model.asset ? this.$store.getters.asset(this.model.asset) : null
@@ -442,12 +495,15 @@ export default {
     },
     addLocation (type, location, amount) {
       if (this.model[type].find(x => x.id === location.id)) { return }
-      this.model[type].push({
+      this.model[type].push(this.newLocationModel({ location, amount }))
+    },
+    newLocationModel ({ location, amount }) {
+      return {
         id: location.id,
         label: location.label,
         subtitle: location.address,
         amount: amount || '0'
-      })
+      }
     },
     removeLocation (type, locationId) {
       var index = this.model[type].findIndex(x => x.id === locationId)

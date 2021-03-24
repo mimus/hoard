@@ -24,7 +24,7 @@ var routes = [
         }
       },
       {
-        path: 'addFromBase/:baseEventId',
+        path: 'add-from-base/:baseEventId',
         name: 'AirdropEventAddFromBase',
         component: AirdropEventAdd,
         props: true,

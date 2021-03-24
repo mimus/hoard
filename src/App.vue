@@ -87,4 +87,9 @@ export default {
     font-weight: 400;
     font-size: 13px;
 }
+.v-data-table td,
+.v-data-table th {
+    padding: 10px;
+    vertical-align: top;
+}
 </style>

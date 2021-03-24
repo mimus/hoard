@@ -371,17 +371,63 @@
 import u from '../utils'
 
 export default {
-  data: () => ({
-    required: (value) => !!value || 'Required',
-    model: {
-      date: null,
-      label: '',
-      comments: '',
-      disposed: [],
-      acquired: [],
-      fees: []
+  props: {
+    baseEventId: {
+      type: [String, Number],
+      default: null
     }
-  }),
+  },
+  data: function () {
+    let baseEvent = null
+    let disposedLocations = null
+    let acquiredLocations = null
+    let feeLocations = null
+    if (this.baseEventId) {
+      const findLocationIdFromLinked = (linked) => {
+        const locationLedgerEntryId = linked?.find(({ type }) => type === 'locationLedgerEntry')?.id
+        if (locationLedgerEntryId) {
+          const locationLedgerEntry = this.$store.getters.locationLedgerEntry(locationLedgerEntryId)
+          if (locationLedgerEntry) {
+            return locationLedgerEntry.location
+          }
+        }
+        return null
+      }
+
+      baseEvent = this.$store.getters.tradeEvent(this.baseEventId)
+      if (baseEvent) {
+        [disposedLocations, acquiredLocations, feeLocations] = [baseEvent.disposed, baseEvent.acquired, baseEvent.fees].map(
+          locations => {
+            return locations?.map(
+              ({ asset, linked }) => ({
+                locationId: findLocationIdFromLinked(linked),
+                assetId: asset
+              })
+            ).filter(
+              ({ locationId }) => !!locationId
+            ).map(
+              ({ locationId, assetId }) => this.newLocationModel({
+                location: this.$store.getters.location(locationId),
+                asset: this.$store.getters.asset(assetId)
+              })
+            )
+          }
+        )
+      }
+    }
+
+    return {
+      required: (value) => !!value || 'Required',
+      model: {
+        date: null,
+        label: baseEvent?.label || '',
+        comments: '',
+        disposed: disposedLocations || [],
+        acquired: acquiredLocations || [],
+        fees: feeLocations || []
+      }
+    }
+  },
   computed: {
     totalSoldAssets () {
       return this._total('disposed')
@@ -435,17 +481,20 @@ export default {
       if (type === 'disposed' && !this.model.disposed.length && this.model.acquired.length) {
         valueGBP = this.valueBoughtAssets.toString()
       }
-      this.model[type].push({
+      this.model[type].push(this.newLocationModel({ location, asset, valueGBP }))
+    },
+    newLocationModel ({ location, asset, valueGBP }) {
+      return {
         id: location.id,
         label: location.label,
         asset: location.asset,
         assetObj: asset,
         assetPriceGBP: '',
-        valueGBP: valueGBP,
+        valueGBP: valueGBP || '0',
         subtitle: location.address,
         amount: '0',
         comments: ''
-      })
+      }
     },
     removeLocation (type, locationId) {
       var index = this.model[type].findIndex(x => x.id === locationId)

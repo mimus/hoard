@@ -22,6 +22,15 @@ var routes = [
         meta: {
           bcLabel: 'New Transfer'
         }
+      },
+      {
+        path: 'add-from-base/:baseEventId',
+        name: 'TransferEventAddFromBase',
+        component: TransferEventAdd,
+        props: true,
+        meta: {
+          bcLabel: 'New Transfer'
+        }
       }
     ]
   }

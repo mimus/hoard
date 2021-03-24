@@ -4,7 +4,10 @@
       New Trade
     </v-card-title>
     <v-card-text>
-      <TradeEventAddForm @save="submit" />
+      <TradeEventAddForm
+        :baseEventId="baseEventId"
+        @save="submit"
+      />
       <v-alert
         :value="!!error"
         type="error"
@@ -20,6 +23,12 @@ import TradeEventAddForm from './TradeEventAddForm'
 
 export default {
   components: { TradeEventAddForm },
+  props: {
+    baseEventId: {
+      type: [String, Number],
+      default: null
+    }
+  },
   data: () => ({
     error: null
   }),

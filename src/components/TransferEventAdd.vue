@@ -4,7 +4,10 @@
       New Transfer
     </v-card-title>
     <v-card-text>
-      <TransferEventAddForm @save="submit" />
+      <TransferEventAddForm
+        :baseEventId="baseEventId"
+        @save="submit"
+      />
       <v-alert
         :value="!!error"
         type="error"
@@ -20,6 +23,12 @@ import TransferEventAddForm from './TransferEventAddForm'
 
 export default {
   components: { TransferEventAddForm },
+  props: {
+    baseEventId: {
+      type: [String, Number],
+      default: null
+    }
+  },
   data: () => ({
     error: null
   }),

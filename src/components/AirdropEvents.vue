@@ -37,15 +37,15 @@
               {{ props.item.assetValueGBP | formatFiat }}
             </td>
             <td>
-              {{ props.item.label }}
-            </td>
-            <td>
-              {{ props.item.comments }}
-              <external-asset-links
-                :links="props.item.externalAssetLinks"
-                with-short-label
-                with-type-label
-              />
+              <p>{{ props.item.label }}
+                <br>
+                <span class="text--secondary">{{ props.item.comments }}</span>
+                <external-asset-links
+                  :links="props.item.externalAssetLinks"
+                  with-short-label
+                  with-type-label
+                />
+              </p>
             </td>
             <td>
               <associated-links :links="props.item.originalLinked" />
@@ -93,8 +93,7 @@ export default {
       { text: 'Asset', sortable: true, value: 'asset' },
       { text: 'Amount', sortable: false },
       { text: 'Value', sortable: false },
-      { text: 'Label', sortable: false },
-      { text: 'Comments', sortable: false },
+      { text: 'Label/Comments', sortable: false },
       { text: 'Original', sortable: false },
       { text: 'Airdrop', sortable: false },
       { text: 'Actions', sortable: false }

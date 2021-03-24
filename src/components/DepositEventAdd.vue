@@ -4,7 +4,10 @@
       New Deposit (Fiat)
     </v-card-title>
     <v-card-text>
-      <DepositEventAddForm @save="submit" />
+      <DepositEventAddForm
+        :baseEventId="baseEventId"
+        @save="submit"
+      />
       <v-alert
         :value="!!error"
         type="error"
@@ -20,6 +23,12 @@ import DepositEventAddForm from './DepositEventAddForm'
 
 export default {
   components: { DepositEventAddForm },
+  props: {
+    baseEventId: {
+      type: [String, Number],
+      default: null
+    }
+  },
   data: () => ({
     error: null
   }),

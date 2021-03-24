@@ -44,17 +44,39 @@
 <script>
 
 export default {
-  data: () => ({
-    required: (value) => !!value || 'Required',
-    model: {
-      date: null,
-      asset: '',
-      amount: '',
-      location: '',
-      label: '',
-      comments: ''
+  props: {
+    baseEventId: {
+      type: [String, Number],
+      default: null
     }
-  }),
+  },
+  data: function () {
+    let baseEvent = null
+    let location = null
+    if (this.baseEventId) {
+      baseEvent = this.$store.getters.depositEvent(this.baseEventId)
+      if (baseEvent) {
+        const locationLedgerEntryId = baseEvent.linked?.find(({ type }) => type === 'locationLedgerEntry')?.id
+        if (locationLedgerEntryId) {
+          const locationLedgerEntry = this.$store.getters.locationLedgerEntry(locationLedgerEntryId)
+          if (locationLedgerEntry) {
+            location = locationLedgerEntry.location
+          }
+        }
+      }
+    }
+    return {
+      required: (value) => !!value || 'Required',
+      model: {
+        date: null,
+        asset: baseEvent?.asset || '',
+        amount: '',
+        location: location || '',
+        label: baseEvent?.label || '',
+        comments: ''
+      }
+    }
+  },
   methods: {
     submit () {
       if (this.model.asset && this.model.location && this.model.date) {
