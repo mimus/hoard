@@ -363,6 +363,16 @@
       class="input-comment"
     ></v-textarea>
 
+    <div
+      v-if="!valueBoughtAssets.eq(valueSoldAssets)"
+      class="red--text text--darken-2 mt-2 mb-4"
+    >
+      <v-icon color="red">
+        warning
+      </v-icon>
+      Value of bought assets should match sold assets
+    </div>
+
   </base-form>
 </template>
 
@@ -490,7 +500,7 @@ export default {
         asset: location.asset,
         assetObj: asset,
         assetPriceGBP: '',
-        valueGBP: valueGBP || '0',
+        valueGBP: valueGBP || '',
         subtitle: location.address,
         amount: '0',
         comments: ''

@@ -68,7 +68,7 @@
             <td>
               <span
                 v-if="props.item.type=='acquisition'"
-                class="acquisition"
+                class="acquisition signed-number"
               >
                 +{{ props.item.amount | formatAssetValue(asset.id) }}
               </span>
@@ -80,7 +80,20 @@
               </span>
             </td>
             <td>
-              <b>{{ props.item.assetValueGBP | formatFiat }}</b>
+              <v-icon
+                v-if="props.item.assetValueGBP.isZero() && props.item.workings.costBasis && props.item.workings.costBasis.absoluteValue().isGreaterThan(15)"
+                color="orange"
+                title="A large amount of this asset has been disposed of for zero value"
+              >
+                warning
+              </v-icon>
+              <b
+                :class="{
+                  'grey--text': props.item.assetValueGBP.isZero()
+                }"
+              >
+                {{ props.item.assetValueGBP | formatFiat }}
+              </b>
             </td>
             <td>
               <div v-if="props.item.workings.poolAmount > 0">
@@ -98,7 +111,10 @@
               </span>
             </td>
             <td>
-              <span v-if="props.item.workings.hasOwnProperty('gain')">
+              <span
+                v-if="props.item.workings.hasOwnProperty('gain')"
+                class="signed-number"
+              >
                 {{ props.item.workings.gain | formatFiat }}
               </span>
             </td>
@@ -200,6 +216,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.signed-number {
+  white-space: nowrap;
+}
 .acquisition {
   color: #00cc00;
 }
