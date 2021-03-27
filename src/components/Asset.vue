@@ -58,6 +58,22 @@
         sort-by="sortIndex"
         :sort-desc="true"
       >
+        <template v-slot:header.totalPool>
+          Total Pool
+          <v-tooltip bottom>
+            <template #activator="{ on, attrs }">
+              <v-icon
+                v-bind="attrs"
+                v-on="on"
+              >
+              info
+              </v-icon>
+            </template>
+            This is not a normal running total.
+            <br>A disposal uses up the pool amount from acquisitions earlier in the same day and from the next 30 days.
+            <br>The pool amount here is what remains after those rules have been applied.
+          </v-tooltip>
+        </template>
         <template v-slot:item="props">
           <tr>
             <td>
@@ -166,7 +182,7 @@ export default {
       { text: 'Amount', sortable: false },
       { text: 'Value', sortable: false },
       { text: 'Pool Amount', sortable: false },
-      { text: 'Total Pool', sortable: false },
+      { text: 'Total Pool', value: 'totalPool', sortable: false },
       { text: 'Cost Basis', sortable: false },
       { text: 'Gain', sortable: false },
       { text: 'Label', sortable: false },
