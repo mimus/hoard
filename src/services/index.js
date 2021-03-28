@@ -14,8 +14,9 @@ import BCD from './bcd'
 import DAI from './dai'
 import WBTC from './wbtc'
 import GUSD from './gusd'
+import LPT from './lpt'
 
-var index = { BTC, BCH, BTG, ETH, OMG, ZEC, LTC, VTC, XVG, LSK, NEO, GAS, BCD, DAI, WBTC, GUSD }
+var index = { BTC, BCH, BTG, ETH, OMG, ZEC, LTC, VTC, XVG, LSK, NEO, GAS, BCD, DAI, WBTC, GUSD, LPT }
 
 Object.entries(index).forEach(([key, item]) => {
   if (item.services) {
