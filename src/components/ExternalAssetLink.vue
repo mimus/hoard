@@ -1,9 +1,10 @@
 <template>
-  <span v-if="link">
+  <span v-if="link || label">
     <span v-if="withTypeLabel">{{ typeLabel }}:</span>
     <span v-if="withLabel">{{ label }}</span>
     <span v-if="withShortLabel">{{ shortLabel }}</span>
     <v-btn
+      v-if="link"
       :href="link"
       target="_blank"
       :title="linkTitle"
@@ -13,6 +14,9 @@
     >
       <v-icon small>open_in_new</v-icon>
     </v-btn>
+  </span>
+  <span v-else>
+    {{type}}:{{ item }}
   </span>
 </template>
 

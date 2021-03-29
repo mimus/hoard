@@ -59,7 +59,7 @@
             <td>
               {{ props.item.label }}
             </td>
-            <td>
+            <td style="word-break: break-word">
               {{ props.item.comments }}
             </td>
             <td class="related-links-col">

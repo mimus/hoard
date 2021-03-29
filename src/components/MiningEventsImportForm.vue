@@ -267,7 +267,7 @@ export default {
     expandedTransactions () {
       // we want to expand the selected transactions: return an array containing their row indices
       var indices = []
-      for (var i=0; i<this.transactions.length; i++) {
+      for (var i = 0; i < this.transactions.length; i++) {
         if (this.transactions[i].selected) {
           indices.push(i)
         }
