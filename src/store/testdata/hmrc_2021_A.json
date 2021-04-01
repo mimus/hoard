@@ -1,0 +1,517 @@
+{
+  "exportDate": "2021-04-01T15:27:16.318Z",
+  "title": "HMRC 2021 Example 1",
+  "description": "From <a href='https://www.gov.uk/hmrc-internal-manuals/cryptoassets-manual/crypto22251'>Crytoassets Manual Example</a>",
+  "taxYears": {
+    "taxYears": [
+      {
+        "id": 1,
+        "label": "2020/21",
+        "startDate": "2020-04-05T23:00:00.000Z",
+        "endDate": "2021-04-05T22:59:00.000Z"
+      }
+    ]
+  },
+  "assets": {
+    "assets": [
+      {
+        "id": "GBP",
+        "label": "GBP",
+        "symbol": "GBP",
+        "fiat": true,
+        "stablecoin": false,
+        "caseSensitiveAddress": false
+      },
+      {
+        "id": "A",
+        "label": "Token A",
+        "symbol": "A",
+        "fiat": false,
+        "stablecoin": false,
+        "caseSensitiveAddress": true
+      }
+    ],
+    "assetLedgerEntries": [
+      {
+        "id": 1,
+        "date": "2020-09-01T11:00:00.000Z",
+        "type": "acquisition",
+        "asset": "GBP",
+        "assetValueGBP": "126000",
+        "amount": "126000",
+        "label": "GBP deposit",
+        "comments": "",
+        "linked": [
+          {
+            "type": "depositEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "date": "2020-09-01T11:00:00.000Z",
+        "type": "disposal",
+        "asset": "GBP",
+        "assetValueGBP": "1000",
+        "amount": "-1000",
+        "label": "Bought 100 token A for £1000",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "date": "2020-09-01T11:00:00.000Z",
+        "type": "acquisition",
+        "asset": "A",
+        "assetValueGBP": "1000",
+        "amount": "100",
+        "label": "Bought 100 token A for £1000",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "date": "2020-09-18T11:00:00.000Z",
+        "type": "disposal",
+        "asset": "GBP",
+        "assetValueGBP": "125000",
+        "amount": "-125000",
+        "label": "Bought 50 token A for £125000",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 2
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "date": "2020-09-18T11:00:00.000Z",
+        "type": "acquisition",
+        "asset": "A",
+        "assetValueGBP": "125000",
+        "amount": "50",
+        "label": "Bought 50 token A for £125000",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 2
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "date": "2020-12-01T12:00:00.000Z",
+        "type": "disposal",
+        "asset": "A",
+        "assetValueGBP": "300000",
+        "amount": "-50",
+        "label": "Sold 50 token A for £300000",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 3
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "date": "2020-12-01T12:00:00.000Z",
+        "type": "acquisition",
+        "asset": "GBP",
+        "assetValueGBP": "300000",
+        "amount": "300000",
+        "label": "Sold 50 token A for £300000",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 3
+          }
+        ]
+      }
+    ]
+  },
+  "cgt": {
+    "assetLedgerEntryWorkingsById": {
+      "1": {
+        "id": 1,
+        "totalPoolAmount": "125000",
+        "totalPoolCost": "124740",
+        "poolAmount": "125000",
+        "poolValueGBP": "124740"
+      },
+      "2": {
+        "id": 2,
+        "totalPoolAmount": "125000",
+        "totalPoolCost": "124740",
+        "disposalPlan": [
+          {
+            "type": "SAME_DAY",
+            "entry": {
+              "id": 1,
+              "date": "2020-09-01T11:00:00.000Z"
+            },
+            "amount": "1000",
+            "cost": "1000"
+          }
+        ],
+        "costBasis": "1000",
+        "gain": "0"
+      },
+      "3": {
+        "id": 3,
+        "totalPoolAmount": "100",
+        "totalPoolCost": "1000",
+        "poolAmount": "100",
+        "poolValueGBP": "1000"
+      },
+      "4": {
+        "id": 4,
+        "totalPoolAmount": "0",
+        "totalPoolCost": "-260",
+        "disposalPlan": [
+          {
+            "type": "POOL",
+            "amount": "125000",
+            "cost": "125000"
+          }
+        ],
+        "costBasis": "125000",
+        "gain": "0"
+      },
+      "5": {
+        "id": 5,
+        "totalPoolAmount": "150",
+        "totalPoolCost": "126000",
+        "poolAmount": "50",
+        "poolValueGBP": "125000"
+      },
+      "6": {
+        "id": 6,
+        "totalPoolAmount": "100",
+        "totalPoolCost": "84000",
+        "disposalPlan": [
+          {
+            "type": "POOL",
+            "amount": "50",
+            "cost": "42000"
+          }
+        ],
+        "costBasis": "42000",
+        "gain": "258000"
+      },
+      "7": {
+        "id": 7,
+        "totalPoolAmount": "300000",
+        "totalPoolCost": "299740",
+        "poolAmount": "300000",
+        "poolValueGBP": "300000"
+      }
+    }
+  },
+  "locations": {
+    "locations": [
+      {
+        "id": 1,
+        "group": 1,
+        "label": "GBP Balance",
+        "asset": "GBP",
+        "address": ""
+      },
+      {
+        "id": 2,
+        "group": 1,
+        "label": "Token A Balance",
+        "asset": "A",
+        "address": ""
+      }
+    ],
+    "locationGroups": [
+      {
+        "id": 1,
+        "label": "Exchange",
+        "locations": [
+          1,
+          2
+        ],
+        "category": "EXCHANGE"
+      }
+    ],
+    "locationLedgerEntries": [
+      {
+        "id": 1,
+        "date": "2020-09-01T11:00:00.000Z",
+        "location": 1,
+        "amount": "126000",
+        "label": "GBP deposit",
+        "comments": "",
+        "linked": [
+          {
+            "type": "depositEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "date": "2020-09-01T11:00:00.000Z",
+        "location": 2,
+        "amount": "100",
+        "label": "Bought 100 token A for £1000",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "date": "2020-09-01T11:00:00.000Z",
+        "location": 1,
+        "amount": "-1000",
+        "label": "Bought 100 token A for £1000",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "date": "2020-09-18T11:00:00.000Z",
+        "location": 2,
+        "amount": "50",
+        "label": "Bought 50 token A for £125000",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 2
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "date": "2020-09-18T11:00:00.000Z",
+        "location": 1,
+        "amount": "-125000",
+        "label": "Bought 50 token A for £125000",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 2
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "date": "2020-12-01T12:00:00.000Z",
+        "location": 1,
+        "amount": "300000",
+        "label": "Sold 50 token A for £300000",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 3
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "date": "2020-12-01T12:00:00.000Z",
+        "location": 2,
+        "amount": "-50",
+        "label": "Sold 50 token A for £300000",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 3
+          }
+        ]
+      }
+    ]
+  },
+  "miningPools": {
+    "miningPools": []
+  },
+  "miningEvents": {
+    "miningEvents": []
+  },
+  "transferEvents": {
+    "transferEvents": []
+  },
+  "airdropEvents": {
+    "airdropEvents": []
+  },
+  "depositEvents": {
+    "depositEvents": [
+      {
+        "id": 1,
+        "date": "2020-09-01T11:00:00.000Z",
+        "label": "GBP deposit",
+        "asset": "GBP",
+        "amount": "126000",
+        "comments": "",
+        "linked": [
+          {
+            "type": "assetLedgerEntry",
+            "id": 1
+          },
+          {
+            "type": "locationLedgerEntry",
+            "id": 1
+          }
+        ]
+      }
+    ]
+  },
+  "tradeEvents": {
+    "tradeEvents": [
+      {
+        "id": 1,
+        "date": "2020-09-01T11:00:00.000Z",
+        "label": "Bought 100 token A for £1000",
+        "comments": "",
+        "fees": [],
+        "disposed": [
+          {
+            "asset": "GBP",
+            "amount": "1000",
+            "comments": "",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 2
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 2
+              }
+            ]
+          }
+        ],
+        "acquired": [
+          {
+            "asset": "A",
+            "amount": "100",
+            "comments": "",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 3
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "date": "2020-09-18T11:00:00.000Z",
+        "label": "Bought 50 token A for £125000",
+        "comments": "",
+        "fees": [],
+        "disposed": [
+          {
+            "asset": "GBP",
+            "amount": "125000",
+            "comments": "",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 4
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 4
+              }
+            ]
+          }
+        ],
+        "acquired": [
+          {
+            "asset": "A",
+            "amount": "50",
+            "comments": "",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 5
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "date": "2020-12-01T12:00:00.000Z",
+        "label": "Sold 50 token A for £300000",
+        "comments": "",
+        "fees": [],
+        "disposed": [
+          {
+            "asset": "A",
+            "amount": "50",
+            "comments": "",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 6
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 6
+              }
+            ]
+          }
+        ],
+        "acquired": [
+          {
+            "asset": "GBP",
+            "amount": "300000",
+            "comments": "",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 7
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 7
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

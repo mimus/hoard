@@ -1,0 +1,529 @@
+{
+  "exportDate": "2021-04-01T17:25:17.590Z",
+  "title": "HMRC 2021 Example 5",
+  "description": "From <a href='https://www.gov.uk/hmrc-internal-manuals/cryptoassets-manual/crypto22255'>Crytoassets Manual Example</a>",
+  "taxYears": {
+    "taxYears": [
+      {
+        "id": 1,
+        "label": "2020/21",
+        "startDate": "2020-04-05T23:00:00.000Z",
+        "endDate": "2021-04-05T22:59:00.000Z"
+      }
+    ]
+  },
+  "assets": {
+    "assets": [
+      {
+        "id": "GBP",
+        "label": "GBP",
+        "symbol": "GBP",
+        "fiat": true,
+        "stablecoin": false,
+        "caseSensitiveAddress": false
+      },
+      {
+        "id": "E",
+        "label": "Token E",
+        "symbol": "E",
+        "fiat": false,
+        "stablecoin": false,
+        "caseSensitiveAddress": true
+      }
+    ],
+    "assetLedgerEntries": [
+      {
+        "id": 1,
+        "date": "2020-06-01T11:00:00.000Z",
+        "type": "acquisition",
+        "asset": "GBP",
+        "assetValueGBP": "200000",
+        "amount": "200000",
+        "label": "Deposit GBP",
+        "comments": "",
+        "linked": [
+          {
+            "type": "depositEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "date": "2020-06-01T11:05:00.000Z",
+        "type": "disposal",
+        "asset": "GBP",
+        "assetValueGBP": "200000",
+        "amount": "-200000",
+        "label": "Bought 14,000 token E for £200,000",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "date": "2020-06-01T11:05:00.000Z",
+        "type": "acquisition",
+        "asset": "E",
+        "assetValueGBP": "200000",
+        "amount": "14000",
+        "label": "Bought 14,000 token E for £200,000",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "date": "2020-08-30T11:00:00.000Z",
+        "type": "disposal",
+        "asset": "E",
+        "assetValueGBP": "160000",
+        "amount": "-4000",
+        "label": "Sold 4000 token E for £160,000",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 2
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "date": "2020-08-30T11:00:00.000Z",
+        "type": "acquisition",
+        "asset": "GBP",
+        "assetValueGBP": "160000",
+        "amount": "160000",
+        "label": "Sold 4000 token E for £160,000",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 2
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "date": "2020-09-11T11:00:00.000Z",
+        "type": "disposal",
+        "asset": "GBP",
+        "assetValueGBP": "17500",
+        "amount": "-17500",
+        "label": "Bought 500 token E for £17,500",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 3
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "date": "2020-09-11T11:00:00.000Z",
+        "type": "acquisition",
+        "asset": "E",
+        "assetValueGBP": "17500",
+        "amount": "500",
+        "label": "Bought 500 token E for £17,500",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 3
+          }
+        ]
+      }
+    ]
+  },
+  "cgt": {
+    "assetLedgerEntryWorkingsById": {
+      "1": {
+        "id": 1,
+        "totalPoolAmount": "0",
+        "totalPoolCost": "0",
+        "poolAmount": "0",
+        "poolValueGBP": "0"
+      },
+      "2": {
+        "id": 2,
+        "totalPoolAmount": "0",
+        "totalPoolCost": "0",
+        "disposalPlan": [
+          {
+            "type": "SAME_DAY",
+            "entry": {
+              "id": 1,
+              "date": "2020-06-01T11:00:00.000Z"
+            },
+            "amount": "200000",
+            "cost": "200000"
+          }
+        ],
+        "costBasis": "200000",
+        "gain": "0"
+      },
+      "3": {
+        "id": 3,
+        "totalPoolAmount": "14000",
+        "totalPoolCost": "200000",
+        "poolAmount": "14000",
+        "poolValueGBP": "200000"
+      },
+      "4": {
+        "id": 4,
+        "totalPoolAmount": "10500",
+        "totalPoolCost": "150000",
+        "disposalPlan": [
+          {
+            "type": "30_DAYS",
+            "entry": {
+              "id": 7,
+              "date": "2020-09-11T11:00:00.000Z"
+            },
+            "amount": "500",
+            "cost": "17500"
+          },
+          {
+            "type": "POOL",
+            "amount": "3500",
+            "cost": "50000"
+          }
+        ],
+        "costBasis": "67500",
+        "gain": "92500"
+      },
+      "5": {
+        "id": 5,
+        "totalPoolAmount": "160000",
+        "totalPoolCost": "160000",
+        "poolAmount": "160000",
+        "poolValueGBP": "160000"
+      },
+      "6": {
+        "id": 6,
+        "totalPoolAmount": "142500",
+        "totalPoolCost": "142500",
+        "disposalPlan": [
+          {
+            "type": "POOL",
+            "amount": "17500",
+            "cost": "17500"
+          }
+        ],
+        "costBasis": "17500",
+        "gain": "0"
+      },
+      "7": {
+        "id": 7,
+        "totalPoolAmount": "10500",
+        "totalPoolCost": "150000",
+        "poolAmount": "0",
+        "poolValueGBP": "0"
+      }
+    }
+  },
+  "locations": {
+    "locations": [
+      {
+        "group": 1,
+        "label": "GBP Balance",
+        "asset": "GBP",
+        "address": "",
+        "comments": "",
+        "id": 1
+      },
+      {
+        "id": 2,
+        "group": 1,
+        "label": "Token E Balance",
+        "asset": "E",
+        "address": ""
+      }
+    ],
+    "locationGroups": [
+      {
+        "label": "Exchange",
+        "locations": [
+          1,
+          2
+        ],
+        "category": "EXCHANGE",
+        "url": "",
+        "comments": "",
+        "id": 1
+      }
+    ],
+    "locationLedgerEntries": [
+      {
+        "id": 1,
+        "date": "2020-06-01T11:00:00.000Z",
+        "location": 1,
+        "amount": "200000",
+        "label": "Deposit GBP",
+        "comments": "",
+        "linked": [
+          {
+            "type": "depositEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "date": "2020-06-01T11:05:00.000Z",
+        "location": 2,
+        "amount": "14000",
+        "label": "Bought 14,000 token E for £200,000",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "date": "2020-06-01T11:05:00.000Z",
+        "location": 1,
+        "amount": "-200000",
+        "label": "Bought 14,000 token E for £200,000",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 1
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "date": "2020-08-30T11:00:00.000Z",
+        "location": 1,
+        "amount": "160000",
+        "label": "Sold 4000 token E for £160,000",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 2
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "date": "2020-08-30T11:00:00.000Z",
+        "location": 2,
+        "amount": "-4000",
+        "label": "Sold 4000 token E for £160,000",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 2
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "date": "2020-09-11T11:00:00.000Z",
+        "location": 2,
+        "amount": "500",
+        "label": "Bought 500 token E for £17,500",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 3
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "date": "2020-09-11T11:00:00.000Z",
+        "location": 1,
+        "amount": "-17500",
+        "label": "Bought 500 token E for £17,500",
+        "comments": "",
+        "linked": [
+          {
+            "type": "tradeEvent",
+            "id": 3
+          }
+        ]
+      }
+    ]
+  },
+  "miningPools": {
+    "miningPools": []
+  },
+  "miningEvents": {
+    "miningEvents": []
+  },
+  "transferEvents": {
+    "transferEvents": []
+  },
+  "airdropEvents": {
+    "airdropEvents": []
+  },
+  "depositEvents": {
+    "depositEvents": [
+      {
+        "id": 1,
+        "date": "2020-06-01T11:00:00.000Z",
+        "label": "Deposit GBP",
+        "asset": "GBP",
+        "amount": "200000",
+        "comments": "",
+        "linked": [
+          {
+            "type": "assetLedgerEntry",
+            "id": 1
+          },
+          {
+            "type": "locationLedgerEntry",
+            "id": 1
+          }
+        ]
+      }
+    ]
+  },
+  "tradeEvents": {
+    "tradeEvents": [
+      {
+        "id": 1,
+        "date": "2020-06-01T11:05:00.000Z",
+        "label": "Bought 14,000 token E for £200,000",
+        "comments": "",
+        "fees": [],
+        "disposed": [
+          {
+            "asset": "GBP",
+            "amount": "200000",
+            "comments": "",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 2
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 2
+              }
+            ]
+          }
+        ],
+        "acquired": [
+          {
+            "asset": "E",
+            "amount": "14000",
+            "comments": "",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 3
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "date": "2020-08-30T11:00:00.000Z",
+        "label": "Sold 4000 token E for £160,000",
+        "comments": "",
+        "fees": [],
+        "disposed": [
+          {
+            "asset": "E",
+            "amount": "4000",
+            "comments": "",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 4
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 4
+              }
+            ]
+          }
+        ],
+        "acquired": [
+          {
+            "asset": "GBP",
+            "amount": "160000",
+            "comments": "",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 5
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 5
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "date": "2020-09-11T11:00:00.000Z",
+        "label": "Bought 500 token E for £17,500",
+        "comments": "",
+        "fees": [],
+        "disposed": [
+          {
+            "asset": "GBP",
+            "amount": "17500",
+            "comments": "",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 6
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 6
+              }
+            ]
+          }
+        ],
+        "acquired": [
+          {
+            "asset": "E",
+            "amount": "500",
+            "comments": "",
+            "linked": [
+              {
+                "type": "locationLedgerEntry",
+                "id": 7
+              },
+              {
+                "type": "assetLedgerEntry",
+                "id": 7
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

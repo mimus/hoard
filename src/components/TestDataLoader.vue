@@ -76,9 +76,17 @@ import mining2 from '@/store/testdata/mining_pools_2_events.json'
 import pineapple1 from '@/store/testdata/pineapple_transfer_1_before.json'
 import pineapple2 from '@/store/testdata/pineapple_transfer_2_after.json'
 import assets1 from '@/store/testdata/example_assets.json'
+import hmrcA from '@/store/testdata/hmrc_2021_A.json'
+import hmrcB from '@/store/testdata/hmrc_2021_B.json'
+import hmrcC from '@/store/testdata/hmrc_2021_C.json'
+import hmrcD from '@/store/testdata/hmrc_2021_D.json'
+import hmrcE from '@/store/testdata/hmrc_2021_E.json'
+import hmrcF from '@/store/testdata/hmrc_2021_F.json'
+import hmrcG from '@/store/testdata/hmrc_2021_G_different.json'
 
 var testData = [
-  airdrop1, airdrop2, cointracker1, cointracker2, hmrc1, hmrc2, hmrc3, mining1, mining2, pineapple1, pineapple2, assets1
+  airdrop1, airdrop2, cointracker1, cointracker2, hmrc1, hmrc2, hmrc3, mining1, mining2, pineapple1, pineapple2, assets1,
+  hmrcA, hmrcB, hmrcC, hmrcD, hmrcE, hmrcF, hmrcG
 ]
 
 export default Vue.component('test-data-loader', {
