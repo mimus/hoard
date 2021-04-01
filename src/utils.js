@@ -32,6 +32,8 @@ var BIG_NUMBER_FOR_ASSET = Object.entries(ASSET_DECIMALS)
     return memo
   }, {})
 
+var BIG_NUMBER_WITH_DECIMALS = BigNumber.clone({ DECIMAL_PLACES: 40, EXPONENTIAL_AT: [-30, 30] })
+
 var newBigNumberForAsset = (value, asset) => {
   var BN = BIG_NUMBER_FOR_ASSET[asset] || BigNumber
   return new BN(value)
@@ -39,6 +41,11 @@ var newBigNumberForAsset = (value, asset) => {
 var newBigNumberForFiat = (value) => {
   var BN = BIG_NUMBER_FOR_ASSET._FIAT
   return new BN(value)
+}
+
+var newBigNumberWithDecimals = (value) => {
+  // For division, we need to explicitly use many decimal places, otherwise precision is lost
+  return new BIG_NUMBER_WITH_DECIMALS(value)
 }
 
 var safeFormatDate = (value, format) => {
@@ -125,6 +132,7 @@ export default {
   BigNumber,
   newBigNumberForAsset,
   newBigNumberForFiat,
+  newBigNumberWithDecimals,
   pick,
   makeJsonFileUrl,
   formatDate,

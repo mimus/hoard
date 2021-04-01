@@ -105,7 +105,7 @@ var calculateAndApplyGain = function (entry, currentPoolPrice) {
     switch (part.type) {
       case 'SAME_DAY':
       case '30_DAYS':
-        part.cost = u.roundFiat(part.entry.assetValueGBP.times(part.amount.div(part.entry.amount)))
+        part.cost = u.roundFiat(u.newBigNumberWithDecimals(part.entry.assetValueGBP).times(part.amount).div(part.entry.amount))
         cost = cost.plus(part.cost)
         break
       case 'POOL':
@@ -159,11 +159,11 @@ var calculateAssetsLedger = function (originalEntriesByAsset) {
     var totalPoolCost = u.newBigNumberForFiat(0) // running total cost of assets in pool
     entries.forEach((entry, index) => {
       if (entry.type === 'acquisition') {
-        entry.poolValueGBP = u.roundFiat(entry.assetValueGBP.times(entry.poolAmount.div(entry.amount)))
+        entry.poolValueGBP = u.roundFiat(u.newBigNumberWithDecimals(entry.assetValueGBP).times(entry.poolAmount).div(entry.amount))
         totalPoolCost = totalPoolCost.plus(entry.poolValueGBP)
         totalPoolAmount = totalPoolAmount.plus(entry.poolAmount)
       } else if (entry.type === 'disposal') {
-        var disposedPool = calculateAndApplyGain(entry, totalPoolCost.div(totalPoolAmount))
+        var disposedPool = calculateAndApplyGain(entry, u.newBigNumberWithDecimals(totalPoolCost).div(totalPoolAmount))
         totalPoolCost = totalPoolCost.minus(disposedPool.cost)
         totalPoolAmount = totalPoolAmount.minus(disposedPool.amount)
       }
