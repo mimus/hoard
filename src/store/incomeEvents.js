@@ -47,7 +47,7 @@ var storeModule = {
       dispatch('loadIncomeEvents', data.incomeEvents)
     },
 
-    addIncome ({ state, commit, getters, dispatch }, { asset, amount, assetValueGBP, date, location, label, comments, originalAsset, originalLocation, externalAssetLinks }) {
+    addIncome ({ state, commit, getters, dispatch }, { source, asset, amount, assetValueGBP, date, location, label, comments, originalAsset, originalLocation, externalAssetLinks }) {
       return new Promise((resolve, reject) => {
         if (!asset || !amount || !(date instanceof Date) || !location || !label) {
           return reject(new Error('Not enough info provided'))
@@ -95,13 +95,14 @@ var storeModule = {
 
         var event = {
           id: eventId,
+          source,
           date,
           label,
           asset,
           assetValueGBP,
           amount,
           comments,
-          originalLinked: originalLinked,
+          originalLinked,
           linked: [
             { type: 'assetLedgerEntry', id: assetEntryId },
             { type: 'locationLedgerEntry', id: locationEntryId }
@@ -143,6 +144,9 @@ var storeModule = {
     incomeEvents: (state) => state.incomeEvents,
     incomeEventsForAsset: (state) => (assetId) => {
       return state.incomeEvents.filter(event => event.asset === assetId)
+    },
+    incomeEventsForSource: (state) => (sourceId) => {
+      return state.incomeEvents.filter(event => event.source === sourceId)
     },
     incomeEvent: (state, getters) => (eventId) => {
       eventId = +eventId

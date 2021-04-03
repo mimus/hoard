@@ -26,9 +26,16 @@ var storeModule = {
             }
           }
         }
+        if (d && d.incomeEvents && !d.incomeSources) {
+          // Upgrade to add incomeSources
+          d.incomeSources = { incomeSources: [] }
+          for (let event of d.incomeEvents?.incomeEvents) {
+            event.source = null
+          }
+        }
 
         if (!d || !d.taxYears || !d.assets || !d.cgt || !d.locations || !d.miningPools ||
-          !d.miningEvents || !d.transferEvents || !d.incomeEvents || !d.depositEvents || !d.tradeEvents) {
+          !d.miningEvents || !d.transferEvents || !d.incomeSources || !d.incomeEvents || !d.depositEvents || !d.tradeEvents) {
           console.log('Invalid import', d)
           reject(new Error('Invalid import data format'))
           return
@@ -41,6 +48,7 @@ var storeModule = {
         dispatch('importMiningPools', d.miningPools)
         dispatch('importMiningEvents', d.miningEvents)
         dispatch('importTransferEvents', d.transferEvents)
+        dispatch('importIncomeSources', d.incomeSources)
         dispatch('importIncomeEvents', d.incomeEvents)
         dispatch('importDepositEvents', d.depositEvents)
         dispatch('importTradeEvents', d.tradeEvents)
@@ -61,6 +69,7 @@ var storeModule = {
         miningPools: getters.miningPoolsDataForExport,
         miningEvents: getters.miningEventsDataForExport,
         transferEvents: getters.transferEventsDataForExport,
+        incomeSources: getters.incomeSourcesDataForExport,
         incomeEvents: getters.incomeEventsDataForExport,
         depositEvents: getters.depositEventsDataForExport,
         tradeEvents: getters.tradeEventsDataForExport

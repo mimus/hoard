@@ -188,6 +188,7 @@ export default {
         assetPriceGBP: ''
       },
       model: {
+        source: null,
         date: null,
         originalAsset: originalAsset || '',
         originalLocation: originalLocation || '',

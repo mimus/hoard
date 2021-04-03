@@ -7,6 +7,7 @@ import locations from './locations'
 import miningPools from './miningPools'
 import miningEvents from './miningEvents'
 import depositEvents from './depositEvents'
+import incomeSources from './incomeSources'
 import incomeEvents from './incomeEvents'
 import transferEvents from './transferEvents'
 import tradeEvents from './tradeEvents'
@@ -25,6 +26,7 @@ const store = new Vuex.Store({
     miningPools,
     miningEvents,
     depositEvents,
+    incomeSources,
     incomeEvents,
     transferEvents,
     tradeEvents,

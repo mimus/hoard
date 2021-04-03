@@ -8,6 +8,7 @@ import miningPools from './miningPools'
 import assets from './assets'
 import locations from './locations'
 import income from './income'
+import incomeSources from './incomeSources'
 import deposits from './deposits'
 import transfers from './transfers'
 import trades from './trades'
@@ -22,6 +23,7 @@ var router = new Router({
     ...assets,
     ...locations,
     ...income,
+    ...incomeSources,
     ...deposits,
     ...transfers,
     ...trades
