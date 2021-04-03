@@ -52,7 +52,7 @@ var fetchTransaction = function (transactionId) {
 
       var transaction = {
         transactionId: x.hash,
-        date: new Date(x.time * 1000),
+        date: new Date(x.time * 1000), // N.B. this is the time added to mempool: prefer to get the block time, use blockcypher API instead
         inputAddresses,
         inputs,
         outputs,
