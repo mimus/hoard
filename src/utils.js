@@ -23,7 +23,15 @@ var ASSET_DECIMALS = {
   _FIAT: 2,
   GBP: 2,
   EUR: 2,
-  USD: 2
+  USD: 2,
+  DAI: 18,
+  GUSD: 8,
+  BUSD: 18,
+  LPT: 18,
+  LSK: 8,
+  NEO: 8,
+  WBTC: 8,
+  XMR: 12
 }
 
 var BIG_NUMBER_FOR_ASSET = Object.entries(ASSET_DECIMALS)
