@@ -9,17 +9,17 @@ export default {
   computed: {
     model () {
       var link = this.link
-      var label = 'Unknown airdrop/income event'
+      var label = 'Unknown income event'
       var route = ''
       var title = ''
 
-      var item = this.$store.getters.airdropEvent(link.id)
+      var item = this.$store.getters.incomeEvent(link.id)
       if (item) {
         title = item.label
         var asset = this.$store.getters.asset(item.asset)
         var assetLabel = (asset && (asset.symbol || asset.label)) || item.asset
-        label = `Airdrop/Income of ${u.formatAssetValue(item.amount, item.asset)} ${assetLabel}`
-        route = { name: 'AirdropEvents' }
+        label = `Income of ${u.formatAssetValue(item.amount, item.asset)} ${assetLabel}`
+        route = { name: 'IncomeEvents' }
       }
 
       return { label, route, title }

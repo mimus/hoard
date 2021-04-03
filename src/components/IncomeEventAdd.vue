@@ -1,10 +1,10 @@
 <template>
   <v-card>
     <v-card-title>
-      New Airdrop or Income (non-fiat)
+      New Income (non-fiat)
     </v-card-title>
     <v-card-text>
-      <AirdropEventAddForm
+      <IncomeEventAddForm
         :baseEventId="baseEventId"
         @save="submit"
       />
@@ -16,10 +16,10 @@
 </template>
 
 <script>
-import AirdropEventAddForm from './AirdropEventAddForm'
+import IncomeEventAddForm from './IncomeEventAddForm'
 
 export default {
-  components: { AirdropEventAddForm },
+  components: { IncomeEventAddForm },
   props: {
     baseEventId: {
       type: [String, Number],
@@ -32,12 +32,12 @@ export default {
   methods: {
     submit (newModel) {
       this.error = false
-      this.$store.dispatch('addAirdrop', newModel).then(
+      this.$store.dispatch('addIncome', newModel).then(
         () => {
-          this.$router.push({ name: 'AirdropEvents' })
+          this.$router.push({ name: 'IncomeEvents' })
         },
         (err) => {
-          this.error = (err && err.message) || 'Error adding airdrop record'
+          this.error = (err && err.message) || 'Error adding income record'
         }
       )
     }

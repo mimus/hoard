@@ -7,47 +7,47 @@ var { loadDate, commonFindNextId } = storeUtils
 var storeModule = {
 
   state: {
-    airdropEvents: [],
-    airdropEventsById: {}
+    incomeEvents: [],
+    incomeEventsById: {}
   },
 
   mutations: {
-    addAirdropEvent (state, model) {
-      state.airdropEvents.push(model)
-      state.airdropEvents.sort(utils.dateComparatorEarliestFirst)
-      Vue.set(state.airdropEventsById, model.id, model)
+    addIncomeEvent (state, model) {
+      state.incomeEvents.push(model)
+      state.incomeEvents.sort(utils.dateComparatorEarliestFirst)
+      Vue.set(state.incomeEventsById, model.id, model)
     },
 
-    loadAirdropEvents (state, events) {
+    loadIncomeEvents (state, events) {
       events.sort(utils.dateComparatorEarliestFirst)
-      state.airdropEvents = events
-      state.airdropEventsById = {}
+      state.incomeEvents = events
+      state.incomeEventsById = {}
       events.forEach(x => {
-        Vue.set(state.airdropEventsById, x.id, x)
+        Vue.set(state.incomeEventsById, x.id, x)
       })
     }
   },
 
   actions: {
-    addAirdropEvent ({ commit }, model) {
-      commit('addAirdropEvent', model)
+    addIncomeEvent ({ commit }, model) {
+      commit('addIncomeEvent', model)
     },
 
-    loadAirdropEvents ({ commit }, events) {
+    loadIncomeEvents ({ commit }, events) {
       events = [].concat(events)
       events = loadDate(events)
       events.forEach(x => {
         x.amount = utils.newBigNumberForAsset(x.amount, x.asset)
         x.assetValueGBP = utils.newBigNumberForFiat(x.assetValueGBP)
       })
-      commit('loadAirdropEvents', events)
+      commit('loadIncomeEvents', events)
     },
 
-    importAirdropEvents ({ dispatch }, data) {
-      dispatch('loadAirdropEvents', data.airdropEvents)
+    importIncomeEvents ({ dispatch }, data) {
+      dispatch('loadIncomeEvents', data.incomeEvents)
     },
 
-    addAirdrop ({ state, commit, getters, dispatch }, { asset, amount, assetValueGBP, date, location, label, comments, originalAsset, originalLocation, externalAssetLinks }) {
+    addIncome ({ state, commit, getters, dispatch }, { asset, amount, assetValueGBP, date, location, label, comments, originalAsset, originalLocation, externalAssetLinks }) {
       return new Promise((resolve, reject) => {
         if (!asset || !amount || !(date instanceof Date) || !location || !label) {
           return reject(new Error('Not enough info provided'))
@@ -59,7 +59,7 @@ var storeModule = {
           return reject(new Error('Asset not found'))
         }
         if (getters.asset(asset).fiat) {
-          return reject(new Error('Can only airdrop non-fiat'))
+          return reject(new Error('Can only receive non-fiat income'))
         }
         if (originalAsset) {
           if (!getters.asset(originalAsset)) {
@@ -81,7 +81,7 @@ var storeModule = {
           return reject(new Error('Asset value in GBP is not a number'))
         }
 
-        var eventId = getters.nextAirdropEventId()
+        var eventId = getters.nextIncomeEventId()
         var assetEntryId = getters.nextAssetLedgerEntryId()
         var locationEntryId = getters.nextLocationLedgerEntryId()
 
@@ -108,7 +108,7 @@ var storeModule = {
           ],
           externalAssetLinks
         }
-        dispatch('addAirdropEvent', event)
+        dispatch('addIncomeEvent', event)
 
         var assetEntry = {
           id: assetEntryId,
@@ -119,7 +119,7 @@ var storeModule = {
           amount,
           label,
           comments,
-          linked: [ { type: 'airdropEvent', id: eventId } ]
+          linked: [ { type: 'incomeEvent', id: eventId } ]
         }
         dispatch('addAssetLedgerEntry', assetEntry)
 
@@ -130,7 +130,7 @@ var storeModule = {
           amount,
           label,
           comments,
-          linked: [ { type: 'airdropEvent', id: eventId } ]
+          linked: [ { type: 'incomeEvent', id: eventId } ]
         }
         dispatch('addLocationLedgerEntry', locationEntry)
 
@@ -140,17 +140,17 @@ var storeModule = {
   },
 
   getters: {
-    airdropEvents: (state) => state.airdropEvents,
-    airdropEventsForAsset: (state) => (assetId) => {
-      return state.airdropEvents.filter(event => event.asset === assetId)
+    incomeEvents: (state) => state.incomeEvents,
+    incomeEventsForAsset: (state) => (assetId) => {
+      return state.incomeEvents.filter(event => event.asset === assetId)
     },
-    airdropEvent: (state, getters) => (eventId) => {
+    incomeEvent: (state, getters) => (eventId) => {
       eventId = +eventId
-      return state.airdropEventsById[eventId]
+      return state.incomeEventsById[eventId]
     },
-    nextAirdropEventId: (state) => commonFindNextId(state.airdropEventsById),
-    airdropEventsDataForExport: (state) => ({
-      airdropEvents: state.airdropEvents
+    nextIncomeEventId: (state) => commonFindNextId(state.incomeEventsById),
+    incomeEventsDataForExport: (state) => ({
+      incomeEvents: state.incomeEvents
     })
   }
 }

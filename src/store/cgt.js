@@ -85,13 +85,13 @@ var storeModule = {
       return results
     },
 
-    assetsAirdropIncomeForTaxYear: (state, getters) => (taxYearId) => {
+    assetsIncomeForTaxYear: (state, getters) => (taxYearId) => {
       var year = getters.taxYear(taxYearId)
       if (!year) { return {} }
       var startDate = year.startDate
       var endDate = year.endDate
       var results = getters.assets.map(asset => {
-        var events = getters.airdropEventsForAsset(asset.id)
+        var events = getters.incomeEventsForAsset(asset.id)
         events = events.filter(x => x.date >= startDate && x.date <= endDate)
         events.sort(utils.dateComparatorEarliestFirst)
         var totalAmount = events.reduce((sum, event) => sum.plus(event.amount), utils.newBigNumberForAsset(0, asset.id))

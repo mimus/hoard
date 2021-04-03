@@ -1,13 +1,13 @@
 <template>
   <div v-if="id">
     <v-subheader>
-      Airdrop and Other Income
+      Other Income
     </v-subheader>
-    <div v-if="assetsAirdropIncome.length">
-      <v-card-text v-if="totalAirdropIncomeValueGBP.gt(0)">
+    <div v-if="assetsIncome.length">
+      <v-card-text v-if="totalIncomeValueGBP.gt(0)">
         Total Income:
         <span class="gain">
-          {{ totalAirdropIncomeValueGBP | formatFiat }}
+          {{ totalIncomeValueGBP | formatFiat }}
         </span>
       </v-card-text>
       <v-card-text>
@@ -16,7 +16,7 @@
           accordion
         >
           <v-expansion-panel
-            v-for="details in assetsAirdropIncome"
+            v-for="details in assetsIncome"
             :key="details.id"
           >
             <v-expansion-panel-header>
@@ -62,7 +62,7 @@
       </v-card-text>
     </div>
     <v-card-text v-else>
-      No airdrop or other income in this year.
+      No other income in this year.
     </v-card-text>
   </div>
 </template>
@@ -76,13 +76,13 @@ export default {
     id: [Number, String]
   },
   computed: {
-    assetsAirdropIncome () {
-      var assetsDetails = this.$store.getters.assetsAirdropIncomeForTaxYear(this.id)
+    assetsIncome () {
+      var assetsDetails = this.$store.getters.assetsIncomeForTaxYear(this.id)
       assetsDetails = assetsDetails.filter(details => !details.totalValueGBP.isZero())
       return assetsDetails
     },
-    totalAirdropIncomeValueGBP () {
-      return this.assetsAirdropIncome.reduce((total, details) => total.plus(details.totalValueGBP), u.newBigNumberForFiat(0))
+    totalIncomeValueGBP () {
+      return this.assetsIncome.reduce((total, details) => total.plus(details.totalValueGBP), u.newBigNumberForFiat(0))
     }
   }
 }

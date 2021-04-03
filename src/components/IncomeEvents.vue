@@ -4,17 +4,17 @@
       absolute right
       fab color="blue" dark small
       class="mt-2"
-      :to="{name: 'AirdropEventAdd'}"
+      :to="{name: 'IncomeEventAdd'}"
     >
       <v-icon>add</v-icon>
     </v-btn>
-    <div v-if="airdropEvents && airdropEvents.length">
+    <div v-if="incomeEvents && incomeEvents.length">
       <v-card-text>
-        {{ airdropEvents.length }} Airdrop / Income events
+        {{ incomeEvents.length }} Income events
       </v-card-text>
       <v-data-table
         :headers="headers"
-        :items="airdropEventsForTable"
+        :items="incomeEventsForTable"
         disable-pagination
         hide-default-footer
         sort-by="sortableDate"
@@ -59,7 +59,7 @@
                   <v-btn
                     v-bind="attrs"
                     v-on="on"
-                    :to="{ name: 'AirdropEventAddFromBase', params: { baseEventId: props.item.id } }"
+                    :to="{ name: 'IncomeEventAddFromBase', params: { baseEventId: props.item.id } }"
                     small
                     icon
                   >
@@ -72,12 +72,12 @@
           </tr>
         </template>
         <template v-slot:no-data>
-          No airdrop / income events.
+          No income / income events.
         </template>
       </v-data-table>
     </div>
     <v-card-text v-else>
-      No airdrop / income events.
+      No income / income events.
     </v-card-text>
   </v-card>
 </template>
@@ -95,16 +95,16 @@ export default {
       { text: 'Value', sortable: false },
       { text: 'Label/Comments', sortable: false },
       { text: 'Original', sortable: false },
-      { text: 'Airdrop', sortable: false },
+      { text: 'Income', sortable: false },
       { text: 'Actions', sortable: false }
     ]
   }),
   computed: {
     ...mapGetters([
-      'airdropEvents'
+      'incomeEvents'
     ]),
-    airdropEventsForTable () {
-      return this.airdropEvents.map(event => ({
+    incomeEventsForTable () {
+      return this.incomeEvents.map(event => ({
         ...event,
         sortableDate: event.date - 0 // timestamp
       }))

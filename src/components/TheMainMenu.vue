@@ -48,12 +48,12 @@
         <v-list-item-title>Deposits</v-list-item-title>
       </v-list-item-content>
     </v-list-item>
-    <v-list-item to="/airdrop-events">
+    <v-list-item to="/income-events">
       <v-list-item-action>
         <v-icon>flare</v-icon>
       </v-list-item-action>
       <v-list-item-content>
-        <v-list-item-title>Airdrops / Income</v-list-item-title>
+        <v-list-item-title>Other Income</v-list-item-title>
       </v-list-item-content>
     </v-list-item>
     <v-list-item to="/transfer-events">

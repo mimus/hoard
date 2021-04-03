@@ -167,7 +167,7 @@ export default {
     let originalLocation = null
     let location = null
     if (this.baseEventId) {
-      baseEvent = this.$store.getters.airdropEvent(this.baseEventId)
+      baseEvent = this.$store.getters.incomeEvent(this.baseEventId)
       if (baseEvent) {
         const locationLedgerEntryId = baseEvent.linked?.find(({ type }) => type === 'locationLedgerEntry')?.id
         if (locationLedgerEntryId) {
@@ -249,16 +249,16 @@ export default {
       if (transaction.date) {
         this.model.date = transaction.date
       }
-      if (transaction.airdropOriginal) {
-        var original = transaction.airdropOriginal
+      if (transaction.incomeOriginal) {
+        var original = transaction.incomeOriginal
         this.model.originalAsset = original.asset
         var location = this.$store.getters.locationForAddress(original.asset, original.address)
         if (location) {
           this.model.originalLocation = location.id
         }
       }
-      if (transaction.airdropLabel && !this.model.label) {
-        this.model.label = transaction.airdropLabel
+      if (transaction.incomeLabel && !this.model.label) {
+        this.model.label = transaction.incomeLabel
       }
       if (transaction.outputs) {
         transaction.outputs.forEach(output => {

@@ -10,8 +10,25 @@ var storeModule = {
     importData ({ state, commit, dispatch }, d) {
       console.log('importData', d)
       return new Promise(function (resolve, reject) {
+        // Upgrade from airdropEvents to incomeEvents
+        if (d && d.airdropEvents) {
+          d.incomeEvents = {
+            incomeEvents: d.airdropEvents.airdropEvents
+          }
+          delete d.airdropEvents
+          // assetLedgerEntry and locationLedgerEntry can have linked 'airdropEvent': rename to 'incomeEvent'
+          const ledgerEntries = (d.assets?.assetLedgerEntries || []).concat(d.locations?.locationLedgerEntries || [])
+          for (let entry of ledgerEntries) {
+            for (let link of entry?.linked) {
+              if (link.type === 'airdropEvent') {
+                link.type = 'incomeEvent'
+              }
+            }
+          }
+        }
+
         if (!d || !d.taxYears || !d.assets || !d.cgt || !d.locations || !d.miningPools ||
-          !d.miningEvents || !d.transferEvents || !d.airdropEvents || !d.depositEvents || !d.tradeEvents) {
+          !d.miningEvents || !d.transferEvents || !d.incomeEvents || !d.depositEvents || !d.tradeEvents) {
           console.log('Invalid import', d)
           reject(new Error('Invalid import data format'))
           return
@@ -24,7 +41,7 @@ var storeModule = {
         dispatch('importMiningPools', d.miningPools)
         dispatch('importMiningEvents', d.miningEvents)
         dispatch('importTransferEvents', d.transferEvents)
-        dispatch('importAirdropEvents', d.airdropEvents)
+        dispatch('importIncomeEvents', d.incomeEvents)
         dispatch('importDepositEvents', d.depositEvents)
         dispatch('importTradeEvents', d.tradeEvents)
 
@@ -44,7 +61,7 @@ var storeModule = {
         miningPools: getters.miningPoolsDataForExport,
         miningEvents: getters.miningEventsDataForExport,
         transferEvents: getters.transferEventsDataForExport,
-        airdropEvents: getters.airdropEventsDataForExport,
+        incomeEvents: getters.incomeEventsDataForExport,
         depositEvents: getters.depositEventsDataForExport,
         tradeEvents: getters.tradeEventsDataForExport
       }

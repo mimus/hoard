@@ -21,8 +21,8 @@ var fetchTransaction = function (transactionId) {
     axios.get(url).then((response) => {
       var x = response.data
 
-      var airdropLabel = ''
-      var airdropOriginal = null
+      var incomeLabel = ''
+      var incomeOriginal = null
       var inputAddresses = []
       var inputs = []
       var outputs = []
@@ -38,20 +38,20 @@ var fetchTransaction = function (transactionId) {
             isToSingleAddress: true
           })
 
-          airdropOriginal = {
+          incomeOriginal = {
             asset: 'NEO',
             address: vout.address_hash
           }
 
-          airdropLabel = `Claimed ${vout.value} GAS`
+          incomeLabel = `Claimed ${vout.value} GAS`
         }
       }
 
       var transaction = {
         transactionId: x.txid,
         date: new Date(x.time * 1000),
-        airdropLabel,
-        airdropOriginal,
+        incomeLabel,
+        incomeOriginal,
         inputAddresses,
         inputs,
         outputs,

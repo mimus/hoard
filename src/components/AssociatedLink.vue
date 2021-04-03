@@ -19,7 +19,7 @@ import AssociatedLocation from './AssociatedLocation'
 import AssociatedLocationLedgerEntry from './AssociatedLocationLedgerEntry'
 import AssociatedMiningEvent from './AssociatedMiningEvent'
 import AssociatedTransferEvent from './AssociatedTransferEvent'
-import AssociatedAirdropEvent from './AssociatedAirdropEvent'
+import AssociatedIncomeEvent from './AssociatedIncomeEvent'
 import AssociatedDepositEvent from './AssociatedDepositEvent'
 import AssociatedTradeEvent from './AssociatedTradeEvent'
 
@@ -31,7 +31,7 @@ export default Vue.component('associated-link', {
     AssociatedLocationLedgerEntry,
     AssociatedMiningEvent,
     AssociatedTransferEvent,
-    AssociatedAirdropEvent,
+    AssociatedIncomeEvent,
     AssociatedDepositEvent,
     AssociatedTradeEvent
   },

@@ -22,7 +22,7 @@
 
       <TaxYearMiningIncome :id="id" />
 
-      <TaxYearAirdropIncome :id="id" />
+      <TaxYearIncome :id="id" />
 
       <TaxYearCapitalGains :id="id" />
 
@@ -37,14 +37,14 @@
 <script>
 
 import TaxYearMiningIncome from './TaxYearMiningIncome'
-import TaxYearAirdropIncome from './TaxYearAirdropIncome'
+import TaxYearIncome from './TaxYearIncome'
 import TaxYearCapitalGains from './TaxYearCapitalGains'
 import TaxYearAssets from './TaxYearAssets'
 
 export default {
   components: {
     TaxYearMiningIncome,
-    TaxYearAirdropIncome,
+    TaxYearIncome,
     TaxYearCapitalGains,
     TaxYearAssets
   },
