@@ -3,7 +3,7 @@
     <v-subheader>
       Other Income
     </v-subheader>
-    <div v-if="assetsIncome.length">
+    <div v-if="sourcesIncome.length">
       <v-card-text v-if="totalIncomeValueGBP.gt(0)">
         Total Income:
         <span class="gain">
@@ -16,46 +16,95 @@
           accordion
         >
           <v-expansion-panel
-            v-for="details in assetsIncome"
-            :key="details.id"
+            v-for="sourceDetails in sourcesIncome"
+            :key="sourceDetails.id"
           >
             <v-expansion-panel-header>
               <div>
-                {{ details.asset.label }}:
-                {{ details.totalAmount | formatAssetValue(details.asset.id) }} {{ details.asset.symbol }}
-                =
+                {{ sourceDetails.source.label }}:
                 <span class="gain">
-                  {{ details.totalValueGBP | formatFiat }}
+                  {{ sourceDetails.totalValueGBP | formatFiat }}
                 </span>
               </div>
             </v-expansion-panel-header>
             <v-expansion-panel-content>
-              <v-card-text class="grey lighten-4">
-                <v-row
-                  v-for="event in details.events"
-                  :key="event.id"
-                  class="my-4"
+              <template v-if="sourceDetails.assets.length === 1">
+                <v-card-text class="grey lighten-4">
+                  <v-row
+                    v-for="event in sourceDetails.assets[0].events"
+                    :key="event.id"
+                    class="my-4"
+                  >
+                    <v-col cols="3">
+                      {{ event.date | formatDateTime }}
+                    </v-col>
+                    <v-col cols="3">
+                      {{ event.amount | formatAssetValue(sourceDetails.assets[0].asset.id) }} {{ sourceDetails.assets[0].asset.symbol }}
+                    </v-col>
+                    <v-col cols="3" class="gain">
+                      {{ event.assetValueGBP | formatFiat }}
+                    </v-col>
+                    <v-col cols="3">
+                      {{ event.label }}
+                      <div
+                        v-if="event.comments"
+                        class="caption"
+                      >
+                        {{ event.comments }}
+                      </div>
+                    </v-col>
+                  </v-row>
+                </v-card-text>
+              </template>
+              <v-expansion-panels
+                v-else
+                multiple
+                accordion
+              >
+                <v-expansion-panel
+                  v-for="assetDetails in sourceDetails.assets"
+                  :key="assetDetails.id"
                 >
-                  <v-col cols="3">
-                    {{ event.date | formatDateTime }}
-                  </v-col>
-                  <v-col cols="3">
-                    {{ event.amount | formatAssetValue(details.asset.id) }} {{ details.asset.symbol }}
-                  </v-col>
-                  <v-col cols="3" class="gain">
-                    {{ event.assetValueGBP | formatFiat }}
-                  </v-col>
-                  <v-col cols="3">
-                    {{ event.label }}
-                    <div
-                      v-if="event.comments"
-                      class="caption"
-                    >
-                      {{ event.comments }}
+                  <v-expansion-panel-header>
+                    <div>
+                      {{ assetDetails.asset.label }}:
+                      {{ assetDetails.totalAmount | formatAssetValue(assetDetails.asset.id) }} {{ assetDetails.asset.symbol }}
+                      =
+                      <span class="gain">
+                        {{ assetDetails.totalValueGBP | formatFiat }}
+                      </span>
                     </div>
-                  </v-col>
-                </v-row>
-              </v-card-text>
+                  </v-expansion-panel-header>
+                  <v-expansion-panel-content>
+                    <v-card-text class="grey lighten-4">
+                      <v-row
+                        v-for="event in assetDetails.events"
+                        :key="event.id"
+                        class="my-4"
+                      >
+                        <v-col cols="3">
+                          {{ event.date | formatDateTime }}
+                        </v-col>
+                        <v-col cols="3">
+                          {{ event.amount | formatAssetValue(assetDetails.asset.id) }} {{ assetDetails.asset.symbol }}
+                        </v-col>
+                        <v-col cols="3" class="gain">
+                          {{ event.assetValueGBP | formatFiat }}
+                        </v-col>
+                        <v-col cols="3">
+                          {{ event.label }}
+                          <div
+                            v-if="event.comments"
+                            class="caption"
+                          >
+                            {{ event.comments }}
+                          </div>
+                        </v-col>
+                      </v-row>
+                    </v-card-text>
+                  </v-expansion-panel-content>
+                </v-expansion-panel>
+              </v-expansion-panels>
             </v-expansion-panel-content>
           </v-expansion-panel>
         </v-expansion-panels>
@@ -76,13 +125,11 @@ export default {
     id: [Number, String]
   },
   computed: {
-    assetsIncome () {
-      var assetsDetails = this.$store.getters.assetsIncomeForTaxYear(this.id)
-      assetsDetails = assetsDetails.filter(details => !details.totalValueGBP.isZero())
-      return assetsDetails
+    sourcesIncome () {
+      return this.$store.getters.sourcesIncomeForTaxYear(this.id)
     },
     totalIncomeValueGBP () {
-      return this.assetsIncome.reduce((total, details) => total.plus(details.totalValueGBP), u.newBigNumberForFiat(0))
+      return this.sourcesIncome.reduce((total, details) => total.plus(details.totalValueGBP), u.newBigNumberForFiat(0))
     }
   }
 }

@@ -85,25 +85,35 @@ var storeModule = {
       return results
     },
 
-    assetsIncomeForTaxYear: (state, getters) => (taxYearId) => {
-      var year = getters.taxYear(taxYearId)
+    sourcesIncomeForTaxYear: (state, getters) => (taxYearId) => {
+      const year = getters.taxYear(taxYearId)
       if (!year) { return {} }
-      var startDate = year.startDate
-      var endDate = year.endDate
-      var results = getters.assets.map(asset => {
-        var events = getters.incomeEventsForAsset(asset.id)
+      const startDate = year.startDate
+      const endDate = year.endDate
+      const results = getters.incomeSources.map(source => {
+        let events = getters.incomeEventsForSource(source.id)
         events = events.filter(x => x.date >= startDate && x.date <= endDate)
         events.sort(utils.dateComparatorEarliestFirst)
-        var totalAmount = events.reduce((sum, event) => sum.plus(event.amount), utils.newBigNumberForAsset(0, asset.id))
-        var totalValueGBP = events.reduce((sum, event) => sum.plus(event.assetValueGBP), utils.newBigNumberForFiat(0))
+        const assets = getters.assets.map(asset => {
+          let eventsForAsset = events.filter(x => x.asset === asset.id)
+          const totalAmount = eventsForAsset.reduce((sum, event) => sum.plus(event.amount), utils.newBigNumberForAsset(0, asset.id))
+          const totalValueGBP = eventsForAsset.reduce((sum, event) => sum.plus(event.assetValueGBP), utils.newBigNumberForFiat(0))
+          return {
+            id: asset.id,
+            asset,
+            events: eventsForAsset,
+            totalAmount,
+            totalValueGBP
+          }
+        }).filter(entry => !entry.totalValueGBP.isZero())
+        const sourceTotalValueGBP = events.reduce((sum, event) => sum.plus(event.assetValueGBP), utils.newBigNumberForFiat(0))
         return {
-          id: asset.id,
-          asset: asset,
-          events,
-          totalAmount,
-          totalValueGBP
+          id: source.id,
+          source: source,
+          assets,
+          totalValueGBP: sourceTotalValueGBP
         }
-      })
+      }).filter(entry => !entry.totalValueGBP.isZero())
       return results
     },
 
