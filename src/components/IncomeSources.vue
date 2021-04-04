@@ -1,15 +1,21 @@
 <template>
   <v-card class="pb-2x">
-    <v-list v-if="incomeSources && incomeSources.length">
+    <v-list v-if="incomeSourcesSummary && incomeSourcesSummary.length">
       <v-list-item
-        v-for="source in incomeSources"
+        v-for="source in incomeSourcesSummary"
         :key="source.id"
-        :to="{name: 'IncomeSource', params: { id: source.id }}"
+        :to="{name: 'IncomeSource', params: { sourceId: source.id }}"
       >
         <v-list-item-content>
           <v-list-item-title>
             {{ source.label }}
           </v-list-item-title>
+          <v-list-item-subtitle>
+            {{ source.events || 'No' }} events
+            <template  v-if="source.asset">
+              &middot; {{ source.total | formatAssetValue(source.asset.id) }} {{ source.asset.symbol }}
+            </template>
+          </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
     </v-list>
@@ -32,7 +38,7 @@ import { mapGetters } from 'vuex'
 
 export default {
   computed: mapGetters([
-    'incomeSources'
+    'incomeSourcesSummary'
   ])
 }
 </script>

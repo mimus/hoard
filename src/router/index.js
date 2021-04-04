@@ -7,7 +7,6 @@ import taxYears from './taxYears'
 import miningPools from './miningPools'
 import assets from './assets'
 import locations from './locations'
-import income from './income'
 import incomeSources from './incomeSources'
 import deposits from './deposits'
 import transfers from './transfers'
@@ -22,7 +21,6 @@ var router = new Router({
     ...miningPools,
     ...assets,
     ...locations,
-    ...income,
     ...incomeSources,
     ...deposits,
     ...transfers,

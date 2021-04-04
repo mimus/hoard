@@ -11,8 +11,9 @@
               <b class="mr-1">
                 {{ source.label }}
               </b>
-              ({{ source.originalAsset }} &rarr; {{ source.incomeAsset }})
-
+              <template v-if="source.originalAsset || source.incomeAsset">
+                ({{ source.originalAsset || 'any' }} &rarr; {{ source.incomeAsset || 'any' }})
+              </template>
               <template v-if="source.comments">
                 <br />
                 {{ source.comments }}
@@ -50,8 +51,11 @@
         <div v-if="incomeEvents && incomeEvents.length">
           <v-card-text>
             {{ incomeEvents.length }}
-            income events, total
-            {{ sourceTotal | formatAssetValue(source.asset) }} {{ asset.symbol }}
+            income events
+            <template v-if="asset">
+              <br> total
+              {{ sourceTotal | formatAssetValue(source.incomeAsset) }} {{ asset.symbol }}
+            </template>
           </v-card-text>
           <v-data-table
             :headers="headers"
@@ -66,25 +70,50 @@
               <tr>
                 <td>
                   <div class="text-no-wrap">
-                    {{ item.date | formatDate }}
+                    {{ item.date | formatDateTime }}
                   </div>
                 </td>
                 <td>
-                  {{ item.amount | formatAssetValue(source.asset) }}
+                  {{ item.asset }}
                 </td>
                 <td>
-                  {{ item.label }}
+                  {{ item.amount | formatAssetValue(item.incomeAsset) }}
                 </td>
                 <td>
-                  {{ item.comments }}
+                  {{ item.assetValueGBP | formatFiat }}
                 </td>
-                <td class="related-links-col">
+                <td>
+                  <p>{{ item.label }}
+                    <br>
+                    <span class="text--secondary">{{ item.comments }}</span>
+                    <external-asset-links
+                      :links="item.externalAssetLinks"
+                      with-short-label
+                      with-type-label
+                    />
+                  </p>
+                </td>
+                <td>
+                  <associated-links :links="item.originalLinked" />
+                </td>
+                <td>
                   <associated-links :links="item.linked" />
-                  <external-asset-links
-                    :links="item.externalAssetLinks"
-                    with-short-label
-                    with-type-label
-                  />
+                </td>
+                <td>
+                  <v-tooltip bottom>
+                    <template #activator="{ on, attrs }">
+                      <v-btn
+                        v-bind="attrs"
+                        v-on="on"
+                        :to="{ name: 'IncomeEventAddFromBase', params: { baseEventId: item.id } }"
+                        small
+                        icon
+                      >
+                        <v-icon>content_copy</v-icon>
+                      </v-btn>
+                    </template>
+                    Add another based on this event
+                  </v-tooltip>
                 </td>
               </tr>
             </template>
@@ -116,21 +145,24 @@ export default {
   data: () => ({
     headers: [
       { text: 'Date', sortable: true, value: 'sortableDate' },
+      { text: 'Asset', sortable: true, value: 'asset' },
       { text: 'Amount', sortable: false },
-      { text: 'Label', sortable: false },
-      { text: 'Comments', sortable: false },
-      { text: 'Related', sortable: false }
+      { text: 'Value', sortable: false },
+      { text: 'Label/Comments', sortable: false },
+      { text: 'Original', sortable: false },
+      { text: 'Income', sortable: false },
+      { text: 'Actions', sortable: false }
     ]
   }),
   computed: {
     asset () {
-      return this.$store.getters.asset(this.source.asset)
+      return this.$store.getters.asset(this.source.incomeAsset)
     },
     source () {
       return this.$store.getters.incomeSource(this.id)
     },
     sourceTotal () {
-      return this.$store.getters.incomeSourceTotal(this.id)
+      return this.$store.getters.incomeSourceSummary(this.id).total
     },
     incomeEvents () {
       return this.$store.getters.incomeEventsForSource(this.id)
@@ -142,7 +174,7 @@ export default {
       }))
     },
     hasImporters () {
-      var asset = this.source && this.source.asset
+      var asset = this.source && this.source.incomeAsset
       var servicesForAsset = asset && this.$services[asset] && this.$services[asset].services
       return servicesForAsset && servicesForAsset.find(s => s.fetchIncome)
     }

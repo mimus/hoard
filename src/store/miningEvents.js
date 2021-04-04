@@ -33,7 +33,7 @@ var storeModule = {
           console.error('Mining Event has unknown pool id')
         }
         if (!state.miningEventsByPool[x.pool]) {
-          Vue.set(state.miningEventsByPool[x.pool], [])
+          Vue.set(state.miningEventsByPool, x.pool, [])
         }
         state.miningEventsByPool[x.pool].push(x)
       })

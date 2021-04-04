@@ -60,6 +60,7 @@ import '@/components/ExternalTransactionsFetcher'
 import '@/components/DateTimePicker'
 import '@/components/AssetSelect'
 import '@/components/LocationSelect'
+import '@/components/IncomeSourceSelect'
 import '@/components/BaseForm'
 import '@/components/LocationItemsList'
 

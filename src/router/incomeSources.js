@@ -3,7 +3,7 @@ import IncomeSources from '@/components/IncomeSources'
 import IncomeSource from '@/components/IncomeSource'
 import IncomeSourceAdd from '@/components/IncomeSourceAdd'
 import IncomeSourceEdit from '@/components/IncomeSourceEdit'
-//import IncomeEventAdd from '@/components/IncomeEventAdd'
+import IncomeEventAdd from '@/components/IncomeEventAdd'
 //import IncomeEventImport from '@/components/IncomeEventImport'
 
 var routes = [
@@ -28,28 +28,28 @@ var routes = [
         }
       },
       {
-        path: ':id',
+        path: ':sourceId',
         component: WrapperLayout,
         meta: {
           bcGetter: 'incomeSourceBreadcrumbLabel',
-          bcIdParam: 'id'
+          bcIdParam: 'sourceId'
         },
         children: [
           {
             path: '',
             name: 'IncomeSource',
             component: IncomeSource,
-            props: true
+            props: (route) => ({ id: route.params.sourceId })
           },
           {
             path: 'edit',
             name: 'IncomeSourceEdit',
             component: IncomeSourceEdit,
-            props: true,
+            props: (route) => ({ id: route.params.sourceId }),
             meta: {
               bcLabel: 'Edit'
             }
-          }/*,
+          },
           {
             path: 'event',
             component: WrapperLayout,
@@ -58,7 +58,7 @@ var routes = [
                 path: 'add',
                 name: 'IncomeEventAdd',
                 component: IncomeEventAdd,
-                props: (route) => ({ sourceId: route.params.id }),
+                props: true,
                 meta: {
                   bcLabel: 'Add Event'
                 }
@@ -71,7 +71,7 @@ var routes = [
                 meta: {
                   bcLabel: 'New Income'
                 }
-              },
+              }/*,
               {
                 path: 'import',
                 name: 'IncomeEventImport',
@@ -80,9 +80,9 @@ var routes = [
                 meta: {
                   bcLabel: 'Import Events'
                 }
-              }
+              }*/
             ]
-          }*/
+          }
         ]
       }
     ]

@@ -1,5 +1,12 @@
 <template>
   <base-form @submit="submit">
+    <income-source-select
+      class="mr-12"
+      v-model="model.source"
+      label="Income Source"
+      :required="true"
+    />
+
     <asset-select
       class="mr-12"
       v-model="model.asset"
@@ -156,19 +163,28 @@ import u from '../utils'
 
 export default {
   props: {
+    sourceId: {
+      type: [String, Number],
+      default: null
+    },
     baseEventId: {
       type: [String, Number],
       default: null
     }
   },
   data: function () {
-    let baseEvent = null
+    let sourceId = null
     let originalAsset = null
     let originalLocation = null
+    let asset = null
     let location = null
+    let label = null
     if (this.baseEventId) {
-      baseEvent = this.$store.getters.incomeEvent(this.baseEventId)
+      const baseEvent = this.$store.getters.incomeEvent(this.baseEventId)
       if (baseEvent) {
+        sourceId = baseEvent.source
+        label = baseEvent.label
+        asset = baseEvent.asset
         const locationLedgerEntryId = baseEvent.linked?.find(({ type }) => type === 'locationLedgerEntry')?.id
         if (locationLedgerEntryId) {
           const locationLedgerEntry = this.$store.getters.locationLedgerEntry(locationLedgerEntryId)
@@ -179,6 +195,16 @@ export default {
         originalLocation = baseEvent.originalLinked?.find(({ type }) => type === 'location')?.id
         originalAsset = baseEvent.originalLinked?.find(({ type }) => type === 'asset')?.id
       }
+    } else if (this.sourceId) {
+      const source = this.$store.getters.incomeSource(this.sourceId)
+      if (source) {
+        sourceId = source.id // Use this to make sure we use the numerical source ID, not the string from route
+        originalAsset = source.originalAsset
+        originalLocation = source.originalLocation
+        asset = source.incomeAsset
+        location = source.incomeLocation
+        label = source.defaultLabel
+      }
     }
     return {
       required: (value) => !!value || 'Required',
@@ -188,15 +214,15 @@ export default {
         assetPriceGBP: ''
       },
       model: {
-        source: null,
         date: null,
+        source: sourceId,
         originalAsset: originalAsset || '',
         originalLocation: originalLocation || '',
-        asset: baseEvent?.asset || '',
+        asset: asset || '',
         amount: '',
         location: location || '',
         assetValueGBP: '',
-        label: baseEvent?.label || '',
+        label: label || '',
         comments: ''
       }
     }

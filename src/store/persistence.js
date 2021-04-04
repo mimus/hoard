@@ -30,7 +30,7 @@ var storeModule = {
           // Upgrade to add incomeSources
           d.incomeSources = { incomeSources: [] }
           for (let event of d.incomeEvents?.incomeEvents) {
-            event.source = null
+            event.source = -1
           }
         }
 

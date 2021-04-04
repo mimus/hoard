@@ -3,11 +3,24 @@ import storeUtils from './storeUtils'
 
 var { commonFindNextId, commonUpdateModel } = storeUtils
 
+const DEFAULT_SOURCE = {
+  id: -1,
+  label: 'Uncategorized',
+  originalAsset: null,
+  originalLocation: null,
+  incomeAsset: null,
+  incomeLocation: null,
+  defaultLabel: '',
+  comments: ''
+}
+
 var storeModule = {
 
   state: {
-    incomeSources: [],
-    incomeSourcesById: {}
+    incomeSources: [ DEFAULT_SOURCE ],
+    incomeSourcesById: {
+      [DEFAULT_SOURCE.id]: DEFAULT_SOURCE
+    }
   },
 
   mutations: {
@@ -21,6 +34,9 @@ var storeModule = {
     },
 
     loadIncomeSources (state, sources) {
+      if (!sources.find(s => s.id === DEFAULT_SOURCE.id)) {
+        sources = [DEFAULT_SOURCE, ...sources]
+      }
       state.incomeSources = sources
       state.incomeSourcesById = {}
       sources.forEach(x => {
@@ -38,6 +54,7 @@ var storeModule = {
         originalLocation: source.originalLocation,
         incomeAsset: source.incomeAsset,
         incomeLocation: source.incomeLocation,
+        defaultLabel: source.defaultLabel,
         comments: source.comments
       }
       commit('addIncomeSource', source)
@@ -46,8 +63,6 @@ var storeModule = {
       commit('updateIncomeSource', source)
     },
     loadIncomeSources ({ commit }, sources) {
-      sources = [].concat(sources)
-      sources.sort((a, b) => a.label.toLowerCase().localeCompare(b.label.toLowerCase()))
       commit('loadIncomeSources', sources)
     },
     importIncomeSources ({ dispatch }, data) {
@@ -65,6 +80,7 @@ var storeModule = {
       sourceId = +sourceId
       return state.incomeSourcesById[sourceId]
     },
+    defaultIncomeSourceId: (state) => DEFAULT_SOURCE.id,
     nextIncomeSourceId: (state) => commonFindNextId(state.incomeSourcesById),
     incomeSourcesDataForExport: (state) => ({
       incomeSources: state.incomeSources

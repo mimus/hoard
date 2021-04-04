@@ -4,11 +4,14 @@ import storeUtils from './storeUtils'
 
 var { loadDate, commonFindNextId } = storeUtils
 
+const DEFAULT_SOURCE_ID = -1
+
 var storeModule = {
 
   state: {
     incomeEvents: [],
-    incomeEventsById: {}
+    incomeEventsById: {},
+    incomeEventsBySource: {}
   },
 
   mutations: {
@@ -16,6 +19,13 @@ var storeModule = {
       state.incomeEvents.push(model)
       state.incomeEvents.sort(utils.dateComparatorEarliestFirst)
       Vue.set(state.incomeEventsById, model.id, model)
+      const sourceKey = model.source ? model.source : DEFAULT_SOURCE_ID
+      if (!state.incomeEventsBySource[sourceKey]) {
+        Vue.set(state.incomeEventsBySource, sourceKey, [])
+      }
+      var eventsForSource = state.incomeEventsBySource[sourceKey]
+      eventsForSource.push(model)
+      eventsForSource.sort(utils.dateComparatorEarliestFirst)
     },
 
     loadIncomeEvents (state, events) {
@@ -24,6 +34,28 @@ var storeModule = {
       state.incomeEventsById = {}
       events.forEach(x => {
         Vue.set(state.incomeEventsById, x.id, x)
+        const sourceKey = x.source ? x.source : DEFAULT_SOURCE_ID
+        if (!state.incomeEventsBySource[sourceKey]) {
+          Vue.set(state.incomeEventsBySource, sourceKey, [])
+        }
+        state.incomeEventsBySource[sourceKey].push(x)
+      })
+    },
+
+    addIncomeSource (state, source) {
+      // initialize storage for income events
+      if (!state.incomeEventsBySource[source.id]) {
+        Vue.set(state.incomeEventsBySource, source.id, [])
+      }
+    },
+
+    loadIncomeSources (state, sources) {
+      state.incomeEventsBySource = {}
+      sources.forEach(x => {
+        // initialize storage for income events
+        if (!state.incomeEventsBySource[x.id]) {
+          Vue.set(state.incomeEventsBySource, x.id, [])
+        }
       })
     }
   },
@@ -71,6 +103,11 @@ var storeModule = {
             return reject(new Error('Original Location not found'))
           }
         }
+        source = source ? +source : null
+        if (source && !getters.incomeSource(source)) {
+          return reject(new Error('Income Source not found'))
+        }
+
         // Convert amount to a BigNumber
         amount = utils.newBigNumberForAsset(amount, asset)
         if (amount.isNaN()) {
@@ -145,14 +182,40 @@ var storeModule = {
     incomeEventsForAsset: (state) => (assetId) => {
       return state.incomeEvents.filter(event => event.asset === assetId)
     },
-    incomeEventsForSource: (state) => (sourceId) => {
-      return state.incomeEvents.filter(event => event.source === sourceId)
-    },
     incomeEvent: (state, getters) => (eventId) => {
       eventId = +eventId
       return state.incomeEventsById[eventId]
     },
     nextIncomeEventId: (state) => commonFindNextId(state.incomeEventsById),
+    incomeEventsForSource: (state, getters) => (sourceId) => {
+      sourceId = +sourceId
+      return state.incomeEventsBySource[sourceId]
+    },
+    incomeSourceSummary: (state, getters) => (sourceId) => {
+      var events = getters.incomeEventsForSource(sourceId) || []
+      var source = getters.incomeSource(sourceId)
+      const asset = source.incomeAsset ? getters.asset(source.incomeAsset) : null
+      if (!asset) {
+        return {
+          events: events.length,
+          asset: null,
+          total: null
+        }
+      }
+      return {
+        events: events.length,
+        asset,
+        total: events.reduce((total, { amount }) => total.plus(amount), utils.newBigNumberForAsset(0, asset.id))
+      }
+    },
+    incomeSourcesSummary: (state, getters) => {
+      return getters.incomeSources.map(
+        source => ({
+          ...source,
+          ...getters.incomeSourceSummary(source.id)
+        })
+      )
+    },
     incomeEventsDataForExport: (state) => ({
       incomeEvents: state.incomeEvents
     })

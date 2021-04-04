@@ -2,13 +2,14 @@
   <base-form @submit="submit">
     <v-text-field
       v-model="model.label"
-      label="Label"
+      label="Source Label"
       :rules="[required]"
     ></v-text-field>
 
     <asset-select
       v-model="model.originalAsset"
       label="Original Asset (if any)"
+      clearable
     />
 
     <location-select
@@ -21,6 +22,7 @@
     <asset-select
       v-model="model.incomeAsset"
       label="Income Asset"
+      clearable
     />
 
     <location-select
@@ -29,10 +31,14 @@
       :asset="model.incomeAsset"
       requireAsset
     />
+    <v-text-field
+      v-model="model.defaultLabel"
+      label="Default Label for income events"
+    ></v-text-field>
 
     <v-textarea
       v-model="model.comments"
-      label="Comments"
+      label="Comments (about source)"
     ></v-textarea>
   </base-form>
 </template>
@@ -50,6 +56,7 @@ export default {
       originalLocation: '',
       incomeAsset: '',
       incomeLocation: '',
+      defaultLabel: '',
       comments: ''
     })
   ],

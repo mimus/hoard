@@ -19,7 +19,11 @@ export default {
         var asset = this.$store.getters.asset(item.asset)
         var assetLabel = (asset && (asset.symbol || asset.label)) || item.asset
         label = `Income of ${u.formatAssetValue(item.amount, item.asset)} ${assetLabel}`
-        route = { name: 'IncomeEvents' }
+        var source = this.$store.getters.incomeSource(item.source)
+        if (source) {
+          label += ` (${source.label})`
+        }
+        route = source ? { name: 'IncomeSource', params: { sourceId: source.id } } : { name: 'IncomeSources' }
       }
 
       return { label, route, title }

@@ -36,6 +36,7 @@ export default {
       originalLocation: '',
       incomeAsset: '',
       incomeLocation: '',
+      defaultLabel: '',
       comments: ''
     }
   }),

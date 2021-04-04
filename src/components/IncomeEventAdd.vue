@@ -5,6 +5,7 @@
     </v-card-title>
     <v-card-text>
       <IncomeEventAddForm
+        :sourceId="sourceId"
         :baseEventId="baseEventId"
         @save="submit"
       />
@@ -21,6 +22,10 @@ import IncomeEventAddForm from './IncomeEventAddForm'
 export default {
   components: { IncomeEventAddForm },
   props: {
+    sourceId: {
+      type: [String, Number],
+      default: null
+    },
     baseEventId: {
       type: [String, Number],
       default: null
@@ -34,7 +39,11 @@ export default {
       this.error = false
       this.$store.dispatch('addIncome', newModel).then(
         () => {
-          this.$router.push({ name: 'IncomeEvents' })
+          if (this.sourceId) {
+            this.$router.push({ name: 'IncomeSource', params: { sourceId: this.sourceId } })
+          } else {
+            this.$router.push({ name: 'IncomeSources' })
+          }
         },
         (err) => {
           this.error = (err && err.message) || 'Error adding income record'
