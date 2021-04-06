@@ -23,7 +23,7 @@
           <div>
             <v-btn
               small
-              :to="{name: 'IncomeSourceEdit', params: {id: this.id}}"
+              :to="{name: 'IncomeSourceEdit', params: {id}}"
             >
               Edit Income Source
             </v-btn>
@@ -35,7 +35,7 @@
           fab color="blue" dark small
           class="mt-2 mr-12"
           title="Import Events"
-          :to="{name: 'IncomeEventImport'}"
+          :to="{name: 'IncomeEventImport', params: {sourceId: source.id}}"
         >
           <v-icon>playlist_add</v-icon>
         </v-btn>
@@ -174,9 +174,8 @@ export default {
       }))
     },
     hasImporters () {
-      var asset = this.source && this.source.incomeAsset
-      var servicesForAsset = asset && this.$services[asset] && this.$services[asset].services
-      return servicesForAsset && servicesForAsset.find(s => s.fetchIncome)
+      var incomeServices = this.$genericServices.filter(s => s.fetchIncomeEvents || s.loadIncomeEvents)
+      return incomeServices.length > 0
     }
   }
 }

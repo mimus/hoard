@@ -3,7 +3,7 @@
     :value="selectedValue"
     :items="items"
     :label="label"
-    single-line
+    :single-line="singleLine"
     @input="onChange"
   ></v-select>
 </template>
@@ -20,7 +20,8 @@ export default Vue.component('location-select', {
     label: String,
     required: { type: Boolean, default: false },
     asset: String,
-    requireAsset: { type: Boolean, default: false }
+    requireAsset: { type: Boolean, default: false },
+    singleLine: { type: Boolean, default: true }
   },
   data: () => ({
     selectedValue: ''

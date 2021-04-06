@@ -17,6 +17,8 @@ import GUSD from './gusd'
 import LPT from './lpt'
 import XMR from './xmr'
 
+import binance from './binance'
+
 var index = { BTC, BCH, BTG, ETH, OMG, ZEC, LTC, VTC, XVG, LSK, NEO, GAS, BCD, DAI, WBTC, GUSD, LPT, XMR }
 
 Object.entries(index).forEach(([key, item]) => {
@@ -29,5 +31,9 @@ Object.entries(index).forEach(([key, item]) => {
     })
   }
 })
+
+// some services can potentially apply to all assets
+const genericServices = [binance].map(({ services }) => services).flat()
+export { genericServices }
 
 export default index

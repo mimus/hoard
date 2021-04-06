@@ -5,7 +5,7 @@
     :value="value"
     :label="label"
     :clearable="clearable"
-    single-line
+    :single-line="singleLine"
     @input="onChange"
     >
   </v-select>
@@ -32,6 +32,10 @@ export default Vue.component('asset-select', {
     clearable: {
       type: Boolean,
       default: false
+    },
+    singleLine: {
+      type: Boolean,
+      default: true
     }
   },
   computed: {

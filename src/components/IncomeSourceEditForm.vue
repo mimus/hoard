@@ -10,6 +10,7 @@
       v-model="model.originalAsset"
       label="Original Asset (if any)"
       clearable
+      :singleLine="false"
     />
 
     <location-select
@@ -17,12 +18,14 @@
       label="Original Location (if any)"
       :asset="model.originalAsset"
       requireAsset
+      :singleLine="false"
     />
 
     <asset-select
       v-model="model.incomeAsset"
       label="Income Asset"
       clearable
+      :singleLine="false"
     />
 
     <location-select
@@ -30,6 +33,7 @@
       label="Income Location"
       :asset="model.incomeAsset"
       requireAsset
+      :singleLine="false"
     />
     <v-text-field
       v-model="model.defaultLabel"

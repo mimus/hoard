@@ -4,7 +4,7 @@ import IncomeSource from '@/components/IncomeSource'
 import IncomeSourceAdd from '@/components/IncomeSourceAdd'
 import IncomeSourceEdit from '@/components/IncomeSourceEdit'
 import IncomeEventAdd from '@/components/IncomeEventAdd'
-//import IncomeEventImport from '@/components/IncomeEventImport'
+import IncomeEventImport from '@/components/IncomeEventImport'
 
 var routes = [
   {
@@ -71,16 +71,16 @@ var routes = [
                 meta: {
                   bcLabel: 'New Income'
                 }
-              }/*,
+              },
               {
                 path: 'import',
                 name: 'IncomeEventImport',
                 component: IncomeEventImport,
-                props: (route) => ({ sourceId: route.params.id }),
+                props: true,
                 meta: {
                   bcLabel: 'Import Events'
                 }
-              }*/
+              }
             ]
           }
         ]

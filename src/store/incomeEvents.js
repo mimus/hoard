@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import utils from '../utils'
 import storeUtils from './storeUtils'
+import moment from 'moment'
 
 var { loadDate, commonFindNextId } = storeUtils
 
@@ -174,19 +175,39 @@ var storeModule = {
 
         resolve()
       })
+    },
+    addNewIncomeEvents ({ state, dispatch }, incomeEvents) {
+      var promises = incomeEvents.map(incomeEvent => dispatch('addIncome', incomeEvent))
+      return Promise.all(promises)
     }
   },
 
   getters: {
     incomeEvents: (state) => state.incomeEvents,
-    incomeEventsForAsset: (state) => (assetId) => {
-      return state.incomeEvents.filter(event => event.asset === assetId)
-    },
     incomeEvent: (state, getters) => (eventId) => {
       eventId = +eventId
       return state.incomeEventsById[eventId]
     },
     nextIncomeEventId: (state) => commonFindNextId(state.incomeEventsById),
+    firstMatchingIncomeEvent: (state, getters) => ({ sourceId, dateStart, dateEnd, amount, assetId, locationId }) => {
+      var events = getters.incomeEventsForSource(sourceId)
+      // console.log(`Look for ${amount} on (${dateStart.format()} - ${dateEnd.format()})`, events)
+      var source = getters.incomeSource(sourceId)
+      amount = utils.newBigNumberForAsset(amount, source?.incomeAsset)
+      return events.find(event => {
+        var eventDate = moment(event.date)
+        if (amount.eq(event.amount) && eventDate.isBetween(dateStart, dateEnd)) {
+          // see if location matches too
+          var matchingLocation = event.linked.find(link => {
+            if (link.type === 'locationLedgerEntry') {
+              var entry = getters.locationLedgerEntry(link.id)
+              return entry && entry.location === locationId
+            }
+          })
+          if (matchingLocation) { return true }
+        }
+      })
+    },
     incomeEventsForSource: (state, getters) => (sourceId) => {
       sourceId = +sourceId
       return state.incomeEventsBySource[sourceId]
