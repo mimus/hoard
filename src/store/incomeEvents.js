@@ -215,18 +215,22 @@ var storeModule = {
     incomeSourceSummary: (state, getters) => (sourceId) => {
       var events = getters.incomeEventsForSource(sourceId) || []
       var source = getters.incomeSource(sourceId)
+      const totalGBPValue = events.reduce((total, { assetValueGBP }) => total.plus(assetValueGBP), utils.newBigNumberForFiat(0))
       const asset = source.incomeAsset ? getters.asset(source.incomeAsset) : null
       if (!asset) {
         return {
           events: events.length,
           asset: null,
-          total: null
+          total: null,
+          totalGBPValue
         }
       }
+      const total = events.reduce((total, { amount }) => total.plus(amount), utils.newBigNumberForAsset(0, asset.id))
       return {
         events: events.length,
         asset,
-        total: events.reduce((total, { amount }) => total.plus(amount), utils.newBigNumberForAsset(0, asset.id))
+        total,
+        totalGBPValue
       }
     },
     incomeSourcesSummary: (state, getters) => {

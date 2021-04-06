@@ -56,6 +56,7 @@
               <br> total
               {{ sourceTotal | formatAssetValue(source.incomeAsset) }} {{ asset.symbol }}
             </template>
+            ({{ sourceTotalGBPValue | formatFiat }})
           </v-card-text>
           <v-data-table
             :headers="headers"
@@ -161,8 +162,14 @@ export default {
     source () {
       return this.$store.getters.incomeSource(this.id)
     },
+    sourceSummary () {
+      return this.$store.getters.incomeSourceSummary(this.id)
+    },
     sourceTotal () {
-      return this.$store.getters.incomeSourceSummary(this.id).total
+      return this.sourceSummary.total
+    },
+    sourceTotalGBPValue () {
+      return this.sourceSummary.totalGBPValue
     },
     incomeEvents () {
       return this.$store.getters.incomeEventsForSource(this.id)

@@ -15,6 +15,14 @@
             <template  v-if="source.asset">
               &middot; {{ source.total | formatAssetValue(source.asset.id) }} {{ source.asset.symbol }}
             </template>
+            <span
+              :class="{
+                'text--disabled': source.totalGBPValue.isZero()
+              }"
+              :style="source.totalGBPValue.isZero() ? 'font-size: 0.7em' : ''"
+            >
+              ({{ source.totalGBPValue | formatFiat }})
+            </span>
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
