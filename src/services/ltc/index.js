@@ -1,5 +1,6 @@
+import blockchair from './blockchair'
 import litecoinNet from './litecoin_net'
 
 export default {
-  services: [ litecoinNet ]
+  services: [ blockchair, litecoinNet ]
 }

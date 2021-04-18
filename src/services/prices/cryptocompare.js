@@ -1,10 +1,26 @@
 import axios from 'axios'
-import throttledQueue from './throttled_queue'
+import throttledQueue from '../throttled_queue'
 
 var APP_NAME = 'mus_hoard'
 
 // Limit to 5 requests per second
 var throttlePriceFetch = throttledQueue(5, 1000)
+
+const unsupportedSymbols = ['AUTOv2', 'BTCB']
+
+const supportsSymbol = function (symbol) {
+  if (unsupportedSymbols.includes(symbol)) { return false }
+  return true
+}
+
+const symbolsToSubstitute = {
+  'BUSD-T': 'USDT',
+  'DAI-B': 'DAI'
+}
+
+const convertSymbol = function (symbol) {
+  return symbolsToSubstitute[symbol] || symbol
+}
 
 // Fetch day price for a symbol from cryptocompare API
 //   from: symbol to look up e.g. ZEC
@@ -12,6 +28,8 @@ var throttlePriceFetch = throttledQueue(5, 1000)
 //   date: date object
 // It extracts the price from the response and returns it in the promise
 var fetchDayPrice = function ({ from, to, date }) {
+  from = convertSymbol(from)
+
   // special case for BETH
   if (from === 'BETH') {
     return fetchBETHPrice({ from, to, date })
@@ -102,6 +120,8 @@ var fetchMultipleCurrentPrices = function ({ from, to }) {
       resolve({})
       return
     }
+    const originalFrom = from
+    from = from.map(convertSymbol)
     var url = `https://min-api.cryptocompare.com/data/pricemulti?fsyms=${from.join(',')}&tsyms=${to}&extraParams=${APP_NAME}`
     throttlePriceFetch(() => {
       axios.get(url).then(
@@ -113,8 +133,10 @@ var fetchMultipleCurrentPrices = function ({ from, to }) {
           }
           if (response.data && typeof response.data[from[0]] !== 'undefined' && typeof response.data[from[0]][to] !== 'undefined') {
             var pricesBySymbol = {}
-            for (var symbol of from) {
-              pricesBySymbol[symbol] = response.data[symbol][to]
+            for (var i = 0; i < from.length; i++) {
+              const fromSymbol = from[i]
+              const originalFromSymbol = originalFrom[i]
+              pricesBySymbol[originalFromSymbol] = response.data[fromSymbol][to]
             }
             resolve(pricesBySymbol)
           } else {
@@ -129,7 +151,7 @@ var fetchMultipleCurrentPrices = function ({ from, to }) {
   })
 }
 
-export default { fetchDayPrice, fetchMultipleCurrentPrices }
+export default { fetchDayPrice, fetchMultipleCurrentPrices, supportsSymbol }
 
 /* Response when exceeded rate limit:
 {

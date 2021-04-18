@@ -18,7 +18,7 @@
 
 import Vue from 'vue'
 import u from '../utils'
-import cryptocompare from '../services/cryptocompare'
+import prices from '../services/prices'
 
 export default Vue.component('price-lookup', {
   props: {
@@ -69,7 +69,7 @@ export default Vue.component('price-lookup', {
       var date = this.date
       if (!date) { return }
       this.loadingPrice = true
-      var fetchingPromise = cryptocompare.fetchDayPrice({ from: this.asset.symbol, to: 'GBP', date })
+      var fetchingPromise = prices.fetchDayPrice({ from: this.asset.symbol, to: 'GBP', date })
       fetchingPromise.then(
         // success
         (price) => {

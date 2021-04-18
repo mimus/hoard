@@ -16,10 +16,41 @@ import WBTC from './wbtc'
 import GUSD from './gusd'
 import LPT from './lpt'
 import XMR from './xmr'
+import BNB from './bnb'
+import BUSDT from './busdt'
+import DAI_B from './dai-binance'
+import BTCB from './btcb'
+import AUTOv2 from './autov2'
+import MDX from './mdx'
 
 import binance from './binance'
 
-var index = { BTC, BCH, BTG, ETH, OMG, ZEC, LTC, VTC, XVG, LSK, NEO, GAS, BCD, DAI, WBTC, GUSD, LPT, XMR }
+var index = {
+  BTC,
+  BCH,
+  BTG,
+  ETH,
+  OMG,
+  ZEC,
+  LTC,
+  VTC,
+  XVG,
+  LSK,
+  NEO,
+  GAS,
+  BCD,
+  DAI,
+  WBTC,
+  GUSD,
+  LPT,
+  XMR,
+  BNB,
+  'BUSD-T': BUSDT,
+  'DAI-B': DAI_B,
+  BTCB,
+  AUTOv2,
+  MDX
+}
 
 Object.entries(index).forEach(([key, item]) => {
   if (item.services) {

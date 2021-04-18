@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import utils from '../utils'
 import storeUtils from './storeUtils'
-import cryptocompare from '../services/cryptocompare'
+import prices from '../services/prices'
 
 var { loadDate, commonFindNextId, commonUpdateModel } = storeUtils
 
@@ -145,7 +145,7 @@ var storeModule = {
     fetchAssetPrices ({ state, commit }, data) {
       const assetSymbols = state.assets.map(asset => asset.symbol)
       commit('loadingAssetPrices', true)
-      const fetchingPromise = cryptocompare.fetchMultipleCurrentPrices({ from: assetSymbols, to: 'GBP' })
+      const fetchingPromise = prices.fetchMultipleCurrentPrices({ from: assetSymbols, to: 'GBP' })
       fetchingPromise.then(
         // success
         (pricesBySymbol) => {
