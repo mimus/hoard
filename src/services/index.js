@@ -22,6 +22,8 @@ import DAI_B from './dai-binance'
 import BTCB from './btcb'
 import AUTOv2 from './autov2'
 import MDX from './mdx'
+import SNX from './snx'
+import LINK from './link'
 
 import binance from './binance'
 
@@ -49,7 +51,9 @@ var index = {
   'DAI-B': DAI_B,
   BTCB,
   AUTOv2,
-  MDX
+  MDX,
+  SNX,
+  LINK
 }
 
 Object.entries(index).forEach(([key, item]) => {
