@@ -6,7 +6,7 @@ var APP_NAME = 'mus_hoard'
 // Limit to 5 requests per second
 var throttlePriceFetch = throttledQueue(5, 1000)
 
-const unsupportedSymbols = ['AUTOv2', 'BTCB']
+const unsupportedSymbols = ['AUTOv2', 'BTCB', 'WMATIC']
 
 const supportsSymbol = function (symbol) {
   if (unsupportedSymbols.includes(symbol)) { return false }
@@ -15,7 +15,9 @@ const supportsSymbol = function (symbol) {
 
 const symbolsToSubstitute = {
   'BUSD-T': 'USDT',
-  'DAI-B': 'DAI'
+  'DAI-B': 'DAI',
+  'USDT-M': 'USDT',
+  'amUSDT': 'USDT'
 }
 
 const convertSymbol = function (symbol) {

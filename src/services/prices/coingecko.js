@@ -4,10 +4,12 @@ import throttledQueue from '../throttled_queue'
 // Limit to 5 requests per second
 const throttlePriceFetch = throttledQueue(5, 1000)
 
+// https://api.coingecko.com/api/v3/coins/list
 const symbolToGeckoId = {
   BETH: 'binance-eth',
   AUTOv2: 'auto',
-  BTCB: 'binance-bitcoin'
+  BTCB: 'binance-bitcoin',
+  WMATIC: 'wmatic'
 }
 const symbolToGeckoCurrency = {
   GBP: 'gbp'

@@ -24,6 +24,10 @@ import AUTOv2 from './autov2'
 import MDX from './mdx'
 import SNX from './snx'
 import LINK from './link'
+import MATIC from './matic'
+import USDT_M from './usdt-matic'
+import amUSDT from './amUSDT'
+import WMATIC from './wmatic'
 
 import binance from './binance'
 
@@ -53,7 +57,11 @@ var index = {
   AUTOv2,
   MDX,
   SNX,
-  LINK
+  LINK,
+  MATIC,
+  'USDT-M': USDT_M,
+  amUSDT,
+  WMATIC
 }
 
 Object.entries(index).forEach(([key, item]) => {
