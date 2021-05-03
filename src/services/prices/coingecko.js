@@ -9,7 +9,8 @@ const symbolToGeckoId = {
   BETH: 'binance-eth',
   AUTOv2: 'auto',
   BTCB: 'binance-bitcoin',
-  WMATIC: 'wmatic'
+  WMATIC: 'wmatic',
+  amWMATIC: 'wmatic'
 }
 const symbolToGeckoCurrency = {
   GBP: 'gbp'
