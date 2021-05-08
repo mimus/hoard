@@ -143,6 +143,88 @@
       </v-flex>
     </v-layout>
 
+    <v-card class="mb-6">
+      <v-layout class="pa-4 grey lighten-4">
+        <v-flex class="body-2">
+          Fee(s)
+        </v-flex>
+      </v-layout>
+
+      <location-items-list
+        :items="model.fees"
+        include-asset-selection
+        @add="addLocation('fees', $event)"
+        @remove="removeLocation('fees', $event)"
+      >
+        <template v-slot="{ item, index }">
+          <v-card-text class="pb-0">
+            <v-layout align-center class="mb-2">
+              <div class="subheading mr-12">
+                {{ item.label }}
+              </div>
+              <div class="grey--text">
+                {{ item.subtitle }}
+              </div>
+              <external-location-link
+                :id="item.id"
+                color="grey"
+              />
+            </v-layout>
+            <v-layout align-center class="mr-6">
+              <v-flex class="pr-12">
+                <v-text-field
+                  v-model="item.amount"
+                  :label="`Fee Amount (${item.assetObj.symbol})`"
+                  :rules="[required]"
+                  class="mr-12"
+                ></v-text-field>
+              </v-flex>
+              <div xs3 class="pr-0">
+                <price-lookup
+                  v-model="item.assetPriceGBP"
+                  :asset="item.assetObj"
+                  :date="model.date"
+                  :textToAnnotate="item.comments"
+                  @annotatedText="item.comments = $event"
+                ></price-lookup>
+              </div>
+              <v-flex class="pr-12">
+                <v-text-field
+                  v-model="item.assetPriceGBP"
+                  :label="`Asset Price (GBP for 1 ${item.assetObj.symbol})`"
+                  class="mr-12"
+                ></v-text-field>
+              </v-flex>
+              <div xs3 class="pr-0">
+                <v-btn
+                  text
+                  @click="item.valueGBP = calculatedFeeCost(item)"
+                >
+                  {{ calculatedFeeCost(item) | formatFiat }}
+                  <v-icon>chevron_right</v-icon>
+                </v-btn>
+              </div>
+              <v-flex class="pr-12">
+                <v-text-field
+                  v-model="item.valueGBP"
+                  label="Fee Cost in GBP"
+                  :rules="[required]"
+                ></v-text-field>
+              </v-flex>
+            </v-layout>
+            <v-flex>
+              <v-text-field
+                v-model="item.comments"
+                label="Comments"
+                color="green lighten-1"
+                class="input-comment"
+              ></v-text-field>
+            </v-flex>
+          </v-card-text>
+        </template>
+      </location-items-list>
+    </v-card>
+
     <v-text-field
       v-model="model.label"
       label="Label"
@@ -178,22 +260,42 @@ export default {
     let originalLocation = null
     let asset = null
     let location = null
+    let feeLocations = null
     let label = null
     if (this.baseEventId) {
+      const findLocationIdFromLinked = (linked) => {
+        const locationLedgerEntryId = linked?.find(({ type }) => type === 'locationLedgerEntry')?.id
+        if (locationLedgerEntryId) {
+          const locationLedgerEntry = this.$store.getters.locationLedgerEntry(locationLedgerEntryId)
+          if (locationLedgerEntry) {
+            return locationLedgerEntry.location
+          }
+        }
+        return null
+      }
+
       const baseEvent = this.$store.getters.incomeEvent(this.baseEventId)
       if (baseEvent) {
         sourceId = baseEvent.source
         label = baseEvent.label
         asset = baseEvent.asset
-        const locationLedgerEntryId = baseEvent.linked?.find(({ type }) => type === 'locationLedgerEntry')?.id
-        if (locationLedgerEntryId) {
-          const locationLedgerEntry = this.$store.getters.locationLedgerEntry(locationLedgerEntryId)
-          if (locationLedgerEntry) {
-            location = locationLedgerEntry.location
-          }
-        }
+        location = findLocationIdFromLinked(baseEvent.linked)
         originalLocation = baseEvent.originalLinked?.find(({ type }) => type === 'location')?.id
         originalAsset = baseEvent.originalLinked?.find(({ type }) => type === 'asset')?.id
+
+        feeLocations = baseEvent.fees?.map(
+          ({ asset, linked }) => ({
+            locationId: findLocationIdFromLinked(linked),
+            assetId: asset
+          })
+        ).filter(
+          ({ locationId }) => !!locationId
+        ).map(
+          ({ locationId, assetId }) => this.newLocationModel({
+            location: this.$store.getters.location(locationId),
+            asset: this.$store.getters.asset(assetId)
+          })
+        )
       }
     } else if (this.sourceId) {
       const source = this.$store.getters.incomeSource(this.sourceId)
@@ -222,6 +324,7 @@ export default {
         amount: '',
         location: location || '',
         assetValueGBP: '',
+        fees: feeLocations || [],
         label: label || '',
         comments: ''
       }
@@ -268,6 +371,35 @@ export default {
     }
   },
   methods: {
+    addLocation (type, { asset, location }) {
+      var valueGBP = '0'
+      this.model[type].push(this.newLocationModel({ location, asset, valueGBP }))
+    },
+    newLocationModel ({ location, asset, valueGBP }) {
+      return {
+        id: location.id,
+        label: location.label,
+        asset: location.asset,
+        assetObj: asset,
+        assetPriceGBP: '',
+        valueGBP: valueGBP || '',
+        subtitle: location.address,
+        amount: '0',
+        comments: ''
+      }
+    },
+    removeLocation (type, locationId) {
+      var index = this.model[type].findIndex(x => x.id === locationId)
+      if (index === -1) { return }
+      this.model[type].splice(index, 1)
+    },
+    calculatedFeeCost (feeObj) {
+      var cost = 0
+      if (feeObj.assetPriceGBP && feeObj.amount && feeObj.assetObj) {
+        cost = u.newBigNumberForAsset(feeObj.amount, feeObj.assetObj.id).times(feeObj.assetPriceGBP)
+      }
+      return u.roundFiat(cost, true)
+    },
     onTransactionFetched () {
       var transaction = this.form.fetchedTransaction
       if (!transaction) {

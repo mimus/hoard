@@ -372,6 +372,7 @@ export default {
         // Prepare for display
         const selected = isImportable
         const incomeEventId = x.incomeEventId
+        const fees = x.fees || []
         const label = isImportable ? this.defaultModel.label : ''
         const comments = ''
 
@@ -388,7 +389,8 @@ export default {
           fetchingPrice: false,
           fetchingPriceError: '',
           assetPriceGBP: '', // string
-          valueGBP: '', // string
+          valueGBP: '', // string,
+          fees,
           externalAssetLinks
         }
       })
@@ -441,6 +443,7 @@ export default {
             location: locationId,
             amount: event.amount,
             assetValueGBP: event.valueGBP,
+            fees: event.fees,
             label: event.label,
             comments: event.comments,
             externalAssetLinks: event.externalAssetLinks

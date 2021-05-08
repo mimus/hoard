@@ -84,7 +84,7 @@
                   {{ item.assetValueGBP | formatFiat }}
                 </td>
                 <td>
-                  <p>{{ item.label }}
+                  <div>{{ item.label }}
                     <br>
                     <span class="text--secondary">{{ item.comments }}</span>
                     <external-asset-links
@@ -92,7 +92,28 @@
                       with-short-label
                       with-type-label
                     />
-                  </p>
+                    <div
+                      v-if="item.fees && item.fees.length"
+                      class="mt-3"
+                    >
+                      <i>Fee:</i>
+                      <div
+                        v-for="(entry, entryIndex) in item.fees"
+                        :key="`${entryIndex}`"
+                        class="mt-2"
+                      >
+                        {{ entry.amount | formatAssetValue(entry.asset) }} {{ entry.asset }}
+                        ({{ entry.valueGBP | formatFiat }})
+                        <div
+                          v-if="entry.comments"
+                          class="text--secondary"
+                        >
+                          {{ entry.comments }}
+                        </div>
+                        <associated-links :links="entry.linked" />
+                      </div>
+                    </div>
+                  </div>
                 </td>
                 <td>
                   <associated-links :links="item.originalLinked" />

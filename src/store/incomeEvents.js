@@ -80,9 +80,9 @@ var storeModule = {
       dispatch('loadIncomeEvents', data.incomeEvents)
     },
 
-    addIncome ({ state, commit, getters, dispatch }, { source, asset, amount, assetValueGBP, date, location, label, comments, originalAsset, originalLocation, externalAssetLinks }) {
+    addIncome ({ state, commit, getters, dispatch }, { source, asset, amount, assetValueGBP, date, location, label, comments, originalAsset, originalLocation, fees, externalAssetLinks }) {
       return new Promise((resolve, reject) => {
-        if (!asset || !amount || !(date instanceof Date) || !location || !label) {
+        if (!asset || !amount || !(date instanceof Date) || !location || !label || !fees) {
           return reject(new Error('Not enough info provided'))
         }
         if (!getters.location(location)) {
@@ -131,24 +131,7 @@ var storeModule = {
           originalLinked.push({ type: 'location', id: originalLocation })
         }
 
-        var event = {
-          id: eventId,
-          source,
-          date,
-          label,
-          asset,
-          assetValueGBP,
-          amount,
-          comments,
-          originalLinked,
-          linked: [
-            { type: 'assetLedgerEntry', id: assetEntryId },
-            { type: 'locationLedgerEntry', id: locationEntryId }
-          ],
-          externalAssetLinks
-        }
-        dispatch('addIncomeEvent', event)
-
+        // Record the income
         var assetEntry = {
           id: assetEntryId,
           date,
@@ -172,6 +155,70 @@ var storeModule = {
           linked: [ { type: 'incomeEvent', id: eventId } ]
         }
         dispatch('addLocationLedgerEntry', locationEntry)
+
+        // Record any fees
+        fees = fees.map(x =>
+          Object.assign({}, {
+            asset: x.asset,
+            location: x.id,
+            comments: x.comments,
+            type: 'fees',
+            // Use negative amounts to represent assets leaving a location
+            amount: utils.newBigNumberForAsset(x.amount, x.asset).negated(),
+            // When paying a fee as part of receiving income,
+            // treat it as a separate CGT disposal of the fee asset, so it has GBP value
+            valueGBP: utils.newBigNumberForFiat(x.valueGBP)
+          })
+        )
+
+        fees.forEach(x => {
+          x.linked = []
+          var locationEntry = {
+            id: getters.nextLocationLedgerEntryId(),
+            date,
+            location: x.location,
+            amount: x.amount,
+            label,
+            comments: x.comments,
+            linked: [{ type: 'incomeEvent', id: eventId }]
+          }
+          x.linked.push({ type: 'locationLedgerEntry', id: locationEntry.id })
+          dispatch('addLocationLedgerEntry', locationEntry)
+
+          var assetEntry = {
+            id: getters.nextAssetLedgerEntryId(),
+            date,
+            type: 'disposal',
+            assetValueGBP: x.valueGBP,
+            asset: x.asset,
+            amount: x.amount,
+            label,
+            comments: x.comments,
+            linked: [{ type: 'incomeEvent', id: eventId }]
+          }
+          x.linked.push({ type: 'assetLedgerEntry', id: assetEntry.id })
+          dispatch('addAssetLedgerEntry', assetEntry)
+        })
+
+        // Record the event linking them all together
+        var event = {
+          id: eventId,
+          source,
+          date,
+          label,
+          asset,
+          assetValueGBP,
+          amount,
+          comments,
+          originalLinked,
+          linked: [
+            { type: 'assetLedgerEntry', id: assetEntryId },
+            { type: 'locationLedgerEntry', id: locationEntryId }
+          ],
+          fees: fees.map(x => ({ asset: x.asset, amount: x.amount.negated(), valueGBP: x.valueGBP, comments: x.comments, linked: x.linked })),
+          externalAssetLinks
+        }
+        dispatch('addIncomeEvent', event)
 
         resolve()
       })
