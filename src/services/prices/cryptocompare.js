@@ -6,7 +6,7 @@ var APP_NAME = 'mus_hoard'
 // Limit to 5 requests per second
 var throttlePriceFetch = throttledQueue(5, 1000)
 
-const unsupportedSymbols = ['AUTOv2', 'BTCB', 'WMATIC', 'amWMATIC']
+const unsupportedSymbols = ['AUTOv2', 'BTCB', 'WMATIC', 'amWMATIC', 'MDX']
 
 const supportsSymbol = function (symbol) {
   if (unsupportedSymbols.includes(symbol)) { return false }
