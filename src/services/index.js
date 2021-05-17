@@ -29,6 +29,8 @@ import USDT_M from './usdt-matic'
 import amUSDT from './amUSDT'
 import WMATIC from './wmatic'
 import amWMATIC from './amWMATIC'
+import amWBTC from './amWBTC'
+import amAAVE from './amAAVE'
 
 import binance from './binance'
 
@@ -63,7 +65,9 @@ var index = {
   'USDT-M': USDT_M,
   amUSDT,
   WMATIC,
-  amWMATIC
+  amWMATIC,
+  amWBTC,
+  amAAVE
 }
 
 Object.entries(index).forEach(([key, item]) => {

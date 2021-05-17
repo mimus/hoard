@@ -17,7 +17,9 @@ const symbolsToSubstitute = {
   'BUSD-T': 'USDT',
   'DAI-B': 'DAI',
   'USDT-M': 'USDT',
-  'amUSDT': 'USDT'
+  'amUSDT': 'USDT',
+  'amWBTC': 'WBTC',
+  'amAAVE': 'AAVE'
 }
 
 const convertSymbol = function (symbol) {
