@@ -31,6 +31,10 @@ import WMATIC from './wmatic'
 import amWMATIC from './amWMATIC'
 import amWBTC from './amWBTC'
 import amAAVE from './amAAVE'
+import UNI from './uni'
+import CRV from './crv'
+import _1INCH from './1inch'
+import YFI from './yfi'
 
 import binance from './binance'
 
@@ -62,6 +66,10 @@ var index = {
   SNX,
   LINK,
   MATIC,
+  UNI,
+  CRV,
+  YFI,
+  '1INCH': _1INCH,
   'USDT-M': USDT_M,
   amUSDT,
   WMATIC,
