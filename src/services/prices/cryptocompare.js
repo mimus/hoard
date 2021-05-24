@@ -17,9 +17,12 @@ const symbolsToSubstitute = {
   'BUSD-T': 'USDT',
   'DAI-B': 'DAI',
   'USDT-M': 'USDT',
+  'USDC-M': 'USDC',
   'amUSDT': 'USDT',
   'amWBTC': 'WBTC',
-  'amAAVE': 'AAVE'
+  'amAAVE': 'AAVE',
+  'USDC-FTM': 'USDC',
+  'am3CRV': 'USDT' // not totally accurate, but can't find this stablecoin pool token on price APIs
 }
 
 const convertSymbol = function (symbol) {

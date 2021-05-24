@@ -26,6 +26,7 @@ import SNX from './snx'
 import LINK from './link'
 import MATIC from './matic'
 import USDT_M from './usdt-matic'
+import USDC_M from './usdc-matic'
 import amUSDT from './amUSDT'
 import WMATIC from './wmatic'
 import amWMATIC from './amWMATIC'
@@ -35,6 +36,9 @@ import UNI from './uni'
 import CRV from './crv'
 import _1INCH from './1inch'
 import YFI from './yfi'
+import FTM from './ftm'
+import USDC_FTM from './usdc-ftm'
+import am3CRV from './am3crv'
 
 import binance from './binance'
 
@@ -71,11 +75,15 @@ var index = {
   YFI,
   '1INCH': _1INCH,
   'USDT-M': USDT_M,
+  'USDC-M': USDC_M,
   amUSDT,
   WMATIC,
   amWMATIC,
   amWBTC,
-  amAAVE
+  amAAVE,
+  FTM,
+  'USDC-FTM': USDC_FTM,
+  am3CRV
 }
 
 Object.entries(index).forEach(([key, item]) => {
