@@ -27,6 +27,7 @@ import LINK from './link'
 import MATIC from './matic'
 import USDT_M from './usdt-matic'
 import USDC_M from './usdc-matic'
+import DAI_M from './dai-matic'
 import amUSDT from './amUSDT'
 import WMATIC from './wmatic'
 import amWMATIC from './amWMATIC'
@@ -41,6 +42,7 @@ import USDC_FTM from './usdc-ftm'
 import am3CRV from './am3crv'
 
 import binance from './binance'
+import { registerToken as covalentRegisterMaticToken } from './matic/covalenthq'
 
 var index = {
   BTC,
@@ -76,6 +78,7 @@ var index = {
   '1INCH': _1INCH,
   'USDT-M': USDT_M,
   'USDC-M': USDC_M,
+  'DAI-M': DAI_M,
   amUSDT,
   WMATIC,
   amWMATIC,
@@ -94,6 +97,9 @@ Object.entries(index).forEach(([key, item]) => {
       item.transactionLink = item.transactionLink || service.transactionLink
       item.fetchTransaction = item.fetchTransaction || service.fetchTransaction
     })
+  }
+  if (item.maticTokenAddress) {
+    covalentRegisterMaticToken({ address: item.maticTokenAddress, assetId: key })
   }
 })
 

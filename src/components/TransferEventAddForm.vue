@@ -475,7 +475,7 @@ export default {
             totalInputs = totalInputs.plus(input.value)
           }
         })
-        this.model.amount = u.formatAssetValue(totalInputs, this.model.asset)
+        this.model.amount = `${u.formatAssetValue(totalInputs, this.model.asset)}`
       }
       if (transaction.outputs) {
         this.removeAllLocations('to')
@@ -491,6 +491,19 @@ export default {
       if (transaction.fee) {
         this.model.fee.amount = transaction.fee
         this.model.fee.valueGBP = '0'
+        if (transaction.feeAsset && transaction.feeLocation) {
+          if (this.model.asset !== transaction.feeAsset) {
+            const feeLocation = this.$store.getters.locationForAddress(transaction.feeAsset, transaction.feeLocation)
+            if (feeLocation) {
+              this.form.enableFeeLocation = true
+              this.form.customFeeAsset = transaction.feeAsset
+              this.model.fee.locationId = feeLocation.id
+            }
+          }
+        }
+      }
+      if (transaction.label) {
+        this.model.label = this.model.label ? `${this.model.label} (${transaction.label})` : transaction.label
       }
     },
     addLocation (type, location, amount) {

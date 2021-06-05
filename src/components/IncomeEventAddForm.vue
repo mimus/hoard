@@ -312,6 +312,7 @@ export default {
       required: (value) => !!value || 'Required',
       form: {
         transactionId: '',
+        fetchedTransaction: null,
         fetchedTransactionError: '',
         assetPriceGBP: ''
       },
@@ -422,13 +423,25 @@ export default {
       if (transaction.outputs) {
         transaction.outputs.forEach(output => {
           if (output.isToSingleAddress && output.value) {
-            var location = this.$store.getters.locationForAddress(this.model.asset, output.addresses[0])
-            if (location) {
-              this.model.location = location.id
-              this.model.amount = output.value
+            // If an output asset is provided, it must match our selected asset
+            if (!output.addressAssets?.[0] || (output.addressAssets[0] === this.model.asset)) {
+              var location = this.$store.getters.locationForAddress(this.model.asset, output.addresses[0])
+              if (location) {
+                this.model.location = location.id
+                this.model.amount = output.value
+              }
             }
           }
         })
+      }
+      if (transaction.fee && transaction.feeAsset && transaction.feeLocation) {
+        const feeLocation = this.$store.getters.locationForAddress(transaction.feeAsset, transaction.feeLocation)
+        if (feeLocation) {
+          const feeAssetObj = this.$store.getters.asset(transaction.feeAsset)
+          const feeLocationModel = this.newLocationModel({ asset: feeAssetObj, location: feeLocation })
+          feeLocationModel.amount = transaction.fee
+          this.model.fees = [feeLocationModel]
+        }
       }
     },
     submit () {

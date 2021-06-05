@@ -42,7 +42,8 @@ var storeModule = {
         comments: model.comments,
         fees: model.fees,
         disposed: model.disposed,
-        acquired: model.acquired
+        acquired: model.acquired,
+        externalAssetLinks: model.externalAssetLinks
       }
       commit('addTradeEvent', model)
     },
@@ -62,7 +63,7 @@ var storeModule = {
       dispatch('loadTradeEvents', data.tradeEvents)
     },
 
-    addTrade ({ state, getters, commit, dispatch }, { date, label, comments, disposed, acquired, fees }) {
+    addTrade ({ state, getters, commit, dispatch }, { date, label, comments, disposed, acquired, fees, externalAssetLinks }) {
       return new Promise((resolve, reject) => {
         if (!(date instanceof Date) || !label || !disposed || !acquired || !fees) {
           return reject(new Error('Not enough info provided'))
@@ -152,7 +153,8 @@ var storeModule = {
           comments,
           fees: fees.map(x => ({ asset: x.asset, amount: x.amount.negated(), comments: x.comments, linked: x.linked })),
           disposed: disposed.map(x => ({ asset: x.asset, amount: x.amount.negated(), comments: x.comments, linked: x.linked })),
-          acquired: acquired.map(x => ({ asset: x.asset, amount: x.amount, comments: x.comments, linked: x.linked }))
+          acquired: acquired.map(x => ({ asset: x.asset, amount: x.amount, comments: x.comments, linked: x.linked })),
+          externalAssetLinks
         }
         dispatch('addTradeEvent', event)
 

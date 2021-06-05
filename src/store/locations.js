@@ -298,18 +298,20 @@ var storeModule = {
     locationsInGroupByAssetWithTotal: (state, getters) => (groupId) => {
       groupId = +groupId
       const locsByAsset = getters.locationsInGroupByAsset(groupId)
-      const assets = {}
-      Object.entries(locsByAsset).forEach(([asset, locs]) => {
+      const assetEntries = Object.entries(locsByAsset).map(([asset, locs]) => {
         const locations = locs.map(loc => ({
           ...loc,
           total: getters.ledgerBalanceForLocation(loc.id)
         }))
         const total = locations.reduce((sum, loc) => sum.plus(loc.total), utils.newBigNumberForAsset(0, asset))
-        assets[asset] = {
-          locations,
-          total
-        }
+        return [asset, { locations, total }]
       })
+      // Move assets with zero amounts to the end of the list
+      const assetEntriesWithTotal = assetEntries.filter(([asset, { total }]) => !!total && !total.isZero())
+      const assetEntriesWithoutTotal = assetEntries.filter(([asset, { total }]) => !total || total.isZero())
+      const assets = Object.fromEntries(
+        [...assetEntriesWithTotal, ...assetEntriesWithoutTotal]
+      )
       return assets
     },
     totalLocationGroupGBPValue: (state, getters) => (groupId) => {

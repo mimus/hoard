@@ -44,6 +44,11 @@
                   {{ props.item.comments }}
                 </span>
               </p>
+              <external-asset-links
+                :links="props.item.externalAssetLinks"
+                with-short-label
+                with-type-label
+              />
             </td>
             <td>
               <v-tooltip bottom>

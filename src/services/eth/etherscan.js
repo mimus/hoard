@@ -6,7 +6,7 @@ import u from '../../utils'
 var throttleEtherscanFetch = throttledQueue(4, 1000)
 var apiToken = 'S23NI7FKUCKKX5W26PH5UBNANWPMVU6FW5'
 
-var asset = 'ETH'
+var chainAsset = 'ETH'
 
 var addressLink = {
   link: item => (item && `https://etherscan.io/address/${item}`) || false,
@@ -35,10 +35,10 @@ var fetchTransaction = function (transactionId) {
           axios.get(receiptUrl).then((receiptResponse) => {
             var receipt = receiptResponse.data.result
             var gasUsed = receipt.gasUsed // gasUsed is a hex string
-            var gas = u.newBigNumberForAsset(gasUsed, asset)
-            var gasPrice = u.newBigNumberForAsset(x.gasPrice, asset) // gasPrice is a hex string.
+            var gas = u.newBigNumberForAsset(gasUsed, chainAsset)
+            var gasPrice = u.newBigNumberForAsset(x.gasPrice, chainAsset) // gasPrice is a hex string.
             var fee = gas.times(gasPrice).div(10e17)
-            var valueReceived = u.newBigNumberForAsset(x.value, asset).div(10e17) // x.value is a hex string.
+            var valueReceived = u.newBigNumberForAsset(x.value, chainAsset).div(10e17) // x.value is a hex string.
             var inputAddresses = [x.from]
             var inputs = [{
               address: x.from,
@@ -64,7 +64,9 @@ var fetchTransaction = function (transactionId) {
                   inputAddresses,
                   inputs,
                   outputs,
-                  fee: fee.toString()
+                  fee: fee.toString(),
+                  feeAsset: chainAsset,
+                  feeLocation: x.from
                 }
                 resolve(transaction)
               }, (error) => {
@@ -120,7 +122,7 @@ var fetchTransactions = function (address, fetchState) {
         }
         var transactions = result.map(x => {
           var inputAddresses = [x.from]
-          var valueReceived = u.newBigNumberForAsset(x.value, asset).div(10e17) // x.value is a hex string.
+          var valueReceived = u.newBigNumberForAsset(x.value, chainAsset).div(10e17) // x.value is a hex string.
           var addressLowercase = address.toLowerCase()
           var outputs = [x.to].map(outputAddress => {
             var outAddresses = [outputAddress]

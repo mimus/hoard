@@ -16,6 +16,7 @@ const supportsSymbol = function (symbol) {
 const symbolsToSubstitute = {
   'BUSD-T': 'USDT',
   'DAI-B': 'DAI',
+  'DAI-M': 'DAI',
   'USDT-M': 'USDT',
   'USDC-M': 'USDC',
   'amUSDT': 'USDT',

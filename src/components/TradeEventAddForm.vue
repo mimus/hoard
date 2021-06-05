@@ -1,5 +1,42 @@
 <template>
   <base-form @submit="submit">
+    <v-layout align-center>
+      <v-text-field
+        class="mr-6"
+        v-model="form.transactionId"
+        label="Transaction ID (optional)"
+        persistent-hint
+      ></v-text-field>
+      <v-select
+        class="mr-6"
+        style="max-width: 250px;"
+        v-model="form.transactionAsset"
+        :items="form.transactionSources"
+      />
+      <external-asset-link
+        v-if="form.transactionId"
+        :asset="form.transactionAsset"
+        type="transaction"
+        :item="form.transactionId"
+        with-short-label
+      />
+      <external-transaction-fetcher
+        v-if="form.transactionId && form.transactionAsset"
+        :asset="form.transactionAsset"
+        :transaction-id="form.transactionId"
+        v-model="form.fetchedTransaction"
+        @input="onTransactionFetched"
+        @error="form.fetchedTransactionError = $event"
+      ></external-transaction-fetcher>
+    </v-layout>
+
+    <v-alert
+      :value="!!form.fetchedTransactionError"
+      type="error"
+    >
+      {{ form.fetchedTransactionError }}
+    </v-alert>
+
     <date-time-picker v-model="model.date" />
 
     <v-card class="mb-6">
@@ -428,6 +465,16 @@ export default {
 
     return {
       required: (value) => !!value || 'Required',
+      form: {
+        transactionSources: [
+          { value: '', text: 'Choose a source...' },
+          { value: 'MATIC', text: 'Polygon Network' }
+        ],
+        transactionAsset: 'MATIC',
+        transactionId: '',
+        fetchedTransaction: null,
+        fetchedTransactionError: ''
+      },
       model: {
         date: null,
         label: baseEvent?.label || '',
@@ -459,6 +506,20 @@ export default {
     },
     acquiredBalances () {
       return this._balances('acquired')
+    },
+    modelToSave () {
+      var copy = {
+        externalAssetLinks: [],
+        ...this.model
+      }
+      if (this.form.transactionId) {
+        copy.externalAssetLinks.push({
+          asset: this.form.transactionAsset,
+          type: 'transaction',
+          item: this.form.transactionId
+        })
+      }
+      return copy
     }
   },
   methods: {
@@ -518,9 +579,64 @@ export default {
       }
       return u.roundFiat(cost, true)
     },
+    onTransactionFetched () {
+      var transaction = this.form.fetchedTransaction
+      if (!transaction) {
+        return
+      }
+      if (transaction.date) {
+        this.model.date = transaction.date
+      }
+      this.model.disposed = []
+      if (transaction.inputs) {
+        transaction.inputs.forEach(input => {
+          if (input.value && input.address && input.addressAsset) {
+            // Inputs must specify both asset and location
+            const assetId = input.addressAsset
+            const asset = this.$store.getters.asset(assetId)
+            const location = this.$store.getters.locationForAddress(assetId, input.address)
+            if (asset && location) {
+              const locationModel = this.newLocationModel({ location, asset })
+              locationModel.amount = input.value
+              this.model.disposed.push(locationModel)
+            }
+          }
+        })
+      }
+      this.model.acquired = []
+      if (transaction.outputs) {
+        transaction.outputs.forEach(output => {
+          if (output.isToSingleAddress && output.value) {
+            // Outputs must specify both asset and location
+            if (output.addresses[0] && output.addressAssets?.[0]) {
+              const assetId = output.addressAssets[0]
+              const asset = this.$store.getters.asset(assetId)
+              const location = this.$store.getters.locationForAddress(assetId, output.addresses[0])
+              if (asset && location) {
+                const locationModel = this.newLocationModel({ location, asset })
+                locationModel.amount = output.value
+                this.model.acquired.push(locationModel)
+              }
+            }
+          }
+        })
+      }
+
+      if (transaction.fee && transaction.feeAsset && transaction.feeLocation) {
+        const feeLocation = this.$store.getters.locationForAddress(transaction.feeAsset, transaction.feeLocation)
+        if (feeLocation) {
+          const feeAssetObj = this.$store.getters.asset(transaction.feeAsset)
+          if (feeAssetObj) {
+            const feeLocationModel = this.newLocationModel({ asset: feeAssetObj, location: feeLocation })
+            feeLocationModel.amount = transaction.fee
+            this.model.fees = [feeLocationModel]
+          }
+        }
+      }
+    },
     submit () {
       if (this.model.disposed.length && this.model.acquired.length && this.model.date) {
-        this.$emit('save', this.model)
+        this.$emit('save', this.modelToSave)
       }
     }
   }
