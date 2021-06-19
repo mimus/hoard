@@ -28,6 +28,7 @@ import MATIC from './matic'
 import USDT_M from './usdt-matic'
 import USDC_M from './usdc-matic'
 import DAI_M from './dai-matic'
+import CRV_M from './crv-matic'
 import amUSDT from './amUSDT'
 import WMATIC from './wmatic'
 import amWMATIC from './amWMATIC'
@@ -40,6 +41,7 @@ import YFI from './yfi'
 import FTM from './ftm'
 import USDC_FTM from './usdc-ftm'
 import am3CRV from './am3crv'
+import btcCRV from './btccrv'
 
 import binance from './binance'
 import { registerToken as covalentRegisterMaticToken } from './matic/covalenthq'
@@ -79,6 +81,7 @@ var index = {
   'USDT-M': USDT_M,
   'USDC-M': USDC_M,
   'DAI-M': DAI_M,
+  'CRV-M': CRV_M,
   amUSDT,
   WMATIC,
   amWMATIC,
@@ -86,7 +89,8 @@ var index = {
   amAAVE,
   FTM,
   'USDC-FTM': USDC_FTM,
-  am3CRV
+  am3CRV,
+  btcCRV
 }
 
 Object.entries(index).forEach(([key, item]) => {

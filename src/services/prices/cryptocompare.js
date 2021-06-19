@@ -19,11 +19,13 @@ const symbolsToSubstitute = {
   'DAI-M': 'DAI',
   'USDT-M': 'USDT',
   'USDC-M': 'USDC',
+  'CRV-M': 'CRV',
   'amUSDT': 'USDT',
   'amWBTC': 'WBTC',
   'amAAVE': 'AAVE',
   'USDC-FTM': 'USDC',
-  'am3CRV': 'USDT' // not totally accurate, but can't find this stablecoin pool token on price APIs
+  'am3CRV': 'USDT', // not totally accurate, but can't find this stablecoin pool token on price APIs
+  'btcCRV': 'BTC' // not totally accurate, but can't find this stablecoin pool token on price APIs
 }
 
 const convertSymbol = function (symbol) {
