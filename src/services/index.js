@@ -24,6 +24,7 @@ import AUTOv2 from './autov2'
 import MDX from './mdx'
 import SNX from './snx'
 import LINK from './link'
+import COMP from './comp'
 import MATIC from './matic'
 import USDT_M from './usdt-matic'
 import USDC_M from './usdc-matic'
@@ -73,6 +74,7 @@ var index = {
   MDX,
   SNX,
   LINK,
+  COMP,
   MATIC,
   UNI,
   CRV,
