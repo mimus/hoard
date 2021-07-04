@@ -30,6 +30,10 @@ import USDT_M from './usdt-matic'
 import USDC_M from './usdc-matic'
 import DAI_M from './dai-matic'
 import CRV_M from './crv-matic'
+import AAVE_M from './aave-matic'
+import WETH_M from './eth-matic'
+import LINK_M from './link-matic'
+import B_POLYDEFI from './balancer-polydefi'
 import amUSDT from './amUSDT'
 import WMATIC from './wmatic'
 import amWMATIC from './amWMATIC'
@@ -84,6 +88,10 @@ var index = {
   'USDC-M': USDC_M,
   'DAI-M': DAI_M,
   'CRV-M': CRV_M,
+  'AAVE-M': AAVE_M,
+  'WETH-M': WETH_M,
+  'LINK-M': LINK_M,
+  'B-POLYDEFI': B_POLYDEFI,
   amUSDT,
   WMATIC,
   amWMATIC,

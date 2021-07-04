@@ -35,12 +35,14 @@ export default {
       }
     }
 
+    let priceMap = {}
     if (symbolsToFetch.length) {
-      throw new Error(`No matching service available for symbols ${symbolsToFetch}`)
+      console.error(`No matching service available for symbols ${symbolsToFetch}: price will be treated as zero`)
+      priceMap = Object.fromEntries(symbolsToFetch.map(symbol => [symbol, 0]))
     }
 
     return Promise.all(fetching).then((results) => {
-      return Object.assign({}, ...results)
+      return Object.assign(priceMap, ...results)
     })
   }
 }

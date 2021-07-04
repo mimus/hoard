@@ -1,7 +1,7 @@
 import axios from 'axios'
 import u from '../../utils'
 
-const API_KEY = 'COVALENT_HQ_API_KEY'
+const API_KEY = 'ckey_7c9adaa75bad48838ec0a43d7d4'
 
 const chainId = 137
 const chainAsset = 'MATIC'
