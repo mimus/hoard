@@ -2,9 +2,9 @@ import polygonscanTokenService from '../matic/polygonscan_token'
 import maticvigil from '../matic/maticvigil'
 import covalenthq from '../matic/covalenthq'
 
-const maticTokenAddress = '0xce66904b68f1f070332cbc631de7ee98b650b499'
+// Pool: USDC/LINK/WETH/BAL/AAVE
+const maticTokenAddress = '0x36128d5436d2d70cab39c9af9cce146c38554ff0'
 
-// Pool: LINK/WETH/BAL/AAVE
 export default {
   services: [ polygonscanTokenService(maticTokenAddress), maticvigil, covalenthq ],
   maticTokenAddress
