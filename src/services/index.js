@@ -34,6 +34,7 @@ import AAVE_M from './aave-matic'
 import WETH_M from './eth-matic'
 import LINK_M from './link-matic'
 import BAL_M from './bal-matic'
+import WBTC_M from './wbtc-matic'
 import B_POLYDEFI from './balancer-polydefi'
 import B_POLYDEFI2 from './balancer-polydefi2'
 import amUSDT from './amUSDT'
@@ -94,6 +95,7 @@ var index = {
   'WETH-M': WETH_M,
   'LINK-M': LINK_M,
   'BAL-M': BAL_M,
+  'WBTC-M': WBTC_M,
   'B-POLYDEFI': B_POLYDEFI,
   'B-POLYDEFI2': B_POLYDEFI2,
   amUSDT,

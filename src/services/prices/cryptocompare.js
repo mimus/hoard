@@ -27,6 +27,7 @@ const symbolsToSubstitute = {
   'WETH-M': 'ETH',
   'LINK-M': 'LINK',
   'BAL-M': 'BAL',
+  'WBTC-M': 'WBTC',
   'USDC-FTM': 'USDC',
   'am3CRV': 'USDT', // not totally accurate, but can't find this stablecoin pool token on price APIs
   'btcCRV': 'BTC' // not totally accurate, but can't find this stablecoin pool token on price APIs
