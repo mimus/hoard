@@ -19,19 +19,29 @@ const loadIncomeEvents = function (assetId, data) {
       reject(new Error('Empty data provided.'))
       return
     }
-    const expectedHeaders = 'UTC_Time,Account,Operation,Coin,Change,Remark'
-    if (lines[0] !== expectedHeaders) {
-      reject(new Error('Unexpected data format: expecting CSV with headers ' + expectedHeaders))
+    const expectedHeaders1 = 'UTC_Time,Account,Operation,Coin,Change,Remark'
+    const expectedHeaders2 = 'User_ID,UTC_Time,Account,Operation,Coin,Change,Remark'
+    let lineItems = []
+
+    if (lines[0] === expectedHeaders1) {
+      // remove headers
+      lines.shift()
+      lineItems = lines.map(
+        line => line.split(',')
+      ).map(([time, account, operation, coin, change, remark]) => ({ time, account, operation, coin, change, remark }))
+    } else if (lines[0] === expectedHeaders2) {
+      // remove headers
+      lines.shift()
+      lineItems = lines.map(
+        line => line.split(',')
+      ).map(([userId, time, account, operation, coin, change, remark]) => ({ time, account, operation, coin, change, remark }))
+    } else {
+      reject(new Error('Unexpected data format: expecting CSV with headers ' + expectedHeaders1 + ' - or - ' + expectedHeaders2))
       return
     }
-    // remove headers
-    lines.shift()
-    const lineItems = lines.map(
-      line => line.split(',')
-    ).map(([time, account, operation, coin, change, remark]) => ({ time, account, operation, coin, change, remark }))
 
     const incomeEvents = lineItems
-      .filter(({ operation, coin }) => operation === 'POS savings interest' && coin === assetId)
+      .filter(({ operation, coin }) => (['POS savings interest', 'ETH 2.0 Staking Rewards'].includes(operation)) && coin === assetId)
       .map(({ time, coin, change }, index) => ({
         incomeEventId: `incomeEvent${index}`,
         date: new Date(time),
