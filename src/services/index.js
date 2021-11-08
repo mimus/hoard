@@ -52,6 +52,7 @@ import am3CRV from './am3crv'
 import btcCRV from './btccrv'
 
 import binance from './binance'
+import celsius from './celsius'
 import { registerToken as covalentRegisterMaticToken } from './matic/covalenthq'
 
 var index = {
@@ -124,7 +125,7 @@ Object.entries(index).forEach(([key, item]) => {
 })
 
 // some services can potentially apply to all assets
-const genericServices = [binance].map(({ services }) => services).flat()
+const genericServices = [binance, celsius].map(({ services }) => services).flat()
 export { genericServices }
 
 export default index
