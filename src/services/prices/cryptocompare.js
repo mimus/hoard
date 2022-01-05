@@ -17,6 +17,7 @@ const symbolsToSubstitute = {
   'BUSD-T': 'USDT',
   'DAI-B': 'DAI',
   'DAI-M': 'DAI',
+  'TUSD-M': 'TUSD',
   'USDT-M': 'USDT',
   'USDC-M': 'USDC',
   'CRV-M': 'CRV',
@@ -30,7 +31,8 @@ const symbolsToSubstitute = {
   'WBTC-M': 'WBTC',
   'USDC-FTM': 'USDC',
   'am3CRV': 'USDT', // not totally accurate, but can't find this stablecoin pool token on price APIs
-  'btcCRV': 'BTC' // not totally accurate, but can't find this stablecoin pool token on price APIs
+  'btcCRV': 'BTC', // not totally accurate, but can't find this stablecoin pool token on price APIs
+  'BPSP-TUSD': 'USDT' // not totally accurate, but can't find this stablecoin pool token on price APIs
 }
 
 const convertSymbol = function (symbol) {

@@ -29,6 +29,7 @@ import MATIC from './matic'
 import USDT_M from './usdt-matic'
 import USDC_M from './usdc-matic'
 import DAI_M from './dai-matic'
+import TUSD_M from './tusd-matic'
 import CRV_M from './crv-matic'
 import AAVE_M from './aave-matic'
 import WETH_M from './eth-matic'
@@ -37,6 +38,7 @@ import BAL_M from './bal-matic'
 import WBTC_M from './wbtc-matic'
 import B_POLYDEFI from './balancer-polydefi'
 import B_POLYDEFI2 from './balancer-polydefi2'
+import BPSP_TUSD from './balancer-tusdstable'
 import amUSDT from './amUSDT'
 import WMATIC from './wmatic'
 import amWMATIC from './amWMATIC'
@@ -91,6 +93,7 @@ var index = {
   'USDT-M': USDT_M,
   'USDC-M': USDC_M,
   'DAI-M': DAI_M,
+  'TUSD-M': TUSD_M,
   'CRV-M': CRV_M,
   'AAVE-M': AAVE_M,
   'WETH-M': WETH_M,
@@ -99,6 +102,7 @@ var index = {
   'WBTC-M': WBTC_M,
   'B-POLYDEFI': B_POLYDEFI,
   'B-POLYDEFI2': B_POLYDEFI2,
+  'BPSP-TUSD': BPSP_TUSD,
   amUSDT,
   WMATIC,
   amWMATIC,
