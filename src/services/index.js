@@ -48,6 +48,7 @@ import UNI from './uni'
 import CRV from './crv'
 import _1INCH from './1inch'
 import YFI from './yfi'
+import CRO from './cro'
 import FTM from './ftm'
 import USDC_FTM from './usdc-ftm'
 import am3CRV from './am3crv'
@@ -89,6 +90,7 @@ var index = {
   UNI,
   CRV,
   YFI,
+  CRO,
   '1INCH': _1INCH,
   'USDT-M': USDT_M,
   'USDC-M': USDC_M,
