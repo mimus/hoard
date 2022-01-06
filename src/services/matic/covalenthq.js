@@ -53,12 +53,13 @@ var fetchTransaction = function (transactionId) {
               if (transferFromAddress === callingAddress || transferToAddress === callingAddress) {
                 const tokenAddress = event.sender_address
                 const tokenAsset = tokens[tokenAddress.toLowerCase()]
-                const value = u.newBigNumberForAsset(transferValueString, tokenAsset).div(Math.pow(10, event.sender_contract_decimals))
+                const valueNum = u.newBigNumberForAsset(transferValueString, tokenAsset).div(Math.pow(10, event.sender_contract_decimals))
                 const list = transferFromAddress === callingAddress ? tokenTransfersFromCaller : tokenTransfersToCaller
                 list.push({
                   address: callingAddress,
                   addressAsset: tokenAsset,
-                  value: value.toString()
+                  value: valueNum.toString(),
+                  valueNum
                 })
               }
             }
@@ -87,12 +88,23 @@ var fetchTransaction = function (transactionId) {
             inputs.push(...tokenTransfersFromCaller)
           }
           if (tokenTransfersToCaller.length) {
-            outputs.push(...tokenTransfersToCaller.map(transfer => ({
-              addresses: [transfer.address],
-              addressAssets: [transfer.addressAsset],
-              value: transfer.value,
-              isToSingleAddress: true
-            })))
+            // add multiple transfers of the same asset together
+            const transfersByAsset = {}
+            for (const transfer of tokenTransfersToCaller) {
+              if (!transfersByAsset[transfer.addressAsset]) {
+                transfersByAsset[transfer.addressAsset] = {
+                  addresses: [transfer.address],
+                  addressAssets: [transfer.addressAsset],
+                  value: transfer.value,
+                  valueNum: transfer.valueNum,
+                  isToSingleAddress: true
+                }
+              } else {
+                transfersByAsset[transfer.addressAsset].valueNum = transfersByAsset[transfer.addressAsset].valueNum.plus(transfer.valueNum)
+                transfersByAsset[transfer.addressAsset].value = transfersByAsset[transfer.addressAsset].valueNum.toString()
+              }
+            }
+            outputs.push(...Object.values(transfersByAsset))
           }
         } else {
           inputs.push({
