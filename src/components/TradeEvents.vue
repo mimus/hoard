@@ -65,6 +65,14 @@
                 </template>
                 Add another based on this event
               </v-tooltip>
+
+              <v-btn
+                small
+                icon
+                @click="confirmDelete(props.item)"
+              >
+                <v-icon>delete</v-icon>
+              </v-btn>
             </td>
           </tr>
         </template>
@@ -72,6 +80,32 @@
           No trade events.
         </template>
       </v-data-table>
+      <v-dialog
+        v-model="confirmDeleteIsOpen"
+        width="500"
+      >
+        <v-card v-if="eventToDelete">
+          <v-card-text>
+            Are you sure you want to delete this trade event?
+            <br>
+            <br>{{ eventToDelete.label }}
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn
+              @click="confirmDeleteIsOpen = false"
+            >
+              Cancel
+            </v-btn>
+            <v-btn
+              color="error"
+              @click="deleteTradeEvent"
+            >
+              Delete
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
     </div>
     <v-card-text v-else>
       No trade events.
@@ -94,7 +128,9 @@ export default {
       { text: 'Fees', sortable: false },
       { text: 'Label/Comments', sortable: false },
       { text: 'Actions', sortable: false }
-    ]
+    ],
+    eventToDelete: null,
+    confirmDeleteIsOpen: false
   }),
   computed: {
     ...mapGetters([
@@ -105,6 +141,22 @@ export default {
         ...event,
         sortableDate: event.date - 0 // timestamp
       }))
+    }
+  },
+  methods: {
+    confirmDelete (event) {
+      this.eventToDelete = event
+      this.confirmDeleteIsOpen = true
+    },
+    deleteTradeEvent (eventId) {
+      this.$store.dispatch('deleteTradeEvent', this.eventToDelete.id).then(
+        () => {
+          this.confirmDeleteIsOpen = false
+        },
+        (err) => {
+          console.error('error deleting trade event', err)
+        }
+      )
     }
   }
 }

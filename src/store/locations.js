@@ -84,6 +84,16 @@ var storeModule = {
       entriesForLocation.sort(utils.dateComparatorEarliestFirst)
     },
 
+    deleteLocationLedgerEntry (state, entryId) {
+      const location = state.locationLedgerEntriesById[entryId]?.location
+      state.locationLedgerEntries = state.locationLedgerEntries.filter(({ id }) => id !== entryId)
+      Vue.delete(state.locationLedgerEntriesById, entryId)
+      if (location) {
+        state.locationLedgerEntriesByLocation[location] =
+          state.locationLedgerEntriesByLocation[location].filter(({ id }) => id !== entryId)
+      }
+    },
+
     loadLocations (state, locations) {
       state.locations = locations
       state.locationsById = {}
@@ -193,6 +203,14 @@ var storeModule = {
         linked: model.linked
       }
       commit('addLocationLedgerEntry', model)
+    },
+    deleteLocationLedgerEntry ({ commit, getters }, id) {
+      const entry = getters.locationLedgerEntry(id)
+      if (!entry) {
+        console.error('Location ledger entry not found', id)
+        return
+      }
+      commit('deleteLocationLedgerEntry', entry.id)
     },
     loadLocations ({ commit }, locations) {
       locations = locations.map(location => ({

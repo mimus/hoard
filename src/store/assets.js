@@ -54,6 +54,15 @@ var storeModule = {
       entriesForAsset.sort(utils.dateComparatorEarliestFirst)
     },
 
+    deleteAssetLedgerEntry (state, entryId) {
+      const asset = state.assetLedgerEntriesById[entryId]?.asset
+      state.assetLedgerEntries = state.assetLedgerEntries.filter(({ id }) => id !== entryId)
+      Vue.delete(state.assetLedgerEntriesById, entryId)
+      if (asset) {
+        state.assetLedgerEntriesByAsset[asset] = state.assetLedgerEntriesByAsset[asset].filter(({ id }) => id !== entryId)
+      }
+    },
+
     loadAssetLedgerEntries (state, ledgerEntries) {
       ledgerEntries.sort(utils.dateComparatorEarliestFirst)
       state.assetLedgerEntries = ledgerEntries
@@ -126,6 +135,15 @@ var storeModule = {
         linked: model.linked
       }
       commit('addAssetLedgerEntry', model)
+    },
+
+    deleteAssetLedgerEntry ({ commit, getters }, id) {
+      const entry = getters.assetLedgerEntry(id)
+      if (!entry) {
+        console.error('Asset ledger entry not found', id)
+        return
+      }
+      commit('deleteAssetLedgerEntry', entry.id)
     },
 
     loadAssetLedgerEntries ({ commit }, ledgerEntries) {

@@ -18,6 +18,11 @@ var storeModule = {
       Vue.set(state.tradeEventsById, model.id, model)
     },
 
+    deleteTradeEvent (state, eventId) {
+      state.tradeEvents = state.tradeEvents.filter(({ id }) => id !== eventId)
+      Vue.delete(state.tradeEventsById, eventId)
+    },
+
     loadTradeEvents (state, events) {
       events.sort(utils.dateComparatorEarliestFirst)
       state.tradeEvents = events
@@ -46,6 +51,28 @@ var storeModule = {
         externalAssetLinks: model.externalAssetLinks
       }
       commit('addTradeEvent', model)
+    },
+
+    deleteTradeEvent ({ commit, getters, dispatch }, eventId) {
+      const event = getters.tradeEvent(eventId)
+      if (!event) {
+        console.error('Trade event not found', eventId)
+        return
+      }
+      // console.log('delete event', event)
+      for (const list of [event.disposed, event.acquired, event.fees]) {
+        for (const item of list) {
+          for (const link of (item.linked || [])) {
+            // console.log('delete link', link.type, link.id)
+            if (link.type === 'locationLedgerEntry') {
+              dispatch('deleteLocationLedgerEntry', link.id)
+            } else if (link.type === 'assetLedgerEntry') {
+              dispatch('deleteAssetLedgerEntry', link.id)
+            }
+          }
+        }
+      }
+      commit('deleteTradeEvent', event.id)
     },
 
     loadTradeEvents ({ commit }, events) {
