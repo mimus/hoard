@@ -136,6 +136,17 @@ var makeJsonFileUrl = function (obj) {
   return textFile
 }
 
+// Detect special syntax for 'pool' IOU tokens that are equivalent to a real token:
+// BTC--CELSIUS-SAVINGS
+// This function removes the --XXX and returns the original asset
+const getStandardAsset = function (asset) {
+  const separatorIndex = asset.indexOf('--')
+  if (separatorIndex !== -1) {
+    asset = asset.substring(0, separatorIndex)
+  }
+  return asset
+}
+
 export default {
   BigNumber,
   newBigNumberForAsset,
@@ -152,5 +163,6 @@ export default {
   roundAssetValue,
   formatAssetValue,
   roundFiat,
-  formatFiat
+  formatFiat,
+  getStandardAsset
 }

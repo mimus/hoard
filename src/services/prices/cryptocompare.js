@@ -1,5 +1,6 @@
 import axios from 'axios'
 import throttledQueue from '../throttled_queue'
+import u from '../../utils'
 
 var APP_NAME = 'mus_hoard'
 
@@ -14,28 +15,16 @@ const supportsSymbol = function (symbol) {
 }
 
 const symbolsToSubstitute = {
-  'BUSD-T': 'USDT',
-  'DAI-B': 'DAI',
-  'DAI-M': 'DAI',
-  'TUSD-M': 'TUSD',
-  'USDT-M': 'USDT',
-  'USDC-M': 'USDC',
-  'CRV-M': 'CRV',
   'amUSDT': 'USDT',
   'amWBTC': 'WBTC',
   'amAAVE': 'AAVE',
-  'AAVE-M': 'AAVE',
-  'WETH-M': 'ETH',
-  'LINK-M': 'LINK',
-  'BAL-M': 'BAL',
-  'WBTC-M': 'WBTC',
-  'USDC-FTM': 'USDC',
   'am3CRV': 'USDT', // not totally accurate, but can't find this stablecoin pool token on price APIs
   'btcCRV': 'BTC', // not totally accurate, but can't find this stablecoin pool token on price APIs
   'BPSP-TUSD': 'USDT' // not totally accurate, but can't find this stablecoin pool token on price APIs
 }
 
 const convertSymbol = function (symbol) {
+  symbol = u.getStandardAsset(symbol)
   return symbolsToSubstitute[symbol] || symbol
 }
 

@@ -9,6 +9,7 @@ import u from '../../utils'
 //   incomeEvents: in a standardized format { incomeEventId, date, amount }
 const loadIncomeEvents = function (assetId, data) {
   return new Promise((resolve, reject) => {
+    assetId = u.getStandardAsset(assetId)
     // console.log('extract celsius interest history for', assetId, data)
     if (!data) {
       reject(new Error('No data provided.'))
@@ -20,9 +21,10 @@ const loadIncomeEvents = function (assetId, data) {
       return
     }
     const expectedHeaders1 = 'Internal id, Date and time, Transaction type, Coin type, Coin amount, USD Value, Original Interest Coin, Interest Amount In Original Coin, Confirmed'
+    const expectedHeaders2 = 'Internal id, Date and time, Transaction type, Coin type, Coin amount, USD Value, Original Reward Coin, Reward Amount In Original Coin, Confirmed'
     let lineItems = []
 
-    if (lines[0] === expectedHeaders1) {
+    if (lines[0] === expectedHeaders1 || lines[0] === expectedHeaders2) {
       // remove headers
       lines.shift()
       lineItems = lines.map(
@@ -40,7 +42,7 @@ const loadIncomeEvents = function (assetId, data) {
     }))
 
     const incomeEvents = lineItems
-      .filter(({ transactionType, asset }) => (['interest'].includes(transactionType)) && asset === assetId)
+      .filter(({ transactionType, asset }) => (['interest', 'Reward'].includes(transactionType)) && asset === assetId)
       .map(({ time, asset, amount }, index) => ({
         incomeEventId: `incomeEvent${index}`,
         date: new Date(time),
