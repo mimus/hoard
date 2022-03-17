@@ -99,6 +99,8 @@ export default {
         return result
       }
 
+      const spends = []
+
       console.group('Exporting Deposits')
       const deposits = this.$store.getters.depositEvents.map(event => [
         'Deposit',
@@ -139,21 +141,47 @@ export default {
       console.groupEnd()
 
       console.group('Exporting Income Events')
-      const income = this.$store.getters.incomeEvents.map(event => [
-        'Income',
-        event.amount,
-        event.asset,
-        event.assetValueGBP,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        getLocationLabelFromLinks(event.linked),
-        dateFormatForExport(event.date),
-        combineLabelAndComments(event.label, event.comments)
-      ])
+      const income = []
+      for (const event of this.$store.getters.incomeEvents) {
+        income.push([
+          'Income',
+          event.amount,
+          event.asset,
+          event.assetValueGBP,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          getLocationLabelFromLinks(event.linked),
+          dateFormatForExport(event.date),
+          combineLabelAndComments(event.label, event.comments)
+        ])
+
+        if (event.fees?.length) {
+          // export fee as separate 'Spend' event
+          for (const fee of event.fees) {
+            const feeAssetLedgerEntry = getAssetLedgerEntryFromLinks(fee.linked)
+            console.log(`Adding 'Spend' row for income event fee ${fee.amount} ${fee.asset} (${event.label} ${event.date})`)
+            spends.push([
+              'Spend',
+              null,
+              null,
+              null,
+              fee.amount,
+              fee.asset,
+              feeAssetLedgerEntry.assetValueGBP,
+              null,
+              null,
+              null,
+              getLocationLabelFromLinks(fee.linked),
+              dateFormatForExport(event.date),
+              combineLabelAndComments('Fee: ' + event.label, fee.comments)
+            ])
+          }
+        }
+      }
       console.groupEnd()
 
       // Transfers: bittytax wants these as pairs of Deposit and Withdrawal rows,
@@ -162,7 +190,6 @@ export default {
       // * if there are multiple inputs and/or outputs in the transfer (e.g. BTC), need to split this up
       console.group('Exporting Transfers')
       const transfers = []
-      const spends = []
       for (const event of this.$store.getters.transferEvents) {
         let transferDate = moment(event.date)
         let transferDateString = dateFormatForExport(transferDate.toDate())
