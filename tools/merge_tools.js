@@ -772,7 +772,7 @@ module.exports.convertLocationToPool = async (filenameIn, filenameOut, locationI
         console.log(` - Updated fee's assetLedgerEntry ${assetLedgerEntry.id}`)
 
         // Update linked locationLedgerEntry - add it if not present
-        const locationLedgerEntryLink = fee.linked.find(({ type }) => type === 'locationLedgerEntry')
+        let locationLedgerEntryLink = fee.linked.find(({ type }) => type === 'locationLedgerEntry')
         const existingLocationLedgerEntry = locationLedgerEntriesMap[locationLedgerEntryLink?.id]
         if (existingLocationLedgerEntry) {
           const transferEventLink = existingLocationLedgerEntry.linked?.find(({ type }) => type === 'transferEvent')
@@ -805,13 +805,18 @@ module.exports.convertLocationToPool = async (filenameIn, filenameOut, locationI
           data.locations.locationLedgerEntries.push(newLocationLedgerEntry)
           locationLedgerEntriesMap[newLocationLedgerEntry.id] = newLocationLedgerEntry
           console.log(` - Added fee locationLedgerEntry ${newLocationLedgerEntry.id}`)
+          locationLedgerEntryLink = {
+            type: 'locationLedgerEntry',
+            id: newLocationLedgerEntry.id
+          }
         }
         const feeItem = {
           asset: fee.asset,
           amount: fee.amount,
           comments: fee.comments || '',
           linked: [
-            assetLedgerEntryLink
+            assetLedgerEntryLink,
+            locationLedgerEntryLink
           ]
         }
         newTradeEvent.fees.push(feeItem)

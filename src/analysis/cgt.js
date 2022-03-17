@@ -55,16 +55,21 @@ var findNearbyAcquisitions = function (entry, index, entries) {
   return { sameDay, thirtyDays }
 }
 
-var matchWithAcquisitions = function (entry, asset) {
+var matchWithAcquisitions = function (entry, asset, type) {
   var amountToDispose = entry.amount.negated()
-  var disposalPlan = []
-  var matchWithEntry = function (type, e) {
-    // console.log("Match with e", arguments, e.poolAmount, amountToDispose)
+  var disposalPlan = entry.disposalPlan = (entry.disposalPlan || [])
+  // remove already-planned disposals from amountToDispose
+  for (const plan of disposalPlan) {
+    amountToDispose = amountToDispose.minus(plan.amount)
+  }
+
+  var matchWithEntry = function (e) {
+    // console.log("Match with e", type, e.poolAmount, amountToDispose)
     if (e.poolAmount.gt(0) && amountToDispose.gt(0)) {
       var toDispose = u.BigNumber.min(e.poolAmount, amountToDispose)
       // add this entry to the disposal plan
       disposalPlan.push({
-        type: type,
+        type,
         entry: e,
         amount: toDispose
       })
@@ -74,24 +79,21 @@ var matchWithAcquisitions = function (entry, asset) {
     }
   }
   // Divide the amountToDispose among assets gathered from:
-
-  // 1) same day asset purchases (track 'used' amount on that entry)
-  entry.nearby.sameDay.forEach(matchWithEntry.bind(this, 'SAME_DAY'))
-
-  // 2) assets purchased in 30 days following the disposal (track 'used' amount on that entry)
   if (amountToDispose.gt(0)) {
-    entry.nearby.thirtyDays.forEach(matchWithEntry.bind(this, '30_DAYS'))
+    if (type === 'SAME_DAY') {
+      // 1) same day asset purchases (track 'used' amount on that entry)
+      entry.nearby.sameDay.forEach(matchWithEntry)
+    } else if (type === '30_DAYS' && amountToDispose.gt(0)) {
+      // 2) assets purchased in 30 days following the disposal (track 'used' amount on that entry)
+      entry.nearby.thirtyDays.forEach(matchWithEntry)
+    } else if (type === 'POOL') {
+      // 3) the average price for the current pool (TAE)
+      disposalPlan.push({
+        type: 'POOL',
+        amount: amountToDispose
+      })
+    }
   }
-
-  // 3) the average price for the current pool (TAE)
-  if (amountToDispose.gt(0)) {
-    disposalPlan.push({
-      type: 'POOL',
-      amount: amountToDispose
-    })
-  }
-
-  entry.disposalPlan = disposalPlan
 }
 
 var calculateAndApplyGain = function (entry, currentPoolPrice) {
@@ -147,11 +149,22 @@ var calculateAssetsLedger = function (originalEntriesByAsset) {
 
     // Match disposals with acquisitions 1/2/3:
     // acquisition amounts matched for 1 and 2 cannot be part of the pool
-    entries.forEach((entry, index) => {
+    // Match each category separately, so they can take priority
+    for (const entry of entries) {
       if (entry.type === 'disposal') {
-        matchWithAcquisitions(entry, asset)
+        matchWithAcquisitions(entry, asset, 'SAME_DAY')
       }
-    })
+    }
+    for (const entry of entries) {
+      if (entry.type === 'disposal') {
+        matchWithAcquisitions(entry, asset, '30_DAYS')
+      }
+    }
+    for (const entry of entries) {
+      if (entry.type === 'disposal') {
+        matchWithAcquisitions(entry, asset, 'POOL')
+      }
+    }
 
     // Now we know exactly which assets are part of the pool,
     // calculate running pool amount/cost and the cost basis for all disposals

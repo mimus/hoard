@@ -11,6 +11,7 @@ import incomeSources from './incomeSources'
 import deposits from './deposits'
 import transfers from './transfers'
 import trades from './trades'
+import importExport from './importExport'
 
 Vue.use(Router)
 
@@ -24,7 +25,8 @@ var router = new Router({
     ...incomeSources,
     ...deposits,
     ...transfers,
-    ...trades
+    ...trades,
+    ...importExport
   ]
 })
 

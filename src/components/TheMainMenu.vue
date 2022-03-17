@@ -72,6 +72,14 @@
         <v-list-item-title>Trades</v-list-item-title>
       </v-list-item-content>
     </v-list-item>
+    <v-list-item to="/import-export">
+      <v-list-item-action>
+        <v-icon>import_export</v-icon>
+      </v-list-item-action>
+      <v-list-item-content>
+        <v-list-item-title>Import & Export</v-list-item-title>
+      </v-list-item-content>
+    </v-list-item>
   </v-list>
 </template>
 
