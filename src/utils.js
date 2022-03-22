@@ -1,5 +1,8 @@
 import moment from 'moment'
 import { BigNumber } from 'bignumber.js'
+
+window.BigNumber = BigNumber
+
 // Don't use exponential notation
 BigNumber.config({ EXPONENTIAL_AT: [-30, 30] })
 

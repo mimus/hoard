@@ -14,6 +14,8 @@ import './store/initial_data'
 import utils from './utils'
 import services, { genericServices } from './services'
 
+window.store = store
+
 // Enable Vue DevTools browser extension even in production
 Vue.config.devtools = true
 
