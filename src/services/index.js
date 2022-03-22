@@ -26,7 +26,7 @@ import SNX from './snx'
 import LINK from './link'
 import COMP from './comp'
 import MATIC from './matic'
-import USDT_M from './usdt-matic'
+import USDT from './usdt-matic'
 import USDC from './usdc'
 // import DAI_M from './dai-matic'
 import TUSD from './tusd'
@@ -53,6 +53,7 @@ import FTM from './ftm'
 import USDC_FTM from './usdc-ftm'
 import am3CRV from './am3crv'
 import btcCRV from './btccrv'
+import GHST from './ghst'
 
 import binance from './binance'
 import celsius from './celsius'
@@ -92,7 +93,7 @@ var index = {
   YFI,
   CRO,
   '1INCH': _1INCH,
-  'USDT-M': USDT_M,
+  USDT,
   USDC,
   // 'DAI-M': DAI_M,
   'TUSD': TUSD,
@@ -113,7 +114,8 @@ var index = {
   FTM,
   'USDC-FTM': USDC_FTM,
   am3CRV,
-  btcCRV
+  btcCRV,
+  GHST
 }
 
 Object.entries(index).forEach(([key, item]) => {
