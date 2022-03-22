@@ -143,8 +143,14 @@ export default {
       console.group('Exporting Income Events')
       const income = []
       for (const event of this.$store.getters.incomeEvents) {
+        let incomeType = 'Income'
+        const incomeSource = this.$store.getters.incomeSource(event.source)
+        if (incomeSource && incomeSource.label.startsWith('GIFT')) {
+          console.log(`GIFT source for Income event ${event.id} ${event.label} ${event.date}`)
+          incomeType = 'Gift-Received'
+        }
         income.push([
-          'Income',
+          incomeType,
           event.amount,
           event.asset,
           event.assetValueGBP,

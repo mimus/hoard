@@ -5,10 +5,24 @@
     </v-subheader>
     <div v-if="sourcesIncome.length">
       <v-card-text v-if="totalIncomeValueGBP.gt(0)">
-        Total Income:
-        <span class="gain">
-          {{ totalIncomeValueGBP | formatFiat }}
-        </span>
+        <div style="font-weight: bold;">
+          Total Income (not including Gifts):
+          <span class="gain">
+            {{ totalIncomeWithoutGiftsValueGBP | formatFiat }}
+          </span>
+        </div>
+        <div>
+          Total Income + Gifts:
+          <span class="gain">
+            {{ totalIncomeValueGBP | formatFiat }}
+          </span>
+        </div>
+        <div>
+          Total Gifts:
+          <span class="gain">
+            {{ totalGiftsValueGBP | formatFiat }}
+          </span>
+        </div>
       </v-card-text>
       <v-card-text>
         <v-expansion-panels
@@ -130,6 +144,17 @@ export default {
     },
     totalIncomeValueGBP () {
       return this.sourcesIncome.reduce((total, details) => total.plus(details.totalValueGBP), u.newBigNumberForFiat(0))
+    },
+    totalGiftsValueGBP () {
+      return this.sourcesIncome.reduce((total, details) => {
+        if (details.source && !details.source.label?.startsWith('GIFT')) {
+          return total
+        }
+        return total.plus(details.totalValueGBP)
+      }, u.newBigNumberForFiat(0))
+    },
+    totalIncomeWithoutGiftsValueGBP () {
+      return this.totalIncomeValueGBP.minus(this.totalGiftsValueGBP)
     }
   }
 }
