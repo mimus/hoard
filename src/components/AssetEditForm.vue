@@ -30,6 +30,11 @@
     ></v-checkbox>
 
     <v-checkbox
+      v-model="model.nft"
+      label="NFT"
+    ></v-checkbox>
+
+    <v-checkbox
       v-model="model.caseSensitiveAddress"
       label="Addresses are case-sensitive"
       hint="Ethereum addresses (and tokens using them) are not case-sensitive. Bitcoin-based addresses are case-sensitive."
@@ -50,7 +55,8 @@ export default {
       symbol: '',
       fiat: false,
       stablecoin: false,
-      caseSensitiveAddress: true
+      nft: false,
+      caseSensitiveAddress: false
     })
   ],
   data () {

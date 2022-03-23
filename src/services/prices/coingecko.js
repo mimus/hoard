@@ -11,7 +11,8 @@ const symbolToGeckoId = {
   BTCB: 'binance-bitcoin',
   WMATIC: 'wmatic',
   amWMATIC: 'wmatic',
-  MDX: 'mdex'
+  MDX: 'mdex',
+  MOCA: 'museum-of-crypto-art'
 }
 const symbolToGeckoCurrency = {
   GBP: 'gbp'

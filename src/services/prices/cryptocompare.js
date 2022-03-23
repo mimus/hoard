@@ -7,7 +7,7 @@ var APP_NAME = 'mus_hoard'
 // Limit to 5 requests per second
 var throttlePriceFetch = throttledQueue(5, 1000)
 
-const unsupportedSymbols = ['AUTOv2', 'BTCB', 'WMATIC', 'amWMATIC', 'MDX', 'B-POLYDEFI', 'B-POLYDEFI2']
+const unsupportedSymbols = ['AUTOv2', 'BTCB', 'WMATIC', 'amWMATIC', 'MDX', 'B-POLYDEFI', 'B-POLYDEFI2', 'MOCA']
 
 const supportsSymbol = function (symbol) {
   if (unsupportedSymbols.includes(symbol)) { return false }
@@ -19,7 +19,9 @@ const symbolsToSubstitute = {
   'amWBTC': 'WBTC',
   'amAAVE': 'AAVE',
   'am3CRV': 'USDT', // not totally accurate, but can't find this stablecoin pool token on price APIs
+  'am3CRV-gauge': 'USDT', // not totally accurate, but can't find this stablecoin pool token on price APIs
   'btcCRV': 'BTC', // not totally accurate, but can't find this stablecoin pool token on price APIs
+  'btcCRV-gauge': 'BTC', // not totally accurate, but can't find this stablecoin pool token on price APIs
   'BPSP-TUSD': 'USDT' // not totally accurate, but can't find this stablecoin pool token on price APIs
 }
 
@@ -128,7 +130,8 @@ var fetchMultipleCurrentPrices = function ({ from, to }) {
     }
     const originalFrom = from
     from = from.map(convertSymbol)
-    var url = `https://min-api.cryptocompare.com/data/pricemulti?fsyms=${from.join(',')}&tsyms=${to}&extraParams=${APP_NAME}`
+    const uniqueFrom = [...new Set(from)]
+    var url = `https://min-api.cryptocompare.com/data/pricemulti?fsyms=${uniqueFrom.join(',')}&tsyms=${to}&extraParams=${APP_NAME}`
     throttlePriceFetch(() => {
       axios.get(url).then(
         (response) => {
@@ -142,7 +145,7 @@ var fetchMultipleCurrentPrices = function ({ from, to }) {
             for (var i = 0; i < from.length; i++) {
               const fromSymbol = from[i]
               const originalFromSymbol = originalFrom[i]
-              pricesBySymbol[originalFromSymbol] = response.data[fromSymbol][to]
+              pricesBySymbol[originalFromSymbol] = response.data[fromSymbol]?.[to] || 0
             }
             resolve(pricesBySymbol)
           } else {

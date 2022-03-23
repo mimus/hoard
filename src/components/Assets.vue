@@ -23,7 +23,7 @@
             {{ assetAmounts[asset.id] | formatAssetValue(asset.id) }}
           </v-list-item-title>
           <v-list-item-subtitle
-            v-if="assetGBPValues"
+            v-if="assetGBPValues && !isNaN(assetGBPValues[asset.id])"
           >
             {{ assetGBPValues[asset.id] | formatFiat }}
             <i>(1 {{ asset.symbol }} = {{ assetPriceById[asset.id] | formatFiat }})</i>

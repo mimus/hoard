@@ -101,6 +101,7 @@ var storeModule = {
         symbol: model.symbol,
         fiat: !!model.fiat,
         stablecoin: !!model.stablecoin,
+        nft: !!model.nft,
         caseSensitiveAddress: !!model.caseSensitiveAddress
       }
       commit('addAsset', model)
@@ -161,7 +162,7 @@ var storeModule = {
     },
 
     fetchAssetPrices ({ state, commit }, data) {
-      const assetSymbols = state.assets.map(asset => asset.symbol)
+      const assetSymbols = state.assets.filter(asset => !asset.nft).map(asset => asset.symbol)
       commit('loadingAssetPrices', true)
       const fetchingPromise = prices.fetchMultipleCurrentPrices({ from: assetSymbols, to: 'GBP' })
       fetchingPromise.then(
