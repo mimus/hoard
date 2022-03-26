@@ -338,8 +338,11 @@ var storeModule = {
       let totalGBPValue = utils.newBigNumberForFiat(0)
       Object.entries(locsByAsset).forEach(([assetId, { total }]) => {
         if (!total.isNaN()) {
-          const assetGBPValue = total.times(getters.assetPriceById[assetId])
-          totalGBPValue = totalGBPValue.plus(assetGBPValue)
+          const assetPrice = getters.assetPriceById[assetId]
+          if (assetPrice) {
+            const assetGBPValue = total.times(assetPrice)
+            totalGBPValue = totalGBPValue.plus(assetGBPValue)
+          }
         }
       })
       return totalGBPValue

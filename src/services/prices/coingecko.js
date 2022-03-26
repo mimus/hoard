@@ -1,5 +1,6 @@
 import axios from 'axios'
 import throttledQueue from '../throttled_queue'
+import u from '../../utils'
 
 // Limit to 5 requests per second
 const throttlePriceFetch = throttledQueue(5, 1000)
@@ -19,6 +20,7 @@ const symbolToGeckoCurrency = {
 }
 
 const supportsSymbol = function (symbol) {
+  symbol = u.getStandardAsset(symbol)
   return !!symbolToGeckoId[symbol]
 }
 
@@ -33,7 +35,7 @@ const fetchDayPrice = function ({ from, to, date }) {
       resolve(1)
       return
     }
-    from = symbolToGeckoId[from]
+    from = symbolToGeckoId[u.getStandardAsset(from)]
     to = symbolToGeckoCurrency[to]
     const dateString = `${date.getUTCDate()}-${date.getUTCMonth() + 1}-${date.getUTCFullYear()}`
     // console.log(`Look up ${to}/${from} price`, date, dateString)
@@ -72,9 +74,10 @@ var fetchMultipleCurrentPrices = function ({ from, to }) {
       return
     }
     const originalFrom = from
-    from = from.map(symbol => symbolToGeckoId[symbol])
+    from = from.map(symbol => symbolToGeckoId[u.getStandardAsset(symbol)])
     to = symbolToGeckoCurrency[to]
-    var url = `https://api.coingecko.com/api/v3/simple/price?ids=${from.join(',')}&vs_currencies=${to}`
+    const fromUnique = [...new Set(from)]
+    var url = `https://api.coingecko.com/api/v3/simple/price?ids=${fromUnique.join(',')}&vs_currencies=${to}`
     throttlePriceFetch(() => {
       axios.get(url).then(
         (response) => {

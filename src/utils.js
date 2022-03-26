@@ -22,6 +22,7 @@ var ASSET_DECIMALS = {
   XVG: 8,
   GAS: 8,
   USDT: 8,
+  USDC: 6,
   XRP: 8,
   _FIAT: 2,
   GBP: 2,

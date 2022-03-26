@@ -10,14 +10,17 @@ var throttlePriceFetch = throttledQueue(5, 1000)
 const unsupportedSymbols = ['AUTOv2', 'BTCB', 'WMATIC', 'amWMATIC', 'MDX', 'B-POLYDEFI', 'B-POLYDEFI2', 'MOCA']
 
 const supportsSymbol = function (symbol) {
+  symbol = u.getStandardAsset(symbol)
   if (unsupportedSymbols.includes(symbol)) { return false }
   return true
 }
 
 const symbolsToSubstitute = {
   'amUSDT': 'USDT',
+  'amUSDC': 'USDC',
   'amWBTC': 'WBTC',
   'amAAVE': 'AAVE',
+  'maUNI': 'UNI', // approx
   'am3CRV': 'USDT', // not totally accurate, but can't find this stablecoin pool token on price APIs
   'am3CRV-gauge': 'USDT', // not totally accurate, but can't find this stablecoin pool token on price APIs
   'btcCRV': 'BTC', // not totally accurate, but can't find this stablecoin pool token on price APIs
