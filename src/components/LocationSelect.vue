@@ -1,11 +1,11 @@
 <template>
-  <v-select
+  <v-autocomplete
     :value="selectedValue"
     :items="items"
     :label="label"
     :single-line="singleLine"
     @input="onChange"
-  ></v-select>
+  ></v-autocomplete>
 </template>
 
 <script>

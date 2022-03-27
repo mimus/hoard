@@ -1,5 +1,5 @@
 <template>
-  <v-select
+  <v-autocomplete
     ref="select"
     :items="items"
     :value="value"
@@ -8,7 +8,7 @@
     :single-line="singleLine"
     @input="onChange"
     >
-  </v-select>
+  </v-autocomplete>
 </template>
 
 <script>
