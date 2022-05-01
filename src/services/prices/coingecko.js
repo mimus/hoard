@@ -13,7 +13,11 @@ const symbolToGeckoId = {
   WMATIC: 'wmatic',
   amWMATIC: 'wmatic',
   MDX: 'mdex',
-  MOCA: 'museum-of-crypto-art'
+  MOCA: 'museum-of-crypto-art',
+  FUD: 'aavegotchi-fud',
+  FOMO: 'aavegotchi-fomo',
+  ALPHA: 'aavegotchi-alpha',
+  KEK: 'aavegotchi-kek'
 }
 const symbolToGeckoCurrency = {
   GBP: 'gbp'

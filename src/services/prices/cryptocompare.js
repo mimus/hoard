@@ -7,7 +7,7 @@ var APP_NAME = 'mus_hoard'
 // Limit to 5 requests per second
 var throttlePriceFetch = throttledQueue(5, 1000)
 
-const unsupportedSymbols = ['AUTOv2', 'BTCB', 'WMATIC', 'amWMATIC', 'MDX', 'B-POLYDEFI', 'B-POLYDEFI2', 'MOCA']
+const unsupportedSymbols = ['AUTOv2', 'BTCB', 'WMATIC', 'amWMATIC', 'MDX', 'B-POLYDEFI', 'B-POLYDEFI-gauge', 'B-POLYDEFI2', 'MOCA', 'FUD', 'FOMO', 'ALPHA', 'KEK']
 
 const supportsSymbol = function (symbol) {
   symbol = u.getStandardAsset(symbol)
@@ -20,6 +20,7 @@ const symbolsToSubstitute = {
   'amUSDC': 'USDC',
   'amWBTC': 'WBTC',
   'amAAVE': 'AAVE',
+  'amCRV': 'CRV',
   'maUNI': 'UNI', // approx
   'am3CRV': 'USDT', // not totally accurate, but can't find this stablecoin pool token on price APIs
   'am3CRV-gauge': 'USDT', // not totally accurate, but can't find this stablecoin pool token on price APIs

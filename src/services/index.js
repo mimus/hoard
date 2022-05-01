@@ -40,6 +40,7 @@ import B_POLYDEFI from './balancer-polydefi'
 import B_POLYDEFI2 from './balancer-polydefi2'
 import BPSP_TUSD from './balancer-tusdstable'
 import amUSDT from './amUSDT'
+import amCRV from './amCRV'
 import WMATIC from './wmatic'
 import amWMATIC from './amWMATIC'
 import amWBTC from './amWBTC'
@@ -54,6 +55,10 @@ import USDC_FTM from './usdc-ftm'
 import am3CRV from './am3crv'
 import btcCRV from './btccrv'
 import GHST from './ghst'
+import FUD from './fud'
+import FOMO from './fomo'
+import ALPHA from './alpha'
+import KEK from './kek'
 
 import binance from './binance'
 import celsius from './celsius'
@@ -99,7 +104,8 @@ var index = {
   'TUSD': TUSD,
   // 'CRV-M': CRV_M,
   'AAVE-M': AAVE_M,
-  'WETH-M': WETH_M,
+  // 'WETH-M': WETH_M,
+  WETH: WETH_M,
   'LINK-M': LINK_M,
   'BAL': BAL,
   'WBTC-M': WBTC_M,
@@ -107,6 +113,7 @@ var index = {
   'B-POLYDEFI2': B_POLYDEFI2,
   'BPSP-TUSD': BPSP_TUSD,
   amUSDT,
+  amCRV,
   WMATIC,
   amWMATIC,
   amWBTC,
@@ -115,7 +122,11 @@ var index = {
   'USDC-FTM': USDC_FTM,
   am3CRV,
   btcCRV,
-  GHST
+  GHST,
+  FUD,
+  FOMO,
+  ALPHA,
+  KEK
 }
 
 Object.entries(index).forEach(([key, item]) => {
