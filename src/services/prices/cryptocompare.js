@@ -24,6 +24,7 @@ const symbolsToSubstitute = {
   'amWBTC': 'WBTC',
   'amAAVE': 'AAVE',
   'amCRV': 'CRV',
+  'amBAL': 'BAL',
   'maUNI': 'UNI', // approx
   'am3CRV': 'USDT', // not totally accurate, but can't find this stablecoin pool token on price APIs
   'am3CRV-gauge': 'USDT', // not totally accurate, but can't find this stablecoin pool token on price APIs

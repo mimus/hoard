@@ -41,6 +41,7 @@ import B_POLYDEFI2 from './balancer-polydefi2'
 import BPSP_TUSD from './balancer-tusdstable'
 import amUSDT from './amUSDT'
 import amCRV from './amCRV'
+import amBAL from './amBAL'
 import WMATIC from './wmatic'
 import amWMATIC from './amWMATIC'
 import amWBTC from './amWBTC'
@@ -115,6 +116,7 @@ var index = {
   'BPSP-TUSD': BPSP_TUSD,
   amUSDT,
   amCRV,
+  amBAL,
   WMATIC,
   amWMATIC,
   amWBTC,
