@@ -4,10 +4,13 @@ import u from '../../utils'
 
 var APP_NAME = 'mus_hoard'
 
+// Look up coin symbols:
+// https://min-api.cryptocompare.com/data/all/coinlist
+
 // Limit to 5 requests per second
 var throttlePriceFetch = throttledQueue(5, 1000)
 
-const unsupportedSymbols = ['AUTOv2', 'BTCB', 'WMATIC', 'amWMATIC', 'MDX', 'B-POLYDEFI', 'B-POLYDEFI-gauge', 'B-POLYDEFI2', 'MOCA', 'FUD', 'FOMO', 'ALPHA', 'KEK']
+const unsupportedSymbols = ['AUTOv2', 'BTCB', 'WMATIC', 'amWMATIC', 'MDX', 'B-POLYDEFI', 'B-POLYDEFI-gauge', 'B-POLYDEFI2', 'MOCA', 'FUD', 'FOMO', 'ALPHA', 'KEK', 'SOS']
 
 const supportsSymbol = function (symbol) {
   symbol = u.getStandardAsset(symbol)

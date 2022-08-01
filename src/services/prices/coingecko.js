@@ -17,7 +17,8 @@ const symbolToGeckoId = {
   FUD: 'aavegotchi-fud',
   FOMO: 'aavegotchi-fomo',
   ALPHA: 'aavegotchi-alpha',
-  KEK: 'aavegotchi-kek'
+  KEK: 'aavegotchi-kek',
+  SOS: 'opendao'
 }
 const symbolToGeckoCurrency = {
   GBP: 'gbp'

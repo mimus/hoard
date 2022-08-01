@@ -59,6 +59,7 @@ import FUD from './fud'
 import FOMO from './fomo'
 import ALPHA from './alpha'
 import KEK from './kek'
+import SOS from './sos'
 
 import binance from './binance'
 import celsius from './celsius'
@@ -126,7 +127,8 @@ var index = {
   FUD,
   FOMO,
   ALPHA,
-  KEK
+  KEK,
+  SOS
 }
 
 Object.entries(index).forEach(([key, item]) => {
