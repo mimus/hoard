@@ -35,7 +35,13 @@ var ASSET_DECIMALS = {
   LSK: 8,
   NEO: 8,
   WBTC: 8,
-  XMR: 12
+  XMR: 12,
+  amUSDT: 18,
+  amWMATIC: 18,
+  amWBTC: 18,
+  amUSDC: 18,
+  amBAL: 18,
+  amCRV: 18
 }
 
 var BIG_NUMBER_FOR_ASSET = Object.entries(ASSET_DECIMALS)
