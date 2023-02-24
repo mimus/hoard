@@ -562,7 +562,7 @@ export default {
               tradeDesc
             ])
           }
-        } else if (event.disposed.length > 1 || event.acquired.length === 1) {
+        } else if (event.disposed.length > 1 && event.acquired.length === 1) {
           console.group(`Splitting trade event ${event.id} with multiple inputs (N -> 1)`, event.label, event)
 
           const fee = event.fees.length ? event.fees[0] : null
@@ -641,7 +641,7 @@ export default {
           }
 
           console.groupEnd()
-        } else if (event.disposed.length === 1 || event.acquired.length > 1) {
+        } else if (event.disposed.length === 1 && event.acquired.length > 1) {
           console.group(`Splitting trade event ${event.id} with multiple outputs (1 -> N)`, event.label, event)
 
           const fee = event.fees.length ? event.fees[0] : null
