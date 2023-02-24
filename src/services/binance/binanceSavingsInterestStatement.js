@@ -41,7 +41,7 @@ const loadIncomeEvents = function (assetId, data) {
     }
 
     const incomeEvents = lineItems
-      .filter(({ operation, coin }) => (['POS savings interest', 'Savings Interest', 'ETH 2.0 Staking Rewards'].includes(operation)) && coin === assetId)
+      .filter(({ operation, coin }) => (['POS savings interest', 'Savings Interest', 'ETH 2.0 Staking Rewards', 'Simple Earn Flexible Interest', 'Staking Rewards'].includes(operation)) && coin === assetId)
       .map(({ time, coin, change }, index) => ({
         incomeEventId: `incomeEvent${index}`,
         date: new Date(time),
