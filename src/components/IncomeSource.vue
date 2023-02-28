@@ -61,8 +61,7 @@
           <v-data-table
             :headers="headers"
             :items="incomeEventsForTable"
-            disable-pagination
-            hide-default-footer
+            :items-per-page="200"
             must-sort
             sort-by="sortableDate"
             :sort-desc="true"

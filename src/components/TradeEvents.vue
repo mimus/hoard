@@ -15,8 +15,7 @@
       <v-data-table
         :headers="headers"
         :items="tradeEventsForTable"
-        disable-pagination
-        hide-default-footer
+        :items-per-page="200"
         sort-by="sortableDate"
         :sort-desc="true"
       >
