@@ -3,7 +3,7 @@ import throttledQueue from '../throttled_queue'
 import u from '../../utils'
 
 // Limit to 1 requests per 5 seconds
-const throttlePriceFetch = throttledQueue(1, 5*1000)
+const throttlePriceFetch = throttledQueue(1, 5 * 1000)
 
 // https://api.coingecko.com/api/v3/coins/list
 const symbolToGeckoId = {

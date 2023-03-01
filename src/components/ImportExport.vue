@@ -26,6 +26,7 @@
 <script>
 import moment from 'moment'
 import { stringify } from 'csv-stringify/dist/esm/sync'
+import u from '../utils'
 
 export default {
   data () {
@@ -605,7 +606,7 @@ export default {
               partAcquiredAmount = remainingAcquiredAmount
             } else {
               // calculate proportion of total acquired amount
-              const proportion = disposedValueGBP.gt(0) ? disposedAssetLedgerEntry.assetValueGBP.dividedBy(disposedValueGBP) : new BigNumber(0)
+              const proportion = disposedValueGBP.gt(0) ? disposedAssetLedgerEntry.assetValueGBP.dividedBy(disposedValueGBP) : u.newBigNumberForAsset(0, disposed.asset)
               partAcquiredAmount = proportion.times(acquired.amount)
               remainingAcquiredAmount = remainingAcquiredAmount.minus(partAcquiredAmount)
             }
