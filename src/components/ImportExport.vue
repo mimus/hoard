@@ -605,7 +605,7 @@ export default {
               partAcquiredAmount = remainingAcquiredAmount
             } else {
               // calculate proportion of total acquired amount
-              const proportion = disposedAssetLedgerEntry.assetValueGBP.dividedBy(disposedValueGBP)
+              const proportion = disposedValueGBP.gt(0) ? disposedAssetLedgerEntry.assetValueGBP.dividedBy(disposedValueGBP) : new BigNumber(0)
               partAcquiredAmount = proportion.times(acquired.amount)
               remainingAcquiredAmount = remainingAcquiredAmount.minus(partAcquiredAmount)
             }
