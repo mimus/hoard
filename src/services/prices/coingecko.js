@@ -18,6 +18,7 @@ const symbolToGeckoId = {
   FOMO: 'aavegotchi-fomo',
   ALPHA: 'aavegotchi-alpha',
   KEK: 'aavegotchi-kek',
+  GLTR: 'gax-liquidity-token-reward',
   SOS: 'opendao'
 }
 const symbolToGeckoCurrency = {

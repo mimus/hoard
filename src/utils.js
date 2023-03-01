@@ -41,7 +41,8 @@ var ASSET_DECIMALS = {
   amWBTC: 18,
   amUSDC: 18,
   amBAL: 18,
-  amCRV: 18
+  amCRV: 18,
+  wapGHST: 18
 }
 
 var BIG_NUMBER_FOR_ASSET = Object.entries(ASSET_DECIMALS)

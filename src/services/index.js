@@ -60,6 +60,8 @@ import FUD from './fud'
 import FOMO from './fomo'
 import ALPHA from './alpha'
 import KEK from './kek'
+import GLTR from './gltr'
+import wapGHST from './wapGHST'
 import SOS from './sos'
 import LDO from './ldo'
 
@@ -131,6 +133,8 @@ var index = {
   FOMO,
   ALPHA,
   KEK,
+  GLTR,
+  wapGHST,
   SOS,
   LDO
 }
