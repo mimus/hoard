@@ -21,6 +21,7 @@ const loadIncomeEvents = function (assetId, data) {
     }
     const expectedHeaders1 = 'UTC_Time,Account,Operation,Coin,Change,Remark'
     const expectedHeaders2 = 'User_ID,UTC_Time,Account,Operation,Coin,Change,Remark'
+    const expectedHeaders3 = '"User_ID","UTC_Time","Account","Operation","Coin","Change","Remark"'
     let lineItems = []
 
     if (lines[0] === expectedHeaders1) {
@@ -34,6 +35,15 @@ const loadIncomeEvents = function (assetId, data) {
       lines.shift()
       lineItems = lines.map(
         line => line.split(',')
+      ).map(([userId, time, account, operation, coin, change, remark]) => ({ time, account, operation, coin, change, remark }))
+    } else if (lines[0] === expectedHeaders3) {
+      // remove headers
+      lines.shift()
+      lineItems = lines.map(
+        line => line.split(',')
+      ).map(
+        // remove ""
+        cells => cells.map(cellContent => cellContent.substring(1, cellContent.length - 1))
       ).map(([userId, time, account, operation, coin, change, remark]) => ({ time, account, operation, coin, change, remark }))
     } else {
       reject(new Error('Unexpected data format: expecting CSV with headers ' + expectedHeaders1 + ' - or - ' + expectedHeaders2))
