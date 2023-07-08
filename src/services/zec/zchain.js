@@ -4,7 +4,7 @@ import u from '../../utils'
 var asset = 'ZEC'
 
 var addressLink = {
-  link: item => (item && `https://explorer.zcha.in/accounts/${item}`) || false,
+  link: item => (item && `https://blockchair.com/zcash/address/${item}`) || false,
   linkTitle: item => 'View address on Zchain',
   label: item => item,
   shortLabel: item => u.truncateToFirst(item, 6)
