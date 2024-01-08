@@ -23,14 +23,28 @@ var fetchTransaction = function (transactionId) {
         const gas = u.newBigNumberForAsset(x.gas_spent, chainAsset) // 51784
         const gasPrice = u.newBigNumberForAsset(x.gas_price, chainAsset) // 1000000000
         const fee = gas.times(gasPrice).div(10e17) // 51784 x 1000000000 =  51784000000000 => 0.000051784 MATIC
+        let ignoreFee = false
         const valueReceived = u.newBigNumberForAsset(x.value, chainAsset).div(10e17) // x.value is a string containing a number
         const inputAddresses = [x.from_address]
         // inspect the log_events for recognisable types of transactions
-        const callingAddress = x.from_address
+        let callingAddress = x.from_address
         let approval = null
         let tokenTransfersFromCaller = []
         let tokenTransfersToCaller = []
         // let swap = null
+        // special case: 1inch OrderFilled transactions, which are called by a third party address
+        // - in this case, extract the 'makerAddress' and treat it as our local 'callingAddress'
+        const orderFilledEvent = x.log_events.find(event => event.decoded?.name === 'OrderFilled')
+        if (orderFilledEvent) {
+          // console.log({ orderFilledEvent })
+          const makerAddress = orderFilledEvent.decoded.params.find(param => param.name === 'maker')?.value
+          if (makerAddress && makerAddress !== callingAddress) {
+            callingAddress = makerAddress
+            ignoreFee = true
+            console.log('found third-party OrderFilled transaction, ignoring fee', callingAddress)
+          }
+        }
+
         x.log_events.forEach(event => {
           if (event.decoded) {
             if (event.decoded.name === 'Approval' && event.decoded.params) {
@@ -123,9 +137,9 @@ var fetchTransaction = function (transactionId) {
           inputAddresses,
           inputs,
           outputs,
-          fee: fee.toString(),
-          feeAsset: chainAsset,
-          feeLocation: x.from_address,
+          fee: ignoreFee ? null : fee.toString(),
+          feeAsset: ignoreFee ? null : chainAsset,
+          feeLocation: ignoreFee ? null : x.from_address,
           label
         }
         // console.log({ transaction })
