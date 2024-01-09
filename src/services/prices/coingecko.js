@@ -3,7 +3,7 @@ import throttledQueue from '../throttled_queue'
 import u from '../../utils'
 
 // Limit to 1 requests per 5 seconds
-const throttlePriceFetch = throttledQueue(1, 5 * 1000)
+const throttlePriceFetch = throttledQueue(1, 15 * 1000)
 
 // https://api.coingecko.com/api/v3/coins/list
 const symbolToGeckoId = {
@@ -19,7 +19,8 @@ const symbolToGeckoId = {
   ALPHA: 'aavegotchi-alpha',
   KEK: 'aavegotchi-kek',
   GLTR: 'gax-liquidity-token-reward',
-  SOS: 'opendao'
+  SOS: 'opendao',
+  GONE: 'gone'
 }
 const symbolToGeckoCurrency = {
   GBP: 'gbp'

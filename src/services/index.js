@@ -64,6 +64,7 @@ import GLTR from './gltr'
 import wapGHST from './wapGHST'
 import SOS from './sos'
 import LDO from './ldo'
+import GONE from './gone'
 
 import binance from './binance'
 import celsius from './celsius'
@@ -136,7 +137,8 @@ var index = {
   GLTR,
   wapGHST,
   SOS,
-  LDO
+  LDO,
+  GONE
 }
 
 Object.entries(index).forEach(([key, item]) => {
