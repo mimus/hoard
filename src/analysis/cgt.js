@@ -172,7 +172,11 @@ var calculateAssetsLedger = function (originalEntriesByAsset) {
     var totalPoolCost = u.newBigNumberForFiat(0) // running total cost of assets in pool
     entries.forEach((entry, index) => {
       if (entry.type === 'acquisition') {
-        entry.poolValueGBP = u.roundFiat(u.newBigNumberWithDecimals(entry.assetValueGBP).times(entry.poolAmount).div(entry.amount))
+        if (entry.amount.isZero()) {
+          entry.poolValueGBP = u.newBigNumberForFiat(0)
+        } else {
+          entry.poolValueGBP = u.roundFiat(u.newBigNumberWithDecimals(entry.assetValueGBP).times(entry.poolAmount).div(entry.amount))
+        }
         totalPoolCost = totalPoolCost.plus(entry.poolValueGBP)
         totalPoolAmount = totalPoolAmount.plus(entry.poolAmount)
       } else if (entry.type === 'disposal') {
