@@ -1,5 +1,5 @@
-import neoscan from '../neo/neoscan'
+import neotube from '../neo/neotube'
 
 export default {
-  services: [ neoscan ]
+  services: [ neotube ]
 }
