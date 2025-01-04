@@ -1,3 +1,7 @@
+// Covalent (now GoldRush) no longer provides a free API.
+// Not using it anymore, but leaving the code here for reference
+// as the polygonscan API doesn't provide decoded tx logs so can't add the more advanced logic
+
 import axios from 'axios'
 import u from '../../utils'
 

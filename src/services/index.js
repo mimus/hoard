@@ -68,7 +68,7 @@ import GONE from './gone'
 
 import binance from './binance'
 import celsius from './celsius'
-import { registerToken as covalentRegisterMaticToken } from './matic/covalenthq'
+// import { registerToken as covalentRegisterMaticToken } from './matic/polygonscan'
 
 var index = {
   BTC,
@@ -150,9 +150,9 @@ Object.entries(index).forEach(([key, item]) => {
       item.fetchTransaction = item.fetchTransaction || service.fetchTransaction
     })
   }
-  if (item.maticTokenAddress) {
-    covalentRegisterMaticToken({ address: item.maticTokenAddress, assetId: key })
-  }
+  // if (item.maticTokenAddress) {
+  //   covalentRegisterMaticToken({ address: item.maticTokenAddress, assetId: key })
+  // }
 })
 
 // some services can potentially apply to all assets
