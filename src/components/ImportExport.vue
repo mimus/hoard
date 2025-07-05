@@ -588,7 +588,6 @@ export default {
           console.log(`Total disposed value ${disposedValueGBP} GBP`)
           console.log(`Total acquired amount ${acquired.amount} ${acquired.asset} (split this up)`)
 
-          const disposedWallet = getLocationLabelFromLinks(event.disposed[0].linked)
           const acquiredWallet = getLocationLabelFromLinks(acquired.linked)
 
           const tradeDate = dateFormatForExport(event.date)
@@ -613,9 +612,6 @@ export default {
             const partAcquiredValueGBP = disposedAssetLedgerEntry.assetValueGBP
             console.log(`Assign ${disposed.amount} ${disposed.asset} (${disposedAssetLedgerEntry.assetValueGBP} GBP) -> ${partAcquiredAmount} ${acquired.asset}`)
             const myDisposedWallet = getLocationLabelFromLinks(disposed.linked)
-            if (myDisposedWallet !== disposedWallet) {
-              console.error(`Unsupported: Different disposals come from different wallets`, event)
-            }
 
             trades.push([
               'Trade',
@@ -630,15 +626,15 @@ export default {
               !handledFee && fee ? fee.amount : null,
               !handledFee && fee ? fee.asset : null,
               !handledFee && feeAssetLedgerEntry ? feeAssetLedgerEntry.assetValueGBP : null,
-              disposedWallet,
+              myDisposedWallet,
               tradeDate,
               tradeDesc
             ])
             handledFee = true
-          }
 
-          if (disposedWallet !== acquiredWallet) {
-            console.error('Unsupported: Disposed wallet is not the same as acquired wallet, would need to add a transfer row')
+            if (myDisposedWallet !== acquiredWallet) {
+              console.error('Unsupported: Disposed wallet is not the same as acquired wallet, would need to add a transfer row', { myDisposedWallet, acquiredWallet, acquired })
+            }
           }
 
           console.groupEnd()
@@ -667,7 +663,6 @@ export default {
           console.log(`Total acquired value ${acquiredValueGBP} GBP`)
           console.log(`Total disposed amount ${disposed.amount} ${disposed.asset} (split this up)`)
 
-          const acquiredWallet = getLocationLabelFromLinks(event.acquired[0].linked)
           const disposedWallet = getLocationLabelFromLinks(disposed.linked)
 
           const tradeDate = dateFormatForExport(event.date)
@@ -692,9 +687,6 @@ export default {
             const partDisposedValueGBP = acquiredAssetLedgerEntry.assetValueGBP
             console.log(`Assign ${partDisposedAmount} ${disposed.asset} -> ${acquired.amount} ${acquired.asset} (${acquiredAssetLedgerEntry.assetValueGBP} GBP)`)
             const myAcquiredWallet = getLocationLabelFromLinks(acquired.linked)
-            if (myAcquiredWallet !== acquiredWallet) {
-              console.error(`Unsupported: Different acquired assets are going to different wallets`, event)
-            }
 
             trades.push([
               'Trade',
@@ -714,10 +706,41 @@ export default {
               tradeDesc
             ])
             handledFee = true
-          }
-
-          if (disposedWallet !== acquiredWallet) {
-            console.error('Unsupported: Disposed wallet is not the same as acquired wallet, would need to add a transfer row')
+            if (disposedWallet !== myAcquiredWallet) {
+              console.log(`Adding extra transfer of ${acquired.asset} [${disposedWallet} -> ${myAcquiredWallet}] after trade ${event.id} (${event.label} ${event.date})`)
+              let transferDate = moment(event.date).add(10, 'seconds')
+              transferDate = dateFormatForExport(transferDate.toDate())
+              transfers.push([
+                'Withdrawal',
+                null,
+                null,
+                null,
+                acquired.amount,
+                acquired.asset,
+                null, // GBP value not needed for transfer events
+                null,
+                null,
+                null,
+                disposedWallet,
+                transferDate,
+                tradeDesc
+              ])
+              transfers.push([
+                'Deposit',
+                acquired.amount,
+                acquired.asset,
+                null, // GBP value not needed for transfer events
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                myAcquiredWallet,
+                transferDate,
+                tradeDesc
+              ])
+            }
           }
 
           console.groupEnd()
