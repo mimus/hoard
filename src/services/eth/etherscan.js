@@ -24,12 +24,12 @@ var transactionLink = {
 
 var fetchTransaction = function (transactionId) {
   return new Promise((resolve, reject) => {
-    var url = `https://api.etherscan.io/api?module=proxy&action=eth_getTransactionByHash&txhash=${transactionId}&apikey=${apiToken}`
+    var url = `https://api.etherscan.io/v2/api?chainid=1&module=proxy&action=eth_getTransactionByHash&txhash=${transactionId}&apikey=${apiToken}`
     throttleEtherscanFetch(() => {
       axios.get(url).then((response) => {
         var x = response.data.result
         // now fetch the transaction receipt to see how much gas was actually used
-        var receiptUrl = `https://api.etherscan.io/api?module=proxy&action=eth_getTransactionReceipt&txhash=${transactionId}&apikey=${apiToken}`
+        var receiptUrl = `https://api.etherscan.io/v2/api?chainid=1&module=proxy&action=eth_getTransactionReceipt&txhash=${transactionId}&apikey=${apiToken}`
 
         throttleEtherscanFetch(() => {
           axios.get(receiptUrl).then((receiptResponse) => {
@@ -55,7 +55,7 @@ var fetchTransaction = function (transactionId) {
 
             // Now need to fetch the block so we can find the timestamp...
             var blockNo = x.blockNumber / 1 // x.blockNumber is a hex string: convert to number
-            var blockUrl = `https://api.etherscan.io/api?module=block&action=getblockreward&blockno=${blockNo}&apikey=${apiToken}`
+            var blockUrl = `https://api.etherscan.io/v2/api?chainid=1&module=block&action=getblockreward&blockno=${blockNo}&apikey=${apiToken}`
             throttleEtherscanFetch(() => {
               axios.get(blockUrl).then((blockResponse) => {
                 var transaction = {
@@ -105,7 +105,7 @@ var fetchTransactions = function (address, fetchState) {
     var pageNum = (fetchState && fetchState.pageNum) || 1
     // Url: 'page' is page number, starting at 1
     //      'offset' is actually page size
-    var url = `https://api.etherscan.io/api?module=account&action=txlist&address=${address}&page=${pageNum}&offset=${pageSize}&sort=desc&apikey=${apiToken}`
+    var url = `https://api.etherscan.io/v2/api?chainid=1&module=account&action=txlist&address=${address}&page=${pageNum}&offset=${pageSize}&sort=desc&apikey=${apiToken}`
     throttleEtherscanFetch(() => {
       axios.get(url).then((response) => {
         var fetchedAll = false

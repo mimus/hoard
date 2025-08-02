@@ -3,8 +3,8 @@ import throttledQueue from '../throttled_queue'
 import u from '../../utils'
 
 // API limit is 5 requests per second
-var throttlePolygonscanFetch = throttledQueue(4, 1000)
-var apiToken = 'RKAM8DRST8YBYQF8VQY2UBGSA1KWRDYIM3'
+var throttleEtherscanFetch = throttledQueue(4, 1000)
+var apiToken = 'S23NI7FKUCKKX5W26PH5UBNANWPMVU6FW5'
 
 var chainAsset = 'MATIC'
 
@@ -24,14 +24,14 @@ var transactionLink = {
 
 var fetchTransaction = function (transactionId) {
   return new Promise((resolve, reject) => {
-    var url = `https://api.polygonscan.com/api?module=proxy&action=eth_getTransactionByHash&txhash=${transactionId}&apikey=${apiToken}`
-    throttlePolygonscanFetch(() => {
+    var url = `https://api.etherscan.io/v2/api?chainid=137&module=proxy&action=eth_getTransactionByHash&txhash=${transactionId}&apikey=${apiToken}`
+    throttleEtherscanFetch(() => {
       axios.get(url).then((response) => {
         var x = response.data.result
         // now fetch the transaction receipt to see how much gas was actually used
-        var receiptUrl = `https://api.polygonscan.com/api?module=proxy&action=eth_getTransactionReceipt&txhash=${transactionId}&apikey=${apiToken}`
+        var receiptUrl = `https://api.etherscan.io/v2/api?chainid=137&module=proxy&action=eth_getTransactionReceipt&txhash=${transactionId}&apikey=${apiToken}`
 
-        throttlePolygonscanFetch(() => {
+        throttleEtherscanFetch(() => {
           axios.get(receiptUrl).then((receiptResponse) => {
             var receipt = receiptResponse.data.result
             var gasUsed = receipt.gasUsed // gasUsed is a hex string
@@ -55,8 +55,8 @@ var fetchTransaction = function (transactionId) {
 
             // Now need to fetch the block so we can find the timestamp...
             var blockNo = x.blockNumber / 1 // x.blockNumber is a hex string: convert to number
-            var blockUrl = `https://api.polygonscan.com/api?module=block&action=getblockreward&blockno=${blockNo}&apikey=${apiToken}`
-            throttlePolygonscanFetch(() => {
+            var blockUrl = `https://api.etherscan.io/api?chainid=137&module=block&action=getblockreward&blockno=${blockNo}&apikey=${apiToken}`
+            throttleEtherscanFetch(() => {
               axios.get(blockUrl).then((blockResponse) => {
                 var transaction = {
                   transactionId: x.hash,
