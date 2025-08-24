@@ -1,7 +1,8 @@
+import blockstream from './blockstream'
 import blockchair from './blockchair'
 import blockcypher from './blockcypher'
 import blockchain from './blockchain'
 
 export default {
-  services: [ blockchair, blockcypher, blockchain ]
+  services: [ blockstream, blockchair, blockcypher, blockchain ]
 }
